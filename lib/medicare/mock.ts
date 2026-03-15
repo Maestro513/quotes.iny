@@ -1,0 +1,66 @@
+import type { MedicarePlan } from "@/types/medicare";
+
+export const mockMedicarePlans: MedicarePlan[] = [
+  {
+    id: "mc-1",
+    name: "Humana Gold Plus H5619-107",
+    type: "MA",
+    carrier: "Humana",
+    premium_monthly: 0,
+    highlights: ["$0 Primary Care", "Dental & Vision included", "$0 Tier 1 Rx"],
+    county: "BROWARD",
+    zip_codes: ["33071", "33334", "33060"],
+  },
+  {
+    id: "mc-2",
+    name: "UnitedHealthcare AARP MedicareComplete",
+    type: "MA",
+    carrier: "UnitedHealthcare",
+    premium_monthly: 35,
+    highlights: ["$5 Primary Care", "Gym membership included", "$0 Tier 1-2 Rx"],
+    county: "BROWARD",
+    zip_codes: ["33071", "33334"],
+  },
+  {
+    id: "mc-3",
+    name: "Aetna Medicare Supplement Plan G",
+    type: "Supplement",
+    carrier: "Aetna",
+    premium_monthly: 142,
+    highlights: [
+      "Covers Part A & B gaps",
+      "No network restrictions",
+      "No referrals needed",
+    ],
+    county: "BROWARD",
+    zip_codes: ["33071", "33334", "33060"],
+  },
+  {
+    id: "mc-4",
+    name: "SilverScript Choice Part D",
+    type: "PartD",
+    carrier: "CVS / SilverScript",
+    premium_monthly: 21,
+    highlights: [
+      "$0 Tier 1 generics",
+      "60,000+ network pharmacies",
+      "Mail-order available",
+    ],
+    county: "BROWARD",
+    zip_codes: ["33071", "33334", "33060"],
+  },
+  {
+    id: "mc-5",
+    name: "Cigna Achieve Medicare Supplement Plan N",
+    type: "Supplement",
+    carrier: "Cigna",
+    premium_monthly: 118,
+    highlights: [
+      "Low monthly premium",
+      "Covers Part B excess charges",
+      "Nationwide coverage",
+    ],
+    county: "BROWARD",
+    zip_codes: ["33071"],
+  },
+];
