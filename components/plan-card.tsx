@@ -46,9 +46,17 @@ export default function PlanCard({
       className={`relative rounded-xl mb-4 overflow-hidden transition-all duration-200 cursor-pointer
         backdrop-blur-sm
         ${isFeatured
-          ? "border border-[#22c55e]/60 bg-[#dacaef]/[0.14] shadow-[0_0_24px_rgba(34,197,94,0.15)] hover:shadow-[0_0_32px_rgba(34,197,94,0.25)]"
-          : "border border-[#dacaef]/25 bg-[#dacaef]/[0.09] hover:border-[#dacaef]/40 hover:bg-[#dacaef]/[0.14]"
+          ? "shadow-[0_0_24px_rgba(34,197,94,0.15)] hover:shadow-[0_0_32px_rgba(34,197,94,0.25)]"
+          : ""
         }`}
+        style={{
+          background: isFeatured
+            ? "rgba(218,202,239,0.14)"
+            : "rgba(218,202,239,0.09)",
+          border: isFeatured
+            ? "1px solid rgba(34,197,94,0.6)"
+            : "1px solid rgba(218,202,239,0.28)",
+        }}
     >
       {/* Featured top bar */}
       {isFeatured && (
@@ -97,7 +105,7 @@ export default function PlanCard({
 
         {/* Details grid */}
         {details.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-4 p-3 rounded-lg bg-[#1e0f36]/50 border border-[#dacaef]/10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-4 p-3 rounded-lg" style={{background:"rgba(15,5,30,0.4)", border:"1px solid rgba(218,202,239,0.12)"}}>
             {details.map((d) => {
               const [label, value] = d.includes(":") ? d.split(":") : [null, d];
               return (
