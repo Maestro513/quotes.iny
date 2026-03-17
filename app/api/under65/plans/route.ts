@@ -19,6 +19,8 @@ interface CmsPlan {
   name: string;
   issuer?: { name: string };
   metal_level?: string;
+  type?: string;
+  hsa_eligible?: boolean;
   premium?: number;
   premium_w_credit?: number;
   deductibles?: { amount?: number }[];
@@ -88,6 +90,8 @@ export async function POST(req: NextRequest) {
       name: p.name,
       carrier: p.issuer?.name ?? "Unknown Carrier",
       metalTier: (p.metal_level ?? "Bronze") as Under65Plan["metalTier"],
+      planType: p.type ?? "",
+      hsaEligible: p.hsa_eligible ?? false,
       monthlyPremium: Math.round(premium),
       deductible: Math.round(p.deductibles?.[0]?.amount ?? 0),
       outOfPocketMax: Math.round(p.moops?.[0]?.amount ?? 0),
