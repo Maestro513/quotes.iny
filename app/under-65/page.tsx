@@ -9,6 +9,7 @@ import PlanCard from "@/components/plan-card";
 import SkeletonCard from "@/components/skeleton-card";
 import EmptyState from "@/components/empty-state";
 import Pagination from "@/components/pagination";
+import CoverageSearch from "@/components/coverage-search";
 
 const PAGE_SIZE = 20;
 
@@ -65,6 +66,17 @@ function Under65Content() {
   const [maxPremium, setMaxPremium] = useState("");
   const [sortBy, setSortBy] = useState("premium-asc");
 
+  // Doctor / Rx coverage filters
+  const [doctorNpi, setDoctorNpi] = useState<string | null>(null);
+  const [doctorLabel, setDoctorLabel] = useState("");
+  const [doctorCoveredIds, setDoctorCoveredIds] = useState<Set<string> | null>(null);
+  const [doctorLoading, setDoctorLoading] = useState(false);
+
+  const [drugRxcui, setDrugRxcui] = useState<string | null>(null);
+  const [drugLabel, setDrugLabel] = useState("");
+  const [drugCoveredIds, setDrugCoveredIds] = useState<Set<string> | null>(null);
+  const [drugLoading, setDrugLoading] = useState(false);
+
   // Data state
   const [allPlans, setAllPlans] = useState<Under65Plan[]>([]);
   const [page, setPage] = useState(1);
@@ -88,7 +100,37 @@ function Under65Content() {
   useEffect(() => { loadPlans(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Reset page when filters change
-  useEffect(() => { setPage(1); }, [metalFilter, typeFilter, hsaOnly, maxPremium, sortBy]);
+  useEffect(() => { setPage(1); }, [metalFilter, typeFilter, hsaOnly, maxPremium, sortBy, doctorCoveredIds, drugCoveredIds]);
+
+  async function checkCoverage(type: "provider" | "drug", id: string) {
+    const planIds = allPlans.map((p) => p.id);
+    if (!planIds.length) return new Set<string>();
+    const res = await fetch("/api/under65/coverage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type, id, planIds, year: new Date().getFullYear() }),
+    });
+    const data = await res.json();
+    return new Set<string>(data.coveredIds ?? []);
+  }
+
+  async function handleDoctorSelect(npi: string, label: string) {
+    setDoctorNpi(npi);
+    setDoctorLabel(label);
+    setDoctorLoading(true);
+    const covered = await checkCoverage("provider", npi);
+    setDoctorCoveredIds(covered);
+    setDoctorLoading(false);
+  }
+
+  async function handleDrugSelect(rxcui: string, label: string) {
+    setDrugRxcui(rxcui);
+    setDrugLabel(label);
+    setDrugLoading(true);
+    const covered = await checkCoverage("drug", rxcui);
+    setDrugCoveredIds(covered);
+    setDrugLoading(false);
+  }
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
@@ -111,6 +153,8 @@ function Under65Content() {
     if (typeFilter.length) plans = plans.filter((p) => typeFilter.includes(p.planType as PlanType));
     if (hsaOnly) plans = plans.filter((p) => p.hsaEligible);
     if (maxPremium) plans = plans.filter((p) => p.netPremium <= Number(maxPremium));
+    if (doctorCoveredIds) plans = plans.filter((p) => doctorCoveredIds.has(p.id));
+    if (drugCoveredIds) plans = plans.filter((p) => drugCoveredIds.has(p.id));
     switch (sortBy) {
       case "premium-desc": plans.sort((a, b) => b.netPremium - a.netPremium); break;
       case "deductible-asc": plans.sort((a, b) => a.deductible - b.deductible); break;
@@ -118,11 +162,14 @@ function Under65Content() {
       default: plans.sort((a, b) => a.netPremium - b.netPremium);
     }
     return plans;
-  }, [allPlans, metalFilter, typeFilter, hsaOnly, maxPremium, sortBy]);
+  }, [allPlans, metalFilter, typeFilter, hsaOnly, maxPremium, sortBy, doctorCoveredIds, drugCoveredIds]);
 
   const totalPages = Math.ceil(filteredPlans.length / PAGE_SIZE);
   const pagePlans = filteredPlans.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-  const activeFilterCount = metalFilter.length + typeFilter.length + (hsaOnly ? 1 : 0) + (maxPremium ? 1 : 0);
+  const activeFilterCount =
+    metalFilter.length + typeFilter.length +
+    (hsaOnly ? 1 : 0) + (maxPremium ? 1 : 0) +
+    (doctorNpi ? 1 : 0) + (drugRxcui ? 1 : 0);
 
   return (
     <div className="flex min-h-[calc(100vh-4rem)]">
@@ -243,14 +290,46 @@ function Under65Content() {
             </label>
           </div>
 
+          {/* Doctor coverage */}
+          <div className={divider}>
+            <p className={sectionTitle}>Find My Doctor</p>
+            <CoverageSearch
+              type="provider"
+              zip={zip}
+              selectedId={doctorNpi}
+              selectedLabel={doctorLabel}
+              loading={doctorLoading}
+              onSelect={handleDoctorSelect}
+              onClear={() => { setDoctorNpi(null); setDoctorLabel(""); setDoctorCoveredIds(null); }}
+            />
+          </div>
+
+          {/* Rx coverage */}
+          <div className={divider}>
+            <p className={sectionTitle}>Find My Medication</p>
+            <CoverageSearch
+              type="drug"
+              zip={zip}
+              selectedId={drugRxcui}
+              selectedLabel={drugLabel}
+              loading={drugLoading}
+              onSelect={handleDrugSelect}
+              onClear={() => { setDrugRxcui(null); setDrugLabel(""); setDrugCoveredIds(null); }}
+            />
+          </div>
+
           {/* Clear filters */}
           {activeFilterCount > 0 && (
             <button
               type="button"
-              onClick={() => { setMetalFilter([]); setTypeFilter([]); setHsaOnly(false); setMaxPremium(""); setSortBy("premium-asc"); }}
+              onClick={() => {
+                setMetalFilter([]); setTypeFilter([]); setHsaOnly(false); setMaxPremium(""); setSortBy("premium-asc");
+                setDoctorNpi(null); setDoctorLabel(""); setDoctorCoveredIds(null);
+                setDrugRxcui(null); setDrugLabel(""); setDrugCoveredIds(null);
+              }}
               className="w-full text-xs text-white/40 hover:text-white/70 border border-white/10 hover:border-white/25 rounded-lg py-2 transition-colors cursor-pointer"
             >
-              Clear filters ({activeFilterCount})
+              Clear all filters ({activeFilterCount})
             </button>
           )}
         </div>

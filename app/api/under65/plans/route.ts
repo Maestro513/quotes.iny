@@ -57,32 +57,46 @@ export async function POST(req: NextRequest) {
     people.push({ age: 30, uses_tobacco: false, aptc_eligible: true });
   }
 
-  // 3. Call plans/search
+  // 3. Call plans/search — CMS hard-limits to 10/page, fetch all pages in parallel
   const annualIncome = incomeToMidpoint((income as IncomeRange) || "25-50k");
-  const body = {
+  const baseBody = {
     household: { income: annualIncome, people },
     market: "Individual",
     place: { countyfips: county.fips, state: county.state, zipcode: zip },
     year: new Date().getFullYear(),
-    limit: 200,
-    offset: 0,
   };
 
-  const plansRes = await fetch(`${BASE}/plans/search?apikey=${apiKey}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-
-  if (!plansRes.ok) {
-    const err = await plansRes.text();
-    return NextResponse.json({ error: "CMS API error", detail: err }, { status: 502 });
+  async function fetchPage(offset: number) {
+    const res = await fetch(`${BASE}/plans/search?apikey=${apiKey}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...baseBody, offset }),
+    });
+    if (!res.ok) throw new Error(`CMS API error ${res.status}`);
+    return res.json();
   }
 
-  const data = await plansRes.json();
+  // First page to get total count
+  const firstPage = await fetchPage(0);
+  if (!firstPage?.plans) {
+    return NextResponse.json({ error: "CMS API error" }, { status: 502 });
+  }
+
+  const total: number = firstPage.total ?? 0;
+  const PAGE = 10;
+  const remainingOffsets = Array.from(
+    { length: Math.ceil((total - PAGE) / PAGE) },
+    (_, i) => (i + 1) * PAGE
+  ).filter((o) => o < total);
+
+  const remainingPages = await Promise.all(remainingOffsets.map(fetchPage));
+  const allCmsPlans: CmsPlan[] = [
+    ...firstPage.plans,
+    ...remainingPages.flatMap((p) => p.plans ?? []),
+  ];
 
   // 4. Map CMS plan shape → Under65Plan
-  const plans: Under65Plan[] = (data.plans ?? []).map((p: CmsPlan) => {
+  const plans: Under65Plan[] = allCmsPlans.map((p: CmsPlan) => {
     const premium = p.premium ?? 0;
     const netPremium = p.premium_w_credit ?? premium;
     return {
