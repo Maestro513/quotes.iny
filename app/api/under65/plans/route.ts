@@ -62,6 +62,8 @@ export async function POST(req: NextRequest) {
     market: "Individual",
     place: { countyfips: county.fips, state: county.state, zipcode: zip },
     year: new Date().getFullYear(),
+    limit: 100,
+    offset: 0,
   };
 
   const plansRes = await fetch(`${BASE}/plans/search?apikey=${apiKey}`, {
