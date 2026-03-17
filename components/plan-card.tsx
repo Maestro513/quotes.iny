@@ -40,7 +40,7 @@ export default function PlanCard({
 
   return (
     <div
-      className="relative rounded-2xl overflow-hidden transition-all duration-200 cursor-pointer"
+      className="relative rounded-2xl overflow-hidden transition-all duration-200 cursor-pointer hover:scale-[1.005]"
       style={{
         background: "rgba(255,255,255,0.94)",
         border: isFeatured ? "1.5px solid rgba(34,197,94,0.7)" : "1px solid rgba(255,255,255,0.6)",

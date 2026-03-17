@@ -369,7 +369,9 @@ function Under65Content() {
           <EmptyState type="no-results" />
         )}
 
-        {!loading && !error && pagePlans.map((plan, i) => (
+        {!loading && !error && (
+          <div className="space-y-4">
+          {pagePlans.map((plan, i) => (
           <PlanCard
             key={plan.id}
             isFeatured={page === 1 && i === 0}
@@ -385,6 +387,8 @@ function Under65Content() {
             benefits={plan.benefits}
           />
         ))}
+          </div>
+        )}
 
         {!loading && !error && (
           <Pagination
