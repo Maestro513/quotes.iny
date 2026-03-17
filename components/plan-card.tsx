@@ -63,12 +63,12 @@ export default function PlanCard({
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 flex-wrap mb-1">
                 {isFeatured && <span className="text-[10px] font-bold bg-[#22c55e] text-white px-2 py-0.5 rounded-full uppercase tracking-wide">Best Value</span>}
-                <span className={`text-[10px] font-semibold border px-2 py-0.5 rounded-full ${TIER_BADGE[metalTier] ?? "bg-gray-100 text-gray-500 border-gray-200"}`}>{metalTier}</span>
-                <span className="text-[10px] font-medium border px-2 py-0.5 rounded-full bg-gray-50 text-gray-500 border-gray-200">{planType}</span>
-                {hsaEligible && <span className="text-[10px] font-semibold border px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border-emerald-200">HSA</span>}
+                <span className={`text-xs font-semibold border px-2 py-0.5 rounded-full ${TIER_BADGE[metalTier] ?? "bg-gray-100 text-gray-500 border-gray-200"}`}>{metalTier}</span>
+                <span className="text-xs font-medium border px-2 py-0.5 rounded-full bg-gray-50 text-gray-500 border-gray-200">{planType}</span>
+                {hsaEligible && <span className="text-xs font-semibold border px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border-emerald-200">HSA</span>}
               </div>
-              <h3 className="text-gray-900 font-bold text-sm leading-snug truncate">{planName}</h3>
-              <p className="text-gray-400 text-xs mt-0.5">{carrier}</p>
+              <h3 className="text-gray-900 font-bold text-base leading-snug truncate">{planName}</h3>
+              <p className="text-gray-400 text-sm mt-0.5">{carrier}</p>
             </div>
           </div>
 
@@ -79,7 +79,7 @@ export default function PlanCard({
               <span className="text-sm font-normal text-gray-400 ml-0.5">/mo</span>
             </div>
             {estimatedSubsidy > 0 && (
-              <div className="text-emerald-600 text-xs font-semibold mt-0.5">−${estimatedSubsidy}/mo subsidy</div>
+              <div className="text-emerald-600 text-sm font-semibold mt-0.5">−${estimatedSubsidy}/mo subsidy</div>
             )}
           </div>
         </div>
@@ -88,18 +88,18 @@ export default function PlanCard({
         <div className="grid grid-cols-6 gap-0 mt-4 rounded-xl overflow-hidden" style={{background:"rgba(218,202,239,0.22)", border:"1px solid rgba(180,150,220,0.25)"}}>
           {stats.map((s, i) => (
             <div key={s.label} className={`px-3 py-2.5 ${i < 5 ? "border-r" : ""}`} style={{borderColor:"rgba(180,150,220,0.20)"}}>
-              <div className="text-[9px] uppercase tracking-wide text-violet-400 font-medium mb-0.5 whitespace-nowrap">{s.label}</div>
-              <div className="text-gray-800 text-xs font-bold leading-tight">{s.value}</div>
+              <div className="text-[11px] uppercase tracking-wide text-violet-400 font-medium mb-0.5 whitespace-nowrap">{s.label}</div>
+              <div className="text-gray-800 text-sm font-bold leading-tight">{s.value}</div>
             </div>
           ))}
         </div>
 
         {/* CTAs */}
         <div className="flex items-center gap-3 mt-4">
-          <button className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-150 cursor-pointer ${isFeatured ? "bg-[#22c55e] text-white hover:bg-green-400 shadow-[0_0_12px_rgba(34,197,94,0.3)]" : "bg-[#22c55e]/10 border border-[#22c55e]/50 text-[#22c55e] hover:bg-[#22c55e] hover:text-white"}`}>
+          <button className={`px-5 py-2 rounded-lg text-base font-semibold transition-all duration-150 cursor-pointer ${isFeatured ? "bg-[#22c55e] text-white hover:bg-green-400 shadow-[0_0_12px_rgba(34,197,94,0.3)]" : "bg-[#22c55e]/10 border border-[#22c55e]/50 text-[#22c55e] hover:bg-[#22c55e] hover:text-white"}`}>
             Enroll Now
           </button>
-          <button className="px-5 py-2 rounded-lg text-sm font-medium border border-gray-200 text-gray-500 hover:border-gray-400 hover:text-gray-700 transition-all duration-150 cursor-pointer">
+          <button className="px-5 py-2 rounded-lg text-base font-medium border border-gray-200 text-gray-500 hover:border-gray-400 hover:text-gray-700 transition-all duration-150 cursor-pointer">
             Learn More
           </button>
         </div>

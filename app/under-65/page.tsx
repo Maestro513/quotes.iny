@@ -198,21 +198,25 @@ function Under65Content() {
               <div>
                 <label className={sidebarLabel}>Gender</label>
                 <select value={gender} onChange={(e) => setGender(e.target.value)} className={sidebarInput}>
-                  <option value="">Select</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
+                  <option value="" className="bg-[#1e0f36] text-white">Select</option>
+                  <option value="male" className="bg-[#1e0f36] text-white">Male</option>
+                  <option value="female" className="bg-[#1e0f36] text-white">Female</option>
+                  <option value="other" className="bg-[#1e0f36] text-white">Other</option>
                 </select>
               </div>
               <div>
                 <label className={sidebarLabel}>Household Income</label>
-                <select value={income} onChange={(e) => setIncome(e.target.value)} className={sidebarInput}>
-                  <option value="">Select</option>
-                  <option value="0-25k">$0 – $25k</option>
-                  <option value="25-50k">$25k – $50k</option>
-                  <option value="50-75k">$50k – $75k</option>
-                  <option value="75k+">$75k+</option>
-                </select>
+                <div className="relative">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 text-sm">$</span>
+                  <input
+                    type="number"
+                    min={0}
+                    value={income}
+                    onChange={(e) => setIncome(e.target.value)}
+                    className={sidebarInput + " pl-7"}
+                    placeholder="e.g. 45000"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -247,7 +251,7 @@ function Under65Content() {
           <div className={divider}>
             <p className={sectionTitle}>Sort By</p>
             <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className={sidebarInput}>
-              {SORT_OPTIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+              {SORT_OPTIONS.map((o) => <option key={o.value} value={o.value} className="bg-[#1e0f36] text-white">{o.label}</option>)}
             </select>
           </div>
 
