@@ -376,13 +376,11 @@ function Under65Content() {
             planName={plan.name}
             carrier={plan.carrier}
             monthlyPremium={plan.netPremium}
+            estimatedSubsidy={plan.estimatedSubsidy}
             badges={[plan.metalTier, plan.planType].filter(Boolean)}
-            details={[
-              `Deductible: $${plan.deductible.toLocaleString()}`,
-              `OOP Max: $${plan.outOfPocketMax.toLocaleString()}`,
-              `Subsidy: -$${plan.estimatedSubsidy}/mo`,
-              ...(plan.hsaEligible ? ["HSA: Eligible"] : []),
-            ]}
+            hsaEligible={plan.hsaEligible}
+            deductible={plan.deductible}
+            outOfPocketMax={plan.outOfPocketMax}
             benefits={plan.benefits}
             primaryCta={{ label: "Enroll Now", href: "#" }}
             secondaryCta={{ label: "Learn More", href: "#" }}
