@@ -27,9 +27,29 @@ export async function POST(req: NextRequest) {
   if (!res.ok) return NextResponse.json({ coveredIds: [] });
   const data = await res.json();
 
-  const coveredIds = (data.coverage ?? [])
-    .filter((c: { coverage: string }) => COVERED.has(c.coverage))
-    .map((c: Record<string, string>) => c[coverageKey]);
+  interface CoverageEntry {
+    coverage: string;
+    plan_id: string;
+    addresses?: { street?: string; city?: string; state?: string; zip?: string }[];
+  }
 
-  return NextResponse.json({ coveredIds });
+  const entries: CoverageEntry[] = data.coverage ?? [];
+
+  const coveredIds = entries
+    .filter((c) => COVERED.has(c.coverage))
+    .map((c) => c.plan_id);
+
+  // Grab first address from any entry that has one
+  let address: string | null = null;
+  if (type === "provider") {
+    for (const entry of entries) {
+      const addr = entry.addresses?.[0];
+      if (addr?.street) {
+        address = [addr.street, addr.city, addr.state, addr.zip].filter(Boolean).join(", ");
+        break;
+      }
+    }
+  }
+
+  return NextResponse.json({ coveredIds, address });
 }

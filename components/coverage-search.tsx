@@ -13,6 +13,7 @@ interface CoverageSearchProps {
   zip?: string;
   selectedId: string | null;
   selectedLabel: string;
+  selectedAddress?: string | null;
   onSelect: (id: string, label: string) => void;
   onClear: () => void;
   loading?: boolean;
@@ -22,7 +23,7 @@ const sidebarInput =
   "w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-[#22c55e]/60 focus:bg-white/10 transition-colors";
 
 export default function CoverageSearch({
-  type, zip, selectedId, selectedLabel, onSelect, onClear, loading,
+  type, zip, selectedId, selectedLabel, selectedAddress, onSelect, onClear, loading,
 }: CoverageSearchProps) {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
@@ -75,16 +76,21 @@ export default function CoverageSearch({
 
   if (selectedId) {
     return (
-      <div className="flex items-center justify-between rounded-lg px-3 py-2 text-sm" style={{ background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.3)" }}>
-        <div className="min-w-0">
-          <div className="text-[#22c55e] font-medium text-xs truncate">{selectedLabel}</div>
-          {loading && <div className="text-white/40 text-[10px]">Checking coverage…</div>}
+      <div className="rounded-lg px-3 py-2.5 text-sm" style={{ background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.3)" }}>
+        <div className="flex items-start justify-between gap-2">
+          <div className="min-w-0">
+            <div className="text-[#22c55e] font-medium text-xs truncate">{selectedLabel}</div>
+            {loading && <div className="text-white/40 text-[10px] mt-0.5">Checking coverage…</div>}
+            {!loading && selectedAddress && (
+              <div className="text-white/50 text-[10px] mt-0.5 leading-snug">{selectedAddress}</div>
+            )}
+          </div>
+          <button type="button" onClick={onClear} className="text-white/40 hover:text-white shrink-0 mt-0.5 cursor-pointer">
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
-        <button type="button" onClick={onClear} className="text-white/40 hover:text-white ml-2 shrink-0 cursor-pointer">
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
       </div>
     );
   }

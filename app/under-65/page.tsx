@@ -69,6 +69,7 @@ function Under65Content() {
   // Doctor / Rx coverage filters
   const [doctorNpi, setDoctorNpi] = useState<string | null>(null);
   const [doctorLabel, setDoctorLabel] = useState("");
+  const [doctorAddress, setDoctorAddress] = useState<string | null>(null);
   const [doctorCoveredIds, setDoctorCoveredIds] = useState<Set<string> | null>(null);
   const [doctorLoading, setDoctorLoading] = useState(false);
 
@@ -104,22 +105,24 @@ function Under65Content() {
 
   async function checkCoverage(type: "provider" | "drug", id: string) {
     const planIds = allPlans.map((p) => p.id);
-    if (!planIds.length) return new Set<string>();
+    if (!planIds.length) return { coveredIds: new Set<string>(), address: null };
     const res = await fetch("/api/under65/coverage", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type, id, planIds, year: new Date().getFullYear() }),
     });
     const data = await res.json();
-    return new Set<string>(data.coveredIds ?? []);
+    return { coveredIds: new Set<string>(data.coveredIds ?? []), address: data.address ?? null };
   }
 
   async function handleDoctorSelect(npi: string, label: string) {
     setDoctorNpi(npi);
     setDoctorLabel(label);
+    setDoctorAddress(null);
     setDoctorLoading(true);
-    const covered = await checkCoverage("provider", npi);
-    setDoctorCoveredIds(covered);
+    const { coveredIds, address } = await checkCoverage("provider", npi);
+    setDoctorCoveredIds(coveredIds);
+    setDoctorAddress(address);
     setDoctorLoading(false);
   }
 
@@ -127,8 +130,8 @@ function Under65Content() {
     setDrugRxcui(rxcui);
     setDrugLabel(label);
     setDrugLoading(true);
-    const covered = await checkCoverage("drug", rxcui);
-    setDrugCoveredIds(covered);
+    const { coveredIds } = await checkCoverage("drug", rxcui);
+    setDrugCoveredIds(coveredIds);
     setDrugLoading(false);
   }
 
@@ -298,9 +301,10 @@ function Under65Content() {
               zip={zip}
               selectedId={doctorNpi}
               selectedLabel={doctorLabel}
+              selectedAddress={doctorAddress}
               loading={doctorLoading}
               onSelect={handleDoctorSelect}
-              onClear={() => { setDoctorNpi(null); setDoctorLabel(""); setDoctorCoveredIds(null); }}
+              onClear={() => { setDoctorNpi(null); setDoctorLabel(""); setDoctorAddress(null); setDoctorCoveredIds(null); }}
             />
           </div>
 

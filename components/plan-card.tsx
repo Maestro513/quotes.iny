@@ -51,11 +51,11 @@ export default function PlanCard({
         }`}
         style={{
           background: isFeatured
-            ? "rgba(218,202,239,0.32)"
-            : "rgba(218,202,239,0.22)",
+            ? "rgba(255,255,255,0.18)"
+            : "rgba(255,255,255,0.10)",
           border: isFeatured
             ? "1px solid rgba(34,197,94,0.7)"
-            : "1px solid rgba(218,202,239,0.45)",
+            : "1px solid rgba(255,255,255,0.20)",
         }}
     >
       {/* Featured top bar */}
