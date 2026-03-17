@@ -8,6 +8,9 @@ import type { Under65Plan } from "@/types/under65";
 import PlanCard from "@/components/plan-card";
 import SkeletonCard from "@/components/skeleton-card";
 import EmptyState from "@/components/empty-state";
+import Pagination from "@/components/pagination";
+
+const PAGE_SIZE = 20;
 
 const sidebarInput =
   "w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-[#22c55e]/60 focus:bg-white/10 transition-colors";
@@ -29,6 +32,7 @@ function Under65Content() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const [plans, setPlans] = useState<Under65Plan[]>([]);
+  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -41,6 +45,7 @@ function Under65Content() {
         coverageStartDate: coverageStart,
       });
       setPlans(results);
+      setPage(1);
     } catch {
       setError(true);
     } finally {
@@ -151,7 +156,7 @@ function Under65Content() {
 
         <div className="mb-6">
           <h1 className="text-white text-2xl font-bold tracking-tight">Find Your Best Health Plan</h1>
-          {!loading && !error && (
+          {!loading && !error && plans.length > 0 && (
             <p className="text-white/40 text-sm mt-1">{plans.length} plan{plans.length !== 1 ? "s" : ""} available</p>
           )}
         </div>
@@ -160,23 +165,38 @@ function Under65Content() {
         {error && <EmptyState type="error" onRetry={loadPlans} />}
         {!loading && !error && plans.length === 0 && <EmptyState type="no-results" />}
 
-        {!loading && !error && plans.map((plan, i) => (
-          <PlanCard
-            key={plan.id}
-            isFeatured={i === 0}
-            planName={plan.name}
-            carrier={plan.carrier}
-            monthlyPremium={plan.netPremium}
-            badges={[plan.metalTier]}
-            details={[
-              `Deductible: $${plan.deductible.toLocaleString()}`,
-              `OOP Max: $${plan.outOfPocketMax.toLocaleString()}`,
-              `Subsidy: -$${plan.estimatedSubsidy}/mo`,
-            ]}
-            primaryCta={{ label: "Enroll Now", href: "#" }}
-            secondaryCta={{ label: "Learn More", href: "#" }}
-          />
-        ))}
+        {!loading && !error && (() => {
+          const totalPages = Math.ceil(plans.length / PAGE_SIZE);
+          const pagePlans = plans.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+          return (
+            <>
+              {pagePlans.map((plan, i) => (
+                <PlanCard
+                  key={plan.id}
+                  isFeatured={page === 1 && i === 0}
+                  planName={plan.name}
+                  carrier={plan.carrier}
+                  monthlyPremium={plan.netPremium}
+                  badges={[plan.metalTier]}
+                  details={[
+                    `Deductible: $${plan.deductible.toLocaleString()}`,
+                    `OOP Max: $${plan.outOfPocketMax.toLocaleString()}`,
+                    `Subsidy: -$${plan.estimatedSubsidy}/mo`,
+                  ]}
+                  primaryCta={{ label: "Enroll Now", href: "#" }}
+                  secondaryCta={{ label: "Learn More", href: "#" }}
+                />
+              ))}
+              <Pagination
+                page={page}
+                totalPages={totalPages}
+                total={plans.length}
+                pageSize={PAGE_SIZE}
+                onChange={(p) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+              />
+            </>
+          );
+        })()}
       </main>
     </div>
   );

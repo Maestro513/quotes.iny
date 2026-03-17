@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
     market: "Individual",
     place: { countyfips: county.fips, state: county.state, zipcode: zip },
     year: new Date().getFullYear(),
-    limit: 100,
+    limit: 200,
     offset: 0,
   };
 
