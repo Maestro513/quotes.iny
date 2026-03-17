@@ -135,8 +135,10 @@ function MedicareContent() {
             planName={plan.name}
             carrier={plan.carrier}
             monthlyPremium={plan.premium_monthly}
+            estimatedSubsidy={0}
             badges={[plan.type]}
-            details={plan.highlights}
+            deductible={0}
+            outOfPocketMax={0}
             primaryCta={{ label: "View Plan", href: "#" }}
             secondaryCta={{ label: "Call Agent", href: "tel:844-467-6968" }}
           />
