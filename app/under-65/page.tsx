@@ -375,15 +375,14 @@ function Under65Content() {
             isFeatured={page === 1 && i === 0}
             planName={plan.name}
             carrier={plan.carrier}
+            metalTier={plan.metalTier}
+            planType={plan.planType}
+            hsaEligible={plan.hsaEligible}
             monthlyPremium={plan.netPremium}
             estimatedSubsidy={plan.estimatedSubsidy}
-            badges={[plan.metalTier, plan.planType].filter(Boolean)}
-            hsaEligible={plan.hsaEligible}
             deductible={plan.deductible}
             outOfPocketMax={plan.outOfPocketMax}
             benefits={plan.benefits}
-            primaryCta={{ label: "Enroll Now", href: "#" }}
-            secondaryCta={{ label: "Learn More", href: "#" }}
           />
         ))}
 

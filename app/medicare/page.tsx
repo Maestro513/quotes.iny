@@ -134,13 +134,12 @@ function MedicareContent() {
             isFeatured={i === 0}
             planName={plan.name}
             carrier={plan.carrier}
+            metalTier={plan.type}
+            planType=""
             monthlyPremium={plan.premium_monthly}
             estimatedSubsidy={0}
-            badges={[plan.type]}
             deductible={0}
             outOfPocketMax={0}
-            primaryCta={{ label: "View Plan", href: "#" }}
-            secondaryCta={{ label: "Call Agent", href: "tel:844-467-6968" }}
           />
         ))}
       </main>
