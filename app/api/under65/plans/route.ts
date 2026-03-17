@@ -5,6 +5,15 @@ import type { Under65Plan } from "@/types/under65";
 
 const BASE = "https://marketplace.api.healthcare.gov/api/v1";
 
+function ageFromDob(dob: string): number {
+  const birth = new Date(dob);
+  const today = new Date();
+  let age = today.getFullYear() - birth.getFullYear();
+  const m = today.getMonth() - birth.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+  return Math.max(0, age);
+}
+
 interface CmsPlan {
   id: string;
   name: string;
@@ -24,28 +33,26 @@ export async function POST(req: NextRequest) {
 
   // 1. Look up county FIPS from ZIP
   const countyRes = await fetch(`${BASE}/counties/by/zip/${zip}?apikey=${apiKey}`);
-  if (!countyRes.ok) return NextResponse.json({ error: "Invalid ZIP code" }, { status: 400 });
+  if (!countyRes.ok) {
+    const txt = await countyRes.text();
+    return NextResponse.json({ error: "County lookup failed", status: countyRes.status, detail: txt }, { status: 400 });
+  }
   const countiesData = await countyRes.json();
   const countyList = countiesData.counties ?? countiesData;
   const county = Array.isArray(countyList) ? countyList[0] : null;
   if (!county) return NextResponse.json({ error: "No county found for ZIP" }, { status: 400 });
 
-  // 2. Build household people array (gender omitted — CMS API returns 0 results when included)
+  // 2. Build household people array (use age not dob — CMS API returns 0 results with dob)
+  const primaryAge = dob ? ageFromDob(dob) : 35;
   const people: object[] = [
     {
-      dob: dob || "1990-01-01",
+      age: primaryAge,
       uses_tobacco: tobacco ?? false,
       aptc_eligible: true,
-      relationship: "self",
     },
   ];
   for (let i = 1; i < (householdSize || 1); i++) {
-    people.push({
-      age: 30,
-      uses_tobacco: false,
-      aptc_eligible: true,
-      relationship: i === 1 ? "spouse" : "child",
-    });
+    people.push({ age: 30, uses_tobacco: false, aptc_eligible: true });
   }
 
   // 3. Call plans/search
