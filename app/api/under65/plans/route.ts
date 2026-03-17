@@ -25,16 +25,15 @@ export async function POST(req: NextRequest) {
   // 1. Look up county FIPS from ZIP
   const countyRes = await fetch(`${BASE}/counties/by/zip/${zip}?apikey=${apiKey}`);
   if (!countyRes.ok) return NextResponse.json({ error: "Invalid ZIP code" }, { status: 400 });
-  const counties = await countyRes.json();
-  const county = Array.isArray(counties) ? counties[0] : null;
+  const countiesData = await countyRes.json();
+  const countyList = countiesData.counties ?? countiesData;
+  const county = Array.isArray(countyList) ? countyList[0] : null;
   if (!county) return NextResponse.json({ error: "No county found for ZIP" }, { status: 400 });
 
-  // 2. Build household people array
-  const primaryGender = gender === "female" ? "Female" : "Male";
+  // 2. Build household people array (gender omitted — CMS API returns 0 results when included)
   const people: object[] = [
     {
       dob: dob || "1990-01-01",
-      gender: primaryGender,
       uses_tobacco: tobacco ?? false,
       aptc_eligible: true,
       relationship: "self",
