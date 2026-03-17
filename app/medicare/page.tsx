@@ -5,7 +5,7 @@ import { useState, useEffect, Suspense } from "react";
 import { parseParams } from "@/lib/params";
 import { fetchMedicarePlans } from "@/lib/medicare/adapter";
 import type { MedicarePlan, MedicarePlanType } from "@/types/medicare";
-import PlanCard from "@/components/plan-card";
+import MedicarePlanCard from "@/components/medicare-plan-card";
 import SkeletonCard from "@/components/skeleton-card";
 import EmptyState from "@/components/empty-state";
 
@@ -128,20 +128,21 @@ function MedicareContent() {
         {error && <EmptyState type="error" onRetry={() => loadPlans()} />}
         {!loading && !error && plans.length === 0 && <EmptyState type="no-results" />}
 
-        {!loading && !error && plans.map((plan, i) => (
-          <PlanCard
-            key={plan.id}
-            isFeatured={i === 0}
-            planName={plan.name}
-            carrier={plan.carrier}
-            metalTier={plan.type}
-            planType=""
-            monthlyPremium={plan.premium_monthly}
-            estimatedSubsidy={0}
-            deductible={0}
-            outOfPocketMax={0}
-          />
-        ))}
+        {!loading && !error && (
+          <div className="space-y-4">
+            {plans.map((plan, i) => (
+              <MedicarePlanCard
+                key={plan.id}
+                isFeatured={i === 0}
+                planName={plan.name}
+                carrier={plan.carrier}
+                planType={plan.type}
+                monthlyPremium={plan.premium_monthly}
+                highlights={plan.highlights}
+              />
+            ))}
+          </div>
+        )}
       </main>
     </div>
   );
