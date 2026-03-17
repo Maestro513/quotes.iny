@@ -1,0 +1,92 @@
+import { NextRequest, NextResponse } from "next/server";
+import { incomeToMidpoint } from "@/lib/params";
+import type { IncomeRange } from "@/lib/params";
+import type { Under65Plan } from "@/types/under65";
+
+const BASE = "https://marketplace.api.healthcare.gov/api/v1";
+
+interface CmsPlan {
+  id: string;
+  name: string;
+  issuer?: { name: string };
+  metal_level?: string;
+  premium?: number;
+  premium_w_credit?: number;
+  deductibles?: { amount?: number }[];
+  moops?: { amount?: number }[];
+}
+
+export async function POST(req: NextRequest) {
+  const apiKey = process.env.MARKETPLACE_API_KEY;
+  if (!apiKey) return NextResponse.json({ error: "API key not configured" }, { status: 500 });
+
+  const { zip, dob, gender, income, tobacco, householdSize } = await req.json();
+
+  // 1. Look up county FIPS from ZIP
+  const countyRes = await fetch(`${BASE}/counties/by/zip/${zip}?apikey=${apiKey}`);
+  if (!countyRes.ok) return NextResponse.json({ error: "Invalid ZIP code" }, { status: 400 });
+  const counties = await countyRes.json();
+  const county = Array.isArray(counties) ? counties[0] : null;
+  if (!county) return NextResponse.json({ error: "No county found for ZIP" }, { status: 400 });
+
+  // 2. Build household people array
+  const primaryGender = gender === "female" ? "Female" : "Male";
+  const people: object[] = [
+    {
+      dob: dob || "1990-01-01",
+      gender: primaryGender,
+      uses_tobacco: tobacco ?? false,
+      aptc_eligible: true,
+      relationship: "self",
+    },
+  ];
+  for (let i = 1; i < (householdSize || 1); i++) {
+    people.push({
+      age: 30,
+      uses_tobacco: false,
+      aptc_eligible: true,
+      relationship: i === 1 ? "spouse" : "child",
+    });
+  }
+
+  // 3. Call plans/search
+  const annualIncome = incomeToMidpoint((income as IncomeRange) || "25-50k");
+  const body = {
+    household: { income: annualIncome, people },
+    market: "Individual",
+    place: { countyfips: county.fips, state: county.state, zipcode: zip },
+    year: new Date().getFullYear(),
+  };
+
+  const plansRes = await fetch(`${BASE}/plans/search?apikey=${apiKey}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+
+  if (!plansRes.ok) {
+    const err = await plansRes.text();
+    return NextResponse.json({ error: "CMS API error", detail: err }, { status: 502 });
+  }
+
+  const data = await plansRes.json();
+
+  // 4. Map CMS plan shape → Under65Plan
+  const plans: Under65Plan[] = (data.plans ?? []).map((p: CmsPlan) => {
+    const premium = p.premium ?? 0;
+    const netPremium = p.premium_w_credit ?? premium;
+    return {
+      id: p.id,
+      name: p.name,
+      carrier: p.issuer?.name ?? "Unknown Carrier",
+      metalTier: (p.metal_level ?? "Bronze") as Under65Plan["metalTier"],
+      monthlyPremium: Math.round(premium),
+      deductible: Math.round(p.deductibles?.[0]?.amount ?? 0),
+      outOfPocketMax: Math.round(p.moops?.[0]?.amount ?? 0),
+      estimatedSubsidy: Math.round(premium - netPremium),
+      netPremium: Math.round(netPremium),
+    };
+  });
+
+  return NextResponse.json(plans);
+}

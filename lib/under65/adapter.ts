@@ -1,5 +1,4 @@
 import type { Under65Plan } from "@/types/under65";
-import { mockUnder65Plans } from "./mock";
 
 export interface Under65SearchParams {
   zip: string;
@@ -12,9 +11,16 @@ export interface Under65SearchParams {
 }
 
 export async function fetchUnder65Plans(
-  _params: Under65SearchParams
+  params: Under65SearchParams
 ): Promise<Under65Plan[]> {
-  // TODO: Replace with Marketplace API call when credentials are available
-  await new Promise((r) => setTimeout(r, 600));
-  return [...mockUnder65Plans].sort((a, b) => a.netPremium - b.netPremium);
+  const res = await fetch("/api/under65/plans", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params),
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch plans");
+
+  const plans: Under65Plan[] = await res.json();
+  return plans.sort((a, b) => a.netPremium - b.netPremium);
 }
