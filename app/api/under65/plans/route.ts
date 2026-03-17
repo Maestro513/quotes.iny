@@ -14,6 +14,12 @@ function ageFromDob(dob: string): number {
   return Math.max(0, age);
 }
 
+interface CmsBenefit {
+  type: string;
+  covered: boolean;
+  cost_sharings?: { network_tier: string; display_string: string }[];
+}
+
 interface CmsPlan {
   id: string;
   name: string;
@@ -23,8 +29,18 @@ interface CmsPlan {
   hsa_eligible?: boolean;
   premium?: number;
   premium_w_credit?: number;
-  deductibles?: { amount?: number }[];
-  moops?: { amount?: number }[];
+  deductibles?: { amount?: number; network_tier?: string }[];
+  moops?: { amount?: number; network_tier?: string }[];
+  benefits?: CmsBenefit[];
+  quality_rating?: { global_rating?: number };
+  has_national_network?: boolean;
+}
+
+function benefitDisplay(benefits: CmsBenefit[], type: string): string {
+  const b = benefits?.find((b) => b.type === type);
+  if (!b || !b.covered) return "Not Covered";
+  const inn = b.cost_sharings?.find((c) => c.network_tier === "In-Network");
+  return inn?.display_string || (b.covered ? "Covered" : "Not Covered");
 }
 
 export async function POST(req: NextRequest) {
@@ -107,10 +123,20 @@ export async function POST(req: NextRequest) {
       planType: p.type ?? "",
       hsaEligible: p.hsa_eligible ?? false,
       monthlyPremium: Math.round(premium),
-      deductible: Math.round(p.deductibles?.[0]?.amount ?? 0),
-      outOfPocketMax: Math.round(p.moops?.[0]?.amount ?? 0),
+      deductible: Math.round(p.deductibles?.find((d) => d.network_tier === "In-Network")?.amount ?? p.deductibles?.[0]?.amount ?? 0),
+      outOfPocketMax: Math.round(p.moops?.find((m) => m.network_tier === "In-Network")?.amount ?? p.moops?.[0]?.amount ?? 0),
       estimatedSubsidy: Math.round(premium - netPremium),
       netPremium: Math.round(netPremium),
+      benefits: {
+        primaryCare: benefitDisplay(p.benefits ?? [], "PRIMARY_CARE_VISIT_TO_TREAT_AN_INJURY_OR_ILLNESS"),
+        specialist: benefitDisplay(p.benefits ?? [], "SPECIALIST_VISIT"),
+        emergencyRoom: benefitDisplay(p.benefits ?? [], "EMERGENCY_ROOM_SERVICES"),
+        urgentCare: benefitDisplay(p.benefits ?? [], "URGENT_CARE_CENTERS_OR_FACILITIES"),
+        genericRx: benefitDisplay(p.benefits ?? [], "GENERIC_DRUGS"),
+        mentalHealth: benefitDisplay(p.benefits ?? [], "MENTAL_BEHAVIORAL_HEALTH_OUTPATIENT_SERVICES"),
+      },
+      qualityRating: p.quality_rating?.global_rating,
+      hasNationalNetwork: p.has_national_network,
     };
   });
 

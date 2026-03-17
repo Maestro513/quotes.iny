@@ -1,3 +1,5 @@
+import type { PlanBenefits } from "@/types/under65";
+
 interface Cta {
   label: string;
   href: string;
@@ -10,6 +12,7 @@ interface PlanCardProps {
   isFeatured: boolean;
   badges: string[];
   details: string[];
+  benefits?: PlanBenefits;
   primaryCta: Cta;
   secondaryCta?: Cta;
 }
@@ -31,6 +34,15 @@ function badgeClass(badge: string) {
   );
 }
 
+const BENEFIT_LABELS: Record<keyof PlanBenefits, string> = {
+  primaryCare: "Primary Care",
+  specialist: "Specialist",
+  emergencyRoom: "Emergency Room",
+  urgentCare: "Urgent Care",
+  genericRx: "Generic Rx",
+  mentalHealth: "Mental Health",
+};
+
 export default function PlanCard({
   planName,
   carrier,
@@ -38,6 +50,7 @@ export default function PlanCard({
   isFeatured,
   badges,
   details,
+  benefits,
   primaryCta,
   secondaryCta,
 }: PlanCardProps) {
@@ -51,11 +64,11 @@ export default function PlanCard({
         }`}
         style={{
           background: isFeatured
-            ? "rgba(255,255,255,0.18)"
-            : "rgba(255,255,255,0.10)",
+            ? "rgba(44,42,52,0.96)"
+            : "rgba(38,36,46,0.92)",
           border: isFeatured
             ? "1px solid rgba(34,197,94,0.7)"
-            : "1px solid rgba(255,255,255,0.20)",
+            : "1px solid rgba(255,255,255,0.12)",
         }}
     >
       {/* Featured top bar */}
@@ -105,7 +118,7 @@ export default function PlanCard({
 
         {/* Details grid */}
         {details.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-4 p-3 rounded-lg" style={{background:"rgba(15,5,30,0.4)", border:"1px solid rgba(218,202,239,0.12)"}}>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-4 p-3 rounded-lg" style={{background:"rgba(0,0,0,0.25)", border:"1px solid rgba(255,255,255,0.08)"}}>
             {details.map((d) => {
               const [label, value] = d.includes(":") ? d.split(":") : [null, d];
               return (
@@ -121,6 +134,21 @@ export default function PlanCard({
                 </div>
               );
             })}
+          </div>
+        )}
+
+        {/* Benefits grid */}
+        {benefits && (
+          <div className="mt-3">
+            <div className="text-white/30 text-[10px] uppercase tracking-wider mb-2">Coverage Details</div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-2">
+              {(Object.keys(BENEFIT_LABELS) as (keyof PlanBenefits)[]).map((key) => (
+                <div key={key} className="flex flex-col">
+                  <span className="text-white/35 text-[10px] uppercase tracking-wide leading-none mb-0.5">{BENEFIT_LABELS[key]}</span>
+                  <span className="text-white/75 text-xs font-medium leading-tight">{benefits[key]}</span>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 

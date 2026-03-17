@@ -1,6 +1,15 @@
 export type MetalTier = "Bronze" | "Silver" | "Gold" | "Platinum" | "Catastrophic";
 export type PlanType = "HMO" | "PPO" | "EPO" | "POS";
 
+export interface PlanBenefits {
+  primaryCare: string;
+  specialist: string;
+  emergencyRoom: string;
+  urgentCare: string;
+  genericRx: string;
+  mentalHealth: string;
+}
+
 export interface Under65Plan {
   id: string;
   name: string;
@@ -13,4 +22,7 @@ export interface Under65Plan {
   outOfPocketMax: number;
   estimatedSubsidy: number;
   netPremium: number;
+  benefits: PlanBenefits;
+  qualityRating?: number;
+  hasNationalNetwork?: boolean;
 }

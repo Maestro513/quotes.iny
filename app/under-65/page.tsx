@@ -383,6 +383,7 @@ function Under65Content() {
               `Subsidy: -$${plan.estimatedSubsidy}/mo`,
               ...(plan.hsaEligible ? ["HSA: Eligible"] : []),
             ]}
+            benefits={plan.benefits}
             primaryCta={{ label: "Enroll Now", href: "#" }}
             secondaryCta={{ label: "Learn More", href: "#" }}
           />
