@@ -29,7 +29,7 @@ const TIER_DOT: Record<string, string> = {
     clean footer with links + CTA.
     ─────────────────────────────────────────────────── */
 
-export default function PlanCard({
+export default function PlanCardConceptA({
   planName, carrier, metalTier, planType, hsaEligible,
   monthlyPremium, estimatedSubsidy, deductible, outOfPocketMax,
   benefits, isFeatured,

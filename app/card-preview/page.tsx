@@ -1,6 +1,6 @@
-import PlanCardV1 from "@/components/plan-card-v1";
-import PlanCardV2 from "@/components/plan-card-v2";
-import PlanCardV3 from "@/components/plan-card-v3";
+import PlanCardConceptA from "@/components/plan-card-concept-a";
+import PlanCardConceptB from "@/components/plan-card-concept-b";
+import PlanCardConceptC from "@/components/plan-card-concept-c";
 import { mockUnder65Plans } from "@/lib/under65/mock";
 
 const plans = mockUnder65Plans.slice(0, 3);
@@ -19,18 +19,18 @@ function Section({ label, sub, children }: { label: string; sub: string; childre
 
 export default function CardPreviewPage() {
   return (
-    <div className="min-h-screen px-6 py-10 max-w-4xl mx-auto">
+    <div className="min-h-screen px-6 py-10 max-w-5xl mx-auto">
       <div className="mb-12">
-        <h1 className="text-white text-3xl font-black tracking-tight">Card Layout Concepts</h1>
-        <p className="text-white/40 mt-2">Pick your favourite — we'll roll it out to the live results page.</p>
+        <h1 className="text-white text-3xl font-black tracking-tight">Card Redesign Concepts</h1>
+        <p className="text-white/40 mt-2">Three condensed layouts inspired by healthcare.gov — pick your favourite.</p>
       </div>
 
       <Section
-        label="V1 — Minimal Scorecard"
-        sub="White frosted card · single lavender stat strip · clean & modern"
+        label="Concept A — Two-Column Hero"
+        sub="Big premium + deductible side-by-side · benefit rows on the right · footer with links + CTA"
       >
         {plans.map((p, i) => (
-          <PlanCardV1
+          <PlanCardConceptA
             key={p.id}
             isFeatured={i === 0}
             planName={p.name}
@@ -48,11 +48,11 @@ export default function CardPreviewPage() {
       </Section>
 
       <Section
-        label="V2 — Bold Split Panel"
-        sub="Dark accent left panel (tier + price) · white right panel with benefit grid"
+        label="Concept B — Compact Single Row"
+        sub="Ultra-dense one-liner · tier accent bar · inline stats · price + enroll on the right"
       >
         {plans.map((p, i) => (
-          <PlanCardV2
+          <PlanCardConceptB
             key={p.id}
             isFeatured={i === 0}
             planName={p.name}
@@ -70,11 +70,11 @@ export default function CardPreviewPage() {
       </Section>
 
       <Section
-        label="V3 — Compact Data Row"
-        sub="Dense single-line header · inline enroll button · full-width stat bar below"
+        label="Concept C — Modern Pill Stats"
+        sub="Tier gradient accent · big price · pill-shaped stat chips · dark enroll button"
       >
         {plans.map((p, i) => (
-          <PlanCardV3
+          <PlanCardConceptC
             key={p.id}
             isFeatured={i === 0}
             planName={p.name}
