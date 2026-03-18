@@ -79,36 +79,36 @@ export default function PlanCard({
         </div>
 
         {/* Big stats row */}
-        <div className="flex items-end gap-8 mt-4 pb-4 border-b border-gray-100">
+        <div className="flex items-end gap-8 mt-4 pb-4 border-b" style={{borderColor:"rgba(218,202,239,0.35)"}}>
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-0.5">Monthly Premium</div>
+            <div className="text-[10px] font-bold uppercase tracking-widest mb-0.5 text-violet-500">Monthly Premium</div>
             <div className="text-4xl font-black text-gray-900 tracking-tight">${monthlyPremium}</div>
             {estimatedSubsidy > 0 && (
               <div className="text-emerald-500 text-xs font-semibold mt-0.5">−${estimatedSubsidy}/mo subsidy</div>
             )}
           </div>
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-0.5">Deductible</div>
+            <div className="text-[10px] font-bold uppercase tracking-widest mb-0.5 text-violet-500">Deductible</div>
             <div className="text-4xl font-black text-gray-900 tracking-tight">${deductible.toLocaleString()}</div>
           </div>
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-0.5">Out-of-Pocket Max</div>
+            <div className="text-[10px] font-bold uppercase tracking-widest mb-0.5 text-violet-500">Out-of-Pocket Max</div>
             <div className="text-2xl font-bold text-gray-700 tracking-tight">${outOfPocketMax.toLocaleString()}</div>
           </div>
         </div>
 
-        {/* Dark benefit chips */}
+        {/* Benefit chips */}
         <div className="flex gap-2 mt-4 flex-wrap">
           {chips.map((c) => (
-            <div key={c.label} className="flex flex-col px-3 py-2.5 rounded-lg" style={{background:"#1e1b2e"}}>
-              <span className="text-[9px] font-bold uppercase tracking-widest text-white/50 mb-0.5 whitespace-nowrap">{c.label}</span>
-              <span className="text-white text-xs font-bold leading-tight">{c.value}</span>
+            <div key={c.label} className="flex flex-col px-3 py-2.5 rounded-lg" style={{background:"#2d1654", border:"1px solid rgba(139,92,246,0.25)"}}>
+              <span className="text-[9px] font-bold uppercase tracking-widest mb-0.5 whitespace-nowrap" style={{color:"rgba(218,202,239,0.6)"}}>{c.label}</span>
+              <span className="text-xs font-bold leading-tight text-white">{c.value}</span>
             </div>
           ))}
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-100">
+        <div className="flex items-center justify-between mt-4 pt-3 border-t" style={{borderColor:"rgba(218,202,239,0.35)"}}>
           <div className="flex items-center gap-4">
             <button className="text-[#22c55e] text-sm font-medium hover:underline cursor-pointer">Benefits</button>
             <button className="text-[#22c55e] text-sm font-medium hover:underline cursor-pointer">Doctors</button>
