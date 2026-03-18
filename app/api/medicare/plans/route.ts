@@ -6,6 +6,34 @@ import backendPlanNumbers from "@/data/backend_plans.json";
 const CONCIERGE = "https://concierge.insurancenyou.com";
 const PAGE_SIZE = 20;
 
+/* ── Concierge auth (JWT cached in-memory) ── */
+let cachedToken: string | null = null;
+let tokenExpiry = 0;
+
+async function getConciergeToken(): Promise<string> {
+  if (cachedToken && Date.now() < tokenExpiry) return cachedToken;
+
+  const res = await fetch(`${CONCIERGE}/api/admin/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: process.env.CONCIERGE_EMAIL,
+      password: process.env.CONCIERGE_PASSWORD,
+    }),
+  });
+
+  if (!res.ok) throw new Error(`Concierge login failed: ${res.status}`);
+
+  const cookie = res.headers.get("set-cookie") ?? "";
+  const match = cookie.match(/admin_token=([^;]+)/);
+  if (!match) throw new Error("No admin_token in login response");
+
+  cachedToken = match[1];
+  // Refresh 5 minutes before the 8-hour expiry
+  tokenExpiry = Date.now() + 7.9 * 60 * 60 * 1000;
+  return cachedToken;
+}
+
 function parseMoney(s: string | undefined): number {
   if (!s) return 0;
   const n = s.replace(/[^0-9.]/g, "");
@@ -28,7 +56,9 @@ function mapPlanType(planType: string, planNumber: string): MedicarePlanType {
 }
 
 async function fetchPlanDetail(planNumber: string) {
+  const token = await getConciergeToken();
   const res = await fetch(`${CONCIERGE}/api/admin/plans/${planNumber}`, {
+    headers: { Cookie: `admin_token=${token}` },
     next: { revalidate: 300 },
   });
   if (!res.ok) return null;
