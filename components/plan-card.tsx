@@ -82,9 +82,9 @@ export default function PlanCard({
         <div className="flex items-end gap-8 mt-4 pb-4 border-b" style={{borderColor:"rgba(218,202,239,0.35)"}}>
           <div>
             <div className="text-[10px] font-bold uppercase tracking-widest mb-0.5 text-violet-500">Monthly Premium</div>
-            <div className="text-4xl font-black text-gray-900 tracking-tight">${monthlyPremium}</div>
+            <div className="text-4xl font-black tracking-tight" style={{color:"#22c55e"}}>${monthlyPremium}</div>
             {estimatedSubsidy > 0 && (
-              <div className="text-emerald-500 text-xs font-semibold mt-0.5">−${estimatedSubsidy}/mo subsidy</div>
+              <div className="text-gray-400 text-xs font-medium mt-0.5">−${estimatedSubsidy}/mo subsidy</div>
             )}
           </div>
           <div>
@@ -97,12 +97,12 @@ export default function PlanCard({
           </div>
         </div>
 
-        {/* Benefit chips */}
+        {/* Benefit chips — Soft Lavender */}
         <div className="flex gap-2 mt-4 flex-wrap">
           {chips.map((c) => (
-            <div key={c.label} className="flex flex-col px-3 py-2.5 rounded-lg" style={{background:"#2d1654", border:"1px solid rgba(139,92,246,0.25)"}}>
-              <span className="text-[9px] font-bold uppercase tracking-widest mb-0.5 whitespace-nowrap" style={{color:"rgba(218,202,239,0.6)"}}>{c.label}</span>
-              <span className="text-xs font-bold leading-tight text-white">{c.value}</span>
+            <div key={c.label} className="flex flex-col px-3 py-2.5 rounded-lg" style={{background:"#f5f3ff", border:"1px solid rgba(167,139,250,0.45)"}}>
+              <span className="text-[9px] font-bold uppercase tracking-widest mb-0.5 whitespace-nowrap text-violet-400">{c.label}</span>
+              <span className="text-xs font-bold leading-tight text-violet-900">{c.value}</span>
             </div>
           ))}
         </div>
