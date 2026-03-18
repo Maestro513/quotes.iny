@@ -38,8 +38,8 @@ function MedicareContent() {
     setLoading(true);
     setError(false);
     try {
-      const results = await fetchMedicarePlans({ zip: currentZip, planType: currentType || undefined });
-      setPlans(results);
+      const result = await fetchMedicarePlans({ zip: currentZip, planType: currentType || undefined });
+      setPlans(result.plans);
     } catch {
       setError(true);
     } finally {
