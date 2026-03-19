@@ -1,6 +1,7 @@
 import type { MedicarePlanType } from "@/types/medicare";
 
 interface MedicarePlanCardProps {
+  planNumber: string;
   planName: string;
   carrier: string;
   planType: MedicarePlanType;
@@ -28,7 +29,7 @@ const TYPE_BADGE: Record<MedicarePlanType, string> = {
 };
 
 export default function MedicarePlanCard({
-  planName, carrier, planType, monthlyPremium, highlights, isFeatured,
+  planNumber, planName, carrier, planType, monthlyPremium, highlights, isFeatured,
 }: MedicarePlanCardProps) {
   return (
     <div
@@ -44,6 +45,7 @@ export default function MedicarePlanCard({
         <div>
           <p className="text-gray-400 text-xs font-medium tracking-wide">{carrier}</p>
           <h3 className="text-gray-900 font-bold text-[15px] leading-snug mt-0.5">{planName}</h3>
+          <p className="text-gray-400 text-[11px] mt-0.5 font-mono">{planNumber}</p>
           <div className="flex items-center gap-2 mt-1.5">
             <span className={`w-2 h-2 rounded-full ${TYPE_DOT[planType]}`} />
             <span className={`text-[11px] font-semibold border px-2 py-0.5 rounded-full ${TYPE_BADGE[planType]}`}>

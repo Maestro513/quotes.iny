@@ -31,19 +31,39 @@ function MedicareContent() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const [plans, setPlans] = useState<MedicarePlan[]>([]);
+  const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   async function loadPlans(currentZip = zip, currentType = planTypeFilter) {
     setLoading(true);
     setError(false);
+    setPage(1);
     try {
-      const result = await fetchMedicarePlans({ zip: currentZip, planType: currentType || undefined });
+      const result = await fetchMedicarePlans({ zip: currentZip, planType: currentType || undefined, page: 1 });
       setPlans(result.plans);
+      setTotal(result.total);
     } catch {
       setError(true);
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function loadMore() {
+    const nextPage = page + 1;
+    setLoadingMore(true);
+    try {
+      const result = await fetchMedicarePlans({ zip, planType: planTypeFilter || undefined, page: nextPage });
+      setPlans((prev) => [...prev, ...result.plans]);
+      setPage(nextPage);
+      setTotal(result.total);
+    } catch {
+      // silently fail
+    } finally {
+      setLoadingMore(false);
     }
   }
 
@@ -103,7 +123,7 @@ function MedicareContent() {
         <div className="mb-5">
           <h1 className="text-white text-2xl font-bold tracking-tight">Find Your Best Medicare Plan</h1>
           {!loading && !error && (
-            <p className="text-white/40 text-sm mt-1">{plans.length} plan{plans.length !== 1 ? "s" : ""} available</p>
+            <p className="text-white/40 text-sm mt-1">{total} plan{total !== 1 ? "s" : ""} available</p>
           )}
         </div>
 
@@ -134,6 +154,7 @@ function MedicareContent() {
               <MedicarePlanCard
                 key={plan.id}
                 isFeatured={i === 0}
+                planNumber={plan.id}
                 planName={plan.name}
                 carrier={plan.carrier}
                 planType={plan.type}
@@ -141,6 +162,17 @@ function MedicareContent() {
                 highlights={plan.highlights}
               />
             ))}
+            {plans.length < total && (
+              <div className="flex justify-center pt-2">
+                <button
+                  onClick={loadMore}
+                  disabled={loadingMore}
+                  className="px-8 py-2.5 rounded-lg border border-white/20 text-white/70 text-sm font-medium hover:border-white/40 hover:text-white transition-colors disabled:opacity-50 cursor-pointer"
+                >
+                  {loadingMore ? "Loading..." : `Load More (${plans.length} of ${total})`}
+                </button>
+              </div>
+            )}
           </div>
         )}
       </main>
