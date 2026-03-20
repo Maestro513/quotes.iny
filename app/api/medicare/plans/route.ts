@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { MedicarePlan, MedicarePlanType } from "@/types/medicare";
 import { getPlansForZip, normalizePlanNumber } from "@/lib/medicare/zip-lookup";
-import backendPlanNumbers from "@/data/backend_plans.json";
 
 const CONCIERGE = "https://concierge.insurancenyou.com";
 const PAGE_SIZE = 20;
@@ -114,40 +113,27 @@ export async function GET(req: NextRequest) {
   const planTypeFilter = req.nextUrl.searchParams.get("planType") ?? "";
 
   try {
-    // Get valid plan numbers for this ZIP
+    // Get plan numbers for this ZIP (already filtered to extracted/CMS-verified plans)
     const zipPlans = await getPlansForZip(zip);
+    const planNumbers: string[] = zipPlans ? [...zipPlans] : [];
 
-    let planNumbers: string[];
+    // Fetch ALL plan details in parallel for global sorting
+    // (zip_backend_plans.json.gz gives ~47 plans per county — manageable)
+    const details = await Promise.all(planNumbers.map(fetchPlanDetail));
 
-    // Build normalized set from static backend plan list
-    const backendSet = new Set<string>(
-      (backendPlanNumbers as string[]).map(normalizePlanNumber)
-    );
-
-    if (zipPlans) {
-      // Intersect: plans in this ZIP that also exist in backend with benefits
-      planNumbers = [...zipPlans].filter((pn) => backendSet.has(normalizePlanNumber(pn)));
-    } else {
-      // No ZIP — use all backend plans (excluding MongoDB ObjectIDs)
-      planNumbers = (backendPlanNumbers as string[]).filter((pn) => pn.startsWith("H") || pn.startsWith("S"));
-    }
-
-    const total = planNumbers.length;
-
-    // Paginate the plan number list
-    const start = (page - 1) * PAGE_SIZE;
-    const pageNumbers = planNumbers.slice(start, start + PAGE_SIZE);
-
-    // Fetch details for this page in parallel
-    const details = await Promise.all(pageNumbers.map(fetchPlanDetail));
-
-    const plans: MedicarePlan[] = details
+    const allPlans: MedicarePlan[] = details
       .flatMap((detail, i) => {
         if (!detail) return [];
-        const plan = mapToPlan(detail, pageNumbers[i]);
+        const plan = mapToPlan(detail, planNumbers[i]);
         return plan ? [plan] : [];
       })
       .sort((a, b) => a.premium_monthly - b.premium_monthly);
+
+    const total = allPlans.length;
+
+    // Paginate from globally sorted list
+    const start = (page - 1) * PAGE_SIZE;
+    const plans = allPlans.slice(start, start + PAGE_SIZE);
 
     const filtered = planTypeFilter
       ? plans.filter((p) => p.type === planTypeFilter)
