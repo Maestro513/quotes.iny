@@ -56,12 +56,24 @@ function mapPlanType(planType: string, planNumber: string): MedicarePlanType {
 
 async function fetchPlanDetail(planNumber: string) {
   const token = await getConciergeToken();
-  const res = await fetch(`${CONCIERGE}/api/admin/plans/${planNumber}`, {
-    headers: { Cookie: `admin_token=${token}` },
-    next: { revalidate: 300 },
-  });
-  if (!res.ok) return null;
-  return res.json();
+
+  // Try HXXXX-XXX first, then HXXXX-XXX-000 fallback
+  const variants = [planNumber];
+  if (planNumber.split("-").length === 2) variants.push(`${planNumber}-000`);
+
+  for (const variant of variants) {
+    const res = await fetch(`${CONCIERGE}/api/admin/plans/${variant}`, {
+      headers: { Cookie: `admin_token=${token}` },
+      next: { revalidate: 300 },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data) return data;
+    }
+  }
+
+  console.warn(`Plan not found in Concierge: ${planNumber}`);
+  return null;
 }
 
 function mapToPlan(detail: Record<string, unknown>, planNumber: string): MedicarePlan | null {
@@ -121,15 +133,20 @@ export async function GET(req: NextRequest) {
     // (zip_backend_plans.json.gz gives ~47 plans per county — manageable)
     const details = await Promise.all(planNumbers.map(fetchPlanDetail));
 
+    const fetched = details.filter(Boolean).length;
+    console.log(`ZIP ${zip}: ${planNumbers.length} in lookup, ${fetched} fetched from Concierge`);
+
     const allPlans: MedicarePlan[] = details
       .flatMap((detail, i) => {
         if (!detail) return [];
         const plan = mapToPlan(detail, planNumbers[i]);
+        if (!plan) console.warn(`Plan ${planNumbers[i]} fetched but mapToPlan returned null`);
         return plan ? [plan] : [];
       })
       .sort((a, b) => a.premium_monthly - b.premium_monthly);
 
     const total = allPlans.length;
+    console.log(`ZIP ${zip}: ${total} plans after mapping`);
 
     // Paginate from globally sorted list
     const start = (page - 1) * PAGE_SIZE;
