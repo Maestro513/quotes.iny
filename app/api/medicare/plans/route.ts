@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { MedicarePlan, MedicarePlanType } from "@/types/medicare";
-import { getPlansForZip, normalizePlanNumber } from "@/lib/medicare/zip-lookup";
+import { getPlansForZip } from "@/lib/medicare/zip-lookup";
 
 const CONCIERGE = "https://concierge.insurancenyou.com";
 const PAGE_SIZE = 20;
@@ -121,25 +121,33 @@ export async function GET(req: NextRequest) {
     // (zip_backend_plans.json.gz gives ~47 plans per county — manageable)
     const details = await Promise.all(planNumbers.map(fetchPlanDetail));
 
+    let fetchOk = 0;
+    let fetchFail = 0;
     const allPlans: MedicarePlan[] = details
       .flatMap((detail, i) => {
-        if (!detail) return [];
+        if (!detail) { fetchFail++; return []; }
+        fetchOk++;
         const plan = mapToPlan(detail, planNumbers[i]);
         return plan ? [plan] : [];
       })
       .sort((a, b) => a.premium_monthly - b.premium_monthly);
 
-    const total = allPlans.length;
+    if (fetchFail > 0) {
+      console.warn(`Medicare ZIP ${zip}: ${fetchOk} fetched, ${fetchFail} failed out of ${planNumbers.length} plan numbers`);
+    }
 
-    // Paginate from globally sorted list
-    const start = (page - 1) * PAGE_SIZE;
-    const plans = allPlans.slice(start, start + PAGE_SIZE);
-
+    // Filter by plan type BEFORE pagination so page sizes are consistent
     const filtered = planTypeFilter
-      ? plans.filter((p) => p.type === planTypeFilter)
-      : plans;
+      ? allPlans.filter((p) => p.type === planTypeFilter)
+      : allPlans;
 
-    return NextResponse.json({ plans: filtered, total, page });
+    const total = filtered.length;
+
+    // Paginate from filtered + sorted list
+    const start = (page - 1) * PAGE_SIZE;
+    const plans = filtered.slice(start, start + PAGE_SIZE);
+
+    return NextResponse.json({ plans, total, page });
   } catch (err) {
     console.error("Medicare API error:", err);
     return NextResponse.json({ error: "Failed to fetch plans" }, { status: 500 });

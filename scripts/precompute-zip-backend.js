@@ -36,8 +36,17 @@ function normalizePlan(pn) {
 async function main() {
   console.log("Loading backend plan numbers...");
   const backendRaw = require(BACKEND_FILE);
-  const backendSet = new Set(backendRaw.map(normalizePlan));
-  console.log(`Backend plans: ${backendSet.size}`);
+
+  // Build normalized → [original plan numbers] map so we can match by
+  // the 2-segment key but store the ORIGINAL plan numbers that the
+  // Concierge API actually recognises.
+  const normToOriginals = new Map();
+  for (const plan of backendRaw) {
+    const norm = normalizePlan(plan);
+    if (!normToOriginals.has(norm)) normToOriginals.set(norm, []);
+    normToOriginals.get(norm).push(plan);
+  }
+  console.log(`Backend plans: ${normToOriginals.size} (normalized groups)`);
 
   console.log("Decompressing zip_plans.json.gz (516 MB)...");
   const chunks = [];
@@ -101,8 +110,13 @@ async function main() {
         const plan = buf.slice(planStart, pos).toString("ascii");
         pos++; // skip closing '"'
         const normalized = normalizePlan(plan);
-        if (backendSet.has(normalized)) {
-          plans.push(normalized);
+        if (normToOriginals.has(normalized)) {
+          // Store the ORIGINAL backend plan numbers so the Concierge
+          // API receives the exact IDs it expects (e.g. H0169-001-000
+          // instead of the truncated H0169-001).
+          for (const orig of normToOriginals.get(normalized)) {
+            plans.push(orig);
+          }
         }
       } else {
         pos++;

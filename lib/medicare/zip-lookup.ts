@@ -32,8 +32,7 @@ async function loadZipMap(): Promise<Map<string, Set<string>>> {
 
 /**
  * Returns the set of plan numbers available for a ZIP.
- * Plan numbers in the lookup are HXXXX-XXX format.
- * Some backend plan numbers may have an extra -XXX suffix — strip it before comparing.
+ * Plan numbers are in their original backend format (e.g. H0169-001-000 or H0028-007).
  */
 export async function getPlansForZip(zip: string): Promise<Set<string> | null> {
   if (!zip || zip.length < 5) return null;
