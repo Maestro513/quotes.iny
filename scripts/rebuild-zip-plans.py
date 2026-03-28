@@ -13,9 +13,7 @@ import sqlite3, json, gzip, os, csv
 DB = 'C:/Users/tank5/Desktop/INY_concierge/backend/cms_benefits.db'
 EXTRACTED_DIR = 'C:/Users/tank5/Desktop/INY_concierge/backend/extracted'
 CSV_PATH = 'C:/Users/tank5/Desktop/INY_concierge/backend/pdf Updated/zip_to_plans.csv'
-BACKEND_PLANS = os.path.join(os.path.dirname(__file__), '..', 'data', 'backend_plans.json')
 OUT_PATH = 'C:/Users/tank5/Desktop/INY_site_update/quotes-app/data/zip_backend_plans.json.gz'
-OUT_PATH_REPO = os.path.join(os.path.dirname(__file__), '..', 'data', 'zip_backend_plans.json.gz')
 
 conn = sqlite3.connect(DB)
 cur = conn.cursor()
@@ -114,34 +112,6 @@ for i in range(100000):
     if state and state in state_all_plans and z not in zips_in_csv and z not in result:
         result[z] = state_all_plans[state]
 
-# Expand 2-segment plan numbers (H0169-001) to the ORIGINAL backend IDs
-# (e.g. H0169-001-000) so the Concierge API can resolve them.
-print("Expanding plan numbers to original backend IDs...")
-with open(BACKEND_PLANS, 'r') as f:
-    backend_raw = json.load(f)
-
-def normalize(pn):
-    parts = pn.split('-')
-    return f"{parts[0]}-{parts[1]}" if len(parts) >= 3 else pn
-
-norm_to_originals = {}
-for pn in backend_raw:
-    norm = normalize(pn)
-    norm_to_originals.setdefault(norm, []).append(pn)
-
-expanded = {}
-for zipcode, plans in result.items():
-    full = set()
-    for p in plans:
-        norm = normalize(p)
-        if norm in norm_to_originals:
-            full.update(norm_to_originals[norm])
-        else:
-            full.add(p)
-    expanded[zipcode] = sorted(full)
-
-result = expanded
-
 print(f"\nZIPs with plans: {len(result)}")
 for z in ['33067', '33334', '10001', '90210', '60601', '77001', '30301']:
     print(f"  {z}: {len(result.get(z, []))} plans")
@@ -149,8 +119,8 @@ for z in ['33067', '33334', '10001', '90210', '60601', '77001', '30301']:
 json_bytes = json.dumps(result).encode('utf-8')
 print(f"JSON size: {len(json_bytes)/1024:.0f} KB")
 
-for out in [OUT_PATH, OUT_PATH_REPO]:
-    with gzip.open(out, 'wb', compresslevel=9) as f:
-        f.write(json_bytes)
-    size = os.path.getsize(out)
-    print(f"Written: {out} ({size/1024:.1f} KB)")
+with gzip.open(OUT_PATH, 'wb', compresslevel=9) as f:
+    f.write(json_bytes)
+
+size = os.path.getsize(OUT_PATH)
+print(f"Output: {size/1024:.1f} KB")
