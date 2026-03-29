@@ -84,7 +84,12 @@ function mapToPlan(detail: Record<string, unknown>, planNumber: string): Medicar
   const dentalVal = findMedical(medical, "Dental preventive");
   const visionVal = findMedical(medical, "Vision routine exam");
   const hearingVal = supplemental.find((s) => s.label.toLowerCase().includes("hearing"))?.value;
-  const highlights = supplemental.slice(0, 3).map((s) => s.value);
+  const otcVal = supplemental.find((s) => s.label.toLowerCase().includes("otc") || s.label.toLowerCase().includes("over-the-counter"))?.value;
+  const partBVal = supplemental.find((s) => s.label.toLowerCase().includes("part b") || s.label.toLowerCase().includes("giveback"))?.value;
+  const highlights = supplemental
+    .filter((s) => !s.label.toLowerCase().includes("hearing") && !s.label.toLowerCase().includes("otc") && !s.label.toLowerCase().includes("over-the-counter") && !s.label.toLowerCase().includes("part b") && !s.label.toLowerCase().includes("giveback"))
+    .slice(0, 4)
+    .map((s) => s.value);
 
   // Extract carrier from plan name (first word) or use plan_number prefix
   const planName = (b.plan_name as string) ?? planNumber;
@@ -107,6 +112,8 @@ function mapToPlan(detail: Record<string, unknown>, planNumber: string): Medicar
       dental: dentalVal !== "—" ? dentalVal : undefined,
       vision: visionVal !== "—" ? visionVal : undefined,
       hearing: hearingVal,
+      otcAllowance: otcVal,
+      partBGiveback: partBVal,
     },
     highlights,
     county: "",

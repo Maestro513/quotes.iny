@@ -9,6 +9,8 @@ export interface MedicareBenefits {
   dental?: string;
   vision?: string;
   hearing?: string;
+  otcAllowance?: string;
+  partBGiveback?: string;
 }
 
 export interface MedicarePlan {

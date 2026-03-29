@@ -23,23 +23,12 @@ const TYPE_BADGE: Record<MedicarePlanType, string> = {
   PartD: "text-amber-700 bg-amber-50 border-amber-200",
 };
 
-function StatBox({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
+function FeatureCard({ icon, label, value, color }: { icon: string; label: string; value: string; color: string }) {
   return (
-    <div className="text-center px-3">
-      <div className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-1">{label}</div>
-      <div className={`text-lg font-bold leading-tight ${accent ? "text-[#22c55e]" : "text-gray-800"}`}>{value}</div>
-    </div>
-  );
-}
-
-function BenefitRow({ icon, label, value }: { icon: string; label: string; value: string }) {
-  return (
-    <div className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0">
-      <div className="flex items-center gap-2">
-        <span className="text-base">{icon}</span>
-        <span className="text-sm font-semibold text-gray-700">{label}</span>
-      </div>
-      <span className="text-sm font-bold text-gray-900">{value}</span>
+    <div className={`rounded-lg border ${color} p-3 text-center min-w-0`}>
+      <div className="text-2xl mb-1">{icon}</div>
+      <div className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-0.5">{label}</div>
+      <div className="text-sm font-bold text-gray-800 leading-tight">{value}</div>
     </div>
   );
 }
@@ -47,9 +36,7 @@ function BenefitRow({ icon, label, value }: { icon: string; label: string; value
 export default function MedicarePlanCard({ plan, isFeatured }: MedicarePlanCardProps) {
   const { id, name, carrier, type, premium_monthly, deductible, outOfPocketMax, benefits, highlights } = plan;
 
-  const premium = premium_monthly === 0 ? "$0" : `$${premium_monthly.toFixed(2)}`;
-  const deductibleStr = deductible === 0 ? "$0" : `$${deductible.toLocaleString()}`;
-  const moopStr = outOfPocketMax === 0 ? "$0" : `$${outOfPocketMax.toLocaleString()}`;
+  const fmt = (n: number) => n === 0 ? "$0" : `$${n.toLocaleString(undefined, { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 })}`;
 
   return (
     <div
@@ -76,43 +63,94 @@ export default function MedicarePlanCard({ plan, isFeatured }: MedicarePlanCardP
         </div>
         {premium_monthly === 0 && (
           <div className="bg-[#22c55e]/10 border border-[#22c55e]/30 rounded-lg px-3 py-1.5 text-center shrink-0">
-            <div className="text-[#22c55e] text-xs font-bold uppercase">$0</div>
-            <div className="text-[#22c55e] text-[10px] font-medium">Premium</div>
+            <div className="text-[#22c55e] text-lg font-extrabold">$0</div>
+            <div className="text-[#22c55e] text-[10px] font-semibold">Premium</div>
           </div>
         )}
       </div>
 
-      {/* Stats Row */}
-      <div className="px-5 py-4 flex items-center border-b border-gray-100">
-        <div className="flex items-center divide-x divide-gray-200 w-full">
-          <StatBox label="Monthly Premium" value={premium} accent />
-          <StatBox label="Deductible" value={deductibleStr} />
-          <StatBox label="Max Out-of-Pocket" value={moopStr} />
+      {/* Costs + Coverage side by side */}
+      <div className="px-5 py-4 flex flex-col lg:flex-row gap-6">
+        {/* Left: Key costs */}
+        <div className="shrink-0 lg:w-56">
+          <div className="text-gray-400 text-[10px] font-bold uppercase tracking-wider mb-3">Plan Costs</div>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-gray-500 font-medium">Monthly Premium</span>
+              <span className="text-xl font-extrabold text-[#22c55e]">{fmt(premium_monthly)}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-gray-500 font-medium">Deductible</span>
+              <span className="text-lg font-bold text-gray-800">{fmt(deductible)}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-gray-500 font-medium">Max Out-of-Pocket</span>
+              <span className="text-lg font-bold text-gray-800">{fmt(outOfPocketMax)}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="hidden lg:block w-px bg-gray-200" />
+        <div className="lg:hidden h-px bg-gray-200" />
+
+        {/* Right: Coverage details */}
+        <div className="flex-1 min-w-0">
+          <div className="text-gray-400 text-[10px] font-bold uppercase tracking-wider mb-3">Coverage Details</div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2">
+            <div className="flex items-center justify-between col-span-1">
+              <span className="text-sm text-gray-500">Primary Care</span>
+              <span className="text-sm font-bold text-gray-800 ml-2">{benefits.primaryCare}</span>
+            </div>
+            <div className="flex items-center justify-between col-span-1">
+              <span className="text-sm text-gray-500">Specialist</span>
+              <span className="text-sm font-bold text-gray-800 ml-2">{benefits.specialist}</span>
+            </div>
+            <div className="flex items-center justify-between col-span-1">
+              <span className="text-sm text-gray-500">Emergency Room</span>
+              <span className="text-sm font-bold text-gray-800 ml-2">{benefits.emergencyRoom}</span>
+            </div>
+            <div className="flex items-center justify-between col-span-1">
+              <span className="text-sm text-gray-500">Urgent Care</span>
+              <span className="text-sm font-bold text-gray-800 ml-2">{benefits.urgentCare}</span>
+            </div>
+            <div className="flex items-center justify-between col-span-1">
+              <span className="text-sm text-gray-500">Rx (Tier 1)</span>
+              <span className="text-sm font-bold text-gray-800 ml-2">{benefits.rxCoverage}</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Benefits */}
-      <div className="px-5 py-3">
-        <div className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-1">Coverage Details</div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
-          <BenefitRow icon="🩺" label="Primary Care" value={benefits.primaryCare} />
-          <BenefitRow icon="👨‍⚕️" label="Specialist" value={benefits.specialist} />
-          <BenefitRow icon="🚑" label="Emergency Room" value={benefits.emergencyRoom} />
-          <BenefitRow icon="🏥" label="Urgent Care" value={benefits.urgentCare} />
-          <BenefitRow icon="💊" label="Rx Coverage" value={benefits.rxCoverage} />
-          {benefits.dental && <BenefitRow icon="🦷" label="Dental" value={benefits.dental} />}
-          {benefits.vision && <BenefitRow icon="👁️" label="Vision" value={benefits.vision} />}
-          {benefits.hearing && <BenefitRow icon="👂" label="Hearing" value={benefits.hearing} />}
+      {/* Feature cards: Dental, Vision, Hearing, OTC, Part B Giveback */}
+      {(benefits.dental || benefits.vision || benefits.hearing || benefits.otcAllowance || benefits.partBGiveback) && (
+        <div className="px-5 pb-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+            {benefits.dental && (
+              <FeatureCard icon="🦷" label="Dental" value={benefits.dental} color="bg-blue-50 border-blue-200" />
+            )}
+            {benefits.vision && (
+              <FeatureCard icon="👁️" label="Vision" value={benefits.vision} color="bg-purple-50 border-purple-200" />
+            )}
+            {benefits.hearing && (
+              <FeatureCard icon="👂" label="Hearing" value={benefits.hearing} color="bg-amber-50 border-amber-200" />
+            )}
+            {benefits.otcAllowance && (
+              <FeatureCard icon="🛒" label="OTC Allowance" value={benefits.otcAllowance} color="bg-emerald-50 border-emerald-200" />
+            )}
+            {benefits.partBGiveback && (
+              <FeatureCard icon="💰" label="Part B Giveback" value={benefits.partBGiveback} color="bg-rose-50 border-rose-200" />
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Highlights */}
       {highlights.length > 0 && (
         <div className="px-5 py-3 border-t border-gray-100">
-          <div className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-2">Plan Highlights</div>
           <div className="flex flex-wrap gap-2">
             {highlights.map((h) => (
-              <span key={h} className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-700 bg-violet-50 border border-violet-100 rounded-full px-3 py-1">
+              <span key={h} className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-700 bg-violet-50 border border-violet-100 rounded-full px-3 py-1">
                 <svg className="w-3 h-3 text-[#22c55e] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
