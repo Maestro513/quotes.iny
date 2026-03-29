@@ -1,12 +1,7 @@
-import type { MedicarePlanType } from "@/types/medicare";
+import type { MedicarePlan, MedicarePlanType } from "@/types/medicare";
 
 interface MedicarePlanCardProps {
-  planNumber: string;
-  planName: string;
-  carrier: string;
-  planType: MedicarePlanType;
-  monthlyPremium: number;
-  highlights: string[];
+  plan: MedicarePlan;
   isFeatured?: boolean;
 }
 
@@ -28,9 +23,34 @@ const TYPE_BADGE: Record<MedicarePlanType, string> = {
   PartD: "text-amber-700 bg-amber-50 border-amber-200",
 };
 
-export default function MedicarePlanCard({
-  planNumber, planName, carrier, planType, monthlyPremium, highlights, isFeatured,
-}: MedicarePlanCardProps) {
+function StatBox({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
+  return (
+    <div className="text-center px-3">
+      <div className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-1">{label}</div>
+      <div className={`text-lg font-bold leading-tight ${accent ? "text-[#22c55e]" : "text-gray-800"}`}>{value}</div>
+    </div>
+  );
+}
+
+function BenefitRow({ icon, label, value }: { icon: string; label: string; value: string }) {
+  return (
+    <div className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0">
+      <div className="flex items-center gap-2">
+        <span className="text-base">{icon}</span>
+        <span className="text-sm font-semibold text-gray-700">{label}</span>
+      </div>
+      <span className="text-sm font-bold text-gray-900">{value}</span>
+    </div>
+  );
+}
+
+export default function MedicarePlanCard({ plan, isFeatured }: MedicarePlanCardProps) {
+  const { id, name, carrier, type, premium_monthly, deductible, outOfPocketMax, benefits, highlights } = plan;
+
+  const premium = premium_monthly === 0 ? "$0" : `$${premium_monthly.toFixed(2)}`;
+  const deductibleStr = deductible === 0 ? "$0" : `$${deductible.toLocaleString()}`;
+  const moopStr = outOfPocketMax === 0 ? "$0" : `$${outOfPocketMax.toLocaleString()}`;
+
   return (
     <div
       className={`rounded-xl overflow-hidden transition-all duration-200 hover:shadow-lg ${isFeatured ? "ring-2 ring-[#22c55e]/60" : ""}`}
@@ -42,47 +62,66 @@ export default function MedicarePlanCard({
     >
       {/* Header */}
       <div className="px-5 pt-4 pb-3 border-b border-gray-100 flex items-start justify-between gap-4">
-        <div>
+        <div className="flex-1 min-w-0">
           <p className="text-gray-400 text-xs font-medium tracking-wide">{carrier}</p>
-          <h3 className="text-gray-900 font-bold text-[15px] leading-snug mt-0.5">{planName}</h3>
-          <p className="text-gray-400 text-[11px] mt-0.5 font-mono">{planNumber}</p>
+          <h3 className="text-gray-900 font-bold text-base leading-snug mt-0.5">{name}</h3>
+          <p className="text-gray-400 text-[11px] mt-0.5 font-mono">{id}</p>
           <div className="flex items-center gap-2 mt-1.5">
-            <span className={`w-2 h-2 rounded-full ${TYPE_DOT[planType]}`} />
-            <span className={`text-[11px] font-semibold border px-2 py-0.5 rounded-full ${TYPE_BADGE[planType]}`}>
-              {TYPE_LABEL[planType]}
+            <span className={`w-2 h-2 rounded-full ${TYPE_DOT[type]}`} />
+            <span className={`text-[11px] font-semibold border px-2 py-0.5 rounded-full ${TYPE_BADGE[type]}`}>
+              {TYPE_LABEL[type]}
             </span>
             {isFeatured && <span className="text-[10px] font-bold text-white bg-[#22c55e] px-2 py-0.5 rounded-full uppercase">Best Value</span>}
           </div>
         </div>
-      </div>
-
-      {/* Body */}
-      <div className="px-5 py-4 flex gap-8">
-        {/* Premium */}
-        <div className="shrink-0">
-          <div className="text-gray-400 text-[11px] font-medium uppercase tracking-wider mb-1">Monthly premium</div>
-          <div className="text-[32px] font-extrabold leading-none tracking-tight text-[#22c55e]">
-            <span className="text-[18px] align-top mr-0.5">$</span>{monthlyPremium.toFixed(2)}
-          </div>
-        </div>
-
-        {/* Highlights */}
-        {highlights.length > 0 && (
-          <div className="flex-1 min-w-0 self-center">
-            <div className="text-gray-400 text-[11px] font-medium uppercase tracking-wider mb-2">Plan highlights</div>
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-1">
-              {highlights.map((h) => (
-                <li key={h} className="flex items-start gap-1.5 text-xs text-gray-700">
-                  <svg className="w-3.5 h-3.5 text-[#22c55e] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                  </svg>
-                  <span>{h}</span>
-                </li>
-              ))}
-            </ul>
+        {premium_monthly === 0 && (
+          <div className="bg-[#22c55e]/10 border border-[#22c55e]/30 rounded-lg px-3 py-1.5 text-center shrink-0">
+            <div className="text-[#22c55e] text-xs font-bold uppercase">$0</div>
+            <div className="text-[#22c55e] text-[10px] font-medium">Premium</div>
           </div>
         )}
       </div>
+
+      {/* Stats Row */}
+      <div className="px-5 py-4 flex items-center border-b border-gray-100">
+        <div className="flex items-center divide-x divide-gray-200 w-full">
+          <StatBox label="Monthly Premium" value={premium} accent />
+          <StatBox label="Deductible" value={deductibleStr} />
+          <StatBox label="Max Out-of-Pocket" value={moopStr} />
+        </div>
+      </div>
+
+      {/* Benefits */}
+      <div className="px-5 py-3">
+        <div className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-1">Coverage Details</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
+          <BenefitRow icon="🩺" label="Primary Care" value={benefits.primaryCare} />
+          <BenefitRow icon="👨‍⚕️" label="Specialist" value={benefits.specialist} />
+          <BenefitRow icon="🚑" label="Emergency Room" value={benefits.emergencyRoom} />
+          <BenefitRow icon="🏥" label="Urgent Care" value={benefits.urgentCare} />
+          <BenefitRow icon="💊" label="Rx Coverage" value={benefits.rxCoverage} />
+          {benefits.dental && <BenefitRow icon="🦷" label="Dental" value={benefits.dental} />}
+          {benefits.vision && <BenefitRow icon="👁️" label="Vision" value={benefits.vision} />}
+          {benefits.hearing && <BenefitRow icon="👂" label="Hearing" value={benefits.hearing} />}
+        </div>
+      </div>
+
+      {/* Highlights */}
+      {highlights.length > 0 && (
+        <div className="px-5 py-3 border-t border-gray-100">
+          <div className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-2">Plan Highlights</div>
+          <div className="flex flex-wrap gap-2">
+            {highlights.map((h) => (
+              <span key={h} className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-700 bg-violet-50 border border-violet-100 rounded-full px-3 py-1">
+                <svg className="w-3 h-3 text-[#22c55e] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                {h}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <div className="px-5 py-2.5 bg-gray-50/60 border-t border-gray-100 flex items-center justify-between">
