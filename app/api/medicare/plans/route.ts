@@ -60,8 +60,15 @@ async function fetchPlanDetail(planNumber: string) {
     headers: { Cookie: `admin_token=${token}` },
     next: { revalidate: 300 },
   });
-  if (!res.ok) return null;
-  return res.json();
+  if (!res.ok) {
+    console.warn(`Plan ${planNumber}: HTTP ${res.status}`);
+    return null;
+  }
+  const data = await res.json();
+  if (!data?.benefits) {
+    console.warn(`Plan ${planNumber}: no benefits field`);
+  }
+  return data;
 }
 
 function mapToPlan(detail: Record<string, unknown>, planNumber: string): MedicarePlan | null {
@@ -129,17 +136,18 @@ export async function GET(req: NextRequest) {
       })
       .sort((a, b) => a.premium_monthly - b.premium_monthly);
 
-    const total = allPlans.length;
+    console.log(`Medicare ZIP ${zip}: ${allPlans.length} resolved out of ${planNumbers.length} plan numbers`);
 
-    // Paginate from globally sorted list
-    const start = (page - 1) * PAGE_SIZE;
-    const plans = allPlans.slice(start, start + PAGE_SIZE);
-
+    // Filter by plan type BEFORE pagination
     const filtered = planTypeFilter
-      ? plans.filter((p) => p.type === planTypeFilter)
-      : plans;
+      ? allPlans.filter((p) => p.type === planTypeFilter)
+      : allPlans;
 
-    return NextResponse.json({ plans: filtered, total, page });
+    const total = filtered.length;
+    const start = (page - 1) * PAGE_SIZE;
+    const plans = filtered.slice(start, start + PAGE_SIZE);
+
+    return NextResponse.json({ plans, total, page });
   } catch (err) {
     console.error("Medicare API error:", err);
     return NextResponse.json({ error: "Failed to fetch plans" }, { status: 500 });
