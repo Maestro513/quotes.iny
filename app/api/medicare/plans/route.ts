@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import type { MedicarePlan, MedicarePlanType } from "@/types/medicare";
 import { getPlansForZip, normalizePlanNumber } from "@/lib/medicare/zip-lookup";
 
-const CONCIERGE = "https://concierge.insurancenyou.com";
+const CONCIERGE = "https://iny-concierge.onrender.com";
 const PAGE_SIZE = 20;
 
 /* ── Concierge auth (JWT cached in-memory) ── */
