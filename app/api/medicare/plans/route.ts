@@ -1,9 +1,48 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { MedicarePlan, MedicarePlanType } from "@/types/medicare";
 import { getPlansForZip, normalizePlanNumber } from "@/lib/medicare/zip-lookup";
+import fs from "fs";
+import path from "path";
 
 const CONCIERGE = "https://iny-concierge.onrender.com";
 const PAGE_SIZE = 20;
+
+/* ── Local CMS JSON fallback ── */
+const CMS_DIR = path.join(process.cwd(), "data", "extracted_cms");
+
+// Build a plan_id → filename index once (lazy)
+let cmsIndex: Map<string, string> | null = null;
+
+function getCmsIndex(): Map<string, string> {
+  if (cmsIndex) return cmsIndex;
+  cmsIndex = new Map();
+  try {
+    const files = fs.readdirSync(CMS_DIR);
+    for (const f of files) {
+      if (!f.endsWith(".json")) continue;
+      // Filename: "{Plan Name} {HXXXX-XXX}.json"
+      const match = f.match(/([HR]\d{4}-\d{3})\.json$/);
+      if (match) {
+        cmsIndex.set(match[1], f);
+      }
+    }
+  } catch {
+    // CMS dir may not exist in some environments
+  }
+  return cmsIndex;
+}
+
+function loadCmsPlan(planNumber: string): Record<string, unknown> | null {
+  const index = getCmsIndex();
+  const filename = index.get(planNumber);
+  if (!filename) return null;
+  try {
+    const raw = fs.readFileSync(path.join(CMS_DIR, filename), "utf-8");
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
 
 /* ── Concierge auth (JWT cached in-memory) ── */
 let cachedToken: string | null = null;
@@ -55,20 +94,102 @@ function mapPlanType(planType: string, planNumber: string): MedicarePlanType {
 }
 
 async function fetchPlanDetail(planNumber: string) {
-  const token = await getConciergeToken();
-  const res = await fetch(`${CONCIERGE}/api/admin/plans/${planNumber}`, {
-    headers: { Cookie: `admin_token=${token}` },
-    next: { revalidate: 300 },
-  });
-  if (!res.ok) {
-    console.warn(`Plan ${planNumber}: HTTP ${res.status}`);
-    return null;
+  // Try Concierge API first
+  try {
+    const token = await getConciergeToken();
+    const res = await fetch(`${CONCIERGE}/api/admin/plans/${planNumber}`, {
+      headers: { Cookie: `admin_token=${token}` },
+      next: { revalidate: 300 },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.benefits) return data;
+    }
+  } catch {
+    // Concierge unavailable — fall through to CMS
   }
-  const data = await res.json();
-  if (!data?.benefits) {
-    console.warn(`Plan ${planNumber}: no benefits field`);
+
+  // Fallback: local CMS structured JSON
+  const cms = loadCmsPlan(planNumber);
+  if (cms) {
+    return { benefits: cmsToBenefits(cms), _source: "cms" };
   }
-  return data;
+
+  console.warn(`Plan ${planNumber}: not found in Concierge or CMS`);
+  return null;
+}
+
+/** Map CMS structured JSON sections → the flat benefits shape the route expects */
+function cmsToBenefits(cms: Record<string, unknown>) {
+  const sections = (cms.sections ?? []) as { title: string; rows: { label: string; value: string }[] }[];
+
+  function findRow(sectionTitle: string, label: string): string {
+    const section = sections.find((s) => s.title === sectionTitle);
+    return section?.rows?.find((r) => r.label.toLowerCase().includes(label.toLowerCase()))?.value ?? "";
+  }
+
+  function getSection(title: string): { label: string; value: string }[] {
+    return sections.find((s) => s.title === title)?.rows ?? [];
+  }
+
+  // Build medical array from Key Benefits + Medical Services
+  const medical: { label: string; in_network: string }[] = [];
+  for (const s of sections) {
+    if (s.title === "Key Benefits" || s.title === "Medical Services" || s.title === "Dental" || s.title === "Vision" || s.title === "Hearing") {
+      for (const r of s.rows) {
+        medical.push({ label: mapCmsLabel(r.label), in_network: r.value });
+      }
+    }
+  }
+
+  // Build drugs array
+  const drugs: { label: string; value: string }[] = getSection("Prescription Drugs");
+
+  // Build supplemental array — include OTC, Part B giveback, hearing from Key Benefits
+  const supplemental: { label: string; value: string }[] = [
+    ...getSection("Supplemental Benefits"),
+  ];
+  // Pull OTC and Part B giveback from Key Benefits into supplemental
+  const keyRows = getSection("Key Benefits");
+  for (const r of keyRows) {
+    if (r.label.toLowerCase().includes("otc") || r.label.toLowerCase().includes("part b") || r.label.toLowerCase().includes("giveback")) {
+      supplemental.push(r);
+    }
+  }
+  // Pull hearing from Hearing section
+  for (const r of getSection("Hearing")) {
+    supplemental.push({ label: `Hearing - ${r.label}`, value: r.value });
+  }
+
+  return {
+    plan_name: cms.plan_name ?? "",
+    plan_type: cms.plan_type ?? "",
+    monthly_premium: cms.monthly_premium ?? "$0",
+    annual_deductible_in: cms.annual_deductible_in ?? "$0",
+    annual_deductible_out: null,
+    moop_in: cms.moop_in ?? "",
+    moop_out: cms.moop_out ?? null,
+    medical,
+    drugs,
+    supplemental,
+  };
+}
+
+/** Map CMS benefit labels to the labels mapToPlan expects */
+function mapCmsLabel(label: string): string {
+  const map: Record<string, string> = {
+    "PCP Visit": "PCP visit",
+    "Specialist Visit": "Specialist visit",
+    "Emergency Room": "Emergency room",
+    "Urgent Care": "Urgent care center",
+    "Preventive Dental": "Dental preventive",
+    "Comprehensive Dental": "Dental comprehensive",
+    "Eye Exam": "Vision routine exam",
+    "Eyewear": "Vision eyewear",
+    "Hearing Exam": "Hearing exam",
+    "Hearing Aids": "Hearing aids",
+  };
+  return map[label] ?? label;
 }
 
 function mapToPlan(detail: Record<string, unknown>, planNumber: string): MedicarePlan | null {
