@@ -96,7 +96,13 @@ function mapPlanType(planType: string, planNumber: string): MedicarePlanType {
 }
 
 async function fetchPlanDetail(planNumber: string) {
-  // Try Concierge API first
+  // Use local CMS structured JSON (enriched with actual copay amounts)
+  const cms = loadCmsPlan(planNumber);
+  if (cms) {
+    return { benefits: cmsToBenefits(cms), _source: "cms" };
+  }
+
+  // Fallback: Concierge API
   try {
     const token = await getConciergeToken();
     const res = await fetch(`${CONCIERGE}/api/admin/plans/${planNumber}`, {
@@ -108,16 +114,10 @@ async function fetchPlanDetail(planNumber: string) {
       if (data?.benefits) return data;
     }
   } catch {
-    // Concierge unavailable — fall through to CMS
+    // Concierge unavailable
   }
 
-  // Fallback: local CMS structured JSON
-  const cms = loadCmsPlan(planNumber);
-  if (cms) {
-    return { benefits: cmsToBenefits(cms), _source: "cms" };
-  }
-
-  console.warn(`Plan ${planNumber}: not found in Concierge or CMS`);
+  console.warn(`Plan ${planNumber}: not found in CMS or Concierge`);
   return null;
 }
 
