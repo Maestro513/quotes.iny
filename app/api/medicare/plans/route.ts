@@ -82,7 +82,9 @@ function findMedical(
   medical: { label: string; in_network: string }[],
   label: string
 ): string {
-  return medical?.find((m) => m.label === label)?.in_network ?? "—";
+  const raw = medical?.find((m) => m.label === label)?.in_network ?? "—";
+  // Strip CMS boilerplate like "(see EOC for cost)"
+  return raw.replace(/\s*\(see EOC[^)]*\)/i, "").trim() || raw;
 }
 
 function mapPlanType(planType: string, planNumber: string): MedicarePlanType {
