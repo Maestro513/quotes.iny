@@ -121,10 +121,10 @@ export default function MedicareCard({ plan, isFeatured }: MedicareCardProps) {
               <h3 className="text-gray-900 font-bold text-sm leading-snug truncate">{plan.name}</h3>
               <div className="flex items-center gap-2 mt-0.5">
                 <p className="text-gray-400 text-xs">{plan.carrier}</p>
-                {plan.starRating && (
+                {plan.starRatingOverall && (
                   <>
                     <span className="text-gray-200 text-xs">·</span>
-                    <StarRating rating={plan.starRating} />
+                    <StarRating rating={plan.starRatingOverall} />
                   </>
                 )}
               </div>

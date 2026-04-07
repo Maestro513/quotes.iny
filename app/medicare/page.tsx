@@ -1,11 +1,12 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState, useEffect, useMemo, Suspense } from "react";
+import { useState, useEffect, useMemo, useCallback, Suspense } from "react";
 import { parseParams } from "@/lib/params";
 import { fetchMedicarePlans } from "@/lib/medicare/adapter";
-import type { MedicarePlan, MedicarePlanType } from "@/types/medicare";
+import type { MedicarePlan, MedicarePlanType, DrugEstimate } from "@/types/medicare";
 import MedicarePlanCard from "@/components/medicare-plan-card";
+import MedicationInput, { type SelectedDrug } from "@/components/medication-input";
 import SkeletonCard from "@/components/skeleton-card";
 import EmptyState from "@/components/empty-state";
 
@@ -16,11 +17,13 @@ const PLAN_TYPES: { label: string; value: MedicarePlanType | "" }[] = [
   { label: "Part D", value: "PartD" },
 ];
 
-type SortOption = "premium-asc" | "premium-desc" | "alpha" | "moop-asc" | "moop-desc";
+type SortOption = "premium-asc" | "premium-desc" | "alpha" | "moop-asc" | "moop-desc" | "rating-desc" | "drugcost-asc";
 
 const SORT_OPTIONS: { label: string; value: SortOption }[] = [
   { label: "Premium: Low → High", value: "premium-asc" },
   { label: "Premium: High → Low", value: "premium-desc" },
+  { label: "Star Rating: High → Low", value: "rating-desc" },
+  { label: "Lowest Drug Cost", value: "drugcost-asc" },
   { label: "Alphabetical (A-Z)", value: "alpha" },
   { label: "Max OOP: Low → High", value: "moop-asc" },
   { label: "Max OOP: High → Low", value: "moop-desc" },
@@ -58,11 +61,49 @@ function MedicareContent() {
   // Pagination
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
+  // Medications / drug cost estimates
+  const [selectedDrugs, setSelectedDrugs] = useState<SelectedDrug[]>([]);
+  const [drugEstimates, setDrugEstimates] = useState<Record<string, DrugEstimate>>({});
+  const [estimatingDrugs, setEstimatingDrugs] = useState(false);
+
   // Unique carriers from loaded plans
   const carriers = useMemo(() => {
     const set = new Set(allPlans.map((p) => p.carrier));
     return [...set].sort();
   }, [allPlans]);
+
+  // Fetch drug estimates when drugs or plans change
+  const fetchDrugEstimates = useCallback(async (plans: MedicarePlan[], drugs: SelectedDrug[]) => {
+    if (drugs.length === 0) {
+      setDrugEstimates({});
+      return;
+    }
+    setEstimatingDrugs(true);
+    try {
+      const res = await fetch("/api/medicare/drugs/estimate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          planIds: plans.map((p) => p.id),
+          drugs: drugs.map((d) => ({ name: d.name, rxcui: d.rxcui })),
+        }),
+      });
+      const data = await res.json();
+      setDrugEstimates(data.estimates ?? {});
+    } catch {
+      setDrugEstimates({});
+    } finally {
+      setEstimatingDrugs(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (allPlans.length > 0 && selectedDrugs.length > 0) {
+      fetchDrugEstimates(allPlans, selectedDrugs);
+    } else {
+      setDrugEstimates({});
+    }
+  }, [allPlans, selectedDrugs, fetchDrugEstimates]);
 
   // Filtered + sorted plans
   const filteredPlans = useMemo(() => {
@@ -79,12 +120,14 @@ function MedicareContent() {
         case "alpha": return a.name.localeCompare(b.name);
         case "moop-asc": return a.outOfPocketMax - b.outOfPocketMax;
         case "moop-desc": return b.outOfPocketMax - a.outOfPocketMax;
+        case "rating-desc": return (b.starRatingOverall ?? 0) - (a.starRatingOverall ?? 0);
+        case "drugcost-asc": return (drugEstimates[a.id]?.annualCost ?? Infinity) - (drugEstimates[b.id]?.annualCost ?? Infinity);
         default: return 0;
       }
     });
 
     return result;
-  }, [allPlans, planTypeFilter, carrierFilter, zeroPremiumOnly, sortBy]);
+  }, [allPlans, planTypeFilter, carrierFilter, zeroPremiumOnly, sortBy, drugEstimates]);
 
   const visiblePlans = filteredPlans.slice(0, visibleCount);
 
@@ -162,6 +205,19 @@ function MedicareContent() {
           >
             Search Plans
           </button>
+
+          {/* My Medications */}
+          {allPlans.length > 0 && (
+            <div className="pt-3 border-t border-white/10 space-y-2">
+              <p className="text-white/70 font-semibold text-xs uppercase tracking-widest">My Medications</p>
+              <MedicationInput
+                selectedDrugs={selectedDrugs}
+                onAdd={(drug) => setSelectedDrugs((prev) => [...prev, drug])}
+                onRemove={(rxcui) => setSelectedDrugs((prev) => prev.filter((d) => d.rxcui !== rxcui))}
+                loading={estimatingDrugs}
+              />
+            </div>
+          )}
 
           {/* Filters section */}
           {allPlans.length > 0 && (
@@ -267,6 +323,7 @@ function MedicareContent() {
                 key={plan.id}
                 plan={plan}
                 isFeatured={i === 0 && sortBy === "premium-asc"}
+                drugEstimate={drugEstimates[plan.id]}
               />
             ))}
             {visibleCount < filteredPlans.length && (

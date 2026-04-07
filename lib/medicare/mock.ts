@@ -9,7 +9,7 @@ export const mockMedicarePlans: MedicarePlan[] = [
     premium_monthly: 0,
     deductible: 0,
     outOfPocketMax: 5900,
-    starRating: 4.5,
+    starRatingOverall: 4.5,
     benefits: {
       primaryCare: "$0 Copay",
       specialist: "$35 Copay",
@@ -32,7 +32,7 @@ export const mockMedicarePlans: MedicarePlan[] = [
     premium_monthly: 35,
     deductible: 0,
     outOfPocketMax: 6700,
-    starRating: 4.5,
+    starRatingOverall: 4.5,
     benefits: {
       primaryCare: "$5 Copay",
       specialist: "$45 Copay",
@@ -55,7 +55,7 @@ export const mockMedicarePlans: MedicarePlan[] = [
     premium_monthly: 0,
     deductible: 0,
     outOfPocketMax: 7550,
-    starRating: 4.0,
+    starRatingOverall: 4.0,
     benefits: {
       primaryCare: "$0 Copay",
       specialist: "$40 Copay",
@@ -78,7 +78,7 @@ export const mockMedicarePlans: MedicarePlan[] = [
     premium_monthly: 142,
     deductible: 226,
     outOfPocketMax: 0,
-    starRating: 4.0,
+    starRatingOverall: 4.0,
     benefits: {
       primaryCare: "After Deductible",
       specialist: "After Deductible",
@@ -100,7 +100,7 @@ export const mockMedicarePlans: MedicarePlan[] = [
     premium_monthly: 118,
     deductible: 226,
     outOfPocketMax: 0,
-    starRating: 3.5,
+    starRatingOverall: 3.5,
     benefits: {
       primaryCare: "$20 Copay",
       specialist: "$50 Copay",
@@ -122,7 +122,7 @@ export const mockMedicarePlans: MedicarePlan[] = [
     premium_monthly: 21,
     deductible: 505,
     outOfPocketMax: 0,
-    starRating: 3.5,
+    starRatingOverall: 3.5,
     benefits: {
       primaryCare: "N/A",
       specialist: "N/A",

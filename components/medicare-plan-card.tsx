@@ -1,8 +1,9 @@
-import type { MedicarePlan, MedicarePlanType } from "@/types/medicare";
+import type { MedicarePlan, MedicarePlanType, DrugEstimate } from "@/types/medicare";
 
 interface MedicarePlanCardProps {
   plan: MedicarePlan;
   isFeatured?: boolean;
+  drugEstimate?: DrugEstimate;
 }
 
 const TYPE_LABEL: Record<MedicarePlanType, string> = {
@@ -33,8 +34,8 @@ function FeatureCard({ icon, label, value, color }: { icon: string; label: strin
   );
 }
 
-export default function MedicarePlanCard({ plan, isFeatured }: MedicarePlanCardProps) {
-  const { id, name, carrier, type, premium_monthly, deductible, outOfPocketMax, benefits, highlights } = plan;
+export default function MedicarePlanCard({ plan, isFeatured, drugEstimate }: MedicarePlanCardProps) {
+  const { id, name, carrier, type, premium_monthly, deductible, outOfPocketMax, benefits, highlights, starRatingOverall } = plan;
 
   const fmt = (n: number) => n === 0 ? "$0" : `$${n.toLocaleString(undefined, { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 })}`;
 
@@ -59,6 +60,11 @@ export default function MedicarePlanCard({ plan, isFeatured }: MedicarePlanCardP
               {TYPE_LABEL[type]}
             </span>
             {isFeatured && <span className="text-[10px] font-bold text-white bg-[#22c55e] px-2 py-0.5 rounded-full uppercase">Best Value</span>}
+            {starRatingOverall != null && (
+              <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">
+                <span className="text-amber-500">★</span> {starRatingOverall.toFixed(1)}
+              </span>
+            )}
           </div>
         </div>
         {premium_monthly === 0 && (
@@ -87,6 +93,25 @@ export default function MedicarePlanCard({ plan, isFeatured }: MedicarePlanCardP
               <span className="text-sm text-gray-500 font-medium">Max Out-of-Pocket</span>
               <span className="text-lg font-bold text-gray-800">{fmt(outOfPocketMax)}</span>
             </div>
+            {drugEstimate && (
+              <>
+                <div className="border-t border-gray-100 pt-3 mt-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-500 font-medium">Est. Annual Drug Cost</span>
+                    <span className="text-lg font-bold text-violet-700">{fmt(drugEstimate.annualCost)}</span>
+                  </div>
+                </div>
+                {drugEstimate.uncoveredDrugs.length > 0 && (
+                  <div className="mt-1">
+                    {drugEstimate.uncoveredDrugs.map((d) => (
+                      <span key={d} className="inline-flex items-center gap-1 text-[10px] font-semibold text-red-600 bg-red-50 border border-red-200 rounded-full px-2 py-0.5 mr-1 mb-0.5">
+                        ✕ {d.split(" ")[0]} not covered
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
           </div>
         </div>
 

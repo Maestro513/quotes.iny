@@ -99,7 +99,13 @@ async function fetchPlanDetail(planNumber: string) {
   // Use local CMS structured JSON (enriched with actual copay amounts)
   const cms = loadCmsPlan(planNumber);
   if (cms) {
-    return { benefits: cmsToBenefits(cms), _source: "cms" };
+    return {
+      benefits: cmsToBenefits(cms),
+      starRatingOverall: cms.star_rating_overall as number | undefined,
+      starRatingPartC: cms.star_rating_part_c as number | undefined,
+      starRatingPartD: cms.star_rating_part_d as number | undefined,
+      _source: "cms",
+    };
   }
 
   // Fallback: Concierge API
@@ -238,6 +244,9 @@ function mapToPlan(detail: Record<string, unknown>, planNumber: string): Medicar
       otcAllowance: otcVal,
       partBGiveback: partBVal,
     },
+    starRatingOverall: detail.starRatingOverall as number | undefined,
+    starRatingPartC: detail.starRatingPartC as number | undefined,
+    starRatingPartD: detail.starRatingPartD as number | undefined,
     highlights,
     county: "",
     zip_codes: [],

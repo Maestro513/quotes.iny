@@ -21,9 +21,16 @@ export interface MedicarePlan {
   premium_monthly: number;
   deductible: number;
   outOfPocketMax: number;
-  starRating?: number;
+  starRatingOverall?: number;
+  starRatingPartC?: number;
+  starRatingPartD?: number;
   benefits: MedicareBenefits;
   highlights: string[];
   county: string;
   zip_codes: string[];
+}
+
+export interface DrugEstimate {
+  annualCost: number;
+  uncoveredDrugs: string[];
 }
