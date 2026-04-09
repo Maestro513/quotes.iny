@@ -74,7 +74,8 @@ export async function POST(req: NextRequest) {
   }
 
   // 3. Call plans/search — CMS hard-limits to 10/page, fetch all pages in parallel
-  const annualIncome = incomeToMidpoint((income as IncomeRange) || "25-50k");
+  const numericIncome = Number(income);
+  const annualIncome = numericIncome > 0 ? numericIncome : incomeToMidpoint((income as IncomeRange) || "25-50k");
   const baseBody = {
     household: { income: annualIncome, people },
     market: "Individual",
