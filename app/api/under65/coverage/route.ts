@@ -24,7 +24,10 @@ export async function POST(req: NextRequest) {
   }
 
   const res = await fetch(url);
-  if (!res.ok) return NextResponse.json({ coveredIds: [] });
+  if (!res.ok) {
+    console.error(`Coverage API ${type} lookup failed: ${res.status} ${res.statusText}`);
+    return NextResponse.json({ coveredIds: [] });
+  }
   const data = await res.json();
 
   interface CoverageEntry {

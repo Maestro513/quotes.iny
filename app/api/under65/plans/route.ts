@@ -52,8 +52,8 @@ export async function POST(req: NextRequest) {
   // 1. Look up county FIPS from ZIP
   const countyRes = await fetch(`${BASE}/counties/by/zip/${zip}?apikey=${apiKey}`);
   if (!countyRes.ok) {
-    const txt = await countyRes.text();
-    return NextResponse.json({ error: "County lookup failed", status: countyRes.status, detail: txt }, { status: 400 });
+    console.error(`County lookup failed for ZIP ${zip}: ${countyRes.status}`);
+    return NextResponse.json({ error: "County lookup failed" }, { status: 400 });
   }
   const countiesData = await countyRes.json();
   const countyList = countiesData.counties ?? countiesData;

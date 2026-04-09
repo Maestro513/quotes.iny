@@ -1,55 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { MedicarePlan, MedicarePlanType } from "@/types/medicare";
 import { getPlansForZip, normalizePlanNumber } from "@/lib/medicare/zip-lookup";
-import fs from "fs";
-import path from "path";
+import { loadCmsPlan } from "@/lib/medicare/cms-lookup";
 
 const CONCIERGE = "https://iny-concierge.onrender.com";
 const PAGE_SIZE = 20;
 
-/* ── Local CMS JSON fallback ── */
-const CMS_DIR = path.join(process.cwd(), "data", "extracted_cms");
-
-// Build a plan_id → filename index once (lazy)
-let cmsIndex: Map<string, string> | null = null;
-
-function getCmsIndex(): Map<string, string> {
-  if (cmsIndex) return cmsIndex;
-  cmsIndex = new Map();
-  try {
-    const files = fs.readdirSync(CMS_DIR);
-    for (const f of files) {
-      if (!f.endsWith(".json")) continue;
-      // Filename: "{Plan Name} {HXXXX-XXX}.json"
-      const match = f.match(/([HR]\d{4}-\d{3})\.json$/);
-      if (match) {
-        cmsIndex.set(match[1], f);
-      }
-    }
-  } catch {
-    // CMS dir may not exist in some environments
-  }
-  return cmsIndex;
-}
-
-function loadCmsPlan(planNumber: string): Record<string, unknown> | null {
-  const index = getCmsIndex();
-  const filename = index.get(planNumber);
-  if (!filename) return null;
-  try {
-    const raw = fs.readFileSync(path.join(CMS_DIR, filename), "utf-8");
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
-}
-
-/* ── Concierge auth (JWT cached in-memory) ── */
+/* ── Concierge auth (JWT cached in-memory with safety buffer) ── */
 let cachedToken: string | null = null;
 let tokenExpiry = 0;
 
 async function getConciergeToken(): Promise<string> {
-  if (cachedToken && Date.now() < tokenExpiry) return cachedToken;
+  // Refresh 10 minutes before expiry to avoid mid-request failures
+  const BUFFER_MS = 10 * 60 * 1000;
+  if (cachedToken && Date.now() < tokenExpiry - BUFFER_MS) return cachedToken;
 
   const res = await fetch(`${CONCIERGE}/api/admin/auth/login`, {
     method: "POST",
@@ -60,15 +24,20 @@ async function getConciergeToken(): Promise<string> {
     }),
   });
 
-  if (!res.ok) throw new Error(`Concierge login failed: ${res.status}`);
+  if (!res.ok) {
+    // Invalidate stale token on auth failure
+    cachedToken = null;
+    tokenExpiry = 0;
+    throw new Error(`Concierge login failed: ${res.status}`);
+  }
 
   const cookie = res.headers.get("set-cookie") ?? "";
   const match = cookie.match(/admin_token=([^;]+)/);
   if (!match) throw new Error("No admin_token in login response");
 
   cachedToken = match[1];
-  // Refresh 5 minutes before the 8-hour expiry
-  tokenExpiry = Date.now() + 7.9 * 60 * 60 * 1000;
+  // 8-hour expiry from Concierge
+  tokenExpiry = Date.now() + 8 * 60 * 60 * 1000;
   return cachedToken;
 }
 
@@ -97,7 +66,7 @@ function mapPlanType(planType: string, planNumber: string): MedicarePlanType {
 
 async function fetchPlanDetail(planNumber: string) {
   // Use local CMS structured JSON (enriched with actual copay amounts)
-  const cms = loadCmsPlan(planNumber);
+  const cms = await loadCmsPlan(planNumber);
   if (cms) {
     return {
       benefits: cmsToBenefits(cms),
@@ -110,17 +79,29 @@ async function fetchPlanDetail(planNumber: string) {
 
   // Fallback: Concierge API
   try {
-    const token = await getConciergeToken();
-    const res = await fetch(`${CONCIERGE}/api/admin/plans/${planNumber}`, {
+    let token = await getConciergeToken();
+    let res = await fetch(`${CONCIERGE}/api/admin/plans/${planNumber}`, {
       headers: { Cookie: `admin_token=${token}` },
       next: { revalidate: 300 },
     });
+
+    // Retry once with fresh token on 401
+    if (res.status === 401) {
+      cachedToken = null;
+      tokenExpiry = 0;
+      token = await getConciergeToken();
+      res = await fetch(`${CONCIERGE}/api/admin/plans/${planNumber}`, {
+        headers: { Cookie: `admin_token=${token}` },
+        next: { revalidate: 300 },
+      });
+    }
+
     if (res.ok) {
       const data = await res.json();
       if (data?.benefits) return data;
     }
-  } catch {
-    // Concierge unavailable
+  } catch (err) {
+    console.error(`Concierge fetch failed for ${planNumber}:`, err);
   }
 
   console.warn(`Plan ${planNumber}: not found in CMS or Concierge`);

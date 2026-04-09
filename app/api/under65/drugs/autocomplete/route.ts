@@ -14,7 +14,10 @@ export async function GET(req: NextRequest) {
   const res = await fetch(
     `${BASE}/drugs/autocomplete?q=${encodeURIComponent(q)}&year=${year}&apikey=${apiKey}`
   );
-  if (!res.ok) return NextResponse.json([]);
+  if (!res.ok) {
+    console.error(`Drug autocomplete failed: ${res.status} ${res.statusText}`);
+    return NextResponse.json([]);
+  }
   const data = await res.json();
 
   const results = (Array.isArray(data) ? data : []).slice(0, 8).map((d: {
