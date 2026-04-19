@@ -1,54 +1,87 @@
 {
   "plan_id": "H5649-026",
-  "plan_name": "Central Health Embrace Choice Plan (HMO C-SNP)",
   "carrier": "Central Health Medicare Plan",
-  "plan_type": "HMO",
-  "snp_type": "C-SNP",
   "contract_number": "H5649",
   "org_name": "CENTRAL HEALTH PLAN OF CALIFORNIA, INC.",
   "geographic_area": "Select counties in CA",
   "states": "CA",
   "counties_count": "20",
+  "snp_type": "C-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.0,
+  "star_rating_part_c": 3.0,
+  "star_rating_part_d": 3.5,
+  "plan_name": "Central Health Embrace Choice Plan (HMO C-SNP)",
+  "plan_type": "HMO C-SNP",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
-  "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_in": "$7,900",
+  "moop_out": "$0",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit (in-network)",
+          "value": "$0 to 30% coinsurance"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Specialist visit (out-of-network)",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0 copay"
+          "label": "Urgent care",
+          "value": "$0"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room (in-network)",
+          "value": "$110"
         },
         {
-          "label": "Ambulance",
+          "label": "Emergency room (out-of-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Inpatient hospital (in-network)",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Ambulance ground (in-network)",
           "value": "20% coinsurance"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Ambulance ground (out-of-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Ambulance air (in-network)",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Ambulance air (out-of-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Personal emergency response",
+          "value": "$0"
+        },
+        {
+          "label": "Worldwide urgent care",
+          "value": "$110"
+        },
+        {
+          "label": "Worldwide emergency",
+          "value": "Up to $50,000"
         }
       ]
     },
@@ -57,12 +90,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$1,600"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Dental annual maximum",
+          "value": "$4,000 per year for preventive and comprehensive services"
         }
       ]
     },
@@ -71,26 +100,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
-        }
-      ]
-    },
-    {
-      "title": "Hearing",
-      "icon": "ear-listen",
-      "rows": [
-        {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "Up to $300 per year"
         }
       ]
     },
@@ -99,46 +110,180 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "Up to $175 every 3 months, unused does not carry over"
+        },
+        {
+          "label": "Gym membership",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Healthy foods allowance",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Meals chronic condition",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "In-home meals post-discharge",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
     {
-      "title": "Medical Services",
-      "icon": "hospital",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
-        },
-        {
-          "label": "Home Health",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Outpatient Hospital",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "Diagnostics/Imaging",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "Lab Services",
+          "label": "Lab services",
           "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
+          "label": "X-rays",
+          "value": "$0"
+        },
+        {
+          "label": "Advanced imaging (in-network)",
+          "value": "$0 to 20% coinsurance"
+        },
+        {
+          "label": "Advanced imaging (out-of-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Diagnostic tests (in-network)",
+          "value": "$0 to 20% coinsurance"
+        },
+        {
+          "label": "Diagnostic tests (out-of-network)",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient individual (in-network)",
+          "value": "$45"
+        },
+        {
+          "label": "Mental health outpatient individual (out-of-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Mental health outpatient group (in-network)",
+          "value": "$45"
+        },
+        {
+          "label": "Mental health outpatient group (out-of-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse outpatient",
           "value": "20% coinsurance"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Physical therapy",
+          "value": "$0"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Chiropractic Medicare-covered",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic routine",
+          "value": "$0, up to 30 visits/year"
+        },
+        {
+          "label": "Acupuncture Medicare-covered",
+          "value": "$0"
+        },
+        {
+          "label": "Acupuncture routine",
+          "value": "$0, up to 30 visits/year"
+        },
+        {
+          "label": "Opioid treatment",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0 days 1-20, $209.50/day days 21-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "$0"
+        },
+        {
+          "label": "DME",
+          "value": "20% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
+      "icon": "hospital",
+      "rows": [
+        {
+          "label": "Preventive care",
+          "value": "$0"
+        },
+        {
+          "label": "Outpatient hospital (in-network)",
+          "value": "$0 to 20% coinsurance"
+        },
+        {
+          "label": "Outpatient hospital (out-of-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Ambulatory surgery",
+          "value": "$0"
+        },
+        {
+          "label": "Telehealth",
+          "value": "$0 to $45 or $0 to 30% coinsurance"
+        },
+        {
+          "label": "Part B chemotherapy (in-network)",
+          "value": "20% coinsurance unless capped by IRA"
+        },
+        {
+          "label": "Part B chemotherapy (out-of-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Part B other drugs (in-network)",
+          "value": "20% coinsurance unless capped by IRA"
+        },
+        {
+          "label": "Part B other drugs (out-of-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Part B insulin (in-network)",
+          "value": "20% coinsurance, max $35/month unless capped by IRA"
+        },
+        {
+          "label": "Part B insulin (out-of-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Transportation (in-network)",
+          "value": "$0 for 24 one-way trips/year up to 50 miles"
+        },
+        {
+          "label": "Transportation (out-of-network)",
+          "value": "Refer to Medi-Cal"
         }
       ]
     },
@@ -147,104 +292,68 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Part D deductible Tiers 2-5",
           "value": "$615"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic 31-day",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic 31-day",
           "value": "15%"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 Generic 100-day",
           "value": "15%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Preferred Brand 31-day",
+          "value": "15%"
+        },
+        {
+          "label": "Tier 3 Preferred Brand 100-day",
+          "value": "15%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Brand 31-day",
           "value": "30%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 6: Select Care Drugs",
-          "value": "$0"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "$0"
-        },
-        {
-          "label": "Tier 2: Generic",
-          "value": "15%"
-        },
-        {
-          "label": "Tier 3: Preferred Brand",
-          "value": "15%"
-        },
-        {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 4 Non-Preferred Brand 100-day",
           "value": "30%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 Specialty 31-day",
           "value": "25%"
         },
         {
-          "label": "Tier 6: Select Care Drugs",
+          "label": "Tier 5 Specialty 100-day",
+          "value": "Not available"
+        },
+        {
+          "label": "Tier 6 Select Care 31-day",
           "value": "$0"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 6 Select Care 100-day",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "15%"
+          "label": "Part D Insulin Tier 3 31-day",
+          "value": "$35"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "15%"
+          "label": "Part D Insulin Tier 3 100-day",
+          "value": "$105"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "30%"
-        },
-        {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 6: Select Care Drugs",
-          "value": "$0"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "$0"
-        },
-        {
-          "label": "Tier 2: Generic",
-          "value": "15%"
-        },
-        {
-          "label": "Tier 3: Preferred Brand",
-          "value": "15%"
-        },
-        {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "30%"
-        },
-        {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 6: Select Care Drugs",
-          "value": "$0"
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
         }
       ]
     },
@@ -287,7 +396,5 @@
       ]
     }
   ],
-  "star_rating_overall": 3.0,
-  "star_rating_part_c": 3.0,
-  "star_rating_part_d": 3.5
+  "plan_id_full": "H5649-026-001"
 }

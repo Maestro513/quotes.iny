@@ -1,50 +1,55 @@
 {
   "plan_id": "H5628-014",
-  "plan_name": "Molina Medicare Complete Care Select (HMO D-SNP)",
   "carrier": "Molina Healthcare of Utah & Idaho",
-  "plan_type": "HMO",
-  "snp_type": "D-SNP",
   "contract_number": "H5628",
   "org_name": "MOLINA HEALTHCARE OF UTAH, INC.",
   "geographic_area": "Select counties in ID",
   "states": "ID",
   "counties_count": "43",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.0,
+  "star_rating_part_c": 3.0,
+  "star_rating_part_d": 3.5,
+  "plan_name": "Molina Medicare Complete Care Select (HMO DSNP)",
+  "plan_type": "HMO DSNP",
   "monthly_premium": "$0",
-  "annual_deductible_in": "$0",
+  "annual_deductible_in": "$0 or $257 depending on Medicaid level",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not offered - HMO plan",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$0 or $10 depending on Medicaid level"
         },
         {
-          "label": "Emergency Room",
-          "value": "$100 copay"
+          "label": "Urgent care",
+          "value": "$0 or $25 depending on Medicaid level"
         },
         {
-          "label": "Urgent Care",
-          "value": "$25 copay"
+          "label": "Emergency room",
+          "value": "$0 or $100 depending on Medicaid level"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "$0 or $295/day days 1-6, $0/day days 7-90"
         },
         {
           "label": "Ambulance",
-          "value": "20% coinsurance"
+          "value": "$0 or 20% depending on Medicaid level"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Mental health (inpatient)",
+          "value": "See inpatient hospital costs"
         }
       ]
     },
@@ -53,8 +58,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Comprehensive dental coverage",
+          "value": "$500 annual maximum"
         }
       ]
     },
@@ -63,12 +68,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$250 per year for contacts, frames, lenses, upgrades"
         }
       ]
     },
@@ -77,12 +78,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "Up to 2 pre-selected aids every 2 years"
         }
       ]
     },
@@ -91,46 +88,176 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "MyChoice card combined allowance",
+          "value": "$77 per month for OTC items"
+        },
+        {
+          "label": "Transportation services",
+          "value": "$77 per month combined allowance"
+        },
+        {
+          "label": "Routine chiropractic",
+          "value": "Up to 20 visits per year"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "Up to 4 visits per year"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "Up to 12 visits in 90 days for chronic lower back pain"
+        },
+        {
+          "label": "Meals benefit",
+          "value": "28 delivered meals (2 weeks) after surgery/hospitalization"
+        },
+        {
+          "label": "Silver&Fit fitness benefit",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "24-hour nurse advice line",
+          "value": "Available 24/7"
+        },
+        {
+          "label": "Nutritional/dietary counseling",
+          "value": "12 individual or group sessions per year"
+        },
+        {
+          "label": "Personal emergency response system",
+          "value": "In-home emergency device when authorized"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Up to $10,000 coverage"
+        },
+        {
+          "label": "Health education programs",
+          "value": "Programs to help manage health conditions"
+        },
+        {
+          "label": "Annual physical exam",
+          "value": "Covered in full"
+        },
+        {
+          "label": "Opioid treatment program",
+          "value": "Covered services with prior authorization for medication"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0 or 20% at hospital depending on Medicaid level"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$0 or 20% depending on Medicaid level"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0 or $45 depending on Medicaid level"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0 Medicare-covered, $0 routine up to 20 visits/year"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$0 Medicare-covered, $0 routine up to 4 visits/year"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0 or 20% at hospital depending on Medicaid level"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0 or 20% at hospital depending on Medicaid level"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0 or 20% at hospital depending on Medicaid level"
+        },
+        {
+          "label": "Cardiac rehabilitation",
+          "value": "$0 or $30 depending on Medicaid level"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "$0 or $15 depending on Medicaid level"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "$0 or $10 depending on Medicaid level"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 or $0 days 1-20, $190/day days 21-100 depending on Medicaid level"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "$0 or 20% depending on Medicaid level"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "$0 or 20% depending on Medicaid level"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0 or 20% depending on Medicaid level"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$0 or $50 depending on Medicaid level"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "0-20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "Same as in-person visits"
         },
         {
-          "label": "Lab Services",
-          "value": "0-20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "$0 or 20% depending on Medicaid level"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient blood services",
+          "value": "$0 or 20% depending on Medicaid level"
         }
       ]
     },
@@ -139,56 +266,24 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Drug deductible",
           "value": "$615"
         },
         {
-          "label": "Tier 1: Preferred Generic",
-          "value": "$0"
+          "label": "Generic drugs",
+          "value": "$0, $1.60, or $5.10 depending on Extra Help level"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "20%"
+          "label": "All other drugs",
+          "value": "$0, $4.90, or $12.65 depending on Extra Help level"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "20%"
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "30%"
-        },
-        {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 6: Select Care Drugs",
-          "value": "$0"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "$0"
-        },
-        {
-          "label": "Tier 2: Generic",
-          "value": "20%"
-        },
-        {
-          "label": "Tier 3: Preferred Brand",
-          "value": "20%"
-        },
-        {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "30%"
-        },
-        {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 6: Select Care Drugs",
-          "value": "$0"
+          "label": "Part B drugs",
+          "value": "$0 or 20% depending on Medicaid level"
         }
       ]
     },
@@ -231,7 +326,5 @@
       ]
     }
   ],
-  "star_rating_overall": 3.0,
-  "star_rating_part_c": 3.0,
-  "star_rating_part_d": 3.5
+  "plan_id_full": "H5628-014-001"
 }

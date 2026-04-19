@@ -1,54 +1,55 @@
 {
   "plan_id": "H4513-060",
-  "plan_name": "HealthSpring TotalCare (HMO D-SNP)",
   "carrier": "Cigna Healthcare",
-  "plan_type": "HMO",
-  "snp_type": "D-SNP",
   "contract_number": "H4513",
   "org_name": "HEALTHSPRING LIFE & HEALTH INSURANCE COMPANY, INC.",
   "geographic_area": "Texas",
   "states": "TX",
   "counties_count": "39",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 3.5,
+  "plan_name": "HealthSpring TotalCare (HMO D-SNP)",
+  "plan_type": "HMO D-SNP",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$3,450",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "N/A",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$150 copay"
+          "label": "Emergency room",
+          "value": "$0/$150 based on Medicaid level"
         },
         {
-          "label": "Urgent Care",
-          "value": "$20 copay"
+          "label": "Urgent care",
+          "value": "$0/$20 based on Medicaid level"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$0/$190/day days 1-5 based on Medicaid level"
         },
         {
           "label": "Ambulance",
-          "value": "20% coinsurance"
+          "value": "0%/20% based on Medicaid level"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$200 allowance"
+          "label": "Mental health inpatient",
+          "value": "$0/$190/day days 1-5 based on Medicaid level"
         }
       ]
     },
@@ -57,12 +58,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$3,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Dental allowance",
+          "value": "$3,000 per year for preventive and comprehensive services"
         }
       ]
     },
@@ -71,12 +68,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$400 per year"
         }
       ]
     },
@@ -85,12 +78,20 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Hearing aids",
+          "value": "Covered — see Summary of Benefits"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "OTC hearing aids",
+          "value": "$399 copay per kit, up to 2 kits per year"
+        },
+        {
+          "label": "Routine hearing exam",
+          "value": "1 routine hearing exam per year"
+        },
+        {
+          "label": "Hearing aid fitting",
+          "value": "1 hearing aid fitting evaluation per year"
         }
       ]
     },
@@ -99,38 +100,156 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$200 per quarter"
+        },
+        {
+          "label": "Home-delivered meals",
+          "value": "Up to 14 meals per discharge"
+        },
+        {
+          "label": "Transportation",
+          "value": "Unlimited one-way trips up to 70 miles per year"
+        },
+        {
+          "label": "Fitness program",
+          "value": "Fitness center membership"
+        },
+        {
+          "label": "Annual physical exam",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Caregiver support",
+          "value": "Virtual caregiving support and one-on-one coaching"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$50,000 yearly maximum"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays",
+          "value": "$0"
+        },
+        {
+          "label": "Diagnostic radiology",
+          "value": "$0"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/$20/day days 1-20, $218/day days 21-100 based on Medicaid level"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "DME",
+          "value": "0%/20% based on Medicaid level"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "0%/0%-20% based on Medicaid level"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient hospital",
+          "value": "0%/20% based on Medicaid level"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient observation",
+          "value": "0%/20% based on Medicaid level"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "15% coinsurance"
+          "label": "ASC services",
+          "value": "0%/20% based on Medicaid level"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Genetic testing",
+          "value": "$50"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Telehealth",
+          "value": "$0"
+        },
+        {
+          "label": "Prosthetics/orthotics",
+          "value": "0%/20% based on Medicaid level"
+        },
+        {
+          "label": "Medical supplies",
+          "value": "0%/20% based on Medicaid level"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "$0"
         }
       ]
     },
@@ -139,108 +258,20 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Part D deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Generic drugs (Extra Help)",
+          "value": "$0/$1.60/$5.10 based on Extra Help level"
+        },
+        {
+          "label": "All other drugs (Extra Help)",
+          "value": "$0/$4.90/$12.65 based on Extra Help level"
+        },
+        {
+          "label": "Catastrophic coverage",
           "value": "$0"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "$0"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "$0"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "$0"
-        },
-        {
-          "label": "Tier 2: Generic",
-          "value": "$0"
-        },
-        {
-          "label": "Tier 2: Generic",
-          "value": "$0"
-        },
-        {
-          "label": "Tier 2: Generic",
-          "value": "$0"
-        },
-        {
-          "label": "Tier 2: Generic",
-          "value": "$0"
-        },
-        {
-          "label": "Tier 2: Generic",
-          "value": "$0"
-        },
-        {
-          "label": "Tier 3: Preferred Brand",
-          "value": "24%"
-        },
-        {
-          "label": "Tier 3: Preferred Brand",
-          "value": "24%"
-        },
-        {
-          "label": "Tier 3: Preferred Brand",
-          "value": "24%"
-        },
-        {
-          "label": "Tier 3: Preferred Brand",
-          "value": "24%"
-        },
-        {
-          "label": "Tier 3: Preferred Brand",
-          "value": "24%"
-        },
-        {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
         }
       ]
     },
@@ -279,7 +310,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 3.5
+  "plan_id_full": "H4513-060-005"
 }
