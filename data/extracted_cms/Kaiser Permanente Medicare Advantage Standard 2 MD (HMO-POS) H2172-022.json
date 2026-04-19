@@ -1,50 +1,53 @@
 {
   "plan_id": "H2172-022",
-  "plan_name": "Kaiser Permanente Medicare Advantage Standard 2 MD (HMO-POS)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO-POS",
-  "snp_type": null,
   "contract_number": "H2172",
   "org_name": "KAISER FDTN HLTH PLAN OF THE MID-ATLANTIC STATES",
   "geographic_area": "AA, Baltimore City/Co, Carroll, Harford, Howard",
   "states": "MD",
   "counties_count": "6",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Kaiser Permanente Medicare Advantage Standard 2 MD Plan (HMO-POS)",
+  "plan_type": "HMO-POS",
   "monthly_premium": "$38",
   "annual_deductible_in": "$0",
   "moop_in": "$8,900",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "$8,900",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$5 copay"
+          "label": "PCP visit",
+          "value": "$5"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$5 copay"
+          "label": "Specialist visit",
+          "value": "$40"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Emergency room",
+          "value": "$115"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Urgent care",
+          "value": "$40"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$375/day days 1-5, $0/day days 6+"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$45 allowance"
+          "label": "Mental health (inpatient)",
+          "value": "$375/day days 1-5, $0/day days 6+"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$275"
         }
       ]
     },
@@ -53,8 +56,12 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$40 copay"
+          "label": "Advantage Plus Option 1 dental",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Advantage Plus Option 2 dental",
+          "value": "Additional $1"
         }
       ]
     },
@@ -63,12 +70,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Advantage Plus Option 1 eyewear",
+          "value": "Additional $275 allowance every 24 months"
         }
       ]
     },
@@ -77,12 +80,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Advantage Plus Option 1 hearing aids",
+          "value": "Additional $1,000 allowance per ear every 3 years"
         }
       ]
     },
@@ -91,42 +90,96 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$45 per quarter via preloaded card"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Fitness benefit One Pass",
+          "value": "Access to gym network"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Medicare Explorer POS benefit",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Advantage Plus Option 1 monthly premium",
+          "value": "$18 additional monthly premium"
+        },
+        {
+          "label": "Advantage Plus Option 2 monthly premium",
+          "value": "$23 additional monthly premium"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$20"
+        },
+        {
+          "label": "Ultrasounds",
+          "value": "$20"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$250"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient individual)",
+          "value": "$20"
+        },
+        {
+          "label": "Mental health (outpatient group)",
+          "value": "$10"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$40"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0-$325"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$325"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Transportation",
+          "value": "$0 up to 24 one-way trips per year"
         }
       ]
     },
@@ -135,28 +188,116 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic 30-day preferred",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic 30-day standard",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 1 Preferred Generic 90-day preferred",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic 90-day standard",
+          "value": "$30"
+        },
+        {
+          "label": "Tier 2 Generic 30-day preferred",
           "value": "$9"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 Generic 30-day standard",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 2 Generic 90-day preferred",
+          "value": "$27"
+        },
+        {
+          "label": "Tier 2 Generic 90-day standard",
+          "value": "$60"
+        },
+        {
+          "label": "Tier 3 Preferred Brand 30-day preferred",
           "value": "$45"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Preferred Brand 30-day standard",
+          "value": "$47"
+        },
+        {
+          "label": "Tier 3 Preferred Brand 90-day preferred",
+          "value": "$135"
+        },
+        {
+          "label": "Tier 3 Preferred Brand 90-day standard",
+          "value": "$141"
+        },
+        {
+          "label": "Tier 4 Nonpreferred 30-day",
           "value": "$100"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 Nonpreferred 90-day",
+          "value": "$300"
+        },
+        {
+          "label": "Tier 5 Specialty",
           "value": "29%"
         },
         {
-          "label": "Tier 6: Vaccines",
+          "label": "Tier 6 Injectable Part D vaccines",
           "value": "$0"
+        },
+        {
+          "label": "Mail order Tier 1 90-day",
+          "value": "$0"
+        },
+        {
+          "label": "Mail order Tier 2 90-day",
+          "value": "$0"
+        },
+        {
+          "label": "Mail order Tier 3 90-day",
+          "value": "$90"
+        },
+        {
+          "label": "Mail order Tier 4 90-day",
+          "value": "$200"
+        },
+        {
+          "label": "Mail order Tier 5",
+          "value": "29%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Part B drugs administered by provider",
+          "value": "0%-20% coinsurance"
+        },
+        {
+          "label": "Part B generic drugs 30-day preferred",
+          "value": "$9"
+        },
+        {
+          "label": "Part B generic drugs 30-day standard",
+          "value": "$20"
+        },
+        {
+          "label": "Part B brand drugs 30-day preferred",
+          "value": "$45"
+        },
+        {
+          "label": "Part B brand drugs 30-day standard",
+          "value": "$47"
+        },
+        {
+          "label": "Part B insulin drugs",
+          "value": "$35"
         }
       ]
     },
@@ -199,7 +340,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 5.0
+  "plan_id_full": "H2172-022-000"
 }

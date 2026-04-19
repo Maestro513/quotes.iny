@@ -1,50 +1,75 @@
 {
   "plan_id": "H5521-656",
-  "plan_name": "Aetna Medicare Enhanced (PPO)",
   "carrier": "Aetna Medicare",
-  "plan_type": "PPO",
-  "snp_type": null,
   "contract_number": "H5521",
   "org_name": "AETNA LIFE INSURANCE COMPANY",
   "geographic_area": "Northern Rural Utah",
   "states": "UT",
   "counties_count": "9",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$45.90",
-  "annual_deductible_in": "$500",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Aetna Medicare Enhanced (PPO)",
+  "plan_type": "PPO",
+  "monthly_premium": "$105",
+  "annual_deductible_in": "$0",
   "moop_in": "$7,900",
+  "moop_out": "$11,300",
   "moop_combined": "$11,300",
-  "moop_out": null,
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "PCP visit (out-of-network)",
+          "value": "50% after deductible"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Specialist visit (in-network)",
+          "value": "$55"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Specialist visit (out-of-network)",
+          "value": "50% after deductible"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Urgent care",
+          "value": "$40"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Emergency room",
+          "value": "$115"
+        },
+        {
+          "label": "Inpatient hospital (in-network)",
+          "value": "$475/day days 1-5, $0/day days 6+"
+        },
+        {
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "50% per stay after deductible"
+        },
+        {
+          "label": "Ambulance (in-network)",
+          "value": "$300 ground, 20% air"
+        },
+        {
+          "label": "Ambulance (out-of-network)",
+          "value": "$300 ground, 20% air after deductible"
+        },
+        {
+          "label": "Mental health (inpatient) (in-network)",
+          "value": "$370/day days 1-5, $0/day days 6-90"
+        },
+        {
+          "label": "Mental health (inpatient) (out-of-network)",
+          "value": "50% per stay after deductible"
         }
       ]
     },
@@ -53,8 +78,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$55 copay"
+          "label": "Dental allowance",
+          "value": "$1,000 annual benefit amount for comprehensive services"
         }
       ]
     },
@@ -63,12 +88,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "$50 max"
+          "label": "Vision eyewear allowance",
+          "value": "$100 annual benefit amount for prescription eyewear"
         }
       ]
     },
@@ -77,12 +98,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -91,42 +108,216 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "SilverSneakers fitness membership",
+          "value": "$0 basic membership to participating facilities"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "24-Hour Nurse Line",
+          "value": "$0 copay for health-related questions"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Resources For Living",
+          "value": "Community resource connections for senior housing"
+        },
+        {
+          "label": "Visitor/travel program Explorer",
+          "value": "Remain in plan up to 12 months when outside service area"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services (in-network)",
+          "value": "$10"
+        },
+        {
+          "label": "Lab services (out-of-network)",
+          "value": "50% after deductible"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (in-network)",
+          "value": "$10"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (out-of-network)",
+          "value": "50% after deductible"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (in-network)",
+          "value": "$295"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (out-of-network)",
+          "value": "50% after deductible"
+        },
+        {
+          "label": "Diagnostic tests and procedures (in-network)",
+          "value": "$10"
+        },
+        {
+          "label": "Diagnostic tests and procedures (out-of-network)",
+          "value": "50% after deductible"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient) (in-network)",
+          "value": "$40"
+        },
+        {
+          "label": "Mental health (outpatient) (out-of-network)",
+          "value": "50% after deductible"
+        },
+        {
+          "label": "Substance abuse (outpatient) (in-network)",
+          "value": "$40"
+        },
+        {
+          "label": "Substance abuse (outpatient) (out-of-network)",
+          "value": "50% after deductible"
+        },
+        {
+          "label": "Chiropractic (in-network)",
+          "value": "$15"
+        },
+        {
+          "label": "Chiropractic (out-of-network)",
+          "value": "50% after deductible"
+        },
+        {
+          "label": "Podiatry/foot care (in-network)",
+          "value": "$55"
+        },
+        {
+          "label": "Podiatry/foot care (out-of-network)",
+          "value": "50% after deductible"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "50% after deductible"
+        },
+        {
+          "label": "Occupational therapy (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Occupational therapy (out-of-network)",
+          "value": "50% after deductible"
+        },
+        {
+          "label": "Speech therapy (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Speech therapy (out-of-network)",
+          "value": "50% after deductible"
+        },
+        {
+          "label": "Acupuncture (in-network)",
+          "value": "$55"
+        },
+        {
+          "label": "Acupuncture (out-of-network)",
+          "value": "50% after deductible"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "50% per stay after deductible"
+        },
+        {
+          "label": "Home health care (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Home health care (out-of-network)",
+          "value": "50% after deductible"
+        },
+        {
+          "label": "Durable medical equipment (DME) (in-network)",
+          "value": "0%-20%"
+        },
+        {
+          "label": "Durable medical equipment (DME) (out-of-network)",
+          "value": "50% after deductible"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Preventive care (out-of-network)",
+          "value": "0%-50%"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery/services (in-network)",
+          "value": "$475"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient surgery/services (out-of-network)",
+          "value": "50% after deductible"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgical center (in-network)",
+          "value": "$425"
+        },
+        {
+          "label": "Ambulatory surgical center (out-of-network)",
+          "value": "50% after deductible"
+        },
+        {
+          "label": "Prosthetics/orthotics (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Prosthetics/orthotics (out-of-network)",
+          "value": "50% after deductible"
+        },
+        {
+          "label": "Diabetic supplies/monitoring (in-network)",
+          "value": "0%-20%"
+        },
+        {
+          "label": "Diabetic supplies/monitoring (out-of-network)",
+          "value": "0%-20% after deductible"
+        },
+        {
+          "label": "Outpatient observation (in-network)",
+          "value": "$475"
+        },
+        {
+          "label": "Outpatient observation (out-of-network)",
+          "value": "50% after deductible"
         }
       ]
     },
@@ -135,28 +326,108 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Drug deductible",
+          "value": "$615 (Tiers 3-5)"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic (30-day preferred retail)",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic (30-day standard retail)",
+          "value": "$2"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (30-day preferred mail)",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 1 Preferred Generic (30-day standard mail)",
+          "value": "$2"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (31-day LTC)",
+          "value": "$2"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (100-day preferred retail)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (100-day standard retail)",
+          "value": "$6"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (100-day preferred mail)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (100-day standard mail)",
+          "value": "$6"
+        },
+        {
+          "label": "Tier 2 Generic (30-day preferred retail)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic (30-day standard retail)",
+          "value": "$12"
+        },
+        {
+          "label": "Tier 2 Generic (30-day preferred mail)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic (30-day standard mail)",
+          "value": "$12"
+        },
+        {
+          "label": "Tier 2 Generic (31-day LTC)",
+          "value": "$12"
+        },
+        {
+          "label": "Tier 2 Generic (100-day preferred retail)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic (100-day standard retail)",
+          "value": "$36"
+        },
+        {
+          "label": "Tier 2 Generic (100-day preferred mail)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic (100-day standard mail)",
+          "value": "$36"
+        },
+        {
+          "label": "Tier 3 Preferred Brand (all pharmacy types)",
           "value": "24%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 4 Non-Preferred Drug (all pharmacy types)",
           "value": "25%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 Specialty (all pharmacy types)",
           "value": "25%"
+        },
+        {
+          "label": "Part B Insulin",
+          "value": "$35 in-network, $35 out-of-network after deductible"
+        },
+        {
+          "label": "Chemotherapy drugs",
+          "value": "0%-20% in-network, 50% out-of-network after deductible"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "0%-20% in-network, 50% out-of-network after deductible"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 generic and brand"
         }
       ]
     },
@@ -199,7 +470,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 5.0
+  "plan_id_full": "H5521-656-000"
 }

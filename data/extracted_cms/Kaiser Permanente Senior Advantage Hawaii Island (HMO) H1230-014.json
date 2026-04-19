@@ -1,50 +1,53 @@
 {
   "plan_id": "H1230-014",
-  "plan_name": "Kaiser Permanente Senior Advantage Hawaii Island (HMO)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H1230",
   "org_name": "KAISER FOUNDATION HP, INC.",
   "geographic_area": "Island of Hawaii except for 3 ZIPs",
   "states": "HI",
   "counties_count": "1",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$146.80",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Kaiser Permanente Senior Advantage Hawaii Island Plan (HMO)",
+  "plan_type": "HMO",
+  "monthly_premium": "$188",
   "annual_deductible_in": "$0",
   "moop_in": "$7,750",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not covered",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$15 copay"
+          "label": "PCP visit",
+          "value": "$15/visit"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$50/visit"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care",
+          "value": "$40/visit"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Emergency room",
+          "value": "$115/visit"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$400/day days 1-6, $70/day days 7-30, $0 rest of stay"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Ambulance",
+          "value": "$275/one-way trip"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$300/day days 1-6, $0 rest of stay"
         }
       ]
     },
@@ -53,8 +56,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$50 copay"
+          "label": "Advantage Plus comprehensive dental (optional)",
+          "value": "30%-50% coinsurance up to $1"
         }
       ]
     },
@@ -63,12 +66,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Advantage Plus eyewear allowance (optional)",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -77,12 +76,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Advantage Plus hearing aids (optional)",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -91,42 +86,84 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Fitness benefit - One Pass",
+          "value": "Complete fitness program including gym network access"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
-        },
-        {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Acupuncture and chiropractic (non-Medicare covered)",
+          "value": "20 visits total per year - $20 per visit"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$25/test"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$300/test"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient individual)",
+          "value": "$50/visit"
+        },
+        {
+          "label": "Mental health (outpatient group)",
+          "value": "$15/visit"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$15/visit"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$20/visit"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$20/visit"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 days 1-20, $218/day days 21-40, $0 days 41-100"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0-$350/visit"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$350/visit"
         }
       ]
     },
@@ -135,28 +172,120 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
+          "value": "$0"
+        },
+        {
+          "label": "Retail Tier 1 (30-day)",
           "value": "$4"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Retail Tier 1 (31-60 day)",
+          "value": "$8"
+        },
+        {
+          "label": "Retail Tier 1 (61-90 day)",
+          "value": "$12"
+        },
+        {
+          "label": "Retail Tier 2 (30-day)",
           "value": "$10"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Retail Tier 2 (31-60 day)",
+          "value": "$20"
+        },
+        {
+          "label": "Retail Tier 2 (61-90 day)",
+          "value": "$30"
+        },
+        {
+          "label": "Retail Tier 3 (30-day)",
           "value": "$43"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Retail Tier 3 (31-60 day)",
+          "value": "$86"
+        },
+        {
+          "label": "Retail Tier 3 (61-90 day)",
+          "value": "$129"
+        },
+        {
+          "label": "Retail Tier 4 (30-day)",
           "value": "$90"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Retail Tier 4 (31-60 day)",
+          "value": "$180"
+        },
+        {
+          "label": "Retail Tier 4 (61-90 day)",
+          "value": "$270"
+        },
+        {
+          "label": "Retail Tier 5 (30-day)",
           "value": "30%"
         },
         {
-          "label": "Tier 6: Vaccines",
+          "label": "Retail Tier 6 (Injectable vaccines)",
           "value": "$0"
+        },
+        {
+          "label": "Mail Tier 1 (30-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Mail Tier 2 (31-60 day)",
+          "value": "$10"
+        },
+        {
+          "label": "Mail Tier 2 (61-90 day)",
+          "value": "$20"
+        },
+        {
+          "label": "Mail Tier 3 (31-60 day)",
+          "value": "$43"
+        },
+        {
+          "label": "Mail Tier 3 (61-90 day)",
+          "value": "$86"
+        },
+        {
+          "label": "Mail Tier 4 (31-60 day)",
+          "value": "$90"
+        },
+        {
+          "label": "Mail Tier 4 (61-90 day)",
+          "value": "$180"
+        },
+        {
+          "label": "Mail Tier 5",
+          "value": "30%"
+        },
+        {
+          "label": "Insulin copay limit",
+          "value": "$35 per month"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Part B drugs (generic)",
+          "value": "$10"
+        },
+        {
+          "label": "Part B drugs (brand)",
+          "value": "$43"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$35"
+        },
+        {
+          "label": "Part B drugs administered by provider",
+          "value": "0%-20% coinsurance"
         }
       ]
     },
@@ -199,7 +328,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 5.0
+  "plan_id_full": "H1230-014-000"
 }

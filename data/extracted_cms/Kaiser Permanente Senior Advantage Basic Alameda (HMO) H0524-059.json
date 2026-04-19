@@ -1,50 +1,63 @@
 {
   "plan_id": "H0524-059",
-  "plan_name": "Kaiser Permanente Senior Advantage Basic Alameda (HMO)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H0524",
   "org_name": "KAISER FOUNDATION HP, INC.",
   "geographic_area": "Alameda County Plan - Basic",
   "states": "CA",
   "counties_count": "1",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$19",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Kaiser Permanente Senior Advantage Alameda, Napa, and San Francisco Counties Plan (HMO)",
+  "plan_type": "HMO",
+  "monthly_premium": "$99",
   "annual_deductible_in": "$0",
-  "moop_in": "$6,000",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_in": "$3,900",
+  "moop_out": "Not covered",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$5 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$5 copay"
+          "label": "Specialist visit",
+          "value": "$15"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$5 copay"
+          "label": "Emergency room",
+          "value": "$150"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$270/day days 1-5, $0/day days 6+"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Ambulance",
+          "value": "$350"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$270/day days 1-5, $0/day days 6+"
+        }
+      ]
+    },
+    {
+      "title": "Dental",
+      "icon": "tooth",
+      "rows": [
+        {
+          "label": "Dental care HMO (Advantage Plus)",
+          "value": "Varies by service - see Evidence of Coverage"
         }
       ]
     },
@@ -53,12 +66,22 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Eyewear allowance (Advantage Plus)",
+          "value": "$300 allowance every 24 months"
+        }
+      ]
+    },
+    {
+      "title": "Hearing",
+      "icon": "ear-listen",
+      "rows": [
+        {
+          "label": "Hearing aids (Advantage Plus)",
+          "value": "$800 allowance per ear every 36 months"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Hearing aid fitting (Advantage Plus)",
+          "value": "$0"
         }
       ]
     },
@@ -67,42 +90,84 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Advanced Care At Home",
+          "value": "$0 when prescribed as part of home treatment plan"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Advantage Plus monthly premium",
+          "value": "$20 additional premium"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "One Pass fitness program (Advantage Plus)",
+          "value": "$0 - includes gym network"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "Diagnostic tests",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/ultrasounds",
+          "value": "$10"
+        },
+        {
+          "label": "Advanced imaging (MRI/CT/PET)",
+          "value": "$275"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient individual)",
+          "value": "$0"
+        },
+        {
+          "label": "Mental health (outpatient group)",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0-$10"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $100/day days 21-100"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient hospital",
+          "value": "$0-$240"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$240"
         }
       ]
     },
@@ -111,27 +176,115 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Retail Tier 1 (30-day)",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Retail Tier 1 (31-60 day)",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Retail Tier 1 (61-100 day)",
+          "value": "$0"
+        },
+        {
+          "label": "Retail Tier 2 (30-day)",
+          "value": "$7"
+        },
+        {
+          "label": "Retail Tier 2 (31-60 day)",
+          "value": "$14"
+        },
+        {
+          "label": "Retail Tier 2 (61-100 day)",
+          "value": "$21"
+        },
+        {
+          "label": "Retail Tier 3 (30-day)",
+          "value": "$47"
+        },
+        {
+          "label": "Retail Tier 3 (31-60 day)",
+          "value": "$94"
+        },
+        {
+          "label": "Retail Tier 3 (61-100 day)",
+          "value": "$141"
+        },
+        {
+          "label": "Retail Tier 4 (30-day)",
+          "value": "$100"
+        },
+        {
+          "label": "Retail Tier 4 (31-60 day)",
+          "value": "$200"
+        },
+        {
+          "label": "Retail Tier 4 (61-100 day)",
+          "value": "$300"
+        },
+        {
+          "label": "Retail Tier 5 (30-day)",
+          "value": "32%"
+        },
+        {
+          "label": "Retail Tier 6 (vaccines)",
+          "value": "$0"
+        },
+        {
+          "label": "Mail-order Tier 1 (30-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Mail-order Tier 1 (31-60 day)",
+          "value": "$0"
+        },
+        {
+          "label": "Mail-order Tier 2 (30-day)",
+          "value": "$7"
+        },
+        {
+          "label": "Mail-order Tier 2 (31-60 day)",
+          "value": "$14"
+        },
+        {
+          "label": "Mail-order Tier 3 (30-day)",
+          "value": "$47"
+        },
+        {
+          "label": "Mail-order Tier 3 (31-60 day)",
+          "value": "$94"
+        },
+        {
+          "label": "Mail-order Tier 4 (30-day)",
+          "value": "$100"
+        },
+        {
+          "label": "Mail-order Tier 4 (31-60 day)",
+          "value": "$200"
+        },
+        {
+          "label": "Mail-order Tier 5 (30-day)",
+          "value": "32%"
+        },
+        {
+          "label": "Part B drugs (generic)",
+          "value": "$7"
+        },
+        {
+          "label": "Part B drugs (brand)",
+          "value": "$47"
+        },
+        {
+          "label": "Part B insulin",
           "value": "$35"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "$90"
+          "label": "Part B administered drugs",
+          "value": "0%-20% coinsurance"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "30%"
-        },
-        {
-          "label": "Tier 6: Vaccines",
+          "label": "Catastrophic coverage",
           "value": "$0"
         }
       ]
@@ -175,7 +328,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 5.0
+  "plan_id_full": "H0524-059-000"
 }

@@ -1,50 +1,67 @@
 {
   "plan_id": "H0524-081",
-  "plan_name": "Kaiser Permanente Sr Advantage Inland Empire Value (HMO)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H0524",
   "org_name": "KAISER FOUNDATION HP, INC.",
   "geographic_area": "Inland Empire Value Plan",
   "states": "CA",
   "counties_count": "2",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Kaiser Permanente Senior Advantage Inland Empire Plan (HMO) and Kaiser Permanente Senior Advantage Inland Empire Value Plan (HMO)",
+  "plan_type": "HMO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
-  "moop_in": "$2,500",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_in": "$1,300 (Inland Empire Plan), $2,500 (Inland Empire Value Plan)",
+  "moop_out": "Not applicable - HMO",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$0 (Inland Empire Plan), $10 (Inland Empire Value Plan)"
         },
         {
-          "label": "Emergency Room",
-          "value": "$150 copay"
+          "label": "Emergency room",
+          "value": "$150"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0 copay"
+          "label": "Urgent care",
+          "value": "$0"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$100/day days 1-5"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$60 allowance"
+          "label": "Ambulance (in-network)",
+          "value": "$325 one-way (Inland Empire Plan)"
+        },
+        {
+          "label": "Ambulance (out-of-network)",
+          "value": "Same as in-network"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$100/day days 1-5"
+        }
+      ]
+    },
+    {
+      "title": "Dental",
+      "icon": "tooth",
+      "rows": [
+        {
+          "label": "Advantage Plus - Dental care",
+          "value": "DeltaCare USA Dental HMO Program with varying costs"
         }
       ]
     },
@@ -53,12 +70,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Advantage Plus - Enhanced eyewear allowance",
+          "value": "$300 every 24 months (adds to base plan allowance)"
         }
       ]
     },
@@ -67,12 +80,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Advantage Plus - Enhanced hearing aid allowance",
+          "value": "$1,000 per ear every 36 months (adds to base plan allowance)"
         }
       ]
     },
@@ -81,42 +90,76 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$40 quarterly (Inland Empire Plan)"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Fitness benefit - One Pass",
+          "value": "Complete fitness program including gym network"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Advantage Plus - Additional monthly premium",
+          "value": "$17 per month for enhanced dental"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0 (Inland Empire Plan), $10 (Inland Empire Value Plan)"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$200 (Inland Empire Plan), $250 (Inland Empire Value Plan)"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0-$10 (Inland Empire Plan), $0-$20 (Inland Empire Value Plan)"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 days 1-20, $150/day days 21-100"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0-$100 (Inland Empire Plan), $0-$230 (Inland Empire Value Plan)"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$100 (Inland Empire Plan), $230 (Inland Empire Value Plan)"
         }
       ]
     },
@@ -125,28 +168,76 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 (Preferred Generic) - 30 day",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 (Generic) - 30 day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 (Preferred Brand) - 30 day",
           "value": "$40"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 (Preferred Brand) - 31-60 day",
+          "value": "$80"
+        },
+        {
+          "label": "Tier 3 (Preferred Brand) - 61-100 day",
+          "value": "$120"
+        },
+        {
+          "label": "Tier 4 (Nonpreferred) - 30 day",
           "value": "$95"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 (Nonpreferred) - 31-60 day",
+          "value": "$190"
+        },
+        {
+          "label": "Tier 4 (Nonpreferred) - 61-100 day",
+          "value": "$285"
+        },
+        {
+          "label": "Tier 5 (Specialty) - 30 day",
           "value": "32%"
         },
         {
-          "label": "Tier 6: Vaccines",
+          "label": "Tier 6 (Injectable Part D vaccines)",
           "value": "$0"
+        },
+        {
+          "label": "Mail order - Tier 3 - 31-60 day",
+          "value": "$80"
+        },
+        {
+          "label": "Mail order - Tier 4 - 31-60 day",
+          "value": "$190"
+        },
+        {
+          "label": "Insulin coverage",
+          "value": "$35 max per month supply"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Part B drugs - Generic",
+          "value": "$12 for 30-day supply"
+        },
+        {
+          "label": "Part B drugs - Brand",
+          "value": "$47 for 30-day supply"
+        },
+        {
+          "label": "Part B drugs - Administered by provider",
+          "value": "0%-20% coinsurance"
         }
       ]
     },
@@ -189,7 +280,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 5.0
+  "plan_id_full": "H0524-081-000"
 }

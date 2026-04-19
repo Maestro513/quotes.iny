@@ -1,50 +1,63 @@
 {
   "plan_id": "H4939-002",
-  "plan_name": "Humana Dual Select H4939-002 (HMO-POS D-SNP)",
   "carrier": "Humana",
-  "plan_type": "HMO-POS",
-  "snp_type": "D-SNP",
   "contract_number": "H4939",
   "org_name": "ARCADIAN HEALTH PLAN, INC.",
   "geographic_area": "Indiana",
   "states": "IN",
   "counties_count": "92",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
-  "annual_deductible_in": "$0",
+  "plan_name": "Humana Dual Select H4939-002 (HMO-POS D-SNP)",
+  "plan_type": "HMO-POS",
+  "monthly_premium": "$0 or up to $37.50 depending on your level of Extra Help",
+  "annual_deductible_in": "$0 or $257 depending on your level of Medicaid eligibility",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "20% coinsurance"
+          "label": "PCP visit",
+          "value": "$0 or 20% of the cost"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Telehealth PCP",
+          "value": "$0 copay"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Specialist visit",
+          "value": "$0 or 20% of the cost"
         },
         {
-          "label": "Urgent Care",
-          "value": "20% coinsurance"
+          "label": "Telehealth specialist",
+          "value": "$0 or 20% of the cost"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Urgent care",
+          "value": "$0 or 20% of the cost"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Telehealth urgent care",
+          "value": "$0 or 20% of the cost"
+        },
+        {
+          "label": "Emergency room",
+          "value": "$0 or $115 copay"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "$0 or $2,230 copay per admit"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$0 or $335 copay per date of service"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$0 or $2,080 copay per admit"
         }
       ]
     },
@@ -53,12 +66,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$3,500"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental comprehensive",
+          "value": "$0 copay for comprehensive dental services with $3"
         }
       ]
     },
@@ -67,12 +76,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -81,12 +86,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -95,46 +96,140 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$115 monthly allowance on prepaid spending card"
+        },
+        {
+          "label": "Transportation",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Transportation for chronic conditions",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "Meal delivery program limited to 4 times per year"
+        },
+        {
+          "label": "Fitness program",
+          "value": "SilverSneakers fitness program at participating locations"
+        },
+        {
+          "label": "Smoking cessation",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Go365 rewards program",
+          "value": "Complete healthy activities and get rewarded"
+        },
+        {
+          "label": "HMO Travel Benefit",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0 copay or $0 or 20% of the cost depending on location"
+        },
+        {
+          "label": "X-rays",
+          "value": "$0 or 20% of the cost"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$0 or $200/$335/$280 copay depending on location"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient",
+          "value": "$0 or $35 copay"
+        },
+        {
+          "label": "Substance abuse outpatient",
+          "value": "$0 or $35 copay"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0 or $15 copay"
+        },
+        {
+          "label": "Podiatry",
+          "value": "$0 or 20% of the cost"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0 or 20% of the cost"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0 or 20% of the cost"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0 or 20% of the cost"
+        },
+        {
+          "label": "Cardiac rehabilitation",
+          "value": "$0 or 20% of the cost"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "$0 or 20% of the cost"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$0 or 20% coinsurance up to 20 visits per year"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 copay days 1-20, $0 or $218 copay days 21-100"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "$0 or 20% of the cost"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
-        },
-        {
-          "label": "Home Health",
+          "label": "Preventive care",
           "value": "$0 copay"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery",
+          "value": "$0 or 20% of the cost"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "$0 or 20% of the cost"
         },
         {
-          "label": "Lab Services",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "$0 copay or 20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies",
+          "value": "$0 copay at pharmacy or preferred supplier, $0 or 20% at diabetic supplier"
         }
       ]
     },
@@ -143,28 +238,136 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Drug deductible",
+          "value": "$0 if you receive Extra Help, $615 for Tier 3-5 drugs if no Extra Help"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic retail 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic retail 100-day",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 1 Preferred Generic standard mail 30-day",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 1 Preferred Generic standard mail 100-day",
+          "value": "$30"
+        },
+        {
+          "label": "Tier 1 Preferred Generic CenterWell 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic CenterWell 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic retail 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic standard mail 30-day",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 2 Generic standard mail 100-day",
+          "value": "$60"
+        },
+        {
+          "label": "Tier 2 Generic CenterWell 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic CenterWell 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 Preferred Brand retail 30-day",
           "value": "25%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Preferred Brand retail 100-day",
           "value": "25%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 3 Preferred Brand standard mail 30-day",
           "value": "25%"
+        },
+        {
+          "label": "Tier 3 Preferred Brand standard mail 100-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 3 Preferred Brand CenterWell 30-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 3 Preferred Brand CenterWell 100-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug retail 30-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug retail 100-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug standard mail 30-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug standard mail 100-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug CenterWell 30-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug CenterWell 100-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 5 Specialty retail 30-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 5 Specialty standard mail 30-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 5 Specialty CenterWell 30-day",
+          "value": "25%"
+        },
+        {
+          "label": "Insulin all tiers up to 30-day",
+          "value": "$35 maximum per month"
+        },
+        {
+          "label": "Extra Help coverage",
+          "value": "$5.10 generic/$12.65 other OR $1.60 generic/$4.90 other OR $0 all drugs depending on level"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$35 maximum per month"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "$0 or 20% of the cost"
         }
       ]
     },
@@ -206,5 +409,6 @@
         }
       ]
     }
-  ]
+  ],
+  "plan_id_full": "H4939-002-000"
 }

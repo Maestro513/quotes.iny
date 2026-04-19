@@ -1,50 +1,59 @@
 {
   "plan_id": "H3192-029",
-  "plan_name": "Aetna Medicare Chronic Care Total (HMO C-SNP)",
   "carrier": "Aetna Medicare",
-  "plan_type": "HMO",
-  "snp_type": "C-SNP",
   "contract_number": "H3192",
   "org_name": "AETNA HEALTH OF MICHIGAN INC.",
   "geographic_area": "IN Central",
   "states": "IN",
   "counties_count": "10",
+  "snp_type": "C-SNP",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "star_rating_overall": 3.0,
+  "star_rating_part_c": 3.0,
+  "star_rating_part_d": 3.0,
+  "plan_name": "Aetna Medicare Chronic Care Total (HMO C-SNP)",
+  "plan_type": "HMO C-SNP",
+  "monthly_premium": "$38.40",
   "annual_deductible_in": "$0",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not available (HMO)",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
+          "label": "PCP visit",
           "value": "$0 copay"
         },
         {
-          "label": "Specialist Visit",
-          "value": "20% coinsurance"
+          "label": "Specialist visit",
+          "value": "0%-20% coinsurance (0% for cardiologists"
         },
         {
-          "label": "Emergency Room",
+          "label": "Urgent care (in-network)",
+          "value": "$40 copay"
+        },
+        {
+          "label": "Urgent care (out-of-network)",
           "value": "$115 copay"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Emergency room",
+          "value": "$115 copay"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "$2,230 per stay"
         },
         {
           "label": "Ambulance",
           "value": "20% coinsurance"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$88 allowance"
+          "label": "Mental health inpatient",
+          "value": "$2,080 per stay"
         }
       ]
     },
@@ -53,12 +62,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,250"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental annual allowance",
+          "value": "$2,250 annual allowance for covered services"
         }
       ]
     },
@@ -67,12 +72,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$350 annual allowance for prescription eyewear"
         }
       ]
     },
@@ -81,12 +82,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids allowance",
+          "value": "$1,250 per ear annual allowance"
         }
       ]
     },
@@ -95,58 +92,140 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Flex/SSBCI",
-          "value": "Personal Care Items"
+          "label": "Extra Supports Wallet",
+          "value": "$88 monthly allowance for healthy foods"
         },
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "High Value PCP bonus",
+          "value": "Covered — see Summary of Benefits"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "SilverSneakers fitness",
+          "value": "Covered — see Summary of Benefits"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "24-Hour Nurse Line",
+          "value": "Free access to registered nurses anytime"
+        },
+        {
+          "label": "Resources For Living",
+          "value": "Community resource connection services"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Maximum $250,000 coverage outside U.S."
         }
       ]
     },
     {
-      "title": "Medical Services",
-      "icon": "hospital",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Lab services",
+          "value": "20% coinsurance ($0 for certain lab services)"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Diagnostic tests",
+          "value": "20% coinsurance (0% for certain tests)"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "Diagnostics/Imaging",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "Lab Services",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "Renal Dialysis",
+          "label": "X-rays",
           "value": "20% coinsurance"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Advanced imaging",
+          "value": "20% coinsurance"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Glaucoma screening",
+          "value": "20% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Substance abuse outpatient",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Podiatry",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "20% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 days 1-20, $218 days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0 copay"
+        },
+        {
+          "label": "DME",
+          "value": "0%-20% coinsurance (0% for CGMs)"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
+      "icon": "hospital",
+      "rows": [
+        {
+          "label": "Preventive care",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Outpatient hospital",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Outpatient surgery",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Ambulatory surgical center",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Prosthetics",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "$0 copay"
         }
       ]
     },
@@ -155,28 +234,80 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Drug deductible",
+          "value": "$615 (applies to Tiers 3, 4, 5)"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 2 Generic 30-day",
           "value": "$5"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 3 Preferred Brand 30-day",
           "value": "25%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 4 Non-Preferred Drug 30-day",
           "value": "25%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 Specialty 30-day",
           "value": "25%"
+        },
+        {
+          "label": "Tier 1 Preferred Generic 100-day retail",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic 100-day retail",
+          "value": "$15"
+        },
+        {
+          "label": "Tier 3 Preferred Brand 100-day retail",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug 100-day retail",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 1 Preferred Generic 100-day mail",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic 100-day mail",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 3 Preferred Brand 100-day mail",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug 100-day mail",
+          "value": "25%"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$35 copay"
+        },
+        {
+          "label": "Part B chemotherapy",
+          "value": "0%-20% coinsurance"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "0%-20% coinsurance"
+        },
+        {
+          "label": "Out-of-pocket threshold",
+          "value": "$2,100"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
         }
       ]
     },
@@ -219,7 +350,5 @@
       ]
     }
   ],
-  "star_rating_overall": 3.0,
-  "star_rating_part_c": 3.0,
-  "star_rating_part_d": 3.0
+  "plan_id_full": "H3192-029-000"
 }

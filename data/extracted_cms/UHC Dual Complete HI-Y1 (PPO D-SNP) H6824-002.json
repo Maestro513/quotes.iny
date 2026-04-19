@@ -1,54 +1,74 @@
 {
   "plan_id": "H6824-002",
-  "plan_name": "UHC Dual Complete HI-Y1 (PPO D-SNP)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "PPO",
-  "snp_type": "D-SNP",
   "contract_number": "H6824",
   "org_name": "UNITEDHEALTHCARE INSURANCE COMPANY",
   "geographic_area": "State of Hawaii",
   "states": "HI",
   "counties_count": "5",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "plan_name": "UHC Dual Complete HI-Y1 (PPO D-SNP)",
+  "plan_type": "PPO D-SNP",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
-  "moop_in": "$9,250",
+  "moop_in": "$0",
+  "moop_out": "$13,900",
+  "part_b_premium_reduction": "Medicaid coverage - no Part B premium",
   "moop_combined": "$13,900",
-  "moop_out": null,
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "0-20% coinsurance"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "20% coinsurance"
+          "label": "Specialist visit (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Specialist visit (out-of-network)",
+          "value": "30% coinsurance"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$40 copay"
+          "label": "Urgent care",
+          "value": "$0 worldwide"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room",
+          "value": "$0 worldwide"
         },
         {
-          "label": "Ambulance",
-          "value": "20% coinsurance"
+          "label": "Inpatient hospital (in-network)",
+          "value": "$0"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "$1,935/stay"
+        },
+        {
+          "label": "Ambulance (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Ambulance (out-of-network)",
+          "value": "20% coinsurance ground/air"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$0"
+        },
+        {
+          "label": "Dental restorative/emergency",
+          "value": "$0"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "Medicaid coverage - no Part B premium"
         }
       ]
     },
@@ -57,12 +77,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,500"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental allowance",
+          "value": "$2,500 annual allowance for all covered dental services"
         }
       ]
     },
@@ -71,42 +87,260 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC/food/utility allowance",
+          "value": "$132.50 per month for OTC products"
+        },
+        {
+          "label": "Transportation benefit",
+          "value": "24 one-way trips per year to approved locations"
+        },
+        {
+          "label": "Chiropractic visits",
+          "value": "20 visits per year combined in and out-of-network"
+        },
+        {
+          "label": "Acupuncture visits",
+          "value": "20 visits per year combined in and out-of-network"
+        },
+        {
+          "label": "Podiatry visits",
+          "value": "4 visits per year out-of-network"
+        },
+        {
+          "label": "Nursing home care",
+          "value": "Covered at $0 cost"
+        },
+        {
+          "label": "Adult Foster Care",
+          "value": "Covered at $0 cost"
+        },
+        {
+          "label": "Personal care attendant",
+          "value": "Covered at $0 cost"
+        },
+        {
+          "label": "Adult day health/care",
+          "value": "Covered at $0 cost"
+        },
+        {
+          "label": "Home maintenance",
+          "value": "Grab bars and ramps covered at $0 cost"
+        },
+        {
+          "label": "Wellness support services",
+          "value": "Including in-home services"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services (out-of-network)",
+          "value": "40% coinsurance"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (out-of-network)",
+          "value": "40% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient",
+          "value": "$0"
+        },
+        {
+          "label": "Virtual mental health visits",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Chiropractic (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Podiatry/foot care (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry/foot care (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Occupational therapy (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Speech therapy (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Acupuncture (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Acupuncture (out-of-network)",
+          "value": "30% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0 days 1-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "$217/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (out-of-network)",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Kidney disease/dialysis (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Kidney disease/dialysis (out-of-network)",
+          "value": "20% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Wellness visits (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-20% coinsurance"
+          "label": "Wellness visits (out-of-network)",
+          "value": "40% coinsurance"
         },
         {
-          "label": "Diagnostics/Imaging",
+          "label": "Welcome to Medicare visit",
+          "value": "$0"
+        },
+        {
+          "label": "Virtual medical visits",
+          "value": "$0"
+        },
+        {
+          "label": "Outpatient surgery/services (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Outpatient surgery/services (out-of-network)",
+          "value": "40% coinsurance"
+        },
+        {
+          "label": "Ambulatory surgical center (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Ambulatory surgical center (out-of-network)",
+          "value": "40% coinsurance"
+        },
+        {
+          "label": "Doctor/surgeon care",
+          "value": "$0"
+        },
+        {
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
+        },
+        {
+          "label": "Prosthetics/orthotics",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies/monitoring (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies/monitoring (out-of-network)",
           "value": "20% coinsurance"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient rehabilitation",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Transportation (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Transportation (out-of-network)",
+          "value": "75% coinsurance"
+        },
+        {
+          "label": "Radiation therapy (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Radiation therapy (out-of-network)",
+          "value": "20% coinsurance"
         }
       ]
     },
@@ -115,28 +349,20 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Part D drugs all tiers",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "25%"
+          "label": "Part D insulin",
+          "value": "$0 per month"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "25%"
+          "label": "Part B drugs",
+          "value": "$0 in-network, 20% coinsurance out-of-network"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
+          "label": "Over-the-counter drugs",
+          "value": "$0"
         }
       ]
     },
@@ -178,5 +404,6 @@
         }
       ]
     }
-  ]
+  ],
+  "plan_id_full": "H6824-002-000"
 }

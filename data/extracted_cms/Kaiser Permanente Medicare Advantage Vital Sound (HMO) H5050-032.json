@@ -1,50 +1,65 @@
 {
   "plan_id": "H5050-032",
-  "plan_name": "Kaiser Permanente Medicare Advantage Vital Sound (HMO)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H5050",
   "org_name": "KAISER FOUNDATION HEALTH PLAN OF WASHINGTON",
   "geographic_area": "Grays Harbor, Kitsap Lewis, Mason",
   "states": "WA",
   "counties_count": "4",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$43",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Kaiser Permanente Medicare Advantage Essential (HMO) and Kaiser Permanente Medicare Advantage Vital Sound (HMO)",
+  "plan_type": "HMO",
+  "monthly_premium": "Essential: $104, Vital Sound: $43",
   "annual_deductible_in": "$0",
-  "moop_in": "$6,500",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_in": "Essential: $4,000, Vital Sound: $6,500",
+  "moop_out": "Not applicable - HMO plan",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "Essential: $25, Vital Sound: $50"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care (in-network)",
+          "value": "Essential: $25, Vital Sound: $40"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Urgent care (out-of-network)",
+          "value": "Covered worldwide at same rate"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room (in-network)",
+          "value": "Essential: $140, Vital Sound: $130"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Emergency room (out-of-network)",
+          "value": "Covered worldwide at same rate"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "Essential: $260/day days 1-4"
+        },
+        {
+          "label": "Ambulance (in-network)",
+          "value": "Essential: $220/trip, Vital Sound: $290/trip"
+        },
+        {
+          "label": "Ambulance (out-of-network)",
+          "value": "Same rates apply"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "Essential: $260/day days 1-4"
         }
       ]
     },
@@ -53,22 +68,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$50 copay"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Advantage Plus Option 1 - Comprehensive dental",
+          "value": "$67/month premium"
         }
       ]
     },
@@ -77,12 +78,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Advantage Plus Option 2 - Hearing aids",
+          "value": "$4,000 allowance for both ears every 24 months"
         }
       ]
     },
@@ -91,34 +88,116 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Fitness benefit - One Pass",
+          "value": "Full gym network access"
+        },
+        {
+          "label": "Advanced Care at Home",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Advantage Plus Option 2 - Acupuncture/chiropractic",
+          "value": "$22/month premium"
+        },
+        {
+          "label": "Advantage Plus Option 2 - Transportation",
+          "value": "$0 for up to 20 round trips/year to plan providers"
+        },
+        {
+          "label": "Lively Mobile Plus discount",
+          "value": "Personal emergency response system discount"
+        },
+        {
+          "label": "CareLinx discount",
+          "value": "In-home care assistance discount"
+        },
+        {
+          "label": "Comfort Keepers discount",
+          "value": "In-home care services discount plus free safety assessment"
+        },
+        {
+          "label": "Mom's Meals discount",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays",
+          "value": "Essential: $0, Vital Sound: $20"
+        },
+        {
+          "label": "Diagnostic tests",
+          "value": "Essential: $0, Vital Sound: $20"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "Essential: $195, Vital Sound: $375"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient group)",
+          "value": "$25"
+        },
+        {
+          "label": "Mental health (outpatient individual)",
+          "value": "$35"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$35"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "Essential: $20, Vital Sound: $15"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$15"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "Essential: $0-$230, Vital Sound: $0-$450"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "Essential: $230, Vital Sound: $450"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies",
+          "value": "$0"
         }
       ]
     },
@@ -127,27 +206,91 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 (Preferred generic) - Essential - 30-day preferred",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 (Preferred generic) - Essential - 30-day standard",
+          "value": "$15"
+        },
+        {
+          "label": "Tier 1 (Preferred generic) - Vital Sound - 30-day preferred",
           "value": "$3"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 (Preferred generic) - Vital Sound - 30-day standard",
+          "value": "$15"
+        },
+        {
+          "label": "Tier 2 (Generic) - Essential - 30-day preferred",
+          "value": "$5"
+        },
+        {
+          "label": "Tier 2 (Generic) - Essential - 30-day standard",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 2 (Generic) - Vital Sound - 30-day preferred",
           "value": "$10"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 (Generic) - Vital Sound - 30-day standard",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 3 (Preferred brand) - 30-day",
           "value": "$47"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 4 (Nonpreferred) - 30-day",
           "value": "$99"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 (Specialty) - Essential",
+          "value": "33%"
+        },
+        {
+          "label": "Tier 5 (Specialty) - Vital Sound",
           "value": "30%"
         },
         {
-          "label": "Tier 6: Vaccines",
+          "label": "Tier 6 (Injectable Part D vaccines)",
+          "value": "$0"
+        },
+        {
+          "label": "Mail order - Tier 1 Essential",
+          "value": "$0"
+        },
+        {
+          "label": "Mail order - Tier 2 Essential",
+          "value": "$5"
+        },
+        {
+          "label": "Mail order - Tier 2 Vital Sound",
+          "value": "$10"
+        },
+        {
+          "label": "Mail order - Tier 3 90-day",
+          "value": "$117.50"
+        },
+        {
+          "label": "Mail order - Tier 4 90-day",
+          "value": "$247.50"
+        },
+        {
+          "label": "Insulin cap",
+          "value": "$35/month supply"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "0%-20% coinsurance"
+        },
+        {
+          "label": "Catastrophic coverage",
           "value": "$0"
         }
       ]
@@ -191,7 +334,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 5.0
+  "plan_id_full": "H5050-032-000"
 }

@@ -1,54 +1,69 @@
 {
   "plan_id": "H5253-184",
-  "plan_name": "UHC Dual Complete NC-S3 (HMO-POS D-SNP)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "HMO-POS",
-  "snp_type": "D-SNP",
   "contract_number": "H5253",
   "org_name": "UNITEDHEALTHCARE OF WISCONSIN, INC.",
   "geographic_area": "State of North Carolina",
   "states": "NC",
   "counties_count": "100",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 4.0,
+  "plan_name": "UHC Dual Complete NC-S3 (HMO-POS D-SNP)",
+  "plan_type": "HMO-POS D-SNP",
   "monthly_premium": "$0",
-  "annual_deductible_in": "$0",
-  "moop_in": "$9,250",
+  "annual_deductible_in": "$0 or $283",
+  "moop_in": "$0 or $283",
+  "moop_out": "$0 or $9,250",
+  "part_b_premium_reduction": "$0.60",
   "moop_combined": "$9,250",
-  "moop_out": null,
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "0-20% coinsurance"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "20% coinsurance"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$40 copay"
+          "label": "Emergency room",
+          "value": "$0"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital (in-network)",
+          "value": "$0 per stay"
         },
         {
-          "label": "Ambulance",
-          "value": "20% coinsurance"
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "$0 or $1,765 per stay"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Ambulance (in-network)",
+          "value": "$0 ground, $0 air"
+        },
+        {
+          "label": "Ambulance (out-of-network)",
+          "value": "Not covered except emergencies"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$0 per stay"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$0.60"
         }
       ]
     },
@@ -57,12 +72,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$3,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental allowance",
+          "value": "$3,000 for all covered dental services"
         }
       ]
     },
@@ -71,12 +82,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision allowance",
+          "value": "$300 per year for frames or contacts"
         }
       ]
     },
@@ -85,12 +92,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aid allowance",
+          "value": "$2,200 allowance for 2 hearing aids every 2 years"
         }
       ]
     },
@@ -99,42 +102,188 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$331 per month for OTC products"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "28 home-delivered meals after hospital or SNF stay"
+        },
+        {
+          "label": "Fitness program",
+          "value": "Free gym membership and online fitness classes"
+        },
+        {
+          "label": "Transportation",
+          "value": "48 one-way trips per year to medical appointments"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays",
+          "value": "$0"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient individual",
+          "value": "$0"
+        },
+        {
+          "label": "Mental health outpatient group",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse outpatient individual",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse outpatient group",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry routine",
+          "value": "$0, 4 visits/year"
+        },
+        {
+          "label": "Podiatry medical",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy (out-of-network)",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Telehealth mental health",
+          "value": "$0"
+        },
+        {
+          "label": "Opioid treatment",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 per day days 1-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "DME",
+          "value": "$0"
+        },
+        {
+          "label": "Kidney dialysis (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Kidney dialysis (out-of-network)",
+          "value": "Not covered except emergencies"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery ASC",
+          "value": "$0"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient surgery hospital (in-network)",
+          "value": "$0 colonoscopy, $0 or 20% otherwise"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery hospital (out-of-network)",
+          "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient observation (in-network)",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Outpatient observation (out-of-network)",
+          "value": "$0 or 20%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Telehealth medical",
+          "value": "$0"
+        },
+        {
+          "label": "Prosthetics (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Prosthetics (out-of-network)",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic training",
+          "value": "$0"
+        },
+        {
+          "label": "Therapeutic shoes",
+          "value": "$0"
+        },
+        {
+          "label": "Transportation routine",
+          "value": "$0, 48 one-way trips"
         }
       ]
     },
@@ -143,28 +292,32 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "25%"
+          "label": "Generic (30-day/100-day retail)",
+          "value": "$0, $1.60, or $5.10"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "25%"
+          "label": "All other drugs (30-day/100-day retail)",
+          "value": "$0, $4.90, or $12.65"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
+          "label": "Part B chemotherapy",
+          "value": "$0 in-network, $0 or 20% out-of-network"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
+          "label": "Part B insulin",
+          "value": "$0 in-network, $0 or 20% out-of-network"
+        },
+        {
+          "label": "Part B other drugs",
+          "value": "$0 antigens, $0 or 20% others"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
         }
       ]
     },
@@ -207,7 +360,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 4.0
+  "plan_id_full": "H5253-184-000"
 }

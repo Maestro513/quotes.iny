@@ -1,50 +1,61 @@
 {
   "plan_id": "H6515-005",
-  "plan_name": "Molina Medicare Complete Care Plus (HMO D-SNP)",
   "carrier": "Molina Healthcare of Texas, Inc.",
-  "plan_type": "HMO",
-  "snp_type": "D-SNP",
   "contract_number": "H6515",
   "org_name": "MOLINA HEALTHCARE OF TEXAS, INC.",
   "geographic_area": "Hidalgo County",
   "states": "TX",
   "counties_count": "1",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "plan_name": "Molina Medicare Complete Care Plus (HMO D-SNP)",
+  "plan_type": "HMO D-SNP",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
-  "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_in": "$0",
+  "moop_out": "N/A",
+  "part_b_premium_reduction": "null",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "30% coinsurance"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "30% coinsurance"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "30% coinsurance"
+          "label": "Urgent care",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "30% coinsurance"
+          "label": "Emergency room",
+          "value": "$0"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "$0 days 1-90"
         },
         {
           "label": "Ambulance",
-          "value": "20% coinsurance"
+          "value": "$0"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Mental health inpatient",
+          "value": "$0 days 1-90"
+        },
+        {
+          "label": "Worldwide emergency",
+          "value": "$0"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "null"
         }
       ]
     },
@@ -53,8 +64,12 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental comprehensive annual maximum",
+          "value": "$4,000 per year"
+        },
+        {
+          "label": "HCBS dental services",
+          "value": "$5,000 per year, additional $5,000 if oral surgeon required"
         }
       ]
     },
@@ -63,12 +78,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$250 annually for contacts"
         }
       ]
     },
@@ -77,12 +88,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -91,46 +98,148 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "MyChoice Card",
+          "value": "$168 monthly allowance for OTC items"
+        },
+        {
+          "label": "Fitness benefit",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "Up to 12 visits in 90 days for chronic lower back pain"
+        },
+        {
+          "label": "Home delivered meals",
+          "value": "Standard 2-week menu with 28 meals"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Up to $10,000 benefit limit per calendar year"
+        },
+        {
+          "label": "Personal Emergency Response System",
+          "value": "In-home device when authorized"
+        },
+        {
+          "label": "Member Essentials Package",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "SSBCI for chronically ill",
+          "value": "$168 monthly for food/produce"
+        },
+        {
+          "label": "Minor home modifications",
+          "value": "$7,500 lifetime limit, $300 annually for repairs"
+        },
+        {
+          "label": "24-hour nurse hotline",
+          "value": "Free access to nurse line"
+        },
+        {
+          "label": "Behavioral health crisis line",
+          "value": "24/7 free access"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse outpatient",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 days 1-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Dialysis",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient services",
+          "value": "$0"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "20% coinsurance"
+          "label": "Nursing home care",
+          "value": "$0"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "$0"
         },
         {
-          "label": "Lab Services",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies",
+          "value": "$0"
         }
       ]
     },
@@ -139,32 +248,36 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Tier 1 Preferred Generic",
+          "value": "$0/$1.60/$5.10"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 2 Generic",
+          "value": "$0/$1.60/$5.10 or $0/$4.90/$12.65"
+        },
+        {
+          "label": "Tier 3 Preferred Brand",
+          "value": "$0/$1.60/$5.10 or $0/$4.90/$12.65"
+        },
+        {
+          "label": "Tier 4 Non-Preferred",
+          "value": "$0/$1.60/$5.10 or $0/$4.90/$12.65"
+        },
+        {
+          "label": "Tier 5 Specialty",
+          "value": "$0/$1.60/$5.10 or $0/$4.90/$12.65"
+        },
+        {
+          "label": "Tier 6 Select Care",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "20%"
-        },
-        {
-          "label": "Tier 3: Preferred Brand",
-          "value": "20%"
-        },
-        {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "30%"
-        },
-        {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 6: Select Care Drugs",
+          "label": "Part B drugs",
           "value": "$0"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 TrOOP"
         }
       ]
     },
@@ -206,5 +319,6 @@
         }
       ]
     }
-  ]
+  ],
+  "plan_id_full": "H6515-005-000"
 }

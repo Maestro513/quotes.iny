@@ -1,46 +1,67 @@
 {
   "plan_id": "H1914-011",
-  "plan_name": "Wellcare Patriot Giveback Open (PPO)",
   "carrier": "Wellcare",
-  "plan_type": "PPO",
-  "snp_type": null,
   "contract_number": "H1914",
   "org_name": "WELLCARE HEALTH INSURANCE OF CONNECTICUT, INC.",
   "geographic_area": "Select counties in NC",
   "states": "NC",
   "counties_count": "70",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.5,
+  "star_rating_part_c": 3.0,
+  "star_rating_part_d": 3.5,
+  "plan_name": "Wellcare Patriot Giveback Open (PPO)",
+  "plan_type": "PPO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$8,850",
+  "moop_out": "$13,300",
+  "part_b_premium_reduction": "$175",
   "moop_combined": "$13,300",
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$35"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care",
+          "value": "$30"
         },
         {
-          "label": "Urgent Care",
-          "value": "$30 copay"
+          "label": "Emergency room",
+          "value": "$115"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Inpatient hospital (in-network)",
+          "value": "$325/day days 1-8, $0/day days 9-90"
+        },
+        {
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "35% coinsurance days 1-90"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$335"
+        },
+        {
+          "label": "Mental health (inpatient) (in-network)",
+          "value": "$325/day days 1-6, $0/day days 7-90"
+        },
+        {
+          "label": "Mental health (inpatient) (out-of-network)",
+          "value": "35% coinsurance days 1-90"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$175"
         }
       ]
     },
@@ -49,8 +70,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$35 copay"
+          "label": "Dental Coverage Annual Maximum",
+          "value": "$2,000 per plan year for comprehensive dental services"
         }
       ]
     },
@@ -59,12 +80,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Eyewear Allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -73,12 +90,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing Aid Allowance",
+          "value": "Up to $1"
         }
       ]
     },
@@ -87,34 +100,206 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Part B Premium Giveback",
+          "value": "$175 per month reduction in Social Security check"
+        },
+        {
+          "label": "Virtual Visits",
+          "value": "$0 copay for 24/7 access to board certified doctors"
+        },
+        {
+          "label": "Social Support Platform",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Fitness/Gym",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "24-Hour Nurse Advice Line",
+          "value": "$0 copay for 24/7 nurse consultation"
+        },
+        {
+          "label": "Annual Routine Physical Exam",
+          "value": "$0 copay in and out of network"
+        },
+        {
+          "label": "My Wellcare Rewards",
+          "value": "Up to $100 debit card for completing health activities"
+        },
+        {
+          "label": "Worldwide Emergency Coverage",
+          "value": "$115 copay with $50,000 maximum coverage"
+        },
+        {
+          "label": "Worldwide Urgent Care Coverage",
+          "value": "$115 copay with $50,000 maximum coverage"
+        },
+        {
+          "label": "Health and Wellness Education Programs",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services (in-network)",
+          "value": "$0 most labs, $50 genetic testing"
+        },
+        {
+          "label": "Lab services (out-of-network)",
+          "value": "40% coinsurance"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (in-network)",
+          "value": "$50"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (out-of-network)",
+          "value": "40% coinsurance"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (in-network)",
+          "value": "$0 mammogram, $350 outpatient, $200 other"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (out-of-network)",
+          "value": "40% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient) (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Mental health (outpatient) (out-of-network)",
+          "value": "40% coinsurance"
+        },
+        {
+          "label": "Chiropractic (in-network)",
+          "value": "$15"
+        },
+        {
+          "label": "Chiropractic (out-of-network)",
+          "value": "40% coinsurance"
+        },
+        {
+          "label": "Podiatry/foot care (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Podiatry/foot care (out-of-network)",
+          "value": "40% coinsurance"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "40% coinsurance"
+        },
+        {
+          "label": "Occupational therapy (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Occupational therapy (out-of-network)",
+          "value": "40% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0/day days 1-20, $218/day days 21-70, $0/day days 71-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "35% coinsurance days 1-100"
+        },
+        {
+          "label": "Home health care (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Home health care (out-of-network)",
+          "value": "40% coinsurance"
+        },
+        {
+          "label": "Durable medical equipment (DME) (in-network)",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Durable medical equipment (DME) (out-of-network)",
+          "value": "40% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services (in-network)",
+          "value": "$400 surgical, $350 non-surgical"
         },
         {
-          "label": "Renal Dialysis",
+          "label": "Outpatient surgery/services (out-of-network)",
+          "value": "40% coinsurance"
+        },
+        {
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
+        },
+        {
+          "label": "Prosthetics/orthotics (in-network)",
           "value": "20% coinsurance"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Prosthetics/orthotics (out-of-network)",
+          "value": "40% coinsurance"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies/monitoring (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies/monitoring (out-of-network)",
+          "value": "40% coinsurance"
+        },
+        {
+          "label": "Outpatient rehabilitation (in-network)",
+          "value": "$25 pulmonary"
+        },
+        {
+          "label": "Outpatient rehabilitation (out-of-network)",
+          "value": "40% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Prescription Drugs",
+      "icon": "pills",
+      "rows": [
+        {
+          "label": "Plan does not cover Part D",
+          "value": "No drug coverage"
         }
       ]
     },
@@ -155,19 +340,7 @@
           "value": "go.wellcare.com/Medicare"
         }
       ]
-    },
-    {
-      "title": "Prescription Drugs",
-      "icon": "pills",
-      "rows": [
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "N/A"
-        }
-      ]
     }
   ],
-  "star_rating_overall": 3.5,
-  "star_rating_part_c": 3.0,
-  "star_rating_part_d": 3.5
+  "plan_id_full": "H1914-011-000"
 }

@@ -1,88 +1,79 @@
 {
   "plan_id": "H1170-011",
-  "plan_name": "Kaiser Permanente Dual Essential Plan 2 (HMO D-SNP)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO",
-  "snp_type": "D-SNP",
   "contract_number": "H1170",
   "org_name": "KAISER FOUNDATION HP OF GA, INC.",
   "geographic_area": "Barrow, Butts, Newton, Rockdale, Spalding, Walton",
   "states": "GA",
   "counties_count": "6",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 3.5,
+  "plan_name": "Kaiser Permanente Dual Essential Plan 2",
+  "plan_type": "HMO D-SNP",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
-  "moop_in": "$8,850",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_in": "$8,850 (partial Medicaid)",
+  "moop_out": "Not applicable",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "20% coinsurance"
+          "label": "PCP visit (out-of-network)",
+          "value": "Not applicable"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Specialist visit (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$15 copay"
+          "label": "Specialist visit (out-of-network)",
+          "value": "Not applicable"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Urgent care (in-network)",
+          "value": "$0 (full Medicaid) / $15 (partial Medicaid)"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$150 allowance"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
-        {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Urgent care (out-of-network)",
+          "value": "Not applicable"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
-        }
-      ]
-    },
-    {
-      "title": "Hearing",
-      "icon": "ear-listen",
-      "rows": [
-        {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Emergency room",
+          "value": "$0 (full Medicaid) / $115 (partial Medicaid)"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Inpatient hospital (in-network)",
+          "value": "$0 (full Medicaid) / $325/day days 1-6 (partial Medicaid)"
+        },
+        {
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Ambulance (in-network)",
+          "value": "$0 (full Medicaid) / $250 (partial Medicaid)"
+        },
+        {
+          "label": "Ambulance (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Mental health (inpatient) (in-network)",
+          "value": "$0 (full Medicaid) / $325/day days 1-6 (partial Medicaid)"
+        },
+        {
+          "label": "Mental health (inpatient) (out-of-network)",
+          "value": "Not applicable"
         }
       ]
     },
@@ -91,42 +82,132 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$150 quarterly ($600 annual)"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Healthy Food Card (chronically ill)",
+          "value": "$275 quarterly for eligible members with chronic conditions"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Fitness benefit (One Pass)",
+          "value": "Complete fitness program including gym network"
+        },
+        {
+          "label": "Transportation services",
+          "value": "36 one-way trips per calendar year at $0"
+        },
+        {
+          "label": "Home medical care (Advanced Care at Home)",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Member discounts",
+          "value": "Lively Mobile Plus emergency response"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services (in-network)",
+          "value": "$0 office / $35 hospital (partial Medicaid)"
+        },
+        {
+          "label": "Lab services (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (in-network)",
+          "value": "$0 office / $35 hospital (partial Medicaid)"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (in-network)",
+          "value": "$0 (full Medicaid) / $175 office, $245 hospital (partial Medicaid)"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (out-of-network)",
+          "value": "Not applicable"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient) (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Mental health (outpatient) (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$0 (full Medicaid) / $20 (partial Medicaid)"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "Not applicable"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0 (full Medicaid) / $218/day days 21-100 (partial Medicaid)"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "Not applicable"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Preventive care (out-of-network)",
+          "value": "Not applicable"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery/services (in-network)",
+          "value": "$0 (full Medicaid) / $250 (partial Medicaid)"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient surgery/services (out-of-network)",
+          "value": "Not applicable"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory Surgical Center (in-network)",
+          "value": "$0 (full Medicaid) / $250 (partial Medicaid)"
+        },
+        {
+          "label": "Ambulatory Surgical Center (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Transportation (in-network)",
+          "value": "$0 for 36 one-way trips per year"
+        },
+        {
+          "label": "Transportation (out-of-network)",
+          "value": "Not applicable"
         }
       ]
     },
@@ -135,32 +216,60 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Drug deductible (Tiers 3,4,5)",
           "value": "$615"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 (Preferred Generic) - Retail",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 2 (Generic) - Retail",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 3 (Preferred Brand) - Retail",
           "value": "17%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 4 (Nonpreferred) - Retail",
           "value": "25%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 (Specialty) - Retail",
           "value": "25%"
         },
         {
-          "label": "Tier 6: Vaccines",
+          "label": "Tier 6 (Injectable Vaccines) - Retail",
           "value": "$0"
+        },
+        {
+          "label": "Tier 1 (Preferred Generic) - Mail Order",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 (Generic) - Mail Order",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 (Preferred Brand) - Mail Order",
+          "value": "17%"
+        },
+        {
+          "label": "Tier 4 (Nonpreferred) - Mail Order",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 5 (Specialty) - Mail Order",
+          "value": "25%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "$0 (full Medicaid) / 20% coinsurance, $35 insulin (partial Medicaid)"
         }
       ]
     },
@@ -203,7 +312,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 3.5
+  "plan_id_full": "H1170-011-000"
 }

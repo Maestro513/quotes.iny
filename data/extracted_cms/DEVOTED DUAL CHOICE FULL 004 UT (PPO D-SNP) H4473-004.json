@@ -1,54 +1,77 @@
 {
   "plan_id": "H4473-004",
-  "plan_name": "DEVOTED DUAL CHOICE FULL 004 UT (PPO D-SNP)",
   "carrier": "Devoted Health",
-  "plan_type": "PPO",
-  "snp_type": "D-SNP",
   "contract_number": "H4473",
   "org_name": "DEVOTED HEALTH INSURANCE COMPANY OF UTAH, INC.",
   "geographic_area": "Utah",
   "states": "UT",
   "counties_count": "6",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
-  "annual_deductible_in": "$990",
+  "plan_name": "DEVOTED DUAL CHOICE FULL 004 UT (PPO D-SNP)",
+  "plan_type": "PPO D-SNP",
+  "monthly_premium": "$0 to $34.40",
+  "annual_deductible_in": "$0 to $990",
   "moop_in": "$9,250",
+  "moop_out": "$13,900",
   "moop_combined": "$13,900",
-  "moop_out": null,
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "30% coinsurance"
+          "label": "Specialist visit (in-network)",
+          "value": "$0 with Medicaid/$30% without"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Specialist visit (out-of-network)",
+          "value": "$0-30% with Medicaid/30% without"
         },
         {
-          "label": "Urgent Care",
-          "value": "0-30% coinsurance"
+          "label": "Urgent care PCP",
+          "value": "$0"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Urgent care center (in-network)",
+          "value": "$0 with Medicaid/30% without"
         },
         {
-          "label": "Ambulance",
-          "value": "0-50% coinsurance"
+          "label": "Urgent care center (out-of-network)",
+          "value": "$0-30% with Medicaid/30% without"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$50 allowance"
+          "label": "Emergency room",
+          "value": "$0 with Medicaid/$115 without"
+        },
+        {
+          "label": "Inpatient hospital (in-network)",
+          "value": "$0 with Medicaid/$2,230 without"
+        },
+        {
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "$0-$2,230 with Medicaid/$2,230 without"
+        },
+        {
+          "label": "Ground ambulance",
+          "value": "$0 with Medicaid/50% without"
+        },
+        {
+          "label": "Air ambulance",
+          "value": "$0 with Medicaid/50% without"
+        },
+        {
+          "label": "Mental health inpatient (in-network)",
+          "value": "$0 with Medicaid/$2,080 without"
+        },
+        {
+          "label": "Mental health inpatient (out-of-network)",
+          "value": "$0-$2,080 with Medicaid/$2,080 without"
         }
       ]
     },
@@ -57,12 +80,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$3,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "30% coinsurance"
+          "label": "Dental comprehensive",
+          "value": "$3,000 per year coverage, $0 copay in-network"
         }
       ]
     },
@@ -71,12 +90,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "Up to $400 per year for eyeglasses/contacts"
         }
       ]
     },
@@ -85,12 +100,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "Up to 2 TruHearing aids, $0 or $299 per aid"
         }
       ]
     },
@@ -99,50 +110,316 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$50 per quarter"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Food & Home Card",
+          "value": "$223 per month for eligible food"
+        },
+        {
+          "label": "SilverSneakers fitness",
+          "value": "$0 membership"
+        },
+        {
+          "label": "Wellness Bucks",
+          "value": "$150 per year for fitness and wellness items"
+        },
+        {
+          "label": "Devoted Dollars HRA reward",
+          "value": "$20 for completing Health Risk Assessment"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Included as supplemental benefit"
+        },
+        {
+          "label": "Enhanced drug coverage",
+          "value": "Vitamin D 50"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Diagnostic colonoscopy",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services office (in-network)",
+          "value": "$0 with Medicaid/50% without"
+        },
+        {
+          "label": "Lab services office (out-of-network)",
+          "value": "$0-50% with Medicaid/50% without"
+        },
+        {
+          "label": "Lab services hospital (in-network)",
+          "value": "$0 with Medicaid/50% without"
+        },
+        {
+          "label": "Lab services hospital (out-of-network)",
+          "value": "$0-50% with Medicaid/50% without"
+        },
+        {
+          "label": "X-rays office (in-network)",
+          "value": "$0 with Medicaid/30% without"
+        },
+        {
+          "label": "X-rays office (out-of-network)",
+          "value": "$0-30% with Medicaid/30% without"
+        },
+        {
+          "label": "X-rays hospital (in-network)",
+          "value": "$0 with Medicaid/30% without"
+        },
+        {
+          "label": "X-rays hospital (out-of-network)",
+          "value": "$0-30% with Medicaid/30% without"
+        },
+        {
+          "label": "Advanced imaging office (in-network)",
+          "value": "$0 with Medicaid/50% without"
+        },
+        {
+          "label": "Advanced imaging office (out-of-network)",
+          "value": "$0-50% with Medicaid/50% without"
+        },
+        {
+          "label": "Advanced imaging hospital (in-network)",
+          "value": "$0 with Medicaid/50% without"
+        },
+        {
+          "label": "Advanced imaging hospital (out-of-network)",
+          "value": "$0-50% with Medicaid/50% without"
+        },
+        {
+          "label": "Diagnostic tests office (in-network)",
+          "value": "$0 with Medicaid/$0-50% without"
+        },
+        {
+          "label": "Diagnostic tests office (out-of-network)",
+          "value": "$0-50% with Medicaid/$0-50% without"
+        },
+        {
+          "label": "Diagnostic tests hospital (in-network)",
+          "value": "$0 with Medicaid/50% without"
+        },
+        {
+          "label": "Diagnostic tests hospital (out-of-network)",
+          "value": "$0-50% with Medicaid/50% without"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient (in-network)",
+          "value": "$0 with Medicaid/30% without"
+        },
+        {
+          "label": "Mental health outpatient (out-of-network)",
+          "value": "$0-30% with Medicaid/30% without"
+        },
+        {
+          "label": "Physical therapy office (in-network)",
+          "value": "$0 with Medicaid/30% without"
+        },
+        {
+          "label": "Physical therapy office (out-of-network)",
+          "value": "$0-30% with Medicaid/30% without"
+        },
+        {
+          "label": "Physical therapy hospital (in-network)",
+          "value": "$0 with Medicaid/30% without"
+        },
+        {
+          "label": "Physical therapy hospital (out-of-network)",
+          "value": "$0-30% with Medicaid/30% without"
+        },
+        {
+          "label": "Occupational therapy office (in-network)",
+          "value": "$0 with Medicaid/30% without"
+        },
+        {
+          "label": "Occupational therapy office (out-of-network)",
+          "value": "$0-30% with Medicaid/30% without"
+        },
+        {
+          "label": "Occupational therapy hospital (in-network)",
+          "value": "$0 with Medicaid/30% without"
+        },
+        {
+          "label": "Occupational therapy hospital (out-of-network)",
+          "value": "$0-30% with Medicaid/30% without"
+        },
+        {
+          "label": "Speech therapy office (in-network)",
+          "value": "$0 with Medicaid/30% without"
+        },
+        {
+          "label": "Speech therapy office (out-of-network)",
+          "value": "$0-30% with Medicaid/30% without"
+        },
+        {
+          "label": "Speech therapy hospital (in-network)",
+          "value": "$0 with Medicaid/30% without"
+        },
+        {
+          "label": "Speech therapy hospital (out-of-network)",
+          "value": "$0-30% with Medicaid/30% without"
+        },
+        {
+          "label": "Podiatry/foot care (in-network)",
+          "value": "$0 with Medicaid/30% without"
+        },
+        {
+          "label": "Podiatry/foot care (out-of-network)",
+          "value": "$0-30% with Medicaid/30% without"
+        },
+        {
+          "label": "Chiropractic (in-network)",
+          "value": "$0 with Medicaid/30% without"
+        },
+        {
+          "label": "Chiropractic (out-of-network)",
+          "value": "$0-30% with Medicaid/30% without"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0 with Medicaid/Days 1-20 $0, Days 21-100 $218/day without"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "$0 or Days 1-20 $0, Days 21-100 $218/day with Medicaid/Days 1-20 $0, Days 21-100 $218/day without"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Dialysis (in-network)",
+          "value": "$0 with Medicaid/20% without"
+        },
+        {
+          "label": "Dialysis (out-of-network)",
+          "value": "$0-20% with Medicaid/20% without"
+        },
+        {
+          "label": "DME basic (in-network)",
+          "value": "$0 with Medicaid/20% without"
+        },
+        {
+          "label": "DME basic (out-of-network)",
+          "value": "$0-20% with Medicaid/20% without"
+        },
+        {
+          "label": "DME advanced (in-network)",
+          "value": "$0 with Medicaid/20% without"
+        },
+        {
+          "label": "DME advanced (out-of-network)",
+          "value": "$0-20% with Medicaid/20% without"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery hospital (in-network)",
+          "value": "$0 with Medicaid/50% without"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-50% coinsurance"
+          "label": "Outpatient surgery hospital (out-of-network)",
+          "value": "$0-50% with Medicaid/50% without"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "0-50% coinsurance"
+          "label": "Outpatient surgery ASC (in-network)",
+          "value": "$0 with Medicaid/50% without"
         },
         {
-          "label": "Lab Services",
-          "value": "50% coinsurance"
+          "label": "Outpatient surgery ASC (out-of-network)",
+          "value": "$0-50% with Medicaid/50% without"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Observation stays (in-network)",
+          "value": "$0 with Medicaid/50% without"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Observation stays (out-of-network)",
+          "value": "$0-50% with Medicaid/50% without"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Radiation therapy office (in-network)",
+          "value": "$0 with Medicaid/20% without"
+        },
+        {
+          "label": "Radiation therapy office (out-of-network)",
+          "value": "$0-20% with Medicaid/20% without"
+        },
+        {
+          "label": "Radiation therapy hospital (in-network)",
+          "value": "$0 with Medicaid/20% without"
+        },
+        {
+          "label": "Radiation therapy hospital (out-of-network)",
+          "value": "$0-20% with Medicaid/20% without"
+        },
+        {
+          "label": "Psychiatric services (in-network)",
+          "value": "$0 with Medicaid/30% without"
+        },
+        {
+          "label": "Psychiatric services (out-of-network)",
+          "value": "$0-30% with Medicaid/30% without"
+        },
+        {
+          "label": "Diabetic retinopathy exam",
+          "value": "$0"
+        },
+        {
+          "label": "Prosthetics (in-network)",
+          "value": "$0 with Medicaid/20% without"
+        },
+        {
+          "label": "Prosthetics (out-of-network)",
+          "value": "$0-20% with Medicaid/20% without"
+        },
+        {
+          "label": "Medical supplies (in-network)",
+          "value": "$0 with Medicaid/20% without"
+        },
+        {
+          "label": "Medical supplies (out-of-network)",
+          "value": "$0-20% with Medicaid/20% without"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "$0-20% with Medicaid/20% without"
+        },
+        {
+          "label": "Diabetic shoes (in-network)",
+          "value": "$0 with Medicaid/20% without"
+        },
+        {
+          "label": "Diabetic shoes (out-of-network)",
+          "value": "$0-20% with Medicaid/20% without"
         }
       ]
     },
@@ -151,32 +428,76 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Part D deductible",
+          "value": "$615 for Tiers 1-5, $0 with Extra Help"
         },
         {
-          "label": "Tier 1: Preferred Generic",
-          "value": "25%"
+          "label": "Tier 1 30-day retail",
+          "value": "25% coinsurance"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "25%"
+          "label": "Tier 2 30-day retail",
+          "value": "25% coinsurance"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "25%"
+          "label": "Tier 3 30-day retail",
+          "value": "25% coinsurance"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
+          "label": "Tier 4 30-day retail",
+          "value": "25% coinsurance"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
+          "label": "Tier 5 30-day retail",
+          "value": "25% coinsurance"
         },
         {
-          "label": "Tier 6: Select Care Drugs",
+          "label": "Tier 6 30-day retail",
           "value": "$0"
+        },
+        {
+          "label": "Tier 1 100-day mail",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Tier 2 100-day mail",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Tier 3 100-day mail",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Tier 4 100-day mail",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Tier 6 100-day mail",
+          "value": "$0"
+        },
+        {
+          "label": "Insulin coverage",
+          "value": "$35 max for 30-day supply"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$35 max for 30-day supply"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
+        },
+        {
+          "label": "Extra Help coverage",
+          "value": "$12.65 max per prescription"
+        },
+        {
+          "label": "Part B chemotherapy",
+          "value": "$0 with Medicaid/20% without"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "$0 with Medicaid/20% without"
         }
       ]
     },
@@ -218,5 +539,6 @@
         }
       ]
     }
-  ]
+  ],
+  "plan_id_full": "H4473-004-000"
 }

@@ -1,64 +1,67 @@
 {
   "plan_id": "H0543-239",
-  "plan_name": "UHC Complete Care Support CA-1AP (HMO C-SNP)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "PPO",
-  "snp_type": "C-SNP",
   "contract_number": "H0543",
   "org_name": "UHC OF CALIFORNIA",
   "geographic_area": "Los Angeles County",
   "states": "CA",
   "counties_count": "1",
+  "snp_type": "C-SNP",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
-  "annual_deductible_in": "$0",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 4.5,
+  "plan_name": "UHC Complete Care Support CA-1AP (HMO C-SNP)",
+  "plan_type": "HMO",
+  "monthly_premium": "$12",
+  "annual_deductible_in": "$283",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not applicable (HMO)",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "0-20% coinsurance"
+          "label": "PCP visit",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
         },
         {
-          "label": "Specialist Visit",
-          "value": "20% coinsurance"
+          "label": "Specialist visit",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care (in-network)",
+          "value": "$0 or $40 copay (depending on Medicaid eligibility)"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$40 copay"
+          "label": "Urgent care (out-of-network)",
+          "value": "$0 outside US"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room (in-network)",
+          "value": "$0 or $115 copay (depending on Medicaid eligibility)"
         },
         {
-          "label": "Ambulance",
-          "value": "20% coinsurance"
+          "label": "Emergency room (out-of-network)",
+          "value": "$0 outside US"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
+          "label": "Inpatient hospital",
+          "value": "$0 or $1,895 per stay (depending on Medicaid eligibility)"
+        },
         {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Ambulance ground",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Ambulance air",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$0 or $1,895 per stay (depending on Medicaid eligibility)"
         }
       ]
     },
@@ -67,12 +70,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -81,12 +80,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -95,38 +90,184 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC and food credit",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Routine transportation",
+          "value": "36 one-way trips per year to approved locations"
+        },
+        {
+          "label": "Fitness program",
+          "value": "Free gym membership"
+        },
+        {
+          "label": "Member discounts",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "Diagnostic tests",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient individual",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Mental health outpatient group",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Virtual mental health visits",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse outpatient individual",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Substance abuse outpatient group",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Opioid treatment program",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Chiropractic Medicare-covered",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Chiropractic routine",
+          "value": "$0 (20 visits per year)"
+        },
+        {
+          "label": "Podiatry/foot care exam",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry/foot care routine",
+          "value": "$0 (4 visits per year)"
+        },
+        {
+          "label": "Acupuncture routine",
+          "value": "$0 (20 visits per year)"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 days 1-100 or $0 days 1-20, $217 days 21-100 (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice (out-of-network)",
+          "value": "Covered by Original Medicare"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Routine physical",
+          "value": "$0 (1 per year)"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-20% coinsurance"
+          "label": "Virtual medical visits",
+          "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery/services",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
+        },
+        {
+          "label": "Prosthetics/orthotics",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetes self-management training",
+          "value": "$0"
+        },
+        {
+          "label": "Therapeutic shoes/inserts",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
         }
       ]
     },
@@ -135,11 +276,47 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Drug deductible (LIS eligible)",
+          "value": "$0"
+        },
+        {
+          "label": "Drug deductible (non-LIS)",
           "value": "$615"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Generic (LIS eligible) - 30/100 day",
+          "value": "$0, $1.60, or $5.10 copay"
+        },
+        {
+          "label": "All other drugs (LIS eligible) - 30/100 day",
+          "value": "$0, $4.90, or $12.65 copay"
+        },
+        {
+          "label": "All covered drugs (non-LIS) - retail 30/100 day",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "All covered drugs (non-LIS) - mail order 100 day",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$0 or 20% coinsurance up to $35 (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Part B chemotherapy",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Part B allergy antigens",
+          "value": "$0"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "$0 or 20% coinsurance (depending on Medicaid eligibility)"
+        },
+        {
+          "label": "Catastrophic coverage (all members)",
           "value": "$0"
         }
       ]
@@ -183,7 +360,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 4.5
+  "plan_id_full": "H0543-239-000"
 }

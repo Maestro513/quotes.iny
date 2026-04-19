@@ -1,50 +1,67 @@
 {
   "plan_id": "H1609-044",
-  "plan_name": "Aetna Medicare Dual Select (HMO D-SNP)",
   "carrier": "Aetna Medicare",
-  "plan_type": "HMO",
-  "snp_type": "D-SNP",
   "contract_number": "H1609",
   "org_name": "AETNA HEALTH INC. (FL)",
   "geographic_area": "West FL",
   "states": "FL",
   "counties_count": "4",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 4.0,
+  "plan_name": "Aetna Medicare Dual Select (HMO D‑SNP) H1609-044",
+  "plan_type": "HMO D-SNP",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "$9,250",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$0-$25"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Emergency room (in-network)",
+          "value": "$0-$115"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Emergency room (out-of-network)",
+          "value": "$0"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Urgent care (in-network)",
+          "value": "$0-$40"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$215 allowance"
+          "label": "Urgent care (out-of-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "$0-$250/day days 1-6, $0/day days 7-90"
+        },
+        {
+          "label": "Ambulance ground",
+          "value": "$0-$225"
+        },
+        {
+          "label": "Ambulance air",
+          "value": "$0 or 20% coinsurance"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$0-$250/day days 1-6, $0/day days 7-90"
         }
       ]
     },
@@ -53,12 +70,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$25 copay"
+          "label": "Dental comprehensive",
+          "value": "$2,000 annual allowance through Liberty Dental network"
         }
       ]
     },
@@ -67,12 +80,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -81,12 +90,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -95,46 +100,192 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Flex/SSBCI",
-          "value": "Personal Care Items"
+          "label": "OTC allowance",
+          "value": "$215 per month on Aetna Medicare Extra Benefits Card"
         },
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Extra Supports Wallet",
+          "value": "$215 monthly for healthy foods"
         },
         {
           "label": "Transportation",
-          "value": "Covered"
+          "value": "48 one-way trips per year up to 60 miles each trip"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Fitness benefit",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Post-discharge meals",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Personal emergency response system",
+          "value": "Medical alert system from LifeStation at no cost"
+        },
+        {
+          "label": "Fall prevention",
+          "value": "$150 annual allowance for home and bathroom safety products"
+        },
+        {
+          "label": "24-Hour Nurse Line",
+          "value": "Access to registered nurse anytime at no cost"
+        },
+        {
+          "label": "Resources For Living",
+          "value": "Community resource connections at no cost"
+        },
+        {
+          "label": "Care team",
+          "value": "Nurse care manager"
+        },
+        {
+          "label": "BeneLynk support",
+          "value": "Medicaid benefits and Extra Help assistance at no cost"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$250,000 maximum coverage"
+        },
+        {
+          "label": "Chiropractic non-Medicare",
+          "value": "24 visits per year at no cost"
+        },
+        {
+          "label": "Podiatry non-Medicare",
+          "value": "24 visits per year at no cost"
         }
       ]
     },
     {
-      "title": "Medical Services",
-      "icon": "hospital",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
-        },
-        {
-          "label": "Home Health",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
+          "label": "Lab services",
           "value": "$0"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diagnostic tests",
+          "value": "$0-$45"
+        },
+        {
+          "label": "Advanced imaging CT/MRI",
+          "value": "$0-$200"
+        },
+        {
+          "label": "X-rays",
+          "value": "$0-$15"
+        },
+        {
+          "label": "Glaucoma screening",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient individual",
+          "value": "$0-$15"
+        },
+        {
+          "label": "Mental health outpatient group",
+          "value": "$0-$10"
+        },
+        {
+          "label": "Substance abuse outpatient individual",
+          "value": "$0-$15"
+        },
+        {
+          "label": "Substance abuse outpatient group",
+          "value": "$0-$10"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0-$5"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0-$5"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0-$5"
+        },
+        {
+          "label": "Chiropractic Medicare-covered",
+          "value": "$0-$15"
+        },
+        {
+          "label": "Chiropractic non-Medicare covered",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry Medicare-covered",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry non-Medicare covered",
+          "value": "$0"
+        },
+        {
+          "label": "Acupuncture Medicare-covered",
+          "value": "$0-$25"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "0% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
+      "icon": "hospital",
+      "rows": [
+        {
+          "label": "Preventive care",
+          "value": "$0"
+        },
+        {
+          "label": "Outpatient hospital",
+          "value": "$0-$250"
+        },
+        {
+          "label": "Ambulatory surgical center",
+          "value": "$0-$200"
+        },
+        {
+          "label": "Prosthetics",
+          "value": "0% coinsurance"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "0% coinsurance"
+        },
+        {
+          "label": "Diagnostic eye exam",
+          "value": "$0"
+        },
+        {
+          "label": "Routine eye exam",
+          "value": "$0"
         }
       ]
     },
@@ -143,28 +294,92 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Deductible",
+          "value": "$0 for LIS; $615 for non-LIS"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic 30-day retail",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic 100-day retail",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "22%"
+          "label": "Tier 1 Preferred Generic 100-day mail",
+          "value": "$0"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
+          "label": "Tier 2 Generic 30-day retail",
+          "value": "$0"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
+          "label": "Tier 2 Generic 100-day retail",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic 100-day mail",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 Preferred Brand 30-day retail",
+          "value": "22% coinsurance"
+        },
+        {
+          "label": "Tier 3 Preferred Brand 100-day retail",
+          "value": "22% coinsurance"
+        },
+        {
+          "label": "Tier 3 Preferred Brand 100-day mail",
+          "value": "22% coinsurance"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug 30-day retail",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug 100-day retail",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug 100-day mail",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Tier 5 Specialty 30-day",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "LIS Generic drugs",
+          "value": "$0, $1.60, or $5.10"
+        },
+        {
+          "label": "LIS All other covered drugs",
+          "value": "$0, $4.90, or $12.65"
+        },
+        {
+          "label": "Catastrophic phase",
+          "value": "$0"
+        },
+        {
+          "label": "Part B Insulin",
+          "value": "$0-$35"
+        },
+        {
+          "label": "Part B chemotherapy drugs",
+          "value": "$0 or 0%-20% coinsurance"
+        },
+        {
+          "label": "Part B other drugs",
+          "value": "$0 or 0%-20% coinsurance"
+        },
+        {
+          "label": "Insulin cap",
+          "value": "$35 max per month"
+        },
+        {
+          "label": "Out-of-pocket threshold",
+          "value": "$2,100"
         }
       ]
     },
@@ -207,7 +422,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 4.0
+  "plan_id_full": "H1609-044-000"
 }

@@ -1,50 +1,72 @@
 {
   "plan_id": "H5521-461",
-  "plan_name": "Aetna Medicare Longevity (PPO I-SNP)",
   "carrier": "Aetna Medicare",
-  "plan_type": "PPO",
-  "snp_type": "I-SNP",
   "contract_number": "H5521",
   "org_name": "AETNA LIFE INSURANCE COMPANY",
   "geographic_area": "NY Statewide",
   "states": "NY",
   "counties_count": "62",
+  "snp_type": "I-SNP",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Aetna Medicare Longevity (PPO I-SNP)",
+  "plan_type": "PPO I-SNP",
+  "monthly_premium": "$58.80",
   "annual_deductible_in": "$0",
   "moop_in": "$9,250",
+  "moop_out": "$13,900",
   "moop_combined": "$13,900",
-  "moop_out": null,
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
+          "label": "PCP visit (in-network)",
           "value": "$5 copay"
         },
         {
-          "label": "Specialist Visit",
+          "label": "PCP visit (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Specialist visit (in-network)",
           "value": "20% coinsurance"
         },
         {
-          "label": "Emergency Room",
+          "label": "Specialist visit (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Urgent care",
+          "value": "$40 copay"
+        },
+        {
+          "label": "Emergency room",
           "value": "$115 copay"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Inpatient hospital (in-network)",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "30% per stay"
         },
         {
           "label": "Ambulance",
           "value": "20% coinsurance"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$150 allowance"
+          "label": "Mental health (inpatient) (in-network)",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Mental health (inpatient) (out-of-network)",
+          "value": "30% per stay"
         }
       ]
     },
@@ -53,12 +75,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$1,500"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental allowance",
+          "value": "$1,500 annual allowance for comprehensive services"
         }
       ]
     },
@@ -67,12 +85,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "$50 max"
+          "label": "Vision allowance",
+          "value": "$250 annual allowance for prescription eyewear"
         }
       ]
     },
@@ -81,12 +95,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids allowance",
+          "value": "$750 per ear annual allowance"
         }
       ]
     },
@@ -95,46 +105,224 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$150 quarterly allowance"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Music therapy",
+          "value": "Up to 25 small group sessions per year, $0 copay"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Podiatry non-Medicare",
+          "value": "Up to 6 visits per year, $0 copay"
+        },
+        {
+          "label": "Companion care",
+          "value": "Up to 300 hours per year for eligible members"
         }
       ]
     },
     {
-      "title": "Medical Services",
-      "icon": "hospital",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
       "rows": [
         {
-          "label": "Home Health",
+          "label": "Lab services (in-network)",
           "value": "$0 copay"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-20% coinsurance"
+          "label": "Lab services (out-of-network)",
+          "value": "30% coinsurance"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "Renal Dialysis",
+          "label": "Diagnostic tests/procedures (in-network)",
           "value": "20% coinsurance"
         },
         {
-          "label": "DME/Medical Equipment",
+          "label": "Diagnostic tests/procedures (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (in-network)",
           "value": "20% coinsurance"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "X-rays/diagnostic imaging (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI) (in-network)",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI) (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Glaucoma screening (in-network)",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Glaucoma screening (out-of-network)",
+          "value": "30% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient) (in-network)",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Mental health (outpatient) (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Substance abuse (outpatient) (in-network)",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Substance abuse (outpatient) (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Chiropractic (in-network)",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Chiropractic (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Podiatry/foot care (in-network)",
+          "value": "20% coinsurance Medicare-covered, $0 copay non-Medicare"
+        },
+        {
+          "label": "Podiatry/foot care (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Occupational therapy (in-network)",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Occupational therapy (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Speech therapy (in-network)",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Speech therapy (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Acupuncture (in-network)",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Acupuncture (out-of-network)",
+          "value": "30% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0 per stay"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "30% per stay"
+        },
+        {
+          "label": "Home health care (in-network)",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Home health care (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Durable medical equipment (DME) (in-network)",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Durable medical equipment (DME) (out-of-network)",
+          "value": "30% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
+      "icon": "hospital",
+      "rows": [
+        {
+          "label": "Preventive care (in-network)",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Preventive care (out-of-network)",
+          "value": "0%-30% coinsurance"
+        },
+        {
+          "label": "Outpatient surgery/services (in-network)",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Outpatient surgery/services (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Ambulatory surgical center (in-network)",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Ambulatory surgical center (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Outpatient hospital observation (in-network)",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Outpatient hospital observation (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Prosthetics/orthotics (in-network)",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Prosthetics/orthotics (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Diabetic supplies/monitoring",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Diagnostic eye exam (in-network)",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Diagnostic eye exam (out-of-network)",
+          "value": "30% coinsurance"
         }
       ]
     },
@@ -143,12 +331,48 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Drug deductible",
           "value": "$615"
         },
         {
-          "label": "Tier 1: Preferred Generic",
-          "value": "$0"
+          "label": "Generic and brand drugs (30-day retail)",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Generic and brand drugs (30-day mail)",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Generic and brand drugs (31-day LTC)",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Generic and brand drugs (100-day retail)",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Generic and brand drugs (100-day mail)",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 for generic and brand"
+        },
+        {
+          "label": "Part D insulin",
+          "value": "$35 copay maximum per month"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$35 copay"
+        },
+        {
+          "label": "Chemotherapy drugs",
+          "value": "0%-20% coinsurance in-network, 30% out-of-network"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "0%-20% coinsurance in-network, 30% out-of-network"
         }
       ]
     },
@@ -191,7 +415,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 5.0
+  "plan_id_full": "H5521-461-000"
 }

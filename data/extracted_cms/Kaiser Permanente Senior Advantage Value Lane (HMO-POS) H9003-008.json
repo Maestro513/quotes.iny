@@ -1,50 +1,75 @@
 {
   "plan_id": "H9003-008",
-  "plan_name": "Kaiser Permanente Senior Advantage Value Lane (HMO-POS)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO-POS",
-  "snp_type": null,
   "contract_number": "H9003",
   "org_name": "KAISER FOUNDATION HP OF THE N W",
   "geographic_area": "Lane County",
   "states": "OR",
   "counties_count": "1",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Kaiser Permanente Senior Advantage Value Lane Plan (HMO-POS)",
+  "plan_type": "HMO-POS",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$4,200",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not available",
+  "part_b_premium_reduction": "$5",
   "drug_deductible": "$160",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$5 copay"
+          "label": "PCP visit (in-network)",
+          "value": "$5/visit"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$20 copay"
+          "label": "PCP visit (out-of-network)",
+          "value": "Not available"
         },
         {
-          "label": "Emergency Room",
-          "value": "$150 copay"
+          "label": "Specialist visit (in-network)",
+          "value": "$30/visit"
         },
         {
-          "label": "Urgent Care",
-          "value": "$65 copay"
+          "label": "Specialist visit (out-of-network)",
+          "value": "Not available"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room",
+          "value": "$150/visit"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Urgent care",
+          "value": "$65/visit"
+        },
+        {
+          "label": "Inpatient hospital (in-network)",
+          "value": "$450/day days 1-4, $0/day rest of stay"
+        },
+        {
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "Not available"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$350/one-way trip"
+        },
+        {
+          "label": "Mental health (inpatient) (in-network)",
+          "value": "$450/day days 1-4, $0/day rest of stay"
+        },
+        {
+          "label": "Mental health (inpatient) (out-of-network)",
+          "value": "Not available"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$5"
         }
       ]
     },
@@ -53,8 +78,20 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$30 copay"
+          "label": "Advantage Plus dental annual maximum",
+          "value": "$1,250 per year"
+        },
+        {
+          "label": "Advantage Plus dental deductible",
+          "value": "$50 for comprehensive services"
+        },
+        {
+          "label": "Advantage Plus preventive dental",
+          "value": "$0 for exams"
+        },
+        {
+          "label": "Advantage Plus comprehensive dental",
+          "value": "50% coinsurance after deductible"
         }
       ]
     },
@@ -63,12 +100,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Advantage Plus eyewear allowance",
+          "value": "$175 every 2 years"
         }
       ]
     },
@@ -77,12 +110,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Advantage Plus hearing aids",
+          "value": "$500 per ear every 3 years plus $0 fitting exam"
         }
       ]
     },
@@ -91,42 +120,136 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Acupuncture/chiropractic/alternative care",
+          "value": "18 visits total per year at $20/visit"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Fitness benefit - One Pass",
+          "value": "$0 - includes gym network"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Medicare Explorer (POS benefit)",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Advantage Plus monthly premium",
+          "value": "$49/month for optional supplemental benefits"
+        },
+        {
+          "label": "Member discounts",
+          "value": "Lively Mobile Plus PERS"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services (out-of-network)",
+          "value": "Not available"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (in-network)",
+          "value": "$10/visit"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (out-of-network)",
+          "value": "Not available"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (in-network)",
+          "value": "$350/visit"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (out-of-network)",
+          "value": "Not available"
+        },
+        {
+          "label": "Diagnostic tests/procedures (in-network)",
+          "value": "$10-$30/visit"
+        },
+        {
+          "label": "Diagnostic tests/procedures (out-of-network)",
+          "value": "Not available"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient group) (in-network)",
+          "value": "$2/visit"
+        },
+        {
+          "label": "Mental health (outpatient group) (out-of-network)",
+          "value": "Not available"
+        },
+        {
+          "label": "Mental health (outpatient individual) (in-network)",
+          "value": "$5/visit"
+        },
+        {
+          "label": "Mental health (outpatient individual) (out-of-network)",
+          "value": "Not available"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$35/visit"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "Not available"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0/day days 1-20, $196/day days 21-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "Not available"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Preventive care (out-of-network)",
+          "value": "Not available"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery/services (in-network)",
+          "value": "$0-$300/visit"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient surgery/services (out-of-network)",
+          "value": "Not available"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgical center (in-network)",
+          "value": "$300/visit"
+        },
+        {
+          "label": "Ambulatory surgical center (out-of-network)",
+          "value": "Not available"
         }
       ]
     },
@@ -135,32 +258,84 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Drug deductible (Tiers 3,4,5)",
           "value": "$160"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred pharmacy 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Standard pharmacy 30-day",
+          "value": "$19"
+        },
+        {
+          "label": "Tier 1 Mail order 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Preferred pharmacy 30-day",
           "value": "$10"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 Standard pharmacy 30-day",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 2 Mail order 30-day",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 3 Preferred pharmacy 30-day",
           "value": "$40"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Standard pharmacy 30-day",
+          "value": "$47"
+        },
+        {
+          "label": "Tier 3 Mail order 30-day",
+          "value": "$40"
+        },
+        {
+          "label": "Tier 4 Preferred pharmacy 30-day",
           "value": "$93"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 Standard pharmacy 30-day",
+          "value": "$100"
+        },
+        {
+          "label": "Tier 4 Mail order 30-day",
+          "value": "$93"
+        },
+        {
+          "label": "Tier 5 (Specialty)",
           "value": "29%"
         },
         {
-          "label": "Tier 6: Vaccines",
+          "label": "Tier 6 (Injectable vaccines)",
           "value": "$0"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "0%-20% coinsurance"
+        },
+        {
+          "label": "Part B generic drugs",
+          "value": "$10 preferred/$20 standard"
+        },
+        {
+          "label": "Part B brand drugs",
+          "value": "$40 preferred/$47 standard"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Insulin copay cap",
+          "value": "$35/month"
         }
       ]
     },
@@ -203,7 +378,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 5.0
+  "plan_id_full": "H9003-008-000"
 }

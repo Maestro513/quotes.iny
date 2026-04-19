@@ -1,46 +1,58 @@
 {
   "plan_id": "H5594-001",
-  "plan_name": "Optimum Gold Rewards Plan (HMO)",
   "carrier": "Optimum HealthCare, Inc.",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H5594",
   "org_name": "OPTIMUM HEALTHCARE, INC.",
   "geographic_area": "Select Counties in Florida",
   "states": "FL",
   "counties_count": "6",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 4.0,
+  "plan_name": "Optimum Gold Rewards Plan (HMO)",
+  "plan_type": "HMO",
+  "monthly_premium": "$0.00",
   "annual_deductible_in": "$0",
-  "moop_in": "$1,900",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_in": "$1,900 for H5594-001, $4,200 for H5594-022 and H5594-026",
+  "moop_out": "Not covered",
+  "part_b_premium_reduction": "$185.00 for H5594-001, null for H5594-022 and H5594-026",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$10 copay"
+          "label": "Specialist visit",
+          "value": "$10 for 001, $35 for 022, $40 for 026"
         },
         {
-          "label": "Emergency Room",
-          "value": "$150 copay"
+          "label": "Emergency room",
+          "value": "$150"
         },
         {
-          "label": "Urgent Care",
-          "value": "$10 copay"
+          "label": "Urgent care",
+          "value": "$10 for 001, $20 for 022/026"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$60 allowance"
+          "label": "Inpatient hospital",
+          "value": "$95/day days 1-5"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$200 ground, 20% air"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$95/day days 1-5"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$185.00 for H5594-001, null for H5594-022 and H5594-026"
         }
       ]
     },
@@ -49,8 +61,12 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Dental preventive services",
+          "value": "2 oral exams"
+        },
+        {
+          "label": "Dental comprehensive services",
+          "value": "2 fillings"
         }
       ]
     },
@@ -59,12 +75,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear",
+          "value": "$400 allowance for 001, $100 allowance for 022/026 per year"
         }
       ]
     },
@@ -73,12 +85,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -87,38 +95,124 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$60/month for 001, $50/month for 022, $45/month for 026"
+        },
+        {
+          "label": "SilverSneakers fitness program",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Active Fitness allowance",
+          "value": "$500 annual allowance for 001 only"
+        },
+        {
+          "label": "24/7 Nurseline",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Transportation",
+          "value": "20 one-way trips/year for 001"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$100,000 coverage limit, $500 copay per service outside US"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0-$50"
+        },
+        {
+          "label": "Diagnostic tests and procedures",
+          "value": "$0-$95 or 20% for 001, $0-$195 or 20% for 022/026"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0-$95 for 001, $0-$195 for 022/026"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$25-$95 for 001, $25-$195 for 022/026"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$10 for 001, $35 for 022, $40 for 026"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$10 for 001, $35 for 022, $40 for 026"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$10 for 001, $35 for 022, $40 for 026"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$10 for 001, $35 for 022, $40 for 026"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$10 for 001, $35 for 022, $40 for 026"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$95 for 001, $195 for 022/026"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$25"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0 mail order, 20% retail"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Transportation",
+          "value": "$0 for 20 trips/year for 001, 6 trips/year for 022/026"
         }
       ]
     },
@@ -127,20 +221,64 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Preferred Brand",
-          "value": "$30"
+          "label": "Tier 1 Preferred Generic - 30-day preferred retail",
+          "value": "$0"
         },
         {
-          "label": "Tier 3: Non-Preferred Drug",
-          "value": "$70"
+          "label": "Tier 1 Preferred Generic - 30-day standard retail",
+          "value": "$0"
         },
         {
-          "label": "Tier 4: Specialty Tier",
+          "label": "Tier 1 Preferred Generic - 90-day mail order",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Preferred Brand - 30-day preferred retail",
+          "value": "$30 for 001, $10 for 022/026"
+        },
+        {
+          "label": "Tier 2 Preferred Brand - 30-day standard retail",
+          "value": "$30 for 001, $10 for 022/026"
+        },
+        {
+          "label": "Tier 2 Preferred Brand - 90-day mail order",
+          "value": "$60 for 001, $20 for 022/026"
+        },
+        {
+          "label": "Tier 3 Non-Preferred Drug - 30-day preferred retail",
+          "value": "$70 for 001/022, $50 for 026"
+        },
+        {
+          "label": "Tier 3 Non-Preferred Drug - 30-day standard retail",
+          "value": "$75 for 001/022, $55 for 026"
+        },
+        {
+          "label": "Tier 3 Non-Preferred Drug - 90-day mail order",
+          "value": "$140 for 001/022, $100 for 026"
+        },
+        {
+          "label": "Tier 4 Specialty - 30-day preferred retail",
           "value": "33%"
+        },
+        {
+          "label": "Tier 4 Specialty - 30-day standard retail",
+          "value": "33%"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$35"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
         }
       ]
     },
@@ -183,7 +321,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 4.0
+  "plan_id_full": "H5594-001-000"
 }

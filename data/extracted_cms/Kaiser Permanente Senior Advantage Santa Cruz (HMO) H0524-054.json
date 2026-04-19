@@ -1,50 +1,63 @@
 {
   "plan_id": "H0524-054",
-  "plan_name": "Kaiser Permanente Senior Advantage Santa Cruz (HMO)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H0524",
   "org_name": "KAISER FOUNDATION HP, INC.",
   "geographic_area": "Santa Cruz County Plan",
   "states": "CA",
   "counties_count": "1",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Kaiser Permanente Senior Advantage Santa Cruz County Plan (HMO)",
+  "plan_type": "HMO",
   "monthly_premium": "$88",
   "annual_deductible_in": "$0",
   "moop_in": "$4,900",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not covered",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$15/visit"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0 copay"
+          "label": "Emergency room",
+          "value": "$130/visit"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$230/day days 1-5, $0/day rest of stay"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Ambulance",
+          "value": "$250/one-way trip"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$230/day days 1-5, $0/day rest of stay"
+        }
+      ]
+    },
+    {
+      "title": "Dental",
+      "icon": "tooth",
+      "rows": [
+        {
+          "label": "Dental care (DeltaCare HMO)",
+          "value": "Varies by service"
         }
       ]
     },
@@ -53,12 +66,22 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Eyewear allowance",
+          "value": "$300 allowance every 24 months"
+        }
+      ]
+    },
+    {
+      "title": "Hearing",
+      "icon": "ear-listen",
+      "rows": [
+        {
+          "label": "Hearing aids",
+          "value": "$800 allowance per ear every 36 months"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Hearing aid fitting",
+          "value": "$0"
         }
       ]
     },
@@ -67,42 +90,72 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Advantage Plus premium",
+          "value": "$20/month additional"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
-        },
-        {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "One Pass fitness program",
+          "value": "$0 - includes gym network"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$200/procedure"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0-$10/visit"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $100/day days 21-100"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0-$200/visit"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$200/procedure"
         }
       ]
     },
@@ -111,28 +164,116 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 retail 30-day",
           "value": "$10"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 retail 31-60 day",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 2 retail 61-100 day",
+          "value": "$30"
+        },
+        {
+          "label": "Tier 3 retail 30-day",
           "value": "$47"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 retail 31-60 day",
+          "value": "$94"
+        },
+        {
+          "label": "Tier 3 retail 61-100 day",
+          "value": "$141"
+        },
+        {
+          "label": "Tier 4 retail 30-day",
           "value": "$100"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 retail 31-60 day",
+          "value": "$200"
+        },
+        {
+          "label": "Tier 4 retail 61-100 day",
+          "value": "$300"
+        },
+        {
+          "label": "Tier 5 retail",
           "value": "33%"
         },
         {
-          "label": "Tier 6: Vaccines",
+          "label": "Tier 6 retail 30-day",
           "value": "$0"
+        },
+        {
+          "label": "Tier 1 mail order",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 mail order 30-day",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 2 mail order 31-60 day",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 3 mail order 30-day",
+          "value": "$47"
+        },
+        {
+          "label": "Tier 3 mail order 31-60 day",
+          "value": "$94"
+        },
+        {
+          "label": "Tier 4 mail order 30-day",
+          "value": "$100"
+        },
+        {
+          "label": "Tier 4 mail order 31-60 day",
+          "value": "$200"
+        },
+        {
+          "label": "Tier 5 mail order",
+          "value": "33%"
+        },
+        {
+          "label": "Insulin cap",
+          "value": "$35/month, $70/2-month, $105/3-month"
+        },
+        {
+          "label": "Part B drugs administered by provider",
+          "value": "0%-20% coinsurance"
+        },
+        {
+          "label": "Part B drugs from pharmacy generic",
+          "value": "$10"
+        },
+        {
+          "label": "Part B drugs from pharmacy brand",
+          "value": "$47"
+        },
+        {
+          "label": "Part B insulin from DME",
+          "value": "$35"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Coverage gap threshold",
+          "value": "$2,100"
         }
       ]
     },
@@ -175,7 +316,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 5.0
+  "plan_id_full": "H0524-054-000"
 }

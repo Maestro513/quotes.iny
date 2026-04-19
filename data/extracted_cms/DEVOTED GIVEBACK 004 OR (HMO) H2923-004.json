@@ -1,50 +1,67 @@
 {
   "plan_id": "H2923-004",
-  "plan_name": "DEVOTED GIVEBACK 004 OR (HMO)",
   "carrier": "Devoted Health",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H2923",
   "org_name": "DEVOTED HEALTH PLAN OF OREGON INC",
   "geographic_area": "Oregon",
   "states": "OR",
   "counties_count": "12",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.5,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 4.0,
+  "plan_name": "DEVOTED GIVEBACK 004 OR (HMO)",
+  "plan_type": "HMO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$7,900",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not applicable",
+  "part_b_premium_reduction": "$154.20",
   "drug_deductible": "$605",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$50"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care - PCP office",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$40 copay"
+          "label": "Urgent care - center/retail",
+          "value": "$40"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room",
+          "value": "$115"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Inpatient hospital",
+          "value": "$385/day days 1-5, $0/day day 6+"
+        },
+        {
+          "label": "Ground ambulance",
+          "value": "$345/trip"
+        },
+        {
+          "label": "Air ambulance",
+          "value": "20%"
+        },
+        {
+          "label": "Mental health - inpatient",
+          "value": "$385/day days 1-5, $0/day days 6-90"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$154.20"
         }
       ]
     },
@@ -53,12 +70,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$250"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$50 copay"
+          "label": "Dental and alternative therapy allowance",
+          "value": "$250 per year for preventive dental"
         }
       ]
     },
@@ -67,12 +80,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$200 per year for eyeglasses/contacts"
         }
       ]
     },
@@ -81,12 +90,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "$599 or $899 copay per aid"
         }
       ]
     },
@@ -95,38 +100,172 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "SilverSneakers fitness",
+          "value": "$0 membership"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Devoted Health Wellness Bucks",
+          "value": "$150 per year for fitness/wellness items"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Covered as supplemental benefit"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services - office/freestanding",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services - outpatient hospital",
+          "value": "$40"
+        },
+        {
+          "label": "X-rays/ultrasounds - office/freestanding",
+          "value": "$0-$25"
+        },
+        {
+          "label": "X-rays/ultrasounds - outpatient hospital",
+          "value": "$75"
+        },
+        {
+          "label": "Advanced imaging - office/freestanding",
+          "value": "$100-$200"
+        },
+        {
+          "label": "Advanced imaging - outpatient hospital",
+          "value": "$200-$300"
+        },
+        {
+          "label": "Diagnostic tests - office/freestanding",
+          "value": "$0-$40"
+        },
+        {
+          "label": "Diagnostic tests - outpatient hospital",
+          "value": "$95"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health - outpatient",
+          "value": "$50"
+        },
+        {
+          "label": "Physical therapy - office",
+          "value": "$50"
+        },
+        {
+          "label": "Physical therapy - outpatient hospital",
+          "value": "$50"
+        },
+        {
+          "label": "Occupational therapy - office",
+          "value": "$35"
+        },
+        {
+          "label": "Occupational therapy - outpatient hospital",
+          "value": "$35"
+        },
+        {
+          "label": "Speech therapy - office",
+          "value": "$50"
+        },
+        {
+          "label": "Speech therapy - outpatient hospital",
+          "value": "$50"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$50"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Dialysis",
+          "value": "20%"
+        },
+        {
+          "label": "DME - basic",
+          "value": "15%"
+        },
+        {
+          "label": "DME - advanced",
+          "value": "15%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery - hospital",
+          "value": "$525"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery - ASC",
+          "value": "$385"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "15% coinsurance"
+          "label": "Observation stays",
+          "value": "$385/stay"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Radiation therapy",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic retinopathy exam",
+          "value": "$0"
+        },
+        {
+          "label": "Prosthetics",
+          "value": "15%"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic shoes",
+          "value": "$0"
+        },
+        {
+          "label": "CGM - preferred",
+          "value": "$0 retail, 15% DME"
+        },
+        {
+          "label": "CGM - non-preferred",
+          "value": "15%"
         }
       ]
     },
@@ -135,28 +274,72 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$605"
+          "label": "Part D deductible",
+          "value": "$605 Tiers 3-5 only"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 - 30 day retail",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 2 - 30 day retail",
           "value": "$3"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 3 - 30 day retail",
           "value": "21%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 4 - 30 day retail",
           "value": "25%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 - 30 day retail",
           "value": "25%"
+        },
+        {
+          "label": "Tier 1 - 100 day mail",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 - 100 day mail",
+          "value": "$7.50"
+        },
+        {
+          "label": "Tier 3 - 100 day mail",
+          "value": "21%"
+        },
+        {
+          "label": "Tier 4 - 100 day mail",
+          "value": "25%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
+        },
+        {
+          "label": "Part B drugs - chemotherapy",
+          "value": "20%"
+        },
+        {
+          "label": "Part B drugs - other",
+          "value": "20%"
+        },
+        {
+          "label": "Insulin coverage",
+          "value": "$35 max per 30-day supply"
+        },
+        {
+          "label": "Enhanced drugs - Vitamin D",
+          "value": "Tier 2 cost"
+        },
+        {
+          "label": "Enhanced drugs - B12 injection",
+          "value": "Tier 2 cost"
+        },
+        {
+          "label": "Enhanced drugs - Sildenafil",
+          "value": "Tier 2 cost, 6 tablets/month max"
         }
       ]
     },
@@ -199,7 +382,5 @@
       ]
     }
   ],
-  "star_rating_overall": 3.5,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 4.0
+  "plan_id_full": "H2923-004-000"
 }

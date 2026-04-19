@@ -1,50 +1,68 @@
 {
   "plan_id": "H0609-037",
-  "plan_name": "UHC Complete Care NV-4 (HMO-POS C-SNP)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "HMO-POS",
-  "snp_type": "C-SNP",
   "contract_number": "H0609",
   "org_name": "UnitedHealthcare Benefits of Texas, Inc.",
   "geographic_area": "Clark and Nye Counties",
   "states": "NV",
   "counties_count": "2",
+  "snp_type": "C-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 4.0,
+  "plan_name": "UHC Complete Care NV-4 (HMO-POS C-SNP)",
+  "plan_type": "HMO-POS",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$900",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not specified",
+  "part_b_premium_reduction": "$5",
   "drug_deductible": "$270",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$150 copay"
+          "label": "Urgent care (in-network)",
+          "value": "$10"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$10 copay"
+          "label": "Urgent care (out-of-network)",
+          "value": "$0 outside US"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room (in-network)",
+          "value": "$150"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Emergency room (out-of-network)",
+          "value": "$0 outside US"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "$0/stay"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$260 ground/$260 air"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$0/stay"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$5"
         }
       ]
     },
@@ -53,12 +71,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$4,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Dental allowance",
+          "value": "$4,000 allowance for all covered dental services"
         }
       ]
     },
@@ -67,12 +81,12 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Vision eyewear allowance",
+          "value": "$250 allowance every 2 years"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Routine eye exam",
+          "value": "1 exam per year"
         }
       ]
     },
@@ -81,12 +95,12 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Hearing aids benefit",
+          "value": "Up to 2 hearing aids per year"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Routine hearing exam",
+          "value": "1 exam per year"
         }
       ]
     },
@@ -95,34 +109,160 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
+          "label": "OTC and food credit",
+          "value": "$45 per month for OTC products and healthy food"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "28 home-delivered meals after hospitalization or SNF stay"
+        },
+        {
+          "label": "Fitness program",
+          "value": "Free gym membership and online fitness classes"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "6 visits per year"
+        },
+        {
+          "label": "Routine physical",
+          "value": "1 per year"
+        },
+        {
+          "label": "Transportation",
+          "value": "36 one-way trips per year"
+        },
+        {
+          "label": "UnitedHealth Passport",
+          "value": "Travel coverage up to 9 consecutive months"
+        },
+        {
+          "label": "Diabetes self-management training",
+          "value": "Covered"
+        },
+        {
+          "label": "Therapeutic shoes",
+          "value": "Covered"
+        },
+        {
+          "label": "Opioid treatment program",
           "value": "Covered"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays",
+          "value": "$5"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$140"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient individual",
+          "value": "$15"
+        },
+        {
+          "label": "Mental health outpatient group",
+          "value": "$10"
+        },
+        {
+          "label": "Substance abuse outpatient individual",
+          "value": "$15"
+        },
+        {
+          "label": "Substance abuse outpatient group",
+          "value": "$10"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 days 1-20/$218 days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "DME",
+          "value": "20%"
+        },
+        {
+          "label": "Kidney dialysis",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery",
+          "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Telehealth",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Prosthetics",
+          "value": "20%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies",
+          "value": "$0"
+        },
+        {
+          "label": "Routine transportation",
+          "value": "$0 36 trips/year"
         }
       ]
     },
@@ -131,28 +271,88 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Drug deductible Tier 1-2",
+          "value": "$0"
+        },
+        {
+          "label": "Drug deductible Tier 3-5",
           "value": "$270"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 retail 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 retail 100-day",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 1 mail 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 retail 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 mail 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 retail 30-day",
           "value": "23%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 retail 100-day",
+          "value": "23%"
+        },
+        {
+          "label": "Tier 3 mail 100-day",
+          "value": "23%"
+        },
+        {
+          "label": "Covered insulin retail 30-day",
+          "value": "23% up to $75"
+        },
+        {
+          "label": "Covered insulin retail 100-day",
+          "value": "23% up to $75"
+        },
+        {
+          "label": "Covered insulin mail 100-day",
+          "value": "23% up to $25"
+        },
+        {
+          "label": "Tier 4 retail 30-day",
           "value": "45%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 retail 30-day",
           "value": "30%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Part B chemotherapy",
+          "value": "20%"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "20% up to $35"
+        },
+        {
+          "label": "Part B allergy antigens",
+          "value": "$0"
+        },
+        {
+          "label": "Part B other drugs",
+          "value": "20%"
         }
       ]
     },
@@ -195,7 +395,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 4.0
+  "plan_id_full": "H0609-037-000"
 }

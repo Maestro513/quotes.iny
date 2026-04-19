@@ -1,50 +1,64 @@
 {
   "plan_id": "H9888-008",
-  "plan_name": "DEVOTED C-SNP CHOICE 008 AL (PPO C-SNP)",
   "carrier": "Devoted Health",
-  "plan_type": "PPO",
-  "snp_type": "C-SNP",
   "contract_number": "H9888",
   "org_name": "DEVOTED HEALTH INSURANCE COMPANY OF ALABAMA INC",
   "geographic_area": "Central and South Alabama",
   "states": "AL",
   "counties_count": "32",
+  "snp_type": "C-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.5,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 3.5,
+  "plan_name": "DEVOTED C-SNP CHOICE 008 AL (PPO C-SNP)",
+  "plan_type": "PPO C-SNP",
   "monthly_premium": "$0",
-  "annual_deductible_in": "$0",
+  "annual_deductible_in": "No medical deductible",
   "moop_in": "$6,500",
+  "moop_out": "$9,850",
   "moop_combined": "$9,850",
-  "moop_out": null,
   "drug_deductible": "$395",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "PCP visit (out-of-network)",
+          "value": "$5"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Specialist visit",
+          "value": "$30"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$45 copay"
+          "label": "Urgent care",
+          "value": "$45"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room",
+          "value": "$130"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$120 allowance"
+          "label": "Inpatient hospital",
+          "value": "$385/day days 1-7, $0/day day 8+"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$385/day days 1-5, $0/day days 6-90"
+        },
+        {
+          "label": "Ambulance ground",
+          "value": "$405"
+        },
+        {
+          "label": "Ambulance air",
+          "value": "20%"
         }
       ]
     },
@@ -53,12 +67,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$3,500"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$30 copay"
+          "label": "Dental allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -67,12 +77,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$350 per year for eyeglasses/contacts"
         }
       ]
     },
@@ -81,12 +87,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "$199 or $499 copay per aid, 2 TruHearing aids covered"
         }
       ]
     },
@@ -95,42 +97,264 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$120 per quarter"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Food & Home Card",
+          "value": "$49 per month for food, utilities, rent/mortgage"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "SilverSneakers",
+          "value": "$0 membership"
+        },
+        {
+          "label": "Devoted Wellness Bucks",
+          "value": "$150 per year for fitness/wellness items"
+        },
+        {
+          "label": "Devoted Dollars HRA reward",
+          "value": "$20 for completing Health Risk Assessment"
+        },
+        {
+          "label": "Medical nutrition therapy",
+          "value": "$0 copay plus 8 additional visits per year beyond Medicare"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "4 visits per year covered"
+        },
+        {
+          "label": "Diabetic shoes additional",
+          "value": "1 additional pair per year beyond Medicare"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Covered as supplemental benefit"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Diagnostic colonoscopy",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services office",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services hospital",
+          "value": "$20"
+        },
+        {
+          "label": "X-rays office",
+          "value": "$0-$25"
+        },
+        {
+          "label": "X-rays hospital",
+          "value": "$75"
+        },
+        {
+          "label": "Advanced imaging office",
+          "value": "$100-$200"
+        },
+        {
+          "label": "Advanced imaging hospital",
+          "value": "$200-$300"
+        },
+        {
+          "label": "Diagnostic tests office",
+          "value": "$0-$40"
+        },
+        {
+          "label": "Diagnostic tests hospital",
+          "value": "$95"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient",
+          "value": "$30"
+        },
+        {
+          "label": "Physical therapy office",
+          "value": "$30"
+        },
+        {
+          "label": "Physical therapy hospital",
+          "value": "$50"
+        },
+        {
+          "label": "Occupational therapy office",
+          "value": "$30"
+        },
+        {
+          "label": "Occupational therapy hospital",
+          "value": "$50"
+        },
+        {
+          "label": "Speech therapy office",
+          "value": "$30"
+        },
+        {
+          "label": "Speech therapy hospital",
+          "value": "$50"
+        },
+        {
+          "label": "Podiatry Medicare-covered",
+          "value": "$30"
+        },
+        {
+          "label": "Podiatry routine",
+          "value": "$30"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Home health care (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Home health care (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Dialysis",
+          "value": "20%"
+        },
+        {
+          "label": "DME basic (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "DME basic (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "DME advanced (in-network)",
+          "value": "30%"
+        },
+        {
+          "label": "DME advanced (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "CGM Freestyle/Dexcom DME (in-network)",
+          "value": "35%"
+        },
+        {
+          "label": "CGM Freestyle/Dexcom DME (out-of-network)",
+          "value": "50%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery",
+          "value": "$485 hospital, $385 ASC"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Observation stays",
+          "value": "$385"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20-30% coinsurance"
+          "label": "Radiation therapy office (in-network)",
+          "value": "20%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Radiation therapy office (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Radiation therapy hospital (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Radiation therapy hospital (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Diabetic retinopathy exam",
+          "value": "$0"
+        },
+        {
+          "label": "Prosthetics (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Prosthetics (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Medical supplies (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Medical supplies (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Diabetic supplies (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Diabetic shoes (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic shoes (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "CGM Freestyle/Dexcom pharmacy (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "CGM Freestyle/Dexcom pharmacy (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "CGM non-preferred (in-network)",
+          "value": "35%"
+        },
+        {
+          "label": "CGM non-preferred (out-of-network)",
+          "value": "50%"
         }
       ]
     },
@@ -139,28 +363,68 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$395"
+          "label": "Drug deductible",
+          "value": "$395 for Tiers 3-5 only"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 30-day retail",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 2 30-day retail",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 3 30-day retail",
           "value": "20%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 4 30-day retail",
           "value": "25%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 30-day retail",
           "value": "26%"
+        },
+        {
+          "label": "Tier 1 100-day mail",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 100-day mail",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 100-day mail",
+          "value": "20%"
+        },
+        {
+          "label": "Tier 4 100-day mail",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 5 mail order",
+          "value": "Not available"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
+        },
+        {
+          "label": "Insulin copay cap",
+          "value": "$35 max per 30-day supply"
+        },
+        {
+          "label": "Part B chemotherapy",
+          "value": "20% in-network, 40% out-of-network"
+        },
+        {
+          "label": "Part B other drugs",
+          "value": "20% in-network, 40% out-of-network"
+        },
+        {
+          "label": "Enhanced drugs Tier 2",
+          "value": "Vitamin D, B12 injection, Sildenafil"
         }
       ]
     },
@@ -203,7 +467,5 @@
       ]
     }
   ],
-  "star_rating_overall": 3.5,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 3.5
+  "plan_id_full": "H9888-008-000"
 }

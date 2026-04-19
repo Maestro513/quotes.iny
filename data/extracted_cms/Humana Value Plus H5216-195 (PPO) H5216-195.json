@@ -1,50 +1,76 @@
 {
   "plan_id": "H5216-195",
-  "plan_name": "Humana Value Plus H5216-195 (PPO)",
   "carrier": "Humana",
-  "plan_type": "PPO",
-  "snp_type": null,
   "contract_number": "H5216",
   "org_name": "HUMANA INSURANCE COMPANY",
   "geographic_area": "Colorado",
   "states": "CO",
   "counties_count": "51",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "star_rating_overall": 3.5,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 3.0,
+  "plan_name": "Humana Value Plus H5216-195 (PPO)",
+  "plan_type": "PPO",
+  "monthly_premium": "$32.70",
   "annual_deductible_in": "$0",
   "moop_in": "$7,050",
+  "moop_out": "$10,800",
+  "part_b_premium_reduction": "$1.00",
   "moop_combined": "$10,800",
-  "moop_out": null,
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$10 copay"
+          "label": "PCP telehealth",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Specialist visit",
+          "value": "$35"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Specialist telehealth",
+          "value": "$35"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Urgent care",
+          "value": "$40"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Urgent care telehealth",
+          "value": "$40"
+        },
+        {
+          "label": "Emergency room",
+          "value": "$115"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "$325/day days 1-6, $0/day days 7-90"
+        },
+        {
+          "label": "Ground ambulance",
+          "value": "$335"
+        },
+        {
+          "label": "Air ambulance",
+          "value": "$1,250"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$325/day days 1-6, $0/day days 7-90"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$1.00"
         }
       ]
     },
@@ -53,12 +79,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$1,750"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$35 copay"
+          "label": "Mandatory supplemental dental",
+          "value": "$0 copay comprehensive services, $1,750 annual maximum"
         }
       ]
     },
@@ -67,12 +89,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "$40 max"
+          "label": "Mandatory supplemental vision",
+          "value": "$0 routine exam with $40 annual max"
         }
       ]
     },
@@ -81,12 +99,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Mandatory supplemental hearing",
+          "value": "$0 routine exam 1 per year"
         }
       ]
     },
@@ -95,42 +109,184 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Meal benefit",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "SilverSneakers fitness",
+          "value": "Fitness program at participating locations"
+        },
+        {
+          "label": "Go365 rewards",
+          "value": "Rewards for completing healthy activities"
+        },
+        {
+          "label": "Routine chiropractic",
+          "value": "$0 copay up to 12 visits per year"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "$0 copay up to 12 visits per year"
+        },
+        {
+          "label": "Travel coverage",
+          "value": "PPO national network coverage"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Emergency and urgently needed services covered worldwide"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays",
+          "value": "$35 freestanding, $75 outpatient hospital, $0 PCP/specialist, $40 urgent care"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$200 freestanding/PCP/specialist, $300 outpatient hospital"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient) (in-network)",
+          "value": "$35 outpatient hospital, $25 specialist/telehealth"
+        },
+        {
+          "label": "Mental health (outpatient) (out-of-network)",
+          "value": "$35 outpatient hospital, $25 specialist, telehealth not covered"
+        },
+        {
+          "label": "Substance abuse (outpatient) (in-network)",
+          "value": "$35 outpatient hospital, $25 specialist/telehealth"
+        },
+        {
+          "label": "Substance abuse (outpatient) (out-of-network)",
+          "value": "$35 outpatient hospital, $25 specialist, telehealth not covered"
+        },
+        {
+          "label": "Chiropractic (Medicare-covered)",
+          "value": "$10"
+        },
+        {
+          "label": "Chiropractic (routine)",
+          "value": "$0, 12 visits per year"
+        },
+        {
+          "label": "Podiatry (Medicare-covered)",
+          "value": "$35"
+        },
+        {
+          "label": "Podiatry (routine)",
+          "value": "$0, 12 visits per year"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$35"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$35"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$35"
+        },
+        {
+          "label": "Cardiac rehabilitation",
+          "value": "$0"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "20%"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$35, 20 visits per year"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "15%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient hospital surgery",
+          "value": "$325"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgery center",
+          "value": "$225"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Diagnostic mammography",
+          "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Diagnostic procedures",
+          "value": "20% outpatient hospital, $0 PCP, $35 specialist, $40 urgent care"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "$0 copay or 15% coinsurance"
+          "label": "Nuclear medicine",
+          "value": "$300"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Sleep study",
+          "value": "$0 home, 20% outpatient hospital/specialist"
+        },
+        {
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic supplies/monitoring (in-network)",
+          "value": "$0 pharmacy/preferred supplier, 20% diabetic supplier"
+        },
+        {
+          "label": "Diabetic supplies/monitoring (out-of-network)",
+          "value": "$0 pharmacy, 20% diabetic supplier, preferred supplier not covered"
+        },
+        {
+          "label": "Continuous glucose monitor (in-network)",
+          "value": "$0 DME/pharmacy"
+        },
+        {
+          "label": "Continuous glucose monitor (out-of-network)",
+          "value": "20% DME, $0 pharmacy"
         }
       ]
     },
@@ -139,11 +295,55 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Drug deductible",
           "value": "$615"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "All Part D drugs - 30-day retail",
+          "value": "25%"
+        },
+        {
+          "label": "All Part D drugs - 100-day retail",
+          "value": "25%"
+        },
+        {
+          "label": "All Part D drugs - 30-day mail order",
+          "value": "25%"
+        },
+        {
+          "label": "All Part D drugs - 100-day mail order",
+          "value": "25%"
+        },
+        {
+          "label": "Insulin - 30-day retail",
+          "value": "$35 max"
+        },
+        {
+          "label": "Insulin - 100-day retail",
+          "value": "$105 max"
+        },
+        {
+          "label": "Insulin - 30-day mail order",
+          "value": "$35 max"
+        },
+        {
+          "label": "Insulin - 100-day mail order",
+          "value": "$105 max"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "20% outpatient hospital/specialist, $0 PCP office"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$35 max per month"
+        },
+        {
+          "label": "Allergy shots",
           "value": "$0"
         }
       ]
@@ -187,7 +387,5 @@
       ]
     }
   ],
-  "star_rating_overall": 3.5,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 3.0
+  "plan_id_full": "H5216-195-000"
 }

@@ -1,50 +1,56 @@
 {
   "plan_id": "H2041-004",
-  "plan_name": "DEVOTED GIVEBACK 004 MO (HMO)",
   "carrier": "Devoted Health",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H2041",
   "org_name": "DEVOTED HEALTH PLAN OF MISSOURI INC",
   "geographic_area": "Kansas City Metro/Northwest Missouri",
   "states": "MO",
   "counties_count": "18",
   "source": "CMS PBP 2026",
+  "plan_name": "DEVOTED GIVEBACK 004 MO (HMO)",
+  "plan_type": "HMO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$7,000",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not covered",
+  "part_b_premium_reduction": "$164.70",
   "drug_deductible": "$605",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$45"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care",
+          "value": "$40"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$40 copay"
+          "label": "Emergency room",
+          "value": "$115"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$475/day days 1-3, $0/day day 4+"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Ambulance",
+          "value": "Ground $315, Air 20%"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$475/day days 1-3, $0/day days 4-90"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$164.70"
         }
       ]
     },
@@ -53,12 +59,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$250"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$45 copay"
+          "label": "Dental allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -67,12 +69,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision allowance",
+          "value": "$200 yearly allowance for eyeglasses and/or contacts"
         }
       ]
     },
@@ -81,12 +79,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -95,38 +89,128 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Part B premium reduction",
+          "value": "$164.70 per month"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "SilverSneakers",
+          "value": "$0 membership fee"
+        },
+        {
+          "label": "Wellness Bucks",
+          "value": "$150 per year toward fitness and wellness items"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Emergency services covered worldwide"
+        },
+        {
+          "label": "Diabetic shoes",
+          "value": "$0 copay for therapeutic shoes and inserts"
+        },
+        {
+          "label": "Enhanced drug coverage",
+          "value": "Vitamin D 50"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "Office $0, Hospital $40"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "Office $0-$25, Hospital $75"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "Office $100-$200, Hospital $200-$300"
+        },
+        {
+          "label": "Diagnostic tests/procedures",
+          "value": "Office $0-$40, Hospital $95"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$45"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$45"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "Office $45, Hospital $50"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "Office $35, Hospital $35"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "Office $45, Hospital $50"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "Basic 20%, Advanced 20%"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "ASC $475, Hospital $575, Observation $475/stay"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "Supplies $0, CGM $0 retail/20% DME"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Radiation therapy",
+          "value": "20%"
         }
       ]
     },
@@ -135,28 +219,60 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$605"
+          "label": "Part D deductible",
+          "value": "$605 Tiers 3-5 only"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 (30-day retail)",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 2 (30-day retail)",
           "value": "$3"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 3 (30-day retail)",
           "value": "21%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 4 (30-day retail)",
           "value": "25%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 (30-day retail)",
           "value": "25%"
+        },
+        {
+          "label": "Tier 1 (100-day mail)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 (100-day mail)",
+          "value": "$7.50"
+        },
+        {
+          "label": "Tier 3 (100-day mail)",
+          "value": "21%"
+        },
+        {
+          "label": "Tier 4 (100-day mail)",
+          "value": "25%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
+        },
+        {
+          "label": "Insulin coverage",
+          "value": "$35 max per 30-day supply"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "20% chemotherapy and other"
+        },
+        {
+          "label": "Enhanced benefits",
+          "value": "Vitamin D, B12 injection, Sildenafil at Tier 2 rates"
         }
       ]
     },
@@ -198,5 +314,6 @@
         }
       ]
     }
-  ]
+  ],
+  "plan_id_full": "H2041-004-000"
 }

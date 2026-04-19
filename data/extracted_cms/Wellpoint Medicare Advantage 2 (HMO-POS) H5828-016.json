@@ -1,50 +1,62 @@
 {
   "plan_id": "H5828-016",
-  "plan_name": "Wellpoint Medicare Advantage 2 (HMO-POS)",
   "carrier": "Wellpoint",
-  "plan_type": "HMO-POS",
-  "snp_type": null,
   "contract_number": "H5828",
   "org_name": "WELLPOINT TENNESSEE, INC.",
   "geographic_area": "Select counties in Tennessee",
   "states": "TN",
   "counties_count": "68",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "star_rating_overall": 3.0,
+  "star_rating_part_c": 3.0,
+  "star_rating_part_d": 3.0,
+  "plan_name": "Wellpoint Medicare Advantage 2 (HMO-POS)",
+  "plan_type": "HMO-POS",
+  "monthly_premium": "$0.00",
   "annual_deductible_in": "$0",
   "moop_in": "$6,460",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not specified",
   "drug_deductible": "$200",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$45"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care",
+          "value": "$30"
         },
         {
-          "label": "Urgent Care",
-          "value": "$30 copay"
+          "label": "Emergency room",
+          "value": "$130"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency and urgent care worldwide",
+          "value": "$130"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$25 allowance"
+          "label": "Inpatient hospital",
+          "value": "$350/day days 1-6, $0/day days 7-90"
+        },
+        {
+          "label": "Ground/Water ambulance",
+          "value": "$325/trip"
+        },
+        {
+          "label": "Air ambulance",
+          "value": "$325/trip"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$350/day days 1-6, $0/day days 7-90"
         }
       ]
     },
@@ -53,12 +65,12 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,250"
+          "label": "Dental allowance",
+          "value": "$2,250 per year for preventive and comprehensive dental"
         },
         {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Preventive dental services",
+          "value": "2 exams"
         }
       ]
     },
@@ -67,12 +79,12 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Vision allowance",
+          "value": "$300 per year for eyeglasses or contact lenses"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Routine vision exams",
+          "value": "1 exam per year"
         }
       ]
     },
@@ -81,12 +93,12 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Hearing aids allowance",
+          "value": "Covered — see Summary of Benefits"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Routine hearing exams",
+          "value": "1 exam per year"
         }
       ]
     },
@@ -95,38 +107,200 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$25 per quarter on Benefits Mastercard"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Routine foot care",
+          "value": "Unlimited visits per year"
+        },
+        {
+          "label": "Healthy meals post-discharge",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "LiveHealth Online",
+          "value": "Telehealth services via video"
+        },
+        {
+          "label": "Medicare Community Resource Support",
+          "value": "Phone assistance for health info and community services"
+        },
+        {
+          "label": "Personal Emergency Response System",
+          "value": "Monitoring device and service"
+        },
+        {
+          "label": "24/7 Nurseline",
+          "value": "24-hour nurse line access 365 days per year"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services physician office",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services hospital outpatient",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays physician office",
+          "value": "$90"
+        },
+        {
+          "label": "X-rays hospital outpatient",
+          "value": "$110"
+        },
+        {
+          "label": "X-rays free-standing/at-home",
+          "value": "$90"
+        },
+        {
+          "label": "CT/MRI/PET physician office",
+          "value": "$130"
+        },
+        {
+          "label": "CT/MRI/PET hospital outpatient",
+          "value": "$350"
+        },
+        {
+          "label": "Ultrasounds physician office",
+          "value": "$50"
+        },
+        {
+          "label": "Ultrasounds hospital outpatient",
+          "value": "$110"
+        },
+        {
+          "label": "Diagnostic tests physician office",
+          "value": "$85"
+        },
+        {
+          "label": "Diagnostic tests hospital outpatient",
+          "value": "$150"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient",
+          "value": "$45"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$45"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$45"
+        },
+        {
+          "label": "Outpatient substance abuse",
+          "value": "$45"
+        },
+        {
+          "label": "Cardiac rehabilitation",
+          "value": "$35"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "$15"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$15"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "20%"
+        },
+        {
+          "label": "Renal dialysis",
+          "value": "20%"
+        },
+        {
+          "label": "Part B drugs (insulin pump)",
+          "value": "$35"
+        },
+        {
+          "label": "Part B drugs (other)",
+          "value": "$0-20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Annual physical exam",
+          "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient hospital",
+          "value": "$350"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$300"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Medical supplies/prosthetics",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "$0"
+        },
+        {
+          "label": "Foot care (Medicare-covered)",
+          "value": "$0-$45"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "$0"
+        },
+        {
+          "label": "Chemotherapy drugs",
+          "value": "$0-20%"
         }
       ]
     },
@@ -135,28 +309,68 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Part D deductible",
           "value": "$200"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 preferred retail 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 standard retail 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 1 mail order 90-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 preferred retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 standard retail 30-day",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 2 mail order 90-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 preferred retail 30-day",
           "value": "25%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 standard retail 30-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 3 mail order 90-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 4 preferred retail 30-day",
           "value": "30%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 standard retail 30-day",
           "value": "30%"
+        },
+        {
+          "label": "Tier 4 mail order 90-day",
+          "value": "30%"
+        },
+        {
+          "label": "Tier 5 preferred retail 30-day",
+          "value": "30%"
+        },
+        {
+          "label": "Tier 5 standard retail 30-day",
+          "value": "30%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
         }
       ]
     },
@@ -199,7 +413,5 @@
       ]
     }
   ],
-  "star_rating_overall": 3.0,
-  "star_rating_part_c": 3.0,
-  "star_rating_part_d": 3.0
+  "plan_id_full": "H5828-016-000"
 }

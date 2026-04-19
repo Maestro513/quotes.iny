@@ -1,74 +1,53 @@
 {
   "plan_id": "H1170-009",
-  "plan_name": "Kaiser Permanente Senior Advantage Basic 1 (HMO)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H1170",
   "org_name": "KAISER FOUNDATION HP OF GA, INC.",
   "geographic_area": "Atlanta Metro Area",
   "states": "GA",
   "counties_count": "12",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 3.5,
+  "plan_name": "Kaiser Permanente Senior Advantage Basic 1 Plan (HMO) and Kaiser Permanente Senior Advantage Enhanced 1 Plan (HMO)",
+  "plan_type": "HMO",
+  "monthly_premium": "$0 Basic / $67 Enhanced",
   "annual_deductible_in": "$0",
-  "moop_in": "$7,500",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_in": "$7,500 Basic / $6,000 Enhanced",
+  "moop_out": "Not covered",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "20% coinsurance"
+          "label": "Specialist visit",
+          "value": "$30 Basic / $20 Enhanced"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care",
+          "value": "$30 Basic / $20 Enhanced"
         },
         {
-          "label": "Urgent Care",
-          "value": "$30 copay"
+          "label": "Emergency room",
+          "value": "$115 Basic / $130 Enhanced"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$395/day days 1-6 Basic / $350/day days 1-6 Enhanced"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$35 allowance"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
-        {
-          "label": "Comprehensive Dental",
-          "value": "$30 copay"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Ambulance",
+          "value": "$275 Basic / $260 Enhanced"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Mental health (inpatient)",
+          "value": "$395/day days 1-5 Basic / $350/day days 1-5 Enhanced"
         }
       ]
     },
@@ -77,12 +56,12 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Advantage Plus hearing aids",
+          "value": "$500 allowance per ear every 3 years"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Advantage Plus hearing exam",
+          "value": "$0 for hearing aid fitting"
         }
       ]
     },
@@ -91,42 +70,100 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Transportation services",
+          "value": "18 one-way trips per year at $0"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Fitness benefit - One Pass",
+          "value": "Complete fitness program including gym network"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Advanced Care at Home",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "OTC allowance",
+          "value": "$35 per quarter ($140 annually)"
+        },
+        {
+          "label": "Healthy Food Card (Basic 1)",
+          "value": "$100 per quarter for eligible chronically ill members"
+        },
+        {
+          "label": "Healthy Food Card (Enhanced 1)",
+          "value": "$120 per quarter for eligible chronically ill members"
+        },
+        {
+          "label": "Advantage Plus premium",
+          "value": "$12/month additional"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0 medical office, $35 hospital Basic / $0 medical office, $20 hospital Enhanced"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$10 medical office, $35 hospital Basic / $0 medical office, $50 hospital Enhanced"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$265 medical office, $340 hospital Basic / $210 medical office, $290 hospital Enhanced"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient individual)",
+          "value": "$30 Basic / $20 Enhanced"
+        },
+        {
+          "label": "Mental health (outpatient group)",
+          "value": "$15 Basic / $10 Enhanced"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$35 Basic / $25 Enhanced"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0-$375 Basic / $0-$300 Enhanced"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$375 Basic / $300 Enhanced"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Transportation (medical)",
+          "value": "$60-$125"
         }
       ]
     },
@@ -135,27 +172,75 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 (Preferred Generic) 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 2 (Generic) 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 3 (Preferred Brand) 30-day",
           "value": "$47"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 (Preferred Brand) 31-60 day",
+          "value": "$94"
+        },
+        {
+          "label": "Tier 3 (Preferred Brand) 61-90 day",
+          "value": "$141"
+        },
+        {
+          "label": "Tier 4 (Nonpreferred) 30-day",
           "value": "$95"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 (Nonpreferred) 31-60 day",
+          "value": "$190"
+        },
+        {
+          "label": "Tier 4 (Nonpreferred) 61-90 day",
+          "value": "$285"
+        },
+        {
+          "label": "Tier 5 (Specialty) 30-day",
           "value": "33%"
         },
         {
-          "label": "Tier 6: Vaccines",
+          "label": "Tier 6 (Injectable vaccines)",
+          "value": "$0"
+        },
+        {
+          "label": "Mail order Tier 3 61-90 day",
+          "value": "$94"
+        },
+        {
+          "label": "Mail order Tier 4 61-90 day",
+          "value": "$190"
+        },
+        {
+          "label": "Part B generic drugs",
+          "value": "$0"
+        },
+        {
+          "label": "Part B brand drugs",
+          "value": "$47"
+        },
+        {
+          "label": "Part B insulin DME",
+          "value": "$35"
+        },
+        {
+          "label": "Part B administered drugs",
+          "value": "0%-20% coinsurance"
+        },
+        {
+          "label": "Insulin cap",
+          "value": "$35/month, $70/2-month, $105/3-month"
+        },
+        {
+          "label": "Catastrophic coverage",
           "value": "$0"
         }
       ]
@@ -199,7 +284,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 3.5
+  "plan_id_full": "H1170-009-000"
 }

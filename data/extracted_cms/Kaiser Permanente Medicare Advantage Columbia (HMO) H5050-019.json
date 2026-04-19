@@ -1,74 +1,53 @@
 {
   "plan_id": "H5050-019",
-  "plan_name": "Kaiser Permanente Medicare Advantage Columbia (HMO)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H5050",
   "org_name": "KAISER FOUNDATION HEALTH PLAN OF WASHINGTON",
   "geographic_area": "Spokane",
   "states": "WA",
   "counties_count": "1",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$46.10",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Kaiser Permanente Medicare Advantage Centennial (HMO) and Kaiser Permanente Medicare Advantage Columbia (HMO)",
+  "plan_type": "HMO",
+  "monthly_premium": "$0 Centennial, $67 Columbia",
   "annual_deductible_in": "$0",
-  "moop_in": "$3,950",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_in": "$4,950 Centennial, $3,950 Columbia",
+  "moop_out": "Out-of-network not covered",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$20 copay"
+          "label": "Specialist visit",
+          "value": "$25 Centennial, $20 Columbia"
         },
         {
-          "label": "Emergency Room",
-          "value": "$140 copay"
+          "label": "Urgent care",
+          "value": "$20"
         },
         {
-          "label": "Urgent Care",
-          "value": "$20 copay"
+          "label": "Emergency room",
+          "value": "$130 Centennial, $140 Columbia"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$395/day days 1-4 then $0 Centennial"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
-        {
-          "label": "Comprehensive Dental",
-          "value": "$20 copay"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Ambulance",
+          "value": "$200 Centennial, $175 Columbia"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Mental health (inpatient)",
+          "value": "$395/day days 1-4 then $0 Centennial"
         }
       ]
     },
@@ -77,12 +56,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids supplemental",
+          "value": "$4,000 allowance for both ears combined every 24 months"
         }
       ]
     },
@@ -91,34 +66,104 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Diabetic supplies",
+          "value": "$0 copay including therapeutic shoes"
+        },
+        {
+          "label": "Fitness benefit One Pass",
+          "value": "$0 complete fitness program with gym network access"
+        },
+        {
+          "label": "Advantage Plus Option 1",
+          "value": "$67/month premium"
+        },
+        {
+          "label": "Advantage Plus Option 2",
+          "value": "$22/month premium"
+        },
+        {
+          "label": "Acupuncture supplemental",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Transportation supplemental",
+          "value": "$0 for up to 20 round trips per calendar year"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0"
+        },
+        {
+          "label": "Diagnostic tests",
+          "value": "$20 Centennial, $0 Columbia"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$225 Centennial, $175 Columbia"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient group)",
+          "value": "$30 Centennial, $25 Columbia"
+        },
+        {
+          "label": "Mental health (outpatient individual)",
+          "value": "$40 Centennial, $35 Columbia"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$40 Centennial, $35 Columbia"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$15"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15 Centennial, $20 Columbia"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0-$325 Centennial, $0-$225 Columbia"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$250 Centennial, $150 Columbia"
         }
       ]
     },
@@ -127,28 +172,152 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Deductible",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred retail 30-day preferred",
           "value": "$2"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred retail 30-day standard",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 1 Preferred retail 31-60-day preferred",
+          "value": "$4"
+        },
+        {
+          "label": "Tier 1 Preferred retail 31-60-day standard",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 1 Preferred retail 61-90-day preferred",
+          "value": "$6"
+        },
+        {
+          "label": "Tier 1 Preferred retail 61-90-day standard",
+          "value": "$30"
+        },
+        {
+          "label": "Tier 2 Generic retail 30-day preferred",
           "value": "$7"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 Generic retail 30-day standard",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 2 Generic retail 31-60-day preferred",
+          "value": "$14"
+        },
+        {
+          "label": "Tier 2 Generic retail 31-60-day standard",
+          "value": "$40"
+        },
+        {
+          "label": "Tier 2 Generic retail 61-90-day preferred",
+          "value": "$21"
+        },
+        {
+          "label": "Tier 2 Generic retail 61-90-day standard",
+          "value": "$60"
+        },
+        {
+          "label": "Tier 3 Preferred brand retail 30-day",
           "value": "$47"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Preferred brand retail 31-60-day",
+          "value": "$94"
+        },
+        {
+          "label": "Tier 3 Preferred brand retail 61-90-day",
+          "value": "$141"
+        },
+        {
+          "label": "Tier 4 Nonpreferred retail 30-day",
           "value": "$99"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 Nonpreferred retail 31-60-day",
+          "value": "$198"
+        },
+        {
+          "label": "Tier 4 Nonpreferred retail 61-90-day",
+          "value": "$297"
+        },
+        {
+          "label": "Tier 5 Specialty Centennial",
+          "value": "33%"
+        },
+        {
+          "label": "Tier 5 Specialty Columbia",
           "value": "31%"
         },
         {
-          "label": "Tier 6: Vaccines",
+          "label": "Tier 6 Injectable vaccines",
           "value": "$0"
+        },
+        {
+          "label": "Tier 1 Mail order 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Mail order 30-day",
+          "value": "$7"
+        },
+        {
+          "label": "Tier 2 Mail order 31-60-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Mail order 61-90-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 Mail order 30-day",
+          "value": "$47"
+        },
+        {
+          "label": "Tier 3 Mail order 31-60-day",
+          "value": "$94"
+        },
+        {
+          "label": "Tier 3 Mail order 61-90-day",
+          "value": "$117.50"
+        },
+        {
+          "label": "Tier 4 Mail order 30-day",
+          "value": "$99"
+        },
+        {
+          "label": "Tier 4 Mail order 31-60-day",
+          "value": "$198"
+        },
+        {
+          "label": "Tier 4 Mail order 61-90-day",
+          "value": "$247.50"
+        },
+        {
+          "label": "Tier 5 Mail order Specialty Centennial",
+          "value": "33%"
+        },
+        {
+          "label": "Tier 5 Mail order Specialty Columbia",
+          "value": "31%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "0%-20% coinsurance"
+        },
+        {
+          "label": "Insulin cap",
+          "value": "$35/month"
         }
       ]
     },
@@ -191,7 +360,5 @@
       ]
     }
   ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 5.0
+  "plan_id_full": "H5050-019-000"
 }

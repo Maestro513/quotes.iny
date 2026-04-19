@@ -1,88 +1,58 @@
 {
   "plan_id": "H5649-028",
-  "plan_name": "Central Health Classic Care Plan II (HMO)",
   "carrier": "Central Health Medicare Plan",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H5649",
   "org_name": "CENTRAL HEALTH PLAN OF CALIFORNIA, INC.",
   "geographic_area": "Counties: Fre, Imp, Kgs, Mad, Tul, Ven",
   "states": "CA",
   "counties_count": "6",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.0,
+  "star_rating_part_c": 3.0,
+  "star_rating_part_d": 3.5,
+  "plan_name": "Central Health Classic Care Plan 2 (HMO)",
+  "plan_type": "HMO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$2,499",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not covered",
   "drug_deductible": "$110",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$10"
         },
         {
-          "label": "Emergency Room",
-          "value": "$150 copay"
+          "label": "Urgent care",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0 copay"
+          "label": "Emergency room",
+          "value": "$150"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$195/day days 1-6, $0/day days 7-90"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
-        {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Ambulance",
+          "value": "$0-$250/ground, 20%/air"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
-        }
-      ]
-    },
-    {
-      "title": "Hearing",
-      "icon": "ear-listen",
-      "rows": [
-        {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Worldwide emergency - urgent care",
+          "value": "$150"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Worldwide emergency - ER",
+          "value": "Up to $50,000"
         }
       ]
     },
@@ -91,34 +61,144 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$115 every 3 months"
+        },
+        {
+          "label": "Fitness allowance",
+          "value": "$20 per month"
+        },
+        {
+          "label": "Gym membership",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Healthy foods allowance",
+          "value": "$40 per month for qualifying chronic conditions"
+        },
+        {
+          "label": "Herbal catalog",
+          "value": "Covered through OTC allowance"
+        },
+        {
+          "label": "Meals for chronic conditions",
+          "value": "$0 for 15 meals/week for 6 weeks (90 total)"
+        },
+        {
+          "label": "In-home meal program",
+          "value": "$0 for 2 meals/day for 14 days post-discharge"
+        },
+        {
+          "label": "Pre-funded debit card",
+          "value": "One card for OTC and fitness benefits"
+        },
+        {
+          "label": "24/7 telehealth",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$0-$200"
+        },
+        {
+          "label": "Diagnostic tests and procedures",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$10/individual, 20%/group"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "$10"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0, 30 visits/year combined with acupuncture"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$0, 30 visits/year combined with chiropractic"
+        },
+        {
+          "label": "Opioid treatment",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $209.50/day days 21-100"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "$0-20%"
+        },
+        {
+          "label": "Part B drugs - chemotherapy",
+          "value": "20%"
+        },
+        {
+          "label": "Part B drugs - other",
+          "value": "20%"
+        },
+        {
+          "label": "Part B drugs - insulin",
+          "value": "20%, max $35/month"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0-$250"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgery center",
+          "value": "$0-$100"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0-$10 or 20%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Transportation",
+          "value": "$0 for 12 one-way trips/year"
         }
       ]
     },
@@ -127,31 +207,63 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Part D deductible (Tiers 3-5)",
           "value": "$110"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Initial - Tier 1 Preferred Generic (31-day)",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Initial - Tier 1 Preferred Generic (100-day mail)",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Initial - Tier 2 Generic (31-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Initial - Tier 2 Generic (100-day mail)",
+          "value": "$0"
+        },
+        {
+          "label": "Initial - Tier 3 Preferred Brand (31-day)",
           "value": "15%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Initial - Tier 3 Preferred Brand (100-day mail)",
+          "value": "15%"
+        },
+        {
+          "label": "Initial - Tier 4 Non-Preferred Brand (31-day)",
           "value": "35%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Initial - Tier 4 Non-Preferred Brand (100-day mail)",
+          "value": "35%"
+        },
+        {
+          "label": "Initial - Tier 5 Specialty (31-day)",
           "value": "31%"
         },
         {
-          "label": "Tier 6: Select Care Drugs",
+          "label": "Initial - Tier 6 Select Care (31-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Initial - Tier 6 Select Care (100-day mail)",
+          "value": "$0"
+        },
+        {
+          "label": "Initial - Part D Insulins Tier 3 (31-day)",
+          "value": "$35"
+        },
+        {
+          "label": "Initial - Part D Insulins Tier 3 (100-day mail)",
+          "value": "$105"
+        },
+        {
+          "label": "Catastrophic - All tiers",
           "value": "$0"
         }
       ]
@@ -195,7 +307,5 @@
       ]
     }
   ],
-  "star_rating_overall": 3.0,
-  "star_rating_part_c": 3.0,
-  "star_rating_part_d": 3.5
+  "plan_id_full": "H5649-028-000"
 }

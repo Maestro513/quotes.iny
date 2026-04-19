@@ -1,60 +1,55 @@
 {
   "plan_id": "H2687-001",
-  "plan_name": "Wellpoint Medicare Advantage (HMO)",
   "carrier": "Wellpoint",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H2687",
   "org_name": "WELLPOINT SOUTH CAROLINA, INC.",
   "geographic_area": "Select counties in SC",
   "states": "SC",
   "counties_count": "2",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "plan_name": "Wellpoint Medicare Advantage (HMO)",
+  "plan_type": "HMO",
+  "monthly_premium": "$14.00",
   "annual_deductible_in": "$0",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not covered",
   "drug_deductible": "$275",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$50"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care",
+          "value": "$40"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Emergency room",
+          "value": "$115"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$450/day days 1-5, $0/day days 6-90"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
+          "label": "Ambulance ground",
+          "value": "$325/trip"
+        },
         {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Ambulance air",
+          "value": "$325/trip"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$375/day days 1-5, $0/day days 6-90"
         }
       ]
     },
@@ -63,12 +58,12 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Routine vision exam",
+          "value": "1 routine eye exam per year at $0 copay"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "Up to $100 for eyeglasses or contact lenses per year"
         }
       ]
     },
@@ -77,12 +72,12 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Routine hearing exam",
+          "value": "1 routine hearing exam per year at $0 copay"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -91,34 +86,184 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Worldwide emergency coverage",
+          "value": "$115 copay"
+        },
+        {
+          "label": "Healthy meals post-discharge",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "LiveHealth Online telehealth",
+          "value": "Access to board-certified doctors"
+        },
+        {
+          "label": "24/7 Nurseline",
+          "value": "24-hour access to nurse line, 7 days a week, 365 days a year"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services physician office",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services hospital outpatient",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays physician office",
+          "value": "$45"
+        },
+        {
+          "label": "X-rays hospital outpatient",
+          "value": "$100"
+        },
+        {
+          "label": "X-rays free-standing/at-home",
+          "value": "$45"
+        },
+        {
+          "label": "Advanced imaging physician office",
+          "value": "$275"
+        },
+        {
+          "label": "Advanced imaging hospital outpatient",
+          "value": "$450"
+        },
+        {
+          "label": "Ultrasounds physician office",
+          "value": "$45"
+        },
+        {
+          "label": "Ultrasounds hospital outpatient",
+          "value": "$100"
+        },
+        {
+          "label": "Diagnostic tests physician office",
+          "value": "$45"
+        },
+        {
+          "label": "Diagnostic tests hospital outpatient",
+          "value": "$100"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient",
+          "value": "$50"
+        },
+        {
+          "label": "Substance abuse outpatient",
+          "value": "$50"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$35"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$35"
+        },
+        {
+          "label": "Cardiac rehabilitation",
+          "value": "$20"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "$15"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$15"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry routine",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry other Medicare-covered",
+          "value": "$50"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "20%"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "20%"
+        },
+        {
+          "label": "Part B drugs insulin pump",
+          "value": "$35"
+        },
+        {
+          "label": "Part B drugs other",
+          "value": "$0-20%"
+        },
+        {
+          "label": "Part B drugs chemotherapy",
+          "value": "$0-20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Annual physical exam",
+          "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient hospital",
+          "value": "$375"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$325"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "$0"
         }
       ]
     },
@@ -127,28 +272,68 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$275"
+          "label": "Drug deductible",
+          "value": "$275/year"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic preferred retail 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic standard retail 30-day",
+          "value": "$5"
+        },
+        {
+          "label": "Tier 1 Preferred Generic mail order 90-day",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 Generic preferred retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic standard retail 30-day",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 2 Generic mail order 90-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 Preferred Brand preferred retail 30-day",
           "value": "25%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Preferred Brand standard retail 30-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 3 Preferred Brand mail order 90-day",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug preferred retail 30-day",
           "value": "30%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 Non-Preferred Drug standard retail 30-day",
+          "value": "30%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug mail order 90-day",
+          "value": "30%"
+        },
+        {
+          "label": "Tier 5 Specialty preferred retail 30-day",
           "value": "29%"
+        },
+        {
+          "label": "Tier 5 Specialty standard retail 30-day",
+          "value": "29%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
         }
       ]
     },
@@ -190,5 +375,6 @@
         }
       ]
     }
-  ]
+  ],
+  "plan_id_full": "H2687-001-000"
 }

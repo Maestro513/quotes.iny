@@ -1,54 +1,60 @@
 {
   "plan_id": "H5397-003",
-  "plan_name": "DEVOTED C-SNP PLUS 003 HI (HMO C-SNP)",
   "carrier": "Devoted Health",
-  "plan_type": "HMO",
-  "snp_type": "C-SNP",
   "contract_number": "H5397",
   "org_name": "DEVOTED HEALTH PLAN OF HAWAII, INC.",
   "geographic_area": "Honolulu, Maui and Kauai Counties",
   "states": "HI",
   "counties_count": "3",
+  "snp_type": "C-SNP",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
-  "annual_deductible_in": "$615",
+  "plan_name": "DEVOTED C-SNP PLUS 003 HI (HMO C-SNP)",
+  "plan_type": "HMO C-SNP",
+  "monthly_premium": "$0 to $42.40",
+  "annual_deductible_in": "$0 to $615",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not covered",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "With Medicaid: $0, Without Medicaid: $0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "With Medicaid: $0, Without Medicaid: 30%"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Emergency room (in-network)",
+          "value": "With Medicaid: $0, Without Medicaid: $115"
         },
         {
-          "label": "Urgent Care",
-          "value": "0-20% coinsurance"
+          "label": "Emergency room (out-of-network)",
+          "value": "$115"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Urgent care",
+          "value": "PCP office: $0"
         },
         {
-          "label": "Ambulance",
-          "value": "0-35% coinsurance"
+          "label": "Inpatient hospital",
+          "value": "With Medicaid: $0/stay, Without Medicaid: $2,230/stay"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$50 allowance"
+          "label": "Ambulance (in-network)",
+          "value": "Ground - With Medicaid: $0"
+        },
+        {
+          "label": "Ambulance (out-of-network)",
+          "value": "35%"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "With Medicaid: $0/stay, Without Medicaid: $2,080/stay"
         }
       ]
     },
@@ -57,40 +63,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$4,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "30% coinsurance"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
-        }
-      ]
-    },
-    {
-      "title": "Hearing",
-      "icon": "ear-listen",
-      "rows": [
-        {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Dental and Alternative Therapy allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -99,54 +73,128 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$50 per quarter"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Food & Home Card",
+          "value": "$250 per month for food"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "SilverSneakers fitness",
+          "value": "$0 membership"
+        },
+        {
+          "label": "Wellness Bucks fitness allowance",
+          "value": "$150 per year for fitness/wellness items"
+        },
+        {
+          "label": "Devoted Dollars rewards",
+          "value": "$20 for completing Health Risk Assessment"
+        },
+        {
+          "label": "Medical Nutritional Therapy",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Included as supplemental benefit"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "Office - With Medicaid: $0, Without Medicaid: 35%; Hospital - With Medicaid: $0, Without Medicaid: 35%"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "Office - With Medicaid: $0, Without Medicaid: 35%; Hospital - With Medicaid: $0, Without Medicaid: 35%"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "Office - With Medicaid: $0, Without Medicaid: 35%; Hospital - With Medicaid: $0, Without Medicaid: 35%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "With Medicaid: $0, Without Medicaid: 30%"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "With Medicaid: $0, Without Medicaid: $15"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "Medicare-covered - With Medicaid: $0, Without Medicaid: 30%; Routine: $0, 4 visits/year"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "Office - With Medicaid: $0, Without Medicaid: 30%; Hospital - With Medicaid: $0, Without Medicaid: 30%"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "Office - With Medicaid: $0, Without Medicaid: 30%; Hospital - With Medicaid: $0, Without Medicaid: 30%"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "Office - With Medicaid: $0, Without Medicaid: 30%; Hospital - With Medicaid: $0, Without Medicaid: 30%"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "With Medicaid: $0/stay, Without Medicaid: Days 1-20 $0/day, Days 21-100 $218/day"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "Basic - With Medicaid: $0, Without Medicaid: 20%; Advanced - With Medicaid: $0, Without Medicaid: 20%"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "With Medicaid: $0, Without Medicaid: 20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery",
+          "value": "With Medicaid: $0, Without Medicaid: 35%"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-35% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "Same as in-person visit"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "0-35% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "With Medicaid: $0, Without Medicaid: 20%"
         },
         {
-          "label": "Lab Services",
-          "value": "35% coinsurance"
-        },
-        {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "CGMs - With Medicaid: $0, Without Medicaid: 20%; Supplies - With Medicaid: $0, Without Medicaid: 20%; Shoes: $0"
         }
       ]
     },
@@ -155,32 +203,68 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Drug deductible",
+          "value": "$615 for Tiers 1-5 (Extra Help: $0)"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic 30-day retail",
           "value": "$18"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 2 Generic 30-day retail",
           "value": "$19"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 3 Preferred Brand 30-day retail",
           "value": "25%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 4 Non-Preferred Drug 30-day retail",
           "value": "31%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 Specialty 30-day retail",
           "value": "25%"
         },
         {
-          "label": "Tier 6: Select Care Drugs",
+          "label": "Tier 6 Select Care Drugs 30-day retail",
           "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic 100-day mail",
+          "value": "$54"
+        },
+        {
+          "label": "Tier 2 Generic 100-day mail",
+          "value": "$57"
+        },
+        {
+          "label": "Tier 3 Preferred Brand 100-day mail",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug 100-day mail",
+          "value": "31%"
+        },
+        {
+          "label": "Tier 6 Select Care Drugs 100-day mail",
+          "value": "$0"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
+        },
+        {
+          "label": "Insulin coverage",
+          "value": "Max $35 per 30-day supply"
+        },
+        {
+          "label": "Part B drugs - Chemotherapy",
+          "value": "With Medicaid: $0, Without Medicaid: 20%"
+        },
+        {
+          "label": "Part B drugs - Other",
+          "value": "With Medicaid: $0, Without Medicaid: 20%"
         }
       ]
     },
@@ -222,5 +306,6 @@
         }
       ]
     }
-  ]
+  ],
+  "plan_id_full": "H5397-003-000"
 }
