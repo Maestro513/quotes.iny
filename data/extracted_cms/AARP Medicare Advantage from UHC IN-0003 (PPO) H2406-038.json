@@ -1,50 +1,59 @@
 {
   "plan_id": "H2406-038",
-  "plan_name": "AARP Medicare Advantage from UHC IN-0003 (PPO)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "PPO",
-  "snp_type": null,
   "contract_number": "H2406",
   "org_name": "CARE IMPROVEMENT PLUS SOUTH CENTRAL INSURANCE CO.",
   "geographic_area": "Select Counties in Indiana",
   "states": "IN",
   "counties_count": "25",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 3.5,
+  "plan_name": "AARP® Medicare Advantage from UHC IN-0003 (PPO)",
+  "plan_type": "PPO",
+  "monthly_premium": "$33",
   "annual_deductible_in": "$0",
   "moop_in": "$5,400",
+  "moop_out": "$5,400",
   "moop_combined": "$5,400",
-  "moop_out": null,
   "drug_deductible": "$520",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$45"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care",
+          "value": "$50"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$50 copay"
+          "label": "Emergency room",
+          "value": "$130"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$420/day days 1-5, $0/day days 6+"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Ambulance ground",
+          "value": "$150"
+        },
+        {
+          "label": "Ambulance air",
+          "value": "$150"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$420/day days 1-5, $0/day days 6-90"
         }
       ]
     },
@@ -53,12 +62,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$1,500"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental allowance",
+          "value": "$1,500 allowance per year for all covered dental services"
         }
       ]
     },
@@ -67,12 +72,12 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Vision eyewear allowance",
+          "value": "$300 allowance every 2 years for frames or contacts"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Routine eye exam",
+          "value": "1 exam per year"
         }
       ]
     },
@@ -81,12 +86,12 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Hearing aids benefit",
+          "value": "Up to 2 hearing aids per year"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Routine hearing exam",
+          "value": "1 exam per year"
         }
       ]
     },
@@ -95,34 +100,272 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Fitness program",
+          "value": "Free gym membership"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "6 visits per year"
+        },
+        {
+          "label": "Member discounts",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Virtual telehealth",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Additional covered drugs",
+          "value": "Vitamin D"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "Diagnostic tests and procedures (in-network)",
+          "value": "$5"
+        },
+        {
+          "label": "Diagnostic tests and procedures (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Outpatient X-rays (in-network)",
+          "value": "$5"
+        },
+        {
+          "label": "Outpatient X-rays (out-of-network)",
+          "value": "$50"
+        },
+        {
+          "label": "Advanced imaging CT/MRI (in-network)",
+          "value": "$0 mammogram, $220 otherwise"
+        },
+        {
+          "label": "Advanced imaging CT/MRI (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Therapeutic radiology (in-network)",
+          "value": "$30"
+        },
+        {
+          "label": "Therapeutic radiology (out-of-network)",
+          "value": "40%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient individual (in-network)",
+          "value": "$25"
+        },
+        {
+          "label": "Mental health outpatient individual (out-of-network)",
+          "value": "$40"
+        },
+        {
+          "label": "Mental health outpatient group (in-network)",
+          "value": "$15"
+        },
+        {
+          "label": "Mental health outpatient group (out-of-network)",
+          "value": "$30"
+        },
+        {
+          "label": "Substance abuse outpatient individual (in-network)",
+          "value": "$25"
+        },
+        {
+          "label": "Substance abuse outpatient individual (out-of-network)",
+          "value": "$40"
+        },
+        {
+          "label": "Substance abuse outpatient group (in-network)",
+          "value": "$15"
+        },
+        {
+          "label": "Substance abuse outpatient group (out-of-network)",
+          "value": "$30"
+        },
+        {
+          "label": "Virtual mental health visits",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$20"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$20"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$20"
+        },
+        {
+          "label": "Chiropractic (in-network)",
+          "value": "$15"
+        },
+        {
+          "label": "Chiropractic (out-of-network)",
+          "value": "$45"
+        },
+        {
+          "label": "Podiatry exam (in-network)",
+          "value": "$40"
+        },
+        {
+          "label": "Podiatry exam (out-of-network)",
+          "value": "$50"
+        },
+        {
+          "label": "Podiatry routine foot care (in-network)",
+          "value": "$40"
+        },
+        {
+          "label": "Podiatry routine foot care (out-of-network)",
+          "value": "$50"
+        },
+        {
+          "label": "Opioid treatment program",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "$250/day days 1-100"
+        },
+        {
+          "label": "Home health care (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Home health care (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Durable medical equipment (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Kidney disease dialysis",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care routine physical (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Preventive care routine physical (out-of-network)",
+          "value": "40%"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Preventive care Medicare-covered (in-network)",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Preventive care Medicare-covered (out-of-network)",
+          "value": "$0-40%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Virtual medical visits",
+          "value": "$0"
+        },
+        {
+          "label": "Outpatient hospital surgery (in-network)",
+          "value": "$0 colonoscopy, $420 otherwise"
+        },
+        {
+          "label": "Outpatient hospital surgery (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Ambulatory surgical center (in-network)",
+          "value": "$0 colonoscopy, $320 otherwise"
+        },
+        {
+          "label": "Ambulatory surgical center (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Outpatient hospital observation (in-network)",
+          "value": "$420"
+        },
+        {
+          "label": "Outpatient hospital observation (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Prosthetics (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Prosthetics (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Diabetic supplies monitoring (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies monitoring (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Diabetic self-management training (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic self-management training (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Diabetic therapeutic shoes (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic therapeutic shoes (out-of-network)",
+          "value": "50%"
         }
       ]
     },
@@ -131,28 +374,88 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Drug deductible Tier 1-2",
+          "value": "$0"
+        },
+        {
+          "label": "Drug deductible Tier 3-5",
           "value": "$520"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic 100-day retail",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 1 Preferred Generic 100-day mail",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic 100-day retail",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic 100-day mail",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 Preferred Brand 30-day",
           "value": "21%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Preferred Brand 100-day retail",
+          "value": "21%"
+        },
+        {
+          "label": "Tier 3 Preferred Brand 100-day mail",
+          "value": "21%"
+        },
+        {
+          "label": "Tier 3 Covered Insulin 30-day",
+          "value": "21% up to $35"
+        },
+        {
+          "label": "Tier 3 Covered Insulin 100-day retail",
+          "value": "21% up to $105"
+        },
+        {
+          "label": "Tier 3 Covered Insulin 100-day mail",
+          "value": "21% up to $105"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug 30-day",
           "value": "40%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 Specialty 30-day",
           "value": "27%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Part B chemotherapy drugs",
+          "value": "20% in-network, 40% out-of-network"
+        },
+        {
+          "label": "Part B covered insulin",
+          "value": "20% up to $35 in-network, 40% out-of-network"
+        },
+        {
+          "label": "Part B allergy antigens",
+          "value": "$0 in-network, $0 out-of-network"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "20% in-network, 40% out-of-network"
         }
       ]
     },
@@ -194,8 +497,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 3.5
+  ]
 }

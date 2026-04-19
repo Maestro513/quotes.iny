@@ -1,54 +1,60 @@
 {
   "plan_id": "H2406-099",
-  "plan_name": "UHC Dual Choice DC-Q001 (PPO D-SNP)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "PPO",
-  "snp_type": "D-SNP",
   "contract_number": "H2406",
   "org_name": "CARE IMPROVEMENT PLUS SOUTH CENTRAL INSURANCE CO.",
   "geographic_area": "Washington, DC",
   "states": "DC",
   "counties_count": "1",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 3.5,
+  "plan_name": "UHC Dual Choice DC-Q001 (PPO D-SNP)",
+  "plan_type": "PPO D-SNP",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
-  "moop_in": "$9,250",
+  "moop_in": "$0",
+  "moop_out": "$0",
   "moop_combined": "$13,900",
-  "moop_out": null,
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "0-20% coinsurance"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "20% coinsurance"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Emergency room",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$40 copay"
+          "label": "Urgent care",
+          "value": "$0"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$0"
         },
         {
           "label": "Ambulance",
-          "value": "20% coinsurance"
+          "value": "$0"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Emergency transportation",
+          "value": "$0"
+        },
+        {
+          "label": "Dental restorative/emergency",
+          "value": "$0"
         }
       ]
     },
@@ -57,12 +63,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$1,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental allowance",
+          "value": "$1,000 for all covered dental services"
         }
       ]
     },
@@ -71,12 +73,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision allowance",
+          "value": "$200 per year for 1 pair lenses/frames and contacts"
         }
       ]
     },
@@ -85,12 +83,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids allowance",
+          "value": "$1,500 every 2 years for 2 hearing aids"
         }
       ]
     },
@@ -99,42 +93,164 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Transportation",
+          "value": "24 one-way trips per year to medical appointments"
+        },
+        {
+          "label": "OTC + wellness allowance",
+          "value": "$57 credit per month for OTC products"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "28 home-delivered meals after inpatient hospital or SNF stay"
+        },
+        {
+          "label": "Nurse hotline",
+          "value": "24/7 registered nurse access"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Diagnostic radiology/X-rays",
+          "value": "$0"
+        },
+        {
+          "label": "Lab tests/diagnostic procedures",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse services",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic services",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry services",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0"
+        },
+        {
+          "label": "Dialysis services",
+          "value": "$0"
+        },
+        {
+          "label": "DME - wheelchairs/walkers",
+          "value": "$0"
+        },
+        {
+          "label": "DME - nebulizers",
+          "value": "$0"
+        },
+        {
+          "label": "DME - oxygen equipment",
+          "value": "$0"
+        },
+        {
+          "label": "Medical equipment for home",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Wellness visits",
+          "value": "$0"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-20% coinsurance"
+          "label": "Welcome to Medicare visit",
+          "value": "$0"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Outpatient hospital",
+          "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Doctor/surgeon care",
+          "value": "$0"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Nursing home care",
+          "value": "$0"
+        },
+        {
+          "label": "Adult Foster Care",
+          "value": "$0"
+        },
+        {
+          "label": "Rehabilitation services",
+          "value": "$0"
+        },
+        {
+          "label": "Prosthetic services",
+          "value": "$0"
+        },
+        {
+          "label": "Orthotic services",
+          "value": "$0"
+        },
+        {
+          "label": "Radiation therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Disease management",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "$0"
+        },
+        {
+          "label": "Glasses/contacts",
+          "value": "$0"
         }
       ]
     },
@@ -143,28 +259,28 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Part D deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "25%"
+          "label": "Generic (Tier 1) - LIS",
+          "value": "$0 or $1.60 or $5.10"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "25%"
+          "label": "All other drugs - LIS",
+          "value": "$0 or $4.90 or $12.65"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
+          "label": "Part D insulin max",
+          "value": "$0 per month"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
+          "label": "Part B drugs",
+          "value": "$0"
+        },
+        {
+          "label": "OTC drugs",
+          "value": "$0"
         }
       ]
     },
@@ -206,8 +322,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 3.5
+  ]
 }

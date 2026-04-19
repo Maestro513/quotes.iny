@@ -1,50 +1,66 @@
 {
   "plan_id": "H7020-005",
-  "plan_name": "HealthSpring Courage (HMO)",
   "carrier": "Cigna Healthcare",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H7020",
   "org_name": "HEALTHSPRING LIFE & HEALTH INSURANCE COMPANY, INC.",
   "geographic_area": "South Carolina",
   "states": "SC",
   "counties_count": "16",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 4.0,
+  "plan_name": "HealthSpring Courage (HMO)",
+  "plan_type": "HMO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$6,700",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not covered",
+  "part_b_premium_reduction": "$150",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$50"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care",
+          "value": "$50"
         },
         {
-          "label": "Urgent Care",
-          "value": "$50 copay"
+          "label": "Emergency room",
+          "value": "$130"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$290/day days 1-6, $0/day days 7-90, $0/day days 91+"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Ambulance ground",
+          "value": "$270"
+        },
+        {
+          "label": "Ambulance air",
+          "value": "20%"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$595/day days 1-3, $0/day days 4-90"
+        },
+        {
+          "label": "Telehealth urgent care",
+          "value": "$0"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$150"
         }
       ]
     },
@@ -53,12 +69,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$1,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$50 copay"
+          "label": "Dental allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -67,26 +79,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
-        }
-      ]
-    },
-    {
-      "title": "Hearing",
-      "icon": "ear-listen",
-      "rows": [
-        {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$175 per year for eyeglasses"
         }
       ]
     },
@@ -95,34 +89,176 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Fitness membership",
+          "value": "Gym membership"
+        },
+        {
+          "label": "HealthSpring Flex Card",
+          "value": "Card for accessing allowance benefits, quarterly funding"
+        },
+        {
+          "label": "Home-delivered meals",
+          "value": "Up to 14 meals per discharge from hospital/SNF"
+        },
+        {
+          "label": "Caregiver support",
+          "value": "Virtual caregiving help"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$50,000 yearly maximum coverage amount"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays",
+          "value": "$0 PCP/specialist office, $100 other facilities"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$0-$195"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient",
+          "value": "$50"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry",
+          "value": "$45"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$45"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$45"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$45"
+        },
+        {
+          "label": "Telehealth mental health",
+          "value": "$50"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$20"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$10/day days 1-20, $218/day days 21-60, $0/day days 61-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$285"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient observation",
+          "value": "$285"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "ASC services",
+          "value": "$225"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Genetic testing",
+          "value": "$50"
+        },
+        {
+          "label": "Diagnostic procedures",
+          "value": "$0 EKG, $95 other"
+        },
+        {
+          "label": "Telehealth dermatology",
+          "value": "$50"
+        },
+        {
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
+        },
+        {
+          "label": "Medical supplies",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic monitoring supplies",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic shoes/inserts",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetes self-management training",
+          "value": "$0"
+        },
+        {
+          "label": "Annual physical exam",
+          "value": "$0"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$35 max per month"
+        },
+        {
+          "label": "Part B chemotherapy",
+          "value": "0%-20%"
+        },
+        {
+          "label": "Part B other drugs",
+          "value": "0%-20%"
         }
       ]
     },
@@ -163,19 +299,6 @@
           "value": "www.cignamedicare.com"
         }
       ]
-    },
-    {
-      "title": "Prescription Drugs",
-      "icon": "pills",
-      "rows": [
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "N/A"
-        }
-      ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 4.0
+  ]
 }

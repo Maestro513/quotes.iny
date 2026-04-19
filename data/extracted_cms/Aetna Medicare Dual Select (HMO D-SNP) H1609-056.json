@@ -1,50 +1,75 @@
 {
   "plan_id": "H1609-056",
-  "plan_name": "Aetna Medicare Dual Select (HMO D-SNP)",
   "carrier": "Aetna Medicare",
-  "plan_type": "HMO",
-  "snp_type": "D-SNP",
   "contract_number": "H1609",
   "org_name": "AETNA HEALTH INC. (FL)",
   "geographic_area": "Southwest FL",
   "states": "FL",
   "counties_count": "4",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 4.0,
+  "plan_name": "Aetna Medicare Dual Select (HMO D-SNP)",
+  "plan_type": "HMO D-SNP",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "N/A - HMO plan",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$0-$25"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care (in-network)",
+          "value": "$0-$25"
         },
         {
-          "label": "Urgent Care",
-          "value": "$25 copay"
+          "label": "Urgent care (out-of-network)",
+          "value": "$0 emergency/urgent care outside US"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room (in-network)",
+          "value": "$0-$115"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$192 allowance"
+          "label": "Emergency room (out-of-network)",
+          "value": "$0 emergency care outside US"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "$0-$175/day days 1-6, $0/day days 7-90"
+        },
+        {
+          "label": "Ambulance ground (in-network)",
+          "value": "$0-$250"
+        },
+        {
+          "label": "Ambulance ground (out-of-network)",
+          "value": "$0 emergency outside US"
+        },
+        {
+          "label": "Ambulance air (in-network)",
+          "value": "$0-20%"
+        },
+        {
+          "label": "Ambulance air (out-of-network)",
+          "value": "$0 emergency outside US"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$0-$175/day days 1-6, $0/day days 7-90"
         }
       ]
     },
@@ -53,12 +78,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,500"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$25 copay"
+          "label": "Dental allowance",
+          "value": "$2,500 annual allowance via Liberty Dental network"
         }
       ]
     },
@@ -67,12 +88,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision allowance",
+          "value": "$400 annual allowance for prescription eyewear via iCare"
         }
       ]
     },
@@ -81,12 +98,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids allowance",
+          "value": "$1,000 per ear annual allowance via NationsHearing"
         }
       ]
     },
@@ -95,46 +108,176 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Flex/SSBCI",
-          "value": "Personal Care Items"
-        },
-        {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$192 per month via Aetna Medicare Extra Benefits Card"
         },
         {
           "label": "Transportation",
-          "value": "Covered"
+          "value": "48 one-way trips per year up to 60 miles each"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Fitness benefit",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "24-Hour Nurse Line",
+          "value": "Unlimited access to registered nurses"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "28 meals for 14 days post-discharge from qualifying stays"
+        },
+        {
+          "label": "Personal emergency response system",
+          "value": "LifeStation medical alert system"
+        },
+        {
+          "label": "Fall prevention allowance",
+          "value": "$150 annual allowance for home/bathroom safety products"
+        },
+        {
+          "label": "Chiropractic visits",
+          "value": "24 visits per year for non-Medicare covered services"
+        },
+        {
+          "label": "Podiatry visits",
+          "value": "24 visits per year for non-Medicare covered services"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$250,000 maximum coverage"
+        },
+        {
+          "label": "Resources For Living",
+          "value": "Community resource connection services"
+        },
+        {
+          "label": "Extra Supports Wallet",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
     {
-      "title": "Medical Services",
-      "icon": "hospital",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
-        },
-        {
-          "label": "Home Health",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
+          "label": "Lab services",
           "value": "$0"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0-$100"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$0-$175"
+        },
+        {
+          "label": "Diagnostic tests and procedures",
+          "value": "$0-$100"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient individual)",
+          "value": "$0-$20"
+        },
+        {
+          "label": "Mental health (outpatient group)",
+          "value": "$0-$15"
+        },
+        {
+          "label": "Substance abuse (outpatient individual)",
+          "value": "$0-$20"
+        },
+        {
+          "label": "Substance abuse (outpatient group)",
+          "value": "$0-$15"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0-$15"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0-$15"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0-$15"
+        },
+        {
+          "label": "Chiropractic (Medicare-covered)",
+          "value": "$0-$15"
+        },
+        {
+          "label": "Chiropractic (non-Medicare)",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry (Medicare-covered)",
+          "value": "$0-$25"
+        },
+        {
+          "label": "Podiatry (non-Medicare)",
+          "value": "$0"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$0-$25"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $0-$218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "0%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
+      "icon": "hospital",
+      "rows": [
+        {
+          "label": "Preventive care",
+          "value": "$0"
+        },
+        {
+          "label": "Outpatient hospital observation",
+          "value": "$0-$175"
+        },
+        {
+          "label": "Outpatient hospital",
+          "value": "$0-$190"
+        },
+        {
+          "label": "Ambulatory surgery center",
+          "value": "$0-$140"
+        },
+        {
+          "label": "Prosthetics",
+          "value": "0%"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "0%"
         }
       ]
     },
@@ -143,28 +286,80 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible (LIS members)",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Drug deductible (non-LIS members)",
+          "value": "$615 (Tiers 3-5)"
+        },
+        {
+          "label": "LIS Generic drugs",
+          "value": "$0, $1.60, or $5.10"
+        },
+        {
+          "label": "LIS All other drugs",
+          "value": "$0, $4.90, or $12.65"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (30-day)",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 Generic (30-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 Preferred Brand (30-day)",
           "value": "22%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 4 Non-Preferred Drug (30-day)",
           "value": "25%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 Specialty (30-day)",
           "value": "25%"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (100-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic (100-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 Preferred Brand (100-day)",
+          "value": "22%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug (100-day)",
+          "value": "25%"
+        },
+        {
+          "label": "Out-of-pocket threshold",
+          "value": "$2,100"
+        },
+        {
+          "label": "Catastrophic phase",
+          "value": "$0"
+        },
+        {
+          "label": "Part D Insulin cap",
+          "value": "$35/month max"
+        },
+        {
+          "label": "Part B Insulin",
+          "value": "$0-$35"
+        },
+        {
+          "label": "Part B Chemotherapy",
+          "value": "$0-20%"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "$0-20%"
         }
       ]
     },
@@ -206,8 +401,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 4.0
+  ]
 }

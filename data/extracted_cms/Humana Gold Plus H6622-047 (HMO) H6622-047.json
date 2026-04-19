@@ -1,50 +1,99 @@
 {
   "plan_id": "H6622-047",
-  "plan_name": "Humana Gold Plus H6622-047 (HMO)",
   "carrier": "Humana",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H6622",
   "org_name": "HUMANA WI HEALTH ORGANIZATION INSURANCE CORP",
   "geographic_area": "Central and Northwest Mississippi",
   "states": "MS",
   "counties_count": "19",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.5,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 3.5,
+  "plan_name": "Humana Gold Plus H6622-047 (HMO)",
+  "plan_type": "HMO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$200",
   "moop_in": "$5,700",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not covered",
+  "part_b_premium_reduction": "$1",
   "drug_deductible": "$590",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "PCP telehealth",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Specialist visit",
+          "value": "$30"
         },
         {
-          "label": "Urgent Care",
-          "value": "$50 copay"
+          "label": "Specialist telehealth",
+          "value": "$30"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Urgent care center",
+          "value": "$50"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Urgent care telehealth",
+          "value": "$50"
+        },
+        {
+          "label": "Emergency room",
+          "value": "$130"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "$295/day days 1-7, $0/day days 8-90"
+        },
+        {
+          "label": "Ground ambulance",
+          "value": "$335"
+        },
+        {
+          "label": "Air ambulance",
+          "value": "20%"
+        },
+        {
+          "label": "Lab services PCP office",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services specialist office",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays PCP office",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays specialist office",
+          "value": "$30"
+        },
+        {
+          "label": "Advanced imaging PCP office",
+          "value": "$280"
+        },
+        {
+          "label": "Advanced imaging specialist office",
+          "value": "$280"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$295/day days 1-7, $0/day days 8-90"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$1"
         }
       ]
     },
@@ -53,12 +102,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,500"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$30 copay"
+          "label": "Dental allowance",
+          "value": "$2,500 per year for preventive, basic, and major services"
         }
       ]
     },
@@ -67,12 +112,12 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Vision routine exam",
+          "value": "$0 copay up to 1 per year"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$150 per year or $250 at PLUS providers"
         }
       ]
     },
@@ -81,12 +126,16 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Hearing routine exam",
+          "value": "$0 copay up to 1 per year"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids Advanced",
+          "value": "$399 copay each aid up to 1 per ear per year"
+        },
+        {
+          "label": "Hearing aids Premium",
+          "value": "$699 copay each aid up to 1 per ear per year"
         }
       ]
     },
@@ -95,34 +144,156 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Well Dine meal program",
+          "value": "$0 copay for 2 meals/day for 7 days after inpatient stay"
+        },
+        {
+          "label": "Post-discharge home care",
+          "value": "$0 copay for minimum 4 hours/day up to 44 hours per year"
+        },
+        {
+          "label": "SilverSneakers fitness",
+          "value": "Included fitness program"
+        },
+        {
+          "label": "Go365 rewards",
+          "value": "Rewards for healthy activities"
+        },
+        {
+          "label": "HMO travel benefit",
+          "value": "In-network benefits when traveling to other states"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Coverage for emergency and urgent care worldwide"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services freestanding",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services outpatient hospital",
+          "value": "$50"
+        },
+        {
+          "label": "X-rays freestanding",
+          "value": "$50"
+        },
+        {
+          "label": "X-rays outpatient hospital",
+          "value": "$130"
+        },
+        {
+          "label": "Advanced imaging freestanding",
+          "value": "$200"
+        },
+        {
+          "label": "Advanced imaging outpatient hospital",
+          "value": "$335"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient",
+          "value": "$35"
+        },
+        {
+          "label": "Mental health telehealth",
+          "value": "$35"
+        },
+        {
+          "label": "Substance abuse outpatient",
+          "value": "$35"
+        },
+        {
+          "label": "Substance abuse telehealth",
+          "value": "$35"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$25"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$25"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$25"
+        },
+        {
+          "label": "Cardiac rehabilitation",
+          "value": "$15"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "$15"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry",
+          "value": "$30"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$30"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "DME",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery hospital",
+          "value": "$340"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery ASC",
+          "value": "$250"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "$0 copay or 20% coinsurance"
+          "label": "Diabetic supplies preferred",
+          "value": "$0"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies network pharmacy",
+          "value": "10%"
+        },
+        {
+          "label": "Diabetic supplies other",
+          "value": "20%"
         }
       ]
     },
@@ -131,28 +302,112 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$590"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 retail 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 retail 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 mail 30-day",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 1 mail 100-day",
+          "value": "$30"
+        },
+        {
+          "label": "Tier 1 CenterWell 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 CenterWell 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 retail 30-day",
           "value": "$5"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 retail 100-day",
+          "value": "$15"
+        },
+        {
+          "label": "Tier 2 mail 30-day",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 2 mail 100-day",
+          "value": "$60"
+        },
+        {
+          "label": "Tier 2 CenterWell 30-day",
+          "value": "$5"
+        },
+        {
+          "label": "Tier 2 CenterWell 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 retail 30-day",
           "value": "$47"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 retail 100-day",
+          "value": "$141"
+        },
+        {
+          "label": "Tier 3 mail 30-day",
+          "value": "$47"
+        },
+        {
+          "label": "Tier 3 mail 100-day",
+          "value": "$141"
+        },
+        {
+          "label": "Tier 3 CenterWell 30-day",
+          "value": "$47"
+        },
+        {
+          "label": "Tier 3 CenterWell 100-day",
+          "value": "$131"
+        },
+        {
+          "label": "Tier 4 all pharmacies",
           "value": "36%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 all pharmacies",
           "value": "26%"
+        },
+        {
+          "label": "Drug deductible Tier 1-2",
+          "value": "$0"
+        },
+        {
+          "label": "Drug deductible Tier 3-5",
+          "value": "$590"
+        },
+        {
+          "label": "Insulin max cost 30-day",
+          "value": "$35"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "20%"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$35 max"
+        },
+        {
+          "label": "Chemotherapy",
+          "value": "20%"
         }
       ]
     },
@@ -194,8 +449,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 3.5,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 3.5
+  ]
 }

@@ -1,50 +1,58 @@
 {
   "plan_id": "H4982-004",
-  "plan_name": "Aetna Medicare Signature (HMO)",
   "carrier": "Aetna Medicare",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H4982",
   "org_name": "AETNA BETTER HEALTH OF CALIFORNIA INC.",
   "geographic_area": "San Diego County",
   "states": "CA",
   "counties_count": "1",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.0,
+  "star_rating_part_c": 3.0,
+  "star_rating_part_d": 2.5,
+  "plan_name": "Aetna Medicare Signature (HMO)",
+  "plan_type": "HMO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$2,000",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not covered - HMO plan",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$150 copay"
+          "label": "Urgent care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0 copay"
+          "label": "Urgent care (out-of-network)",
+          "value": "$150"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room",
+          "value": "$150"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Inpatient hospital",
+          "value": "$300/day days 1-5, $0/day days 6-90, $0 additional days"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$245 ground, 20% air"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$300/day days 1-5, $0/day days 6-90"
         }
       ]
     },
@@ -53,8 +61,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Dental comprehensive allowance",
+          "value": "$1,000 annual allowance for comprehensive services"
         }
       ]
     },
@@ -63,12 +71,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$100 annual allowance for prescription eyewear"
         }
       ]
     },
@@ -77,12 +81,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids allowance",
+          "value": "$1,250 per ear annual allowance"
         }
       ]
     },
@@ -91,42 +91,140 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "SilverSneakers fitness membership",
+          "value": "Covered — see Summary of Benefits"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Routine transportation",
+          "value": "6 one-way trips per year up to 60 miles each"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "24-Hour Nurse Line",
+          "value": "Unlimited access to registered nurses"
+        },
+        {
+          "label": "Acupuncture unlimited visits",
+          "value": "Unlimited non-Medicare covered visits annually"
+        },
+        {
+          "label": "Chiropractic unlimited visits",
+          "value": "Unlimited non-Medicare covered visits annually"
+        },
+        {
+          "label": "Resources For Living",
+          "value": "Community resource connection services"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Maximum $250,000 coverage worldwide"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$0"
+        },
+        {
+          "label": "Diagnostic tests and procedures",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0 individual, $0 group"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "$0 individual, $0 group"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$20/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "0%-20% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient hospital",
+          "value": "$200"
         },
         {
-          "label": "Renal Dialysis",
+          "label": "Outpatient surgery/services",
+          "value": "$150"
+        },
+        {
+          "label": "Prosthetics/orthotics",
           "value": "20% coinsurance"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "0%-20% coinsurance"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient hospital observation",
+          "value": "$300"
         }
       ]
     },
@@ -135,28 +233,124 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Drug deductible",
+          "value": "$0-$615 (applies to Tiers 3, 4, 5)"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic - Preferred Retail 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic - Standard Retail 30-day",
+          "value": "$2"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - Preferred Mail 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 1 Preferred Generic - Standard Mail 30-day",
+          "value": "$2"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - LTC 31-day",
+          "value": "$2"
+        },
+        {
+          "label": "Tier 2 Generic - Preferred Retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic - Standard Retail 30-day",
+          "value": "$12"
+        },
+        {
+          "label": "Tier 2 Generic - Preferred Mail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic - Standard Mail 30-day",
+          "value": "$12"
+        },
+        {
+          "label": "Tier 2 Generic - LTC 31-day",
+          "value": "$12"
+        },
+        {
+          "label": "Tier 3 Preferred Brand - All pharmacies 30-day",
           "value": "24%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 4 Non-Preferred Drug - All pharmacies 30-day",
           "value": "25%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 Specialty - All pharmacies 30-day",
           "value": "25%"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - Preferred Retail 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - Standard Retail 100-day",
+          "value": "$6"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - Preferred Mail 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - Standard Mail 100-day",
+          "value": "$6"
+        },
+        {
+          "label": "Tier 2 Generic - Preferred Retail 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic - Standard Retail 100-day",
+          "value": "$36"
+        },
+        {
+          "label": "Tier 2 Generic - Preferred Mail 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic - Standard Mail 100-day",
+          "value": "$36"
+        },
+        {
+          "label": "Tier 3 Preferred Brand - All pharmacies 100-day",
+          "value": "24%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug - All pharmacies 100-day",
+          "value": "25%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 for all drugs"
+        },
+        {
+          "label": "Part D insulin",
+          "value": "$35 max per month"
+        },
+        {
+          "label": "Part D vaccines",
+          "value": "$0"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$35"
+        },
+        {
+          "label": "Chemotherapy drugs",
+          "value": "0%-20% coinsurance"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "0%-20% coinsurance"
         }
       ]
     },
@@ -198,8 +392,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 3.0,
-  "star_rating_part_c": 3.0,
-  "star_rating_part_d": 2.5
+  ]
 }

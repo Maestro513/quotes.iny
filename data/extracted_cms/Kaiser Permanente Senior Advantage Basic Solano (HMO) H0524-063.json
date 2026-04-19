@@ -1,50 +1,79 @@
 {
   "plan_id": "H0524-063",
-  "plan_name": "Kaiser Permanente Senior Advantage Basic Solano (HMO)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H0524",
   "org_name": "KAISER FOUNDATION HP, INC.",
   "geographic_area": "Solano County Plan - Basic",
   "states": "CA",
   "counties_count": "1",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$16",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Kaiser Permanente Senior Advantage Solano County Basic Plan (HMO) and Kaiser Permanente Senior Advantage Solano County Enhanced Plan (HMO)",
+  "plan_type": "HMO",
+  "monthly_premium": "$16 Basic/$91 Enhanced",
   "annual_deductible_in": "$0",
-  "moop_in": "$6,000",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_in": "$6,000 Basic/$3,400 Enhanced",
+  "moop_out": "HMO - no out-of-network",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$5 copay"
+          "label": "PCP visit (in-network)",
+          "value": "$5 Basic/$0 Enhanced"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$5 copay"
+          "label": "PCP visit (out-of-network)",
+          "value": "HMO - no out-of-network"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Specialist visit (in-network)",
+          "value": "$25 Basic/$10 Enhanced"
         },
         {
-          "label": "Urgent Care",
-          "value": "$5 copay"
+          "label": "Specialist visit (out-of-network)",
+          "value": "HMO - no out-of-network"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room",
+          "value": "$130 Basic/$150 Enhanced"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Urgent care",
+          "value": "$5 Basic/$0 Enhanced"
+        },
+        {
+          "label": "Inpatient hospital (in-network)",
+          "value": "$300/day days 1-5 Basic/$200/day days 1-5 Enhanced"
+        },
+        {
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "HMO - no out-of-network"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$350 Basic/$250 Enhanced"
+        },
+        {
+          "label": "Mental health (inpatient) (in-network)",
+          "value": "$300/day days 1-5 Basic/$200/day days 1-5 Enhanced"
+        },
+        {
+          "label": "Mental health (inpatient) (out-of-network)",
+          "value": "HMO - no out-of-network"
+        }
+      ]
+    },
+    {
+      "title": "Dental",
+      "icon": "tooth",
+      "rows": [
+        {
+          "label": "Advantage Plus - Dental care",
+          "value": "DeltaCare USA Dental HMO - varies by service"
         }
       ]
     },
@@ -53,12 +82,22 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Advantage Plus - Eyewear allowance",
+          "value": "$300 allowance every 24 months"
+        }
+      ]
+    },
+    {
+      "title": "Hearing",
+      "icon": "ear-listen",
+      "rows": [
+        {
+          "label": "Advantage Plus - Hearing aids",
+          "value": "$800 allowance per ear every 36 months"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Advantage Plus - Hearing aid fitting",
+          "value": "$0"
         }
       ]
     },
@@ -67,42 +106,120 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Advanced Care At Home",
+          "value": "$0 when prescribed as part of home treatment plan"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Advantage Plus (optional) - monthly premium",
+          "value": "$20 additional monthly premium"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Advantage Plus - One Pass fitness",
+          "value": "$0 - includes gym access, home programs, fitness kit"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services (out-of-network)",
+          "value": "HMO - no out-of-network"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (in-network)",
+          "value": "$20 Basic/$0 Enhanced"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (out-of-network)",
+          "value": "HMO - no out-of-network"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (in-network)",
+          "value": "$275 Basic/$250 Enhanced"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (out-of-network)",
+          "value": "HMO - no out-of-network"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient group) (in-network)",
+          "value": "$2 Basic/$0 Enhanced"
+        },
+        {
+          "label": "Mental health (outpatient group) (out-of-network)",
+          "value": "HMO - no out-of-network"
+        },
+        {
+          "label": "Mental health (outpatient individual) (in-network)",
+          "value": "$5 Basic/$0 Enhanced"
+        },
+        {
+          "label": "Mental health (outpatient individual) (out-of-network)",
+          "value": "HMO - no out-of-network"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$0-$20 Basic/$0-$10 Enhanced"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "HMO - no out-of-network"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0 days 1-20, $100/day days 21-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "HMO - no out-of-network"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Preventive care (out-of-network)",
+          "value": "HMO - no out-of-network"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient hospital (in-network)",
+          "value": "$0-$275 Basic/$0-$165 Enhanced"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient hospital (out-of-network)",
+          "value": "HMO - no out-of-network"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgical center (in-network)",
+          "value": "$275 Basic/$165 Enhanced"
+        },
+        {
+          "label": "Ambulatory surgical center (out-of-network)",
+          "value": "HMO - no out-of-network"
         }
       ]
     },
@@ -111,28 +228,112 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 (Preferred Generic) - 30-day retail",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "$35"
+          "label": "Tier 2 (Generic) - 30-day retail",
+          "value": "$0 Basic/$7 Enhanced"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "$95"
+          "label": "Tier 2 (Generic) - 31-60 day retail",
+          "value": "$0 Basic/$14 Enhanced"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 2 (Generic) - 61-100 day retail",
+          "value": "$0 Basic/$21 Enhanced"
+        },
+        {
+          "label": "Tier 3 (Preferred Brand) - 30-day retail",
+          "value": "$35 Basic/$47 Enhanced"
+        },
+        {
+          "label": "Tier 3 (Preferred Brand) - 31-60 day retail",
+          "value": "$70 Basic/$94 Enhanced"
+        },
+        {
+          "label": "Tier 3 (Preferred Brand) - 61-100 day retail",
+          "value": "$105 Basic/$141 Enhanced"
+        },
+        {
+          "label": "Tier 4 (Nonpreferred) - 30-day retail",
+          "value": "$95 Basic/$100 Enhanced"
+        },
+        {
+          "label": "Tier 4 (Nonpreferred) - 31-60 day retail",
+          "value": "$190 Basic/$200 Enhanced"
+        },
+        {
+          "label": "Tier 4 (Nonpreferred) - 61-100 day retail",
+          "value": "$285 Basic/$300 Enhanced"
+        },
+        {
+          "label": "Tier 5 (Specialty) - 30-day",
           "value": "33%"
         },
         {
-          "label": "Tier 6: Vaccines",
+          "label": "Tier 6 (Injectable vaccines)",
           "value": "$0"
+        },
+        {
+          "label": "Mail order - Tier 1 (Preferred Generic)",
+          "value": "$0"
+        },
+        {
+          "label": "Mail order - Tier 2 (Generic) 30-day",
+          "value": "$0 Basic/$7 Enhanced"
+        },
+        {
+          "label": "Mail order - Tier 2 (Generic) 31-60 day",
+          "value": "$0 Basic/$14 Enhanced"
+        },
+        {
+          "label": "Mail order - Tier 3 (Preferred Brand) 30-day",
+          "value": "$35 Basic/$47 Enhanced"
+        },
+        {
+          "label": "Mail order - Tier 3 (Preferred Brand) 31-60 day",
+          "value": "$70 Basic/$94 Enhanced"
+        },
+        {
+          "label": "Mail order - Tier 4 (Nonpreferred) 30-day",
+          "value": "$95 Basic/$100 Enhanced"
+        },
+        {
+          "label": "Mail order - Tier 4 (Nonpreferred) 31-60 day",
+          "value": "$190 Basic/$200 Enhanced"
+        },
+        {
+          "label": "Mail order - Tier 5 (Specialty)",
+          "value": "33%"
+        },
+        {
+          "label": "Part B drugs (administered by provider)",
+          "value": "0%-20% coinsurance"
+        },
+        {
+          "label": "Part B drugs (generic from pharmacy)",
+          "value": "$12 Basic/$7 Enhanced"
+        },
+        {
+          "label": "Part B drugs (brand from pharmacy)",
+          "value": "$47 both plans"
+        },
+        {
+          "label": "Part B insulin (DME)",
+          "value": "$35"
+        },
+        {
+          "label": "Insulin cap",
+          "value": "$35 per month supply max"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
         }
       ]
     },
@@ -174,8 +375,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 5.0
+  ]
 }

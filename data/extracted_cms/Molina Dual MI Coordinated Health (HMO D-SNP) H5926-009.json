@@ -1,50 +1,59 @@
 {
   "plan_id": "H5926-009",
-  "plan_name": "Molina Dual MI Coordinated Health (HMO D-SNP)",
   "carrier": "Molina Healthcare of Michigan",
-  "plan_type": "HMO",
-  "snp_type": "D-SNP",
   "contract_number": "H5926",
   "org_name": "MOLINA HEALTHCARE OF MICHIGAN, INC.",
   "geographic_area": "Counties: Barry, Ber, Branch, Cal, Cass, Kal, VB",
   "states": "MI",
   "counties_count": "7",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.0,
+  "star_rating_part_c": 3.0,
+  "star_rating_part_d": 3.5,
+  "plan_name": "Molina Dual MI Coordinated Health",
+  "plan_type": "HMO D-SNP",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
-  "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_in": "$0",
+  "moop_out": "Not covered",
   "drug_deductible": "$600",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "30% coinsurance"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "30% coinsurance"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "30% coinsurance"
+          "label": "Urgent care",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "30% coinsurance"
+          "label": "Emergency room",
+          "value": "$0"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "$0 days 1-90"
         },
         {
           "label": "Ambulance",
-          "value": "20% coinsurance"
+          "value": "$0"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Mental health (inpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse (inpatient)",
+          "value": "$0"
         }
       ]
     },
@@ -53,8 +62,32 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental (comprehensive)",
+          "value": "$4,000 per year above Medicaid coverage"
+        }
+      ]
+    },
+    {
+      "title": "Vision",
+      "icon": "eye",
+      "rows": [
+        {
+          "label": "Vision (eyewear allowance)",
+          "value": "$250 allowance for contacts/lenses/frames"
+        }
+      ]
+    },
+    {
+      "title": "Hearing",
+      "icon": "ear-listen",
+      "rows": [
+        {
+          "label": "Hearing aids",
+          "value": "2 additional pre-selected hearing aids every 2 years"
+        },
+        {
+          "label": "Hearing aid batteries",
+          "value": "36 batteries per hearing aid every 6 months"
         }
       ]
     },
@@ -63,46 +96,152 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$167 per month on MyChoice debit card"
+        },
+        {
+          "label": "Transportation (non-medical)",
+          "value": "12 one-way trips per year"
+        },
+        {
+          "label": "Transportation (medical)",
+          "value": "Unlimited rides for medical appointments"
+        },
+        {
+          "label": "Fitness benefit",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Home safety assessment",
+          "value": "$3,000 per year for home and bathroom safety devices"
+        },
+        {
+          "label": "Nurse hotline",
+          "value": "24/7 nurse advise line available"
+        },
+        {
+          "label": "Doula services",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Health education",
+          "value": "Covered health education services"
+        },
+        {
+          "label": "Home infusion therapy",
+          "value": "Covered IV drugs and biologicals at home"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Emergency coverage outside US territories"
+        },
+        {
+          "label": "Special supplemental benefits",
+          "value": "Food/produce, utilities, gas (pay at pump) on MyChoice card"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "$0"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "$0"
         },
         {
-          "label": "Lab Services",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
         }
       ]
     },
@@ -111,31 +250,35 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$600"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 2 Generic",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "20%"
+          "label": "Tier 3 Preferred Brand",
+          "value": "$0-$5.10"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "30%"
+          "label": "Tier 4 Non-Preferred Drug",
+          "value": "$0-$12.65"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "26%"
+          "label": "Tier 5 Specialty Tier",
+          "value": "$0-$12.65"
         },
         {
-          "label": "Tier 6: Select Care Drugs",
+          "label": "Tier 6 Select Care Drugs",
+          "value": "$0"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "$0"
+        },
+        {
+          "label": "Non-Medicare Rx/OTC drugs",
           "value": "$0"
         }
       ]
@@ -178,8 +321,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 3.0,
-  "star_rating_part_c": 3.0,
-  "star_rating_part_d": 3.5
+  ]
 }

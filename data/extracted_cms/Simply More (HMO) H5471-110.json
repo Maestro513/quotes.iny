@@ -1,50 +1,62 @@
 {
   "plan_id": "H5471-110",
-  "plan_name": "Simply More (HMO)",
   "carrier": "Simply Healthcare Plans, Inc.",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H5471",
   "org_name": "SIMPLY HEALTHCARE PLANS, INC.",
   "geographic_area": "Clay, Duval, St. Johns",
   "states": "FL",
   "counties_count": "3",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 4.5,
+  "plan_name": "Simply More (HMO)",
+  "plan_type": "HMO",
+  "monthly_premium": "$0.00",
   "annual_deductible_in": "$0",
   "moop_in": "$3,450",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not covered",
+  "part_b_premium_reduction": "$33.00",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$10"
         },
         {
-          "label": "Emergency Room",
-          "value": "$150 copay"
+          "label": "Urgent care",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0 copay"
+          "label": "Emergency room",
+          "value": "$150"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$125/day days 1-5, $0/day days 6-90"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$35 allowance"
+          "label": "Ambulance ground",
+          "value": "$200/trip"
+        },
+        {
+          "label": "Ambulance air",
+          "value": "20%"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$125/day days 1-5, $0/day days 6-90"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$33.00"
         }
       ]
     },
@@ -53,12 +65,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$1,200"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Dental allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -67,12 +75,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$400 per year for eyeglasses or contact lenses"
         }
       ]
     },
@@ -81,12 +85,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aid benefit",
+          "value": "$2,000 maximum per year for prescribed hearing aids"
         }
       ]
     },
@@ -95,34 +95,164 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$35 per month, unused amounts expire monthly"
+        },
+        {
+          "label": "Transportation",
+          "value": "24 one-way trips per year, 50-mile limit"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "1 meal per day for 10 days post-discharge from hospital/SNF"
+        },
+        {
+          "label": "SilverSneakers fitness",
+          "value": "Included fitness program"
+        },
+        {
+          "label": "24/7 Nurse hotline",
+          "value": "24-hour nurse line access"
+        },
+        {
+          "label": "Personal emergency response system",
+          "value": "PERS coverage with monitoring device and service"
+        },
+        {
+          "label": "LiveHealth Online",
+          "value": "Telehealth services via video"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Up to $100"
+        },
+        {
+          "label": "Enhanced drug coverage",
+          "value": "Coverage for cough/cold drugs"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0 at physician office/freestanding, $0 at hospital"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0 at physician office/freestanding, $50 at hospital"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$0 at physician office/freestanding, $90 at hospital"
+        },
+        {
+          "label": "Ultrasounds",
+          "value": "$0 at physician office/freestanding, $50 at hospital"
+        },
+        {
+          "label": "Diagnostic tests/procedures",
+          "value": "$0 at physician office/freestanding, $50 at hospital"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "$0-$60"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$10"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "$50"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$0 Medicare-covered, $0 routine 12 visits/year"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$15"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$15"
+        },
+        {
+          "label": "Cardiac rehabilitation",
+          "value": "$0"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "$0"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "0-20%"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$125"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$50"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "$0"
         }
       ]
     },
@@ -131,28 +261,88 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic - Preferred retail 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 1 Preferred Generic - Standard retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - Mail order 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic - Preferred retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic - Standard retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic - Mail order 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 Preferred Brand - Preferred retail 30-day",
           "value": "$47"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Preferred Brand - Standard retail 30-day",
+          "value": "$47"
+        },
+        {
+          "label": "Tier 3 Preferred Brand - Mail order 100-day",
+          "value": "$141"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug - Preferred retail 30-day",
           "value": "$95"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 Non-Preferred Drug - Standard retail 30-day",
+          "value": "$100"
+        },
+        {
+          "label": "Tier 5 Specialty - Preferred retail 30-day",
           "value": "33%"
         },
         {
-          "label": "Tier 6: Supplemental Drugs",
+          "label": "Tier 5 Specialty - Standard retail 30-day",
+          "value": "33%"
+        },
+        {
+          "label": "Tier 6 Supplemental Drugs - Preferred retail 30-day",
           "value": "$0"
+        },
+        {
+          "label": "Tier 6 Supplemental Drugs - Standard retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 6 Supplemental Drugs - Mail order 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$35"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "$0-20%"
+        },
+        {
+          "label": "Chemotherapy drugs",
+          "value": "$0-20%"
         }
       ]
     },
@@ -194,8 +384,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 4.5
+  ]
 }

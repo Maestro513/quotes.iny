@@ -1,46 +1,79 @@
 {
   "plan_id": "H7849-145",
-  "plan_name": "HealthSpring True Choice (PPO)",
   "carrier": "Cigna Healthcare",
-  "plan_type": "PPO",
-  "snp_type": null,
   "contract_number": "H7849",
   "org_name": "HEALTHSPRING LIFE & HEALTH INSURANCE COMPANY, INC.",
   "geographic_area": "Georgia",
   "states": "AL; GA",
   "counties_count": "49",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.0,
+  "star_rating_part_c": 3.0,
+  "star_rating_part_d": 3.0,
+  "plan_name": "HealthSpring True Choice (PPO)",
+  "plan_type": "PPO",
   "monthly_premium": "$0",
-  "annual_deductible_in": "$375",
+  "annual_deductible_in": "$375 (applies to select services)",
   "moop_in": "$6,800",
+  "moop_out": "$11,000",
   "moop_combined": "$11,000",
-  "moop_out": null,
   "drug_deductible": "$250",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "PCP visit (out-of-network)",
+          "value": "50%"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Specialist visit (in-network)",
+          "value": "$40"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Specialist visit (out-of-network)",
+          "value": "50%"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$25 allowance"
+          "label": "Urgent care",
+          "value": "$40"
+        },
+        {
+          "label": "Emergency room",
+          "value": "$115"
+        },
+        {
+          "label": "Inpatient hospital (in-network)",
+          "value": "$375/day days 1-6, $0/day days 7-90"
+        },
+        {
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Ambulance ground",
+          "value": "$300"
+        },
+        {
+          "label": "Ambulance air",
+          "value": "20%"
+        },
+        {
+          "label": "Mental health inpatient (in-network)",
+          "value": "$340/day days 1-6, $0/day days 7-90"
+        },
+        {
+          "label": "Mental health inpatient (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Worldwide emergency",
+          "value": "$115, $50,000 max"
         }
       ]
     },
@@ -49,12 +82,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$700"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$40 copay"
+          "label": "Dental allowance",
+          "value": "$700 per year for preventive and comprehensive"
         }
       ]
     },
@@ -63,26 +92,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
-        }
-      ]
-    },
-    {
-      "title": "Hearing",
-      "icon": "ear-listen",
-      "rows": [
-        {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$100 per year"
         }
       ]
     },
@@ -91,34 +102,272 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$25 per quarter"
+        },
+        {
+          "label": "Flex card",
+          "value": "Funds loaded quarterly for allowance benefits"
+        },
+        {
+          "label": "Fitness program",
+          "value": "$0 - gym membership, digital tools, home fitness kit"
+        },
+        {
+          "label": "Home-delivered meals",
+          "value": "14 meals per discharge"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$50,000 yearly maximum"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Advanced imaging (in-network)",
+          "value": "$0-$225"
+        },
+        {
+          "label": "Advanced imaging (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Therapeutic radiology (in-network)",
+          "value": "$60"
+        },
+        {
+          "label": "Therapeutic radiology (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "X-rays",
+          "value": "$50"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient (in-network)",
+          "value": "$40"
+        },
+        {
+          "label": "Mental health outpatient (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Chiropractic (in-network)",
+          "value": "$15"
+        },
+        {
+          "label": "Chiropractic (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Podiatry (in-network)",
+          "value": "$40"
+        },
+        {
+          "label": "Podiatry (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Occupational therapy (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Occupational therapy (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Speech therapy (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Speech therapy (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Acupuncture (in-network)",
+          "value": "$20"
+        },
+        {
+          "label": "Acupuncture (out-of-network)",
+          "value": "50%"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Home health care (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Home health care (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Durable medical equipment (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Other Part B drugs (in-network)",
+          "value": "0-20%"
+        },
+        {
+          "label": "Other Part B drugs (out-of-network)",
+          "value": "25%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Preventive care (out-of-network)",
+          "value": "50%"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery (in-network)",
+          "value": "$375 ($0 for colorectal screening)"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery (out-of-network)",
+          "value": "50%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "ASC services (in-network)",
+          "value": "$325 ($0 for colorectal screening)"
+        },
+        {
+          "label": "ASC services (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Outpatient observation (in-network)",
+          "value": "$375"
+        },
+        {
+          "label": "Outpatient observation (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Diagnostic procedures (in-network)",
+          "value": "$0 EKG, $150 others"
+        },
+        {
+          "label": "Diagnostic procedures (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Genetic testing",
+          "value": "$50"
+        },
+        {
+          "label": "Annual physical (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Annual physical (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Telehealth MDLIVE",
+          "value": "$0 urgent care, $40 mental health, $40 dermatology"
+        },
+        {
+          "label": "Prosthetics/orthotics (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Prosthetics/orthotics (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Medical supplies (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Medical supplies (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Diabetic supplies (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Diabetic shoes (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic shoes (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Part B insulin (in-network)",
+          "value": "$35 max per month"
+        },
+        {
+          "label": "Part B insulin (out-of-network)",
+          "value": "25%"
+        },
+        {
+          "label": "Part B chemo/radiation (in-network)",
+          "value": "0-20%"
+        },
+        {
+          "label": "Part B chemo/radiation (out-of-network)",
+          "value": "25%"
         }
       ]
     },
@@ -127,28 +376,84 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$250"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Part D deductible Tier 1-2",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Part D deductible Tier 3-5",
+          "value": "$250"
+        },
+        {
+          "label": "Tier 1 Preferred Generic 30-day preferred retail",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic 30-day standard retail",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 1 Preferred Generic 90-day preferred retail",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic 90-day standard retail",
+          "value": "$30"
+        },
+        {
+          "label": "Tier 1 Preferred Generic 30-day mail order",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic 90-day mail order",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic 30-day preferred retail",
           "value": "$5"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 Generic 30-day standard retail",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 2 Generic 90-day preferred retail",
+          "value": "$15"
+        },
+        {
+          "label": "Tier 2 Generic 90-day standard retail",
+          "value": "$60"
+        },
+        {
+          "label": "Tier 2 Generic 30-day mail order",
+          "value": "$5"
+        },
+        {
+          "label": "Tier 2 Generic 90-day mail order",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 Preferred Brand 30-day all",
           "value": "$47"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Preferred Brand 90-day all",
+          "value": "$141"
+        },
+        {
+          "label": "Tier 4 Non-Preferred 30-day all",
           "value": "50%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 Non-Preferred 90-day all",
+          "value": "50%"
+        },
+        {
+          "label": "Tier 5 Specialty 30-day all",
           "value": "30%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
         }
       ]
     },
@@ -190,8 +495,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 3.0,
-  "star_rating_part_c": 3.0,
-  "star_rating_part_d": 3.0
+  ]
 }

@@ -1,50 +1,66 @@
 {
   "plan_id": "H2663-069",
-  "plan_name": "Aetna Medicare Eagle (HMO-POS)",
   "carrier": "Aetna Medicare",
-  "plan_type": "HMO-POS",
-  "snp_type": null,
   "contract_number": "H2663",
   "org_name": "COVENTRY HEALTH CARE OF MISSOURI, INC.",
   "geographic_area": "Eastern Missouri",
   "states": "MO",
   "counties_count": "62",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 3.5,
+  "plan_name": "Aetna Medicare Eagle (HMO-POS)",
+  "plan_type": "HMO-POS",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$4,900",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not specified",
+  "part_b_premium_reduction": "$100",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$40"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care (in-network)",
+          "value": "$40"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Urgent care (out-of-network)",
+          "value": "$130"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room",
+          "value": "$130"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$30 allowance"
+          "label": "Inpatient hospital",
+          "value": "$425/day days 1-6, $0/day days 7-90, $0 additional days"
+        },
+        {
+          "label": "Ambulance ground",
+          "value": "$260"
+        },
+        {
+          "label": "Ambulance air",
+          "value": "20%"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$375/day days 1-6, $0/day days 7-90"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$100"
         }
       ]
     },
@@ -53,8 +69,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$40 copay"
+          "label": "Dental comprehensive allowance",
+          "value": "$1,500 annually for comprehensive services"
         }
       ]
     },
@@ -63,12 +79,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$300 annually for prescription eyewear through EyeMed"
         }
       ]
     },
@@ -77,12 +89,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids allowance",
+          "value": "$1,250 per ear annually through NationsHearing network"
         }
       ]
     },
@@ -91,42 +99,158 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$30 per quarter"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Meal benefit",
+          "value": "14 meals for 7 days post-discharge from qualifying stays"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Fitness/gym",
+          "value": "SilverSneakers basic membership"
+        },
+        {
+          "label": "Nurse hotline",
+          "value": "24-Hour Nurse Line at no cost"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Maximum $250,000 coverage outside U.S."
+        },
+        {
+          "label": "Resources For Living",
+          "value": "Community resource connections at no cost"
+        },
+        {
+          "label": "Visitor/travel program",
+          "value": "Travel Advantage allows 12 months outside service area"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI)",
+          "value": "$250"
+        },
+        {
+          "label": "Diagnostic tests and procedures",
+          "value": "$0-$40"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$40 individual/$40 group"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "$40 individual/$40 group"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$40"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$40"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$40"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$40"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$40"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$10/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "0%-20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient hospital observation",
+          "value": "$425"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient hospital",
+          "value": "$425"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$350"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "0%-20%"
+        }
+      ]
+    },
+    {
+      "title": "Prescription Drugs",
+      "icon": "pills",
+      "rows": [
+        {
+          "label": "Part B Insulin",
+          "value": "$35"
+        },
+        {
+          "label": "Chemotherapy drugs",
+          "value": "0%-20%"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "0%-20%"
         }
       ]
     },
@@ -167,19 +291,6 @@
           "value": "www.aetna.com/medicare"
         }
       ]
-    },
-    {
-      "title": "Prescription Drugs",
-      "icon": "pills",
-      "rows": [
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "N/A"
-        }
-      ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 3.5
+  ]
 }

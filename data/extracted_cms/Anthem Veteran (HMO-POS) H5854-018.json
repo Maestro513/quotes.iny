@@ -1,50 +1,58 @@
 {
   "plan_id": "H5854-018",
-  "plan_name": "Anthem Veteran (HMO-POS)",
   "carrier": "Anthem Blue Cross and Blue Shield",
-  "plan_type": "HMO-POS",
-  "snp_type": null,
   "contract_number": "H5854",
   "org_name": "ANTHEM HEALTH PLANS, INC.",
   "geographic_area": "Select counties in CT",
   "states": "CT",
   "counties_count": "6",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.5,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 4.0,
+  "plan_name": "Anthem Veteran (HMO-POS)",
+  "plan_type": "HMO-POS",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$5,900",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not covered",
+  "part_b_premium_reduction": "$80",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$40"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care",
+          "value": "$50"
         },
         {
-          "label": "Urgent Care",
-          "value": "$50 copay"
+          "label": "Emergency room",
+          "value": "$130"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$350/day days 1-5, $0/day days 6-90"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$45 allowance"
+          "label": "Ambulance",
+          "value": "$325/trip"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$350/day days 1-5, $0/day days 6-90"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$80"
         }
       ]
     },
@@ -53,12 +61,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Preventive and comprehensive dental allowance",
+          "value": "$2,000 per year"
         }
       ]
     },
@@ -67,12 +71,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Routine vision eyewear allowance",
+          "value": "$200 per year"
         }
       ]
     },
@@ -81,12 +81,12 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Hearing aids allowance (OTC)",
+          "value": "$300 maximum per year"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids allowance (prescribed)",
+          "value": "$1,000 maximum per year"
         }
       ]
     },
@@ -95,38 +95,186 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Transportation",
+          "value": "Unlimited routine trips up to 60 miles"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Healthy meals post-discharge",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Over-the-counter products",
+          "value": "$45 per quarter on Benefits Mastercard"
+        },
+        {
+          "label": "SilverSneakers fitness program",
+          "value": "Included"
+        },
+        {
+          "label": "24/7 Nurseline",
+          "value": "24-hour access to nurse line"
+        },
+        {
+          "label": "Personal Emergency Response System (PERS)",
+          "value": "Monitoring device and service included"
+        },
+        {
+          "label": "Medicare Community Resource Support",
+          "value": "Phone assistance for community services"
+        },
+        {
+          "label": "LiveHealth Online",
+          "value": "Telehealth services included"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$100,000 per year limit"
+        },
+        {
+          "label": "Acupuncture visits",
+          "value": "24 visits per year"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "Unlimited visits per year"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$25"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0 physician office, $90 hospital"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$40 physician office, $350 hospital"
+        },
+        {
+          "label": "Ultrasounds",
+          "value": "$0 physician office, $90 hospital"
+        },
+        {
+          "label": "Diagnostic tests and procedures",
+          "value": "$0 physician office, $90 hospital"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$40"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "$40"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$0-$40"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$40"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$40"
+        },
+        {
+          "label": "Cardiac rehabilitation",
+          "value": "$30"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "$15"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$15"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "20%"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$350"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$300"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Prescription Drugs",
+      "icon": "pills",
+      "rows": [
+        {
+          "label": "Insulin through pump",
+          "value": "$35"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "$0-20%"
+        },
+        {
+          "label": "Chemotherapy drugs",
+          "value": "$0-20%"
         }
       ]
     },
@@ -167,19 +315,6 @@
           "value": "www.anthem.com/shop"
         }
       ]
-    },
-    {
-      "title": "Prescription Drugs",
-      "icon": "pills",
-      "rows": [
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "N/A"
-        }
-      ]
     }
-  ],
-  "star_rating_overall": 3.5,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 4.0
+  ]
 }

@@ -1,54 +1,56 @@
 {
   "plan_id": "H5216-362",
-  "plan_name": "Humana Together in Health (PPO I-SNP)",
   "carrier": "Humana",
-  "plan_type": "PPO",
-  "snp_type": "I-SNP",
   "contract_number": "H5216",
   "org_name": "HUMANA INSURANCE COMPANY",
   "geographic_area": "Virginia",
   "states": "VA",
   "counties_count": "133",
+  "snp_type": "I-SNP",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
-  "annual_deductible_in": "$0",
+  "star_rating_overall": 3.5,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 3.0,
+  "plan_name": "Humana Together in Health (PPO I-SNP)",
+  "plan_type": "PPO",
+  "monthly_premium": "$24.60",
+  "annual_deductible_in": "$283",
   "moop_in": "$9,230",
+  "moop_out": "$13,900",
   "moop_combined": "$13,900",
-  "moop_out": null,
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "20%"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care",
+          "value": "20%"
         },
         {
-          "label": "Urgent Care",
-          "value": "20% coinsurance"
+          "label": "Emergency room",
+          "value": "$115"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$611/day days 1-4, $0/day days 5-90"
         },
         {
           "label": "Ambulance",
-          "value": "20% coinsurance"
+          "value": "20%"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Mental health (inpatient)",
+          "value": "$1,872 per admit"
         }
       ]
     },
@@ -57,12 +59,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental comprehensive benefit",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -71,12 +69,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "$40 max"
+          "label": "Vision allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -85,12 +79,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids comprehensive benefit",
+          "value": "$0 Standard level"
         }
       ]
     },
@@ -99,46 +89,124 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Flex/SSBCI",
-          "value": "Barber and Beauty Shop Care"
+          "label": "Over-the-Counter (OTC) allowance",
+          "value": "$200 quarterly allowance through OTC Mail Order"
         },
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Music Therapy (SSBCI)",
+          "value": "Up to 36 sessions per year for chronically ill members"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "20% coinsurance for up to 12 visits per year"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0 at PCP, 20% elsewhere"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "20%"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "20%"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "20% routine, 20% Medicare-covered"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Cardiac rehabilitation",
+          "value": "20%"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "$15"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "20% up to 20 visits/year"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-100"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery/services",
+          "value": "20%"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0 PCP, 20% specialist"
         },
         {
-          "label": "Lab Services",
-          "value": "20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Diabetic supplies/monitoring (in-network)",
+          "value": "$0 at pharmacy/preferred supplier"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies/monitoring (out-of-network)",
+          "value": "$0 at pharmacy"
         }
       ]
     },
@@ -147,12 +215,28 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Part D Deductible",
           "value": "$615"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "All Plan-Covered Part D Drugs - Initial Coverage",
+          "value": "25%"
+        },
+        {
+          "label": "Part D Insulins - Initial Coverage",
+          "value": "$35 30-day, $105 100-day"
+        },
+        {
+          "label": "Catastrophic Coverage",
           "value": "$0"
+        },
+        {
+          "label": "Part B Insulin",
+          "value": "$35 max per month"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "20% or $0 at pharmacy"
         }
       ]
     },
@@ -194,8 +278,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 3.5,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 3.0
+  ]
 }

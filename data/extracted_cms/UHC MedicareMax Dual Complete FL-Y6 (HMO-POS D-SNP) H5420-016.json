@@ -1,54 +1,84 @@
 {
   "plan_id": "H5420-016",
-  "plan_name": "UHC MedicareMax Dual Complete FL-Y6 (HMO-POS D-SNP)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "HMO-POS",
-  "snp_type": "D-SNP",
   "contract_number": "H5420",
   "org_name": "Preferred Care Network, Inc.",
   "geographic_area": "Broward and Miami-Dade Counties",
   "states": "FL",
   "counties_count": "2",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 4.0,
+  "plan_name": "UHC MedicareMax Dual Complete FL-Y6 (HMO-POS D-SNP)",
+  "plan_type": "HMO-POS",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
-  "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_in": "$0",
+  "moop_out": "Not applicable",
+  "part_b_premium_reduction": "$0.20",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "0-20% coinsurance"
+          "label": "PCP visit (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "PCP visit (out-of-network)",
+          "value": "Not applicable"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Specialist visit (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$40 copay"
+          "label": "Specialist visit (out-of-network)",
+          "value": "Not applicable"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Urgent care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Ambulance",
-          "value": "20% coinsurance"
+          "label": "Urgent care (out-of-network)",
+          "value": "Not applicable"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Emergency room",
+          "value": "$0 (worldwide)"
+        },
+        {
+          "label": "Inpatient hospital (in-network)",
+          "value": "$0/stay"
+        },
+        {
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Ambulance (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Ambulance (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Mental health inpatient (in-network)",
+          "value": "$0/stay"
+        },
+        {
+          "label": "Mental health inpatient (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$0.20"
         }
       ]
     },
@@ -57,12 +87,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$4,500"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental allowance",
+          "value": "$4,500 allowance for all covered dental services per year"
         }
       ]
     },
@@ -71,12 +97,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision allowance",
+          "value": "$400 per year for lenses/frames and contacts"
         }
       ]
     },
@@ -85,12 +107,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids allowance",
+          "value": "$2,500 allowance for 2 hearing aids every 2 years"
         }
       ]
     },
@@ -99,42 +117,216 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$297 per month for OTC products"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Transportation",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Fitness program",
+          "value": "Free gym membership and fitness classes"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "6 visits per year"
+        },
+        {
+          "label": "In-home support services",
+          "value": "12 hours after inpatient hospital and SNF discharges"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "X-rays (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Advanced imaging (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Advanced imaging (out-of-network)",
+          "value": "Not applicable"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Mental health outpatient (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Substance abuse outpatient (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse outpatient (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Chiropractic (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Podiatry (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Occupational therapy (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Speech therapy (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy (out-of-network)",
+          "value": "Not applicable"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0/day days 1-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Home health care (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Home health care (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "DME (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "DME (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Part B drugs (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Part B drugs (out-of-network)",
+          "value": "Not applicable"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Preventive care (out-of-network)",
+          "value": "Not applicable"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient surgery (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery (out-of-network)",
+          "value": "Not applicable"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Telehealth (in-network)",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Telehealth (out-of-network)",
+          "value": "Not applicable"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Prosthetics (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Prosthetics (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Diabetic supplies (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies (out-of-network)",
+          "value": "Not applicable"
+        },
+        {
+          "label": "Kidney disease (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Kidney disease (out-of-network)",
+          "value": "Not applicable"
         }
       ]
     },
@@ -143,28 +335,12 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 3: Preferred Brand",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
+          "label": "All covered drugs",
+          "value": "$0"
         }
       ]
     },
@@ -206,8 +382,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 4.0
+  ]
 }

@@ -1,88 +1,53 @@
 {
   "plan_id": "H3384-022",
-  "plan_name": "Senior Blue 601 (HMO)",
   "carrier": "Highmark Blue Cross Blue Shield or Highmark Blue Shield",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H3384",
   "org_name": "Highmark Western and Northeastern New York Inc.",
   "geographic_area": "Western New York",
   "states": "NY",
   "counties_count": "8",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 4.5,
+  "plan_name": "Western New York Senior Blue (HMO)",
+  "plan_type": "HMO",
+  "monthly_premium": "$0 for 601, $97 for 651",
   "annual_deductible_in": "$0",
   "moop_in": "$6,700",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not covered",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0-$5 copay"
+          "label": "PCP visit",
+          "value": "$0-$5 copay (601), $0 copay (651)"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$45 copay (601), $25 copay (651)"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
-        },
-        {
-          "label": "Urgent Care",
+          "label": "Urgent care",
           "value": "$50 copay"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room",
+          "value": "$130 copay"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$25 allowance"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
-        {
-          "label": "Comprehensive Dental",
-          "value": "$45 copay"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Inpatient hospital",
+          "value": "Days 1-7: $290/day (601), $225/day (651); Days 8-90: $0/day"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
-        }
-      ]
-    },
-    {
-      "title": "Hearing",
-      "icon": "ear-listen",
-      "rows": [
-        {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Ambulance",
+          "value": "$300 copay (601), $200 copay (651)"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Mental health inpatient",
+          "value": "Days 1-6: $260/day (601), $215/day (651); Days 7-90: $0/day"
         }
       ]
     },
@@ -91,30 +56,254 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$25 per quarter (601), $40 per quarter (651)"
         }
       ]
     },
     {
-      "title": "Medical Services",
-      "icon": "hospital",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Lab services freestanding",
+          "value": "$0-$45 copay (601), $5-$40 copay (651)"
         },
         {
-          "label": "Renal Dialysis",
+          "label": "Lab services office/outpatient",
+          "value": "$0-$45 copay (601), $5-$40 copay (651)"
+        },
+        {
+          "label": "X-rays",
+          "value": "$45 copay (601), $40 copay (651)"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$150 copay"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient",
+          "value": "$40 copay"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$15 copay"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "Days 1-20: $0/day; Days 21-100: $218/day"
+        },
+        {
+          "label": "Part B drugs",
           "value": "20% coinsurance"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Durable medical equipment",
+          "value": "20% coinsurance; $0 copay compression stockings, diabetic shoes/inserts"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
+      "icon": "hospital",
+      "rows": [
+        {
+          "label": "Preventive care",
+          "value": "Covered in full"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient surgery ASC",
+          "value": "$225 copay"
+        },
+        {
+          "label": "Outpatient surgery facility",
+          "value": "$325 copay"
+        }
+      ]
+    },
+    {
+      "title": "Prescription Drugs",
+      "icon": "pills",
+      "rows": [
+        {
+          "label": "Drug deductible",
+          "value": "Tier 1-2: $0, Tier 3-5: $615 (651 plan)"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - Preferred Retail 31-day",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - Preferred Retail 90-day",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Tier 2 Generic - Preferred Retail 31-day",
+          "value": "$3 copay"
+        },
+        {
+          "label": "Tier 2 Generic - Preferred Retail 90-day",
+          "value": "$9 copay"
+        },
+        {
+          "label": "Tier 3 Preferred Brand - Preferred Retail 31-day",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Tier 3 Preferred Brand - Preferred Retail 90-day",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Tier 3 Preferred Insulin - Preferred Retail 31-day",
+          "value": "$35 copay"
+        },
+        {
+          "label": "Tier 3 Preferred Insulin - Preferred Retail 90-day",
+          "value": "$105 copay"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug - Preferred Retail 31-day",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug - Preferred Retail 90-day",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Tier 4 Insulin - Preferred Retail 31-day",
+          "value": "$35 copay"
+        },
+        {
+          "label": "Tier 4 Insulin - Preferred Retail 90-day",
+          "value": "$105 copay"
+        },
+        {
+          "label": "Tier 5 Specialty - Preferred Retail 31-day",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - Standard Retail 31-day",
+          "value": "$7 copay"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - Standard Retail 90-day",
+          "value": "$21 copay"
+        },
+        {
+          "label": "Tier 2 Generic - Standard Retail 31-day",
+          "value": "$15 copay"
+        },
+        {
+          "label": "Tier 2 Generic - Standard Retail 90-day",
+          "value": "$45 copay"
+        },
+        {
+          "label": "Tier 3 Preferred Brand - Standard Retail 31-day",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Tier 3 Preferred Brand - Standard Retail 90-day",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Tier 3 Preferred Insulin - Standard Retail 31-day",
+          "value": "$35 copay"
+        },
+        {
+          "label": "Tier 3 Preferred Insulin - Standard Retail 90-day",
+          "value": "$105 copay"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug - Standard Retail 31-day",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug - Standard Retail 90-day",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Tier 4 Insulin - Standard Retail 31-day",
+          "value": "$35 copay"
+        },
+        {
+          "label": "Tier 4 Insulin - Standard Retail 90-day",
+          "value": "$105 copay"
+        },
+        {
+          "label": "Tier 5 Specialty - Standard Retail 31-day",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - Mail Order 90-day",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Tier 2 Generic - Mail Order 90-day",
+          "value": "$7 copay"
+        },
+        {
+          "label": "Tier 3 Preferred Brand - Mail Order 90-day",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Tier 3 Preferred Insulin - Mail Order 90-day",
+          "value": "$105 copay"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug - Mail Order 90-day",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Tier 4 Insulin - Mail Order 90-day",
+          "value": "$105 copay"
+        },
+        {
+          "label": "Tier 5 Specialty - Mail Order 90-day",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - Standard Mail 90-day",
+          "value": "$21 copay"
+        },
+        {
+          "label": "Tier 2 Generic - Standard Mail 90-day",
+          "value": "$45 copay"
+        },
+        {
+          "label": "Tier 3 Preferred Brand - Standard Mail 90-day",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Tier 3 Preferred Insulin - Standard Mail 90-day",
+          "value": "$105 copay"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug - Standard Mail 90-day",
+          "value": "20% coinsurance"
+        },
+        {
+          "label": "Tier 4 Insulin - Standard Mail 90-day",
+          "value": "$105 copay"
+        },
+        {
+          "label": "Tier 5 Specialty - Standard Mail 90-day",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
         }
       ]
     },
@@ -155,19 +344,6 @@
           "value": "medicare.highmark.com"
         }
       ]
-    },
-    {
-      "title": "Prescription Drugs",
-      "icon": "pills",
-      "rows": [
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "N/A"
-        }
-      ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 4.5
+  ]
 }

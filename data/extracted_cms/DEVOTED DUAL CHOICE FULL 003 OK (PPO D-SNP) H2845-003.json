@@ -1,54 +1,53 @@
 {
   "plan_id": "H2845-003",
-  "plan_name": "DEVOTED DUAL CHOICE FULL 003 OK (PPO D-SNP)",
   "carrier": "Devoted Health",
-  "plan_type": "PPO",
-  "snp_type": "D-SNP",
   "contract_number": "H2845",
   "org_name": "DEVOTED HEALTH INSURANCE COMPANY OF OKLAHOMA",
   "geographic_area": "Oklahoma",
   "states": "OK",
   "counties_count": "14",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
-  "annual_deductible_in": "$990",
+  "plan_name": "DEVOTED DUAL CHOICE FULL 003 OK (PPO D-SNP)",
+  "plan_type": "PPO D-SNP",
+  "monthly_premium": "$0-$28.20",
+  "annual_deductible_in": "$0-$990",
   "moop_in": "$9,250",
+  "moop_out": "$13,900",
   "moop_combined": "$13,900",
-  "moop_out": null,
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "30% coinsurance"
+          "label": "Specialist visit",
+          "value": "$0-30%"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care",
+          "value": "$0-30%"
         },
         {
-          "label": "Urgent Care",
-          "value": "0-30% coinsurance"
+          "label": "Emergency room",
+          "value": "$0-$115"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$0-$2,230/stay"
         },
         {
           "label": "Ambulance",
-          "value": "0-50% coinsurance"
+          "value": "$0-50%"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$50 allowance"
+          "label": "Mental health (inpatient)",
+          "value": "$0-$2,080/stay"
         }
       ]
     },
@@ -57,26 +56,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$3,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "30% coinsurance"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Dental coverage",
+          "value": "$3,000 per year maximum"
         }
       ]
     },
@@ -85,12 +66,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -99,50 +76,128 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$50 per quarter"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Food & Home Card",
+          "value": "$268 per month for eligible food, utilities, rent/mortgage"
+        },
+        {
+          "label": "SilverSneakers",
+          "value": "$0 membership"
+        },
+        {
+          "label": "Devoted Health Wellness Bucks",
+          "value": "$150 per year toward fitness and wellness items"
+        },
+        {
+          "label": "Devoted Dollars",
+          "value": "$20 for completing yearly Health Risk Assessment"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Included"
+        },
+        {
+          "label": "Additional Part D drugs",
+          "value": "Vitamin D 50"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0-50%"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0-30%"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$0-50%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0-30%"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0-30%"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$0-30%"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0-30%"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0-30%"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0-30%"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0-$218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "$0-20%"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "$0-20%"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "$0-20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0-50%"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-50% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "$0-20%"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "0-50% coinsurance"
-        },
-        {
-          "label": "Lab Services",
-          "value": "50% coinsurance"
-        },
-        {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0-20%"
         }
       ]
     },
@@ -151,32 +206,60 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Drug deductible",
+          "value": "$0-$615 Tiers 1-5"
         },
         {
-          "label": "Tier 1: Preferred Generic",
-          "value": "25%"
+          "label": "Tier 1 Preferred Generic 30-day",
+          "value": "25% or $12.65 max"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "25%"
+          "label": "Tier 2 Generic 30-day",
+          "value": "25% or $12.65 max"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "25%"
+          "label": "Tier 3 Preferred Brand 30-day",
+          "value": "25% or $12.65 max"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
+          "label": "Tier 4 Non-Preferred Drug 30-day",
+          "value": "25% or $12.65 max"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
+          "label": "Tier 5 Specialty 30-day",
+          "value": "25% or $12.65 max"
         },
         {
-          "label": "Tier 6: Select Care Drugs",
+          "label": "Tier 6 Select Care Drugs",
           "value": "$0"
+        },
+        {
+          "label": "Tier 1 100-day mail order",
+          "value": "25% or $12.65 max"
+        },
+        {
+          "label": "Tier 2 100-day mail order",
+          "value": "25% or $12.65 max"
+        },
+        {
+          "label": "Tier 3 100-day mail order",
+          "value": "25% or $12.65 max"
+        },
+        {
+          "label": "Tier 4 100-day mail order",
+          "value": "25% or $12.65 max"
+        },
+        {
+          "label": "Tier 6 100-day mail order",
+          "value": "$0"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
+        },
+        {
+          "label": "Insulin coverage",
+          "value": "$35 max per 30-day supply"
         }
       ]
     },

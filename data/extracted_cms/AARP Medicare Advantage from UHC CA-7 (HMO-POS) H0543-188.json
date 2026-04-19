@@ -1,50 +1,54 @@
 {
   "plan_id": "H0543-188",
-  "plan_name": "AARP Medicare Advantage from UHC CA-7 (HMO-POS)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "HMO-POS",
-  "snp_type": null,
   "contract_number": "H0543",
   "org_name": "UHC OF CALIFORNIA",
   "geographic_area": "Alameda County",
   "states": "CA",
   "counties_count": "1",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$2.70",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 4.5,
+  "plan_name": "AARP® Medicare Advantage from UHC CA-7 (HMO-POS)",
+  "plan_type": "HMO-POS",
+  "monthly_premium": "$70",
   "annual_deductible_in": "$0",
   "moop_in": "$5,900",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not covered",
   "drug_deductible": "$440",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$45"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Emergency room",
+          "value": "$130"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$50 copay"
+          "label": "Urgent care",
+          "value": "$50"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$550/day days 1-4, $0/day days 5+"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Ambulance",
+          "value": "$290"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$550/day days 1-4, $0/day days 5-90"
         }
       ]
     },
@@ -53,8 +57,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Platinum Dental Rider",
+          "value": "$44/month for $1"
         }
       ]
     },
@@ -63,12 +67,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$150 every 2 years for frames/contacts, free standard lenses"
         }
       ]
     },
@@ -77,12 +77,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aid coverage",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -91,34 +87,164 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$25 per quarter"
+        },
+        {
+          "label": "Fitness program",
+          "value": "Free gym membership, online classes, memory fitness"
+        },
+        {
+          "label": "Member discounts",
+          "value": "Exclusive discounts on hundreds of products and services"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays",
+          "value": "$30"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$260 ($0 for mammogram)"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "20%"
+        },
+        {
+          "label": "Diagnostic tests",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient individual",
+          "value": "$25"
+        },
+        {
+          "label": "Mental health outpatient group",
+          "value": "$15"
+        },
+        {
+          "label": "Virtual mental health visits",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse outpatient individual",
+          "value": "$25"
+        },
+        {
+          "label": "Substance abuse outpatient group",
+          "value": "$15"
+        },
+        {
+          "label": "Opioid treatment program",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$45"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$45"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$45"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$45"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "20%"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Virtual medical visits",
+          "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery/services",
+          "value": "$550 ($0 for colonoscopy)"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$500 ($0 for colonoscopy)"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient observation",
+          "value": "$550"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "$45 (6 visits/year)"
+        },
+        {
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic shoes/inserts",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic self-management training",
+          "value": "$0"
         }
       ]
     },
@@ -127,28 +253,88 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$440"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible Tier 1-2",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Drug deductible Tier 3-5",
+          "value": "$440"
+        },
+        {
+          "label": "Tier 1 retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 retail 100-day preferred",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 mail order 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 retail 30-day",
           "value": "$12"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 retail 100-day preferred",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 retail 100-day standard",
+          "value": "$36"
+        },
+        {
+          "label": "Tier 2 mail order 100-day",
+          "value": "$36"
+        },
+        {
+          "label": "Tier 3 all",
           "value": "15%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "41%"
+          "label": "Tier 3 insulin retail 30-day",
+          "value": "15% up to $35"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "28%"
+          "label": "Tier 3 insulin retail 100-day",
+          "value": "15% up to $105"
+        },
+        {
+          "label": "Tier 3 insulin mail order",
+          "value": "15% up to $105"
+        },
+        {
+          "label": "Tier 4",
+          "value": "41% (30-day only)"
+        },
+        {
+          "label": "Tier 5",
+          "value": "28% (30-day only)"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Part B chemotherapy",
+          "value": "20%"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "20% up to $35"
+        },
+        {
+          "label": "Part B allergy antigens",
+          "value": "$0"
+        },
+        {
+          "label": "Part B other drugs",
+          "value": "20%"
+        },
+        {
+          "label": "Additional Tier 2 drugs",
+          "value": "Vitamin D, Sildenafil, B-12, Folic Acid"
         }
       ]
     },
@@ -190,8 +376,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 4.5
+  ]
 }

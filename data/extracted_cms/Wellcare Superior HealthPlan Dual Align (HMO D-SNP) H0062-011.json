@@ -1,50 +1,69 @@
 {
   "plan_id": "H0062-011",
-  "plan_name": "Wellcare Superior HealthPlan Dual Align (HMO D-SNP)",
   "carrier": "Wellcare By Superior HealthPlan",
-  "plan_type": "HMO",
-  "snp_type": "D-SNP",
   "contract_number": "H0062",
   "org_name": "SUPERIOR HEALTHPLAN, INC.",
   "geographic_area": "Select counties in TX",
   "states": "TX",
   "counties_count": "1",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "plan_name": "Wellcare Superior HealthPlan Dual Align (HMO D-SNP)",
+  "plan_type": "HMO D-SNP",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
-  "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_in": "$0",
+  "moop_out": "$0",
+  "part_b_premium_reduction": "Not covered",
   "drug_deductible": "$500",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "20% coinsurance"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Urgent care (out-of-network)",
+          "value": "$115 copay worldwide"
+        },
+        {
+          "label": "Emergency room (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Emergency room (out-of-network)",
+          "value": "$115 copay worldwide"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "$0"
         },
         {
           "label": "Ambulance",
-          "value": "20% coinsurance"
+          "value": "$0"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Mental health (inpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse (inpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "Not covered"
         }
       ]
     },
@@ -53,8 +72,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental comprehensive allowance",
+          "value": "Up to $4,000 per year for restorative dental services"
         }
       ]
     },
@@ -63,12 +82,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision allowance",
+          "value": "Up to $400 per year for contacts and glasses"
         }
       ]
     },
@@ -77,12 +92,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids allowance",
+          "value": "2 hearing aids per year with $1,000 maximum per hearing aid"
         }
       ]
     },
@@ -91,46 +102,188 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Wellcare Spendables card",
+          "value": "$173 monthly allowance for OTC items"
+        },
+        {
+          "label": "My Wellcare Rewards",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Fitness program",
+          "value": "Access to fitness locations"
+        },
+        {
+          "label": "Social Support Platform",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Nurse Advice Line",
+          "value": "24/7 nurse helpline"
+        },
+        {
+          "label": "Behavioral Health Crisis Line",
+          "value": "24/7 behavioral health crisis support"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Up to $50"
+        },
+        {
+          "label": "Home delivered meals",
+          "value": "10 meals per year after hospital/nursing facility discharge"
+        },
+        {
+          "label": "Transportation services",
+          "value": "Nonemergency medical transportation services"
+        },
+        {
+          "label": "Respite care",
+          "value": "30 visits per year for HCBS members"
+        },
+        {
+          "label": "Emergency Response Services",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Minor home modifications",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Adaptive aids and medical supplies",
+          "value": "$10,000 annual cost limit (HCBS members)"
+        },
+        {
+          "label": "Transition assistance services",
+          "value": "$2,500 lifetime limit (HCBS members)"
+        },
+        {
+          "label": "SSBCI gas pay-at-pump",
+          "value": "Available for eligible chronically ill members"
+        },
+        {
+          "label": "SSBCI healthy food benefit",
+          "value": "Available for eligible chronically ill members"
+        },
+        {
+          "label": "SSBCI home assistance and safety items",
+          "value": "Available for eligible chronically ill members"
+        },
+        {
+          "label": "SSBCI rent assistance",
+          "value": "Available for eligible chronically ill members"
+        },
+        {
+          "label": "SSBCI utility assistance",
+          "value": "Available for eligible chronically ill members"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "$0"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "$0"
         },
         {
-          "label": "Lab Services",
-          "value": "20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "15% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient rehabilitation",
+          "value": "$0"
         }
       ]
     },
@@ -139,32 +292,40 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$500"
+          "label": "Tier 1 (Preferred Generic)",
+          "value": "$0/$1.60/$5.10 copay based on Extra Help level"
         },
         {
-          "label": "Tier 1: Preferred Generic",
-          "value": "$8"
+          "label": "Tier 2 (Generic)",
+          "value": "$0/$1.60/$5.10 copay based on Extra Help level"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "$19"
+          "label": "Tier 3 (Preferred Brand)",
+          "value": "$0/$4.90/$12.65 copay based on Extra Help level"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "20%"
+          "label": "Tier 4 (Non-Preferred Drug)",
+          "value": "$0/$4.90/$12.65 copay based on Extra Help level"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "$100"
+          "label": "Tier 5 (Specialty Tier)",
+          "value": "$0/$4.90/$12.65 copay based on Extra Help level"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
+          "label": "Tier 6 (Select Care Drugs)",
+          "value": "$0/$4.90/$12.65 copay based on Extra Help level"
         },
         {
-          "label": "Tier 6: Select Care Drugs",
+          "label": "Part B drugs",
           "value": "$0"
+        },
+        {
+          "label": "Over-the-counter drugs",
+          "value": "$0"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
         }
       ]
     },

@@ -1,50 +1,59 @@
 {
   "plan_id": "H1889-018",
-  "plan_name": "UHC Medicare Advantage Patriot No Rx WY-MA01 (PPO)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "PPO",
-  "snp_type": null,
   "contract_number": "H1889",
   "org_name": "CARE IMPROVEMENT PLUS SOUTH CENTRAL INSURANCE CO.",
   "geographic_area": "Laramie and Natrona Counties",
   "states": "WY",
   "counties_count": "2",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 4.0,
+  "plan_name": "UHC Medicare Advantage Patriot No Rx WY-MA01 (PPO)",
+  "plan_type": "PPO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$6,700",
+  "moop_out": "$6,700",
+  "part_b_premium_reduction": "$80",
   "moop_combined": "$6,700",
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$60"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care",
+          "value": "$50"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$50 copay"
+          "label": "Emergency room",
+          "value": "$130"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$685/day days 1-3, $0/day days 4+"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Ambulance",
+          "value": "$290 ground, $290 air"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$685/day days 1-3, $0/day days 4-90"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$80"
         }
       ]
     },
@@ -53,12 +62,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental allowance",
+          "value": "$2,000 per year for all services"
         }
       ]
     },
@@ -67,12 +72,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$150 every 2 years for frames or contacts"
         }
       ]
     },
@@ -81,12 +82,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "Up to 2 hearing aids per year"
         }
       ]
     },
@@ -95,34 +92,170 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$50 per quarter"
+        },
+        {
+          "label": "Fitness program",
+          "value": "Free gym membership including SilverSneakers"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "28 home-delivered meals after hospital or SNF stay"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "6 visits per year at $45 copay"
+        },
+        {
+          "label": "Part B premium reduction",
+          "value": "Up to $80 per month"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays",
+          "value": "$30"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$260"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient individual",
+          "value": "$25"
+        },
+        {
+          "label": "Mental health outpatient group",
+          "value": "$15"
+        },
+        {
+          "label": "Substance abuse outpatient individual",
+          "value": "$15"
+        },
+        {
+          "label": "Substance abuse outpatient group",
+          "value": "$25"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry",
+          "value": "$45"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$60"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$50"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$60"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Home health care (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Durable medical equipment (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery",
+          "value": "$635 ASC, $685 hospital"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Telehealth",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Prosthetics (in-network)",
+          "value": "20%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Prosthetics (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Diabetic supplies (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies (out-of-network)",
+          "value": "50%"
+        }
+      ]
+    },
+    {
+      "title": "Prescription Drugs",
+      "icon": "pills",
+      "rows": [
+        {
+          "label": "Part B chemotherapy",
+          "value": "20%"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "20% up to $35"
+        },
+        {
+          "label": "Part B other drugs",
+          "value": "20%"
         }
       ]
     },
@@ -163,19 +296,6 @@
           "value": "UHC.com/Medicare"
         }
       ]
-    },
-    {
-      "title": "Prescription Drugs",
-      "icon": "pills",
-      "rows": [
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "N/A"
-        }
-      ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 4.0
+  ]
 }

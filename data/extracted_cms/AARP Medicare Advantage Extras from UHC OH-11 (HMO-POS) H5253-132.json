@@ -1,50 +1,66 @@
 {
   "plan_id": "H5253-132",
-  "plan_name": "AARP Medicare Advantage Extras from UHC OH-11 (HMO-POS)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "HMO-POS",
-  "snp_type": null,
   "contract_number": "H5253",
   "org_name": "UNITEDHEALTHCARE OF WISCONSIN, INC.",
   "geographic_area": "Select Counties in Ohio",
   "states": "OH",
   "counties_count": "17",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 4.0,
+  "plan_name": "AARP® Medicare Advantage Extras from UHC OH-11 (HMO-POS)",
+  "plan_type": "HMO-POS",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$6,700",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not covered",
   "drug_deductible": "$600",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$55"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care (in-network)",
+          "value": "$50"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$50 copay"
+          "label": "Urgent care (out-of-network)",
+          "value": "$0 outside US"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room (in-network)",
+          "value": "$130"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Emergency room (out-of-network)",
+          "value": "$0 outside US"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "$495/day days 1-5, $0/day days 6+"
+        },
+        {
+          "label": "Ambulance ground",
+          "value": "$275"
+        },
+        {
+          "label": "Ambulance air",
+          "value": "$275"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$495/day days 1-4, $0/day days 5-90"
         }
       ]
     },
@@ -53,12 +69,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,500"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental allowance",
+          "value": "$2,500 annual allowance in and out of network"
         }
       ]
     },
@@ -67,12 +79,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$300 every 2 years for frames or contacts"
         }
       ]
     },
@@ -81,12 +89,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids benefit",
+          "value": "Up to 2 hearing aids per year"
         }
       ]
     },
@@ -95,34 +99,184 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$60 per quarter"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "28 home-delivered meals after hospital/SNF stay"
+        },
+        {
+          "label": "Fitness program",
+          "value": "Free gym membership and online classes"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "6 visits per year at $45 copay"
+        },
+        {
+          "label": "Virtual medical visits",
+          "value": "Telehealth visits at $0 copay"
+        },
+        {
+          "label": "Virtual mental health visits",
+          "value": "Telehealth mental health at $0 copay"
+        },
+        {
+          "label": "Additional covered drugs",
+          "value": "Vitamin D, Sildenafil, Vitamin B-12, Folic Acid as Tier 2"
+        },
+        {
+          "label": "Member discounts",
+          "value": "Discounts on hundreds of products and services"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays",
+          "value": "$30"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$0 mammogram, $200 otherwise"
+        },
+        {
+          "label": "Diagnostic tests",
+          "value": "$50"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient individual",
+          "value": "$25"
+        },
+        {
+          "label": "Mental health outpatient group",
+          "value": "$15"
+        },
+        {
+          "label": "Virtual mental health visits",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse outpatient individual",
+          "value": "$25"
+        },
+        {
+          "label": "Substance abuse outpatient group",
+          "value": "$15"
+        },
+        {
+          "label": "Opioid treatment program",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry exam",
+          "value": "$45"
+        },
+        {
+          "label": "Podiatry routine care",
+          "value": "$45, 6 visits/year"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$55"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$55"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$50"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "20%"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Virtual medical visits",
+          "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery ASC",
+          "value": "$0 colonoscopy, $395 otherwise"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery hospital",
+          "value": "$0 colonoscopy, $495 otherwise"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient hospital observation",
+          "value": "$495"
+        },
+        {
+          "label": "Prosthetics",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic self-management training",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic therapeutic shoes",
+          "value": "20%"
         }
       ]
     },
@@ -131,28 +285,88 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$600"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible Tier 1-2",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Drug deductible Tier 3-5",
+          "value": "$600"
+        },
+        {
+          "label": "Tier 1 Preferred Generic retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic retail 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic mail 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic retail 30-day",
           "value": "$12"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 Generic retail 100-day",
+          "value": "$36"
+        },
+        {
+          "label": "Tier 2 Generic mail 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 Preferred Brand retail 30-day",
           "value": "16%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Preferred Brand retail 100-day",
+          "value": "16%"
+        },
+        {
+          "label": "Tier 3 Preferred Brand mail 100-day",
+          "value": "16%"
+        },
+        {
+          "label": "Tier 3 Insulin retail 30-day",
+          "value": "16% up to $35"
+        },
+        {
+          "label": "Tier 3 Insulin retail 100-day",
+          "value": "16% up to $105"
+        },
+        {
+          "label": "Tier 3 Insulin mail 100-day",
+          "value": "16% up to $105"
+        },
+        {
+          "label": "Tier 4 Non-Preferred retail 30-day",
           "value": "37%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 Specialty retail 30-day",
           "value": "26%"
+        },
+        {
+          "label": "Catastrophic coverage all tiers",
+          "value": "$0"
+        },
+        {
+          "label": "Part B chemotherapy drugs",
+          "value": "20%"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "20% up to $35"
+        },
+        {
+          "label": "Part B allergy antigens",
+          "value": "$0"
+        },
+        {
+          "label": "Part B other drugs",
+          "value": "20%"
         }
       ]
     },
@@ -194,8 +408,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 4.0
+  ]
 }

@@ -1,50 +1,66 @@
 {
   "plan_id": "H3152-045",
-  "plan_name": "Aetna Medicare Eagle Giveback (HMO)",
   "carrier": "Aetna Medicare",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H3152",
   "org_name": "AETNA HEALTH INC. (NJ)",
   "geographic_area": "New Jersey Counties: All",
   "states": "NJ",
   "counties_count": "21",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 3.5,
+  "plan_name": "Aetna Medicare Eagle Giveback (HMO)",
+  "plan_type": "HMO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not applicable - HMO",
+  "part_b_premium_reduction": "$50",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$35"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care (in-network)",
+          "value": "$40"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Urgent care (out-of-network)",
+          "value": "$115"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room",
+          "value": "$115"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$60 allowance"
+          "label": "Inpatient hospital",
+          "value": "$395/day days 1-6, $0/day days 7-90, $0 additional days"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$300"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$346/day days 1-6, $0/day days 7-90"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$115 emergency, $115 urgent"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$50"
         }
       ]
     },
@@ -53,12 +69,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$1,500"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$35 copay"
+          "label": "Dental allowance",
+          "value": "$1,500 annual allowance"
         }
       ]
     },
@@ -67,12 +79,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision allowance",
+          "value": "$200 annual allowance for eyewear"
         }
       ]
     },
@@ -81,12 +89,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids coverage",
+          "value": "6 levels from $0 to $1,700 per ear annually"
         }
       ]
     },
@@ -95,42 +99,166 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Part B premium giveback",
+          "value": "$50 monthly reduction"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$60 per quarter"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Fitness/gym membership",
+          "value": "SilverSneakers basic membership"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "Up to 14 meals for 7 days post-discharge"
+        },
+        {
+          "label": "24-Hour Nurse Line",
+          "value": "Available anytime at no cost"
+        },
+        {
+          "label": "Resources For Living",
+          "value": "Community resource connections"
+        },
+        {
+          "label": "Travel Advantage",
+          "value": "Up to 12 months coverage outside service area"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Maximum $250,000 combined coverage"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "Diagnostic tests",
+          "value": "$35, $0 for certain tests"
+        },
+        {
+          "label": "X-rays",
+          "value": "$35"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI)",
+          "value": "$250 CT, $300 other"
+        },
+        {
+          "label": "Glaucoma screening",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$35 individual, $35 group"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "$35 individual, $35 group"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$35"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$25"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$25"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$25"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$35"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "0% CGMs, 20% other DME"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$350 surgery, $35 other services"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$325"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient hospital observation",
+          "value": "$395"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "0% preferred brands, 20% other"
+        }
+      ]
+    },
+    {
+      "title": "Prescription Drugs",
+      "icon": "pills",
+      "rows": [
+        {
+          "label": "Part B Insulin",
+          "value": "$35"
+        },
+        {
+          "label": "Chemotherapy drugs",
+          "value": "0-20%"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "0-20%"
         }
       ]
     },
@@ -171,19 +299,6 @@
           "value": "www.aetna.com/medicare"
         }
       ]
-    },
-    {
-      "title": "Prescription Drugs",
-      "icon": "pills",
-      "rows": [
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "N/A"
-        }
-      ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 3.5
+  ]
 }

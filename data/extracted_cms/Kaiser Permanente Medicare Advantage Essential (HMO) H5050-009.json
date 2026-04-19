@@ -1,60 +1,81 @@
 {
   "plan_id": "H5050-009",
-  "plan_name": "Kaiser Permanente Medicare Advantage Essential (HMO)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H5050",
   "org_name": "KAISER FOUNDATION HEALTH PLAN OF WASHINGTON",
   "geographic_area": "Counties: KP, GY, LE, MA",
   "states": "WA",
   "counties_count": "4",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$104",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Kaiser Permanente Medicare Advantage Essential (HMO) and Kaiser Permanente Medicare Advantage Vital Sound (HMO)",
+  "plan_type": "HMO",
+  "monthly_premium": "$104 Essential, $43 Vital Sound",
   "annual_deductible_in": "$0",
-  "moop_in": "$4,000",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_in": "$4,000 Essential, $6,500 Vital Sound",
+  "moop_out": "HMO has no out-of-network",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$20 copay"
+          "label": "PCP visit (out-of-network)",
+          "value": "HMO has no out-of-network"
         },
         {
-          "label": "Emergency Room",
-          "value": "$140 copay"
+          "label": "Specialist visit (in-network)",
+          "value": "$25 Essential, $50 Vital Sound"
         },
         {
-          "label": "Urgent Care",
-          "value": "$25 copay"
+          "label": "Specialist visit (out-of-network)",
+          "value": "HMO has no out-of-network"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Urgent care (in-network)",
+          "value": "$25 Essential, $40 Vital Sound"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
+          "label": "Urgent care (out-of-network)",
+          "value": "HMO has no out-of-network"
+        },
         {
-          "label": "Comprehensive Dental",
-          "value": "$25 copay"
+          "label": "Emergency room (in-network)",
+          "value": "$140 Essential, $130 Vital Sound"
+        },
+        {
+          "label": "Emergency room (out-of-network)",
+          "value": "HMO has no out-of-network"
+        },
+        {
+          "label": "Inpatient hospital (in-network)",
+          "value": "$260/day days 1-4 then $0 Essential"
+        },
+        {
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "HMO has no out-of-network"
+        },
+        {
+          "label": "Ambulance (in-network)",
+          "value": "$220 Essential, $290 Vital Sound"
+        },
+        {
+          "label": "Ambulance (out-of-network)",
+          "value": "HMO has no out-of-network"
+        },
+        {
+          "label": "Mental health (inpatient) (in-network)",
+          "value": "$260/day days 1-4 then $0 Essential"
+        },
+        {
+          "label": "Mental health (inpatient) (out-of-network)",
+          "value": "HMO has no out-of-network"
         }
       ]
     },
@@ -63,26 +84,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
-        }
-      ]
-    },
-    {
-      "title": "Hearing",
-      "icon": "ear-listen",
-      "rows": [
-        {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$200 per year Essential, $150 per year Vital Sound"
         }
       ]
     },
@@ -91,34 +94,180 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "One Pass fitness benefit",
+          "value": "Complete fitness program including gym network"
+        },
+        {
+          "label": "Advanced Care at Home",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Advantage Plus Option 1",
+          "value": "$67/month - $1"
+        },
+        {
+          "label": "Advantage Plus Option 2",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Lively Mobile Plus discount",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "CareLinx discount",
+          "value": "Discount for non-medical in-home help with daily activities"
+        },
+        {
+          "label": "Comfort Keepers discount",
+          "value": "Discount on in-home care services and free safety assessment"
+        },
+        {
+          "label": "Mom's Meals discount",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services (out-of-network)",
+          "value": "HMO has no out-of-network"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (in-network)",
+          "value": "$0 Essential, $20 Vital Sound"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (out-of-network)",
+          "value": "HMO has no out-of-network"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (in-network)",
+          "value": "$195 Essential, $375 Vital Sound"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (out-of-network)",
+          "value": "HMO has no out-of-network"
+        },
+        {
+          "label": "Diagnostic tests (in-network)",
+          "value": "$0 Essential, $20 Vital Sound"
+        },
+        {
+          "label": "Diagnostic tests (out-of-network)",
+          "value": "HMO has no out-of-network"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient group) (in-network)",
+          "value": "$25"
+        },
+        {
+          "label": "Mental health (outpatient group) (out-of-network)",
+          "value": "HMO has no out-of-network"
+        },
+        {
+          "label": "Mental health (outpatient individual) (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Mental health (outpatient individual) (out-of-network)",
+          "value": "HMO has no out-of-network"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "HMO has no out-of-network"
+        },
+        {
+          "label": "Chiropractic (in-network)",
+          "value": "$20 Essential, $15 Vital Sound"
+        },
+        {
+          "label": "Chiropractic (out-of-network)",
+          "value": "HMO has no out-of-network"
+        },
+        {
+          "label": "Acupuncture (in-network)",
+          "value": "$15"
+        },
+        {
+          "label": "Acupuncture (out-of-network)",
+          "value": "HMO has no out-of-network"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "HMO has no out-of-network"
+        },
+        {
+          "label": "Part B drugs (in-network)",
+          "value": "0%-20% coinsurance"
+        },
+        {
+          "label": "Part B drugs (out-of-network)",
+          "value": "HMO has no out-of-network"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Preventive care (out-of-network)",
+          "value": "HMO has no out-of-network"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery/services (in-network)",
+          "value": "$0-$230 Essential, $0-$450 Vital Sound"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery/services (out-of-network)",
+          "value": "HMO has no out-of-network"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgical center (in-network)",
+          "value": "$230 Essential, $450 Vital Sound"
+        },
+        {
+          "label": "Ambulatory surgical center (out-of-network)",
+          "value": "HMO has no out-of-network"
+        },
+        {
+          "label": "Diabetic supplies (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies (out-of-network)",
+          "value": "HMO has no out-of-network"
         }
       ]
     },
@@ -127,28 +276,144 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "$5"
+          "label": "Tier 1 Preferred Generic - 30-day preferred",
+          "value": "$0 Essential, $3 Vital Sound"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 1 Preferred Generic - 30-day standard",
+          "value": "$15"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - 31-60-day preferred",
+          "value": "$0 Essential, $6 Vital Sound"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - 31-60-day standard",
+          "value": "$30"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - 61-90-day preferred",
+          "value": "$0 Essential, $9 Vital Sound"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - 61-90-day standard",
+          "value": "$45"
+        },
+        {
+          "label": "Tier 2 Generic - 30-day preferred",
+          "value": "$5 Essential, $10 Vital Sound"
+        },
+        {
+          "label": "Tier 2 Generic - 30-day standard",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 2 Generic - 31-60-day preferred",
+          "value": "$10 Essential, $20 Vital Sound"
+        },
+        {
+          "label": "Tier 2 Generic - 31-60-day standard",
+          "value": "$40"
+        },
+        {
+          "label": "Tier 2 Generic - 61-90-day preferred",
+          "value": "$15 Essential, $30 Vital Sound"
+        },
+        {
+          "label": "Tier 2 Generic - 61-90-day standard",
+          "value": "$60"
+        },
+        {
+          "label": "Tier 3 Preferred Brand - 30-day",
           "value": "$47"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Preferred Brand - 31-60-day",
+          "value": "$94"
+        },
+        {
+          "label": "Tier 3 Preferred Brand - 61-90-day",
+          "value": "$141"
+        },
+        {
+          "label": "Tier 4 Nonpreferred - 30-day",
           "value": "$99"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 Nonpreferred - 31-60-day",
+          "value": "$198"
+        },
+        {
+          "label": "Tier 4 Nonpreferred - 61-90-day",
+          "value": "$297"
+        },
+        {
+          "label": "Tier 5 Specialty - Essential",
           "value": "33%"
         },
         {
-          "label": "Tier 6: Vaccines",
+          "label": "Tier 5 Specialty - Vital Sound",
+          "value": "30%"
+        },
+        {
+          "label": "Tier 6 Injectable Part D vaccines",
           "value": "$0"
+        },
+        {
+          "label": "Mail order Tier 1",
+          "value": "$0"
+        },
+        {
+          "label": "Mail order Tier 2 - Essential",
+          "value": "$5, $0 for 31+ days"
+        },
+        {
+          "label": "Mail order Tier 2 - Vital Sound",
+          "value": "$10, $0 for 31+ days"
+        },
+        {
+          "label": "Mail order Tier 3 - 30-day",
+          "value": "$47"
+        },
+        {
+          "label": "Mail order Tier 3 - 31-60-day",
+          "value": "$94"
+        },
+        {
+          "label": "Mail order Tier 3 - 61-90-day",
+          "value": "$117.50"
+        },
+        {
+          "label": "Mail order Tier 4 - 30-day",
+          "value": "$99"
+        },
+        {
+          "label": "Mail order Tier 4 - 31-60-day",
+          "value": "$198"
+        },
+        {
+          "label": "Mail order Tier 4 - 61-90-day",
+          "value": "$247.50"
+        },
+        {
+          "label": "Mail order Tier 5 - Essential",
+          "value": "33%"
+        },
+        {
+          "label": "Mail order Tier 5 - Vital Sound",
+          "value": "30%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 for all drugs"
+        },
+        {
+          "label": "Insulin cost cap",
+          "value": "$35/month, $70/2-month, $105/3-month"
         }
       ]
     },
@@ -190,8 +455,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 5.0
+  ]
 }

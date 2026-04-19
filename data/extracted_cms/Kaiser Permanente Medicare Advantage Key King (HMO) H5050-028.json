@@ -1,88 +1,58 @@
 {
   "plan_id": "H5050-028",
-  "plan_name": "Kaiser Permanente Medicare Advantage Key King (HMO)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H5050",
   "org_name": "KAISER FOUNDATION HEALTH PLAN OF WASHINGTON",
   "geographic_area": "King",
   "states": "WA",
   "counties_count": "1",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Kaiser Permanente Medicare Advantage Essential King/Pierce/Snohomish/Thurston (HMO) and Key King/Pierce/Snohomish/Thurston (HMO)",
+  "plan_type": "HMO",
+  "monthly_premium": "Essential: $69, Key: $0",
   "annual_deductible_in": "$0",
-  "moop_in": "$6,750",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_in": "Essential: $4,950, Key: $6,750",
+  "moop_out": "Not applicable - HMO",
+  "part_b_premium_reduction": "Key King plan: $8/month",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "Essential: $35/visit, Key: $50/visit"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Emergency room",
+          "value": "$130/visit"
         },
         {
-          "label": "Urgent Care",
-          "value": "$50 copay"
+          "label": "Urgent care",
+          "value": "Essential: $30/visit, Key: $50/visit"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "Essential: $350/day days 1-5"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
-        {
-          "label": "Comprehensive Dental",
-          "value": "$50 copay"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Mental health (inpatient)",
+          "value": "Essential: $350/day days 1-5"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
-        }
-      ]
-    },
-    {
-      "title": "Hearing",
-      "icon": "ear-listen",
-      "rows": [
-        {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Ambulance",
+          "value": "Essential: $290/trip, Key: $300/trip"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Part B Giveback",
+          "value": "Key King plan: $8/month"
         }
       ]
     },
@@ -91,34 +61,112 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "One Pass fitness program",
+          "value": "Included at $0 - gym network access"
+        },
+        {
+          "label": "Fitness allowance (Key plans only)",
+          "value": "$500/year for fitness-related services"
+        },
+        {
+          "label": "Advantage Plus Option 1 (Essential)",
+          "value": "$67/month - comprehensive dental with $1"
+        },
+        {
+          "label": "Advantage Plus Option 1 (Key)",
+          "value": "$75/month - comprehensive dental with $1"
+        },
+        {
+          "label": "Advantage Plus Option 2",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Member discounts",
+          "value": "Lively Mobile Plus personal emergency response"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "Essential: $10/visit, Key: $15/visit"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "Essential: $325/visit, Key: $375/visit"
+        },
+        {
+          "label": "Diagnostic tests and procedures",
+          "value": "Essential: $0, Key: $20/visit"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient group)",
+          "value": "Essential: $25/visit, Key: $35/visit"
+        },
+        {
+          "label": "Mental health (outpatient individual)",
+          "value": "Essential: $35/visit, Key: $45/visit"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "Essential: $35/visit, Key: $40/visit"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$15/visit"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15/visit"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient hospital services",
+          "value": "Essential: $0-$340/visit, Key: $0-$400/visit"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "Essential: $340/visit, Key: $400/visit"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Diabetic supplies",
+          "value": "$0"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Home medical care",
+          "value": "$0"
         }
       ]
     },
@@ -127,27 +175,183 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic (Essential) - 30-day preferred",
+          "value": "$2"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (Essential) - 30-day standard",
+          "value": "$15"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (Essential) - 31-60-day preferred",
+          "value": "$4"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (Essential) - 31-60-day standard",
+          "value": "$30"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (Essential) - 61-90-day preferred",
+          "value": "$6"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (Essential) - 61-90-day standard",
+          "value": "$45"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (Key) - 30-day preferred",
           "value": "$3"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic (Key) - 30-day standard",
+          "value": "$15"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (Key) - 31-60-day preferred",
+          "value": "$6"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (Key) - 31-60-day standard",
+          "value": "$30"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (Key) - 61-90-day preferred",
+          "value": "$9"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (Key) - 61-90-day standard",
+          "value": "$45"
+        },
+        {
+          "label": "Tier 2 Generic - 30-day preferred",
           "value": "$10"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 Generic - 30-day standard",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 2 Generic - 31-60-day preferred",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 2 Generic - 31-60-day standard",
+          "value": "$40"
+        },
+        {
+          "label": "Tier 2 Generic - 61-90-day preferred",
+          "value": "$30"
+        },
+        {
+          "label": "Tier 2 Generic - 61-90-day standard",
+          "value": "$60"
+        },
+        {
+          "label": "Tier 3 Preferred Brand - 30-day",
           "value": "$47"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Preferred Brand - 31-60-day",
+          "value": "$94"
+        },
+        {
+          "label": "Tier 3 Preferred Brand - 61-90-day",
+          "value": "$141"
+        },
+        {
+          "label": "Tier 4 Nonpreferred - 30-day",
           "value": "$99"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 Nonpreferred - 31-60-day",
+          "value": "$198"
+        },
+        {
+          "label": "Tier 4 Nonpreferred - 61-90-day",
+          "value": "$297"
+        },
+        {
+          "label": "Tier 5 Specialty (Essential King)",
+          "value": "30%"
+        },
+        {
+          "label": "Tier 5 Specialty (Key King)",
           "value": "29%"
         },
         {
-          "label": "Tier 6: Vaccines",
+          "label": "Tier 5 Specialty (Essential Pierce/Snohomish/Thurston)",
+          "value": "31%"
+        },
+        {
+          "label": "Tier 5 Specialty (Key Pierce/Snohomish/Thurston)",
+          "value": "31%"
+        },
+        {
+          "label": "Tier 6 Injectable vaccines",
+          "value": "$0"
+        },
+        {
+          "label": "Mail-order Tier 1 - 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Mail-order Tier 2 - 30-day",
+          "value": "$10"
+        },
+        {
+          "label": "Mail-order Tier 2 - 31-60-day",
+          "value": "$0"
+        },
+        {
+          "label": "Mail-order Tier 3 - 30-day",
+          "value": "$47"
+        },
+        {
+          "label": "Mail-order Tier 3 - 31-60-day",
+          "value": "$94"
+        },
+        {
+          "label": "Mail-order Tier 3 - 61-90-day",
+          "value": "$117.50"
+        },
+        {
+          "label": "Mail-order Tier 4 - 30-day",
+          "value": "$99"
+        },
+        {
+          "label": "Mail-order Tier 4 - 31-60-day",
+          "value": "$198"
+        },
+        {
+          "label": "Mail-order Tier 4 - 61-90-day",
+          "value": "$247.50"
+        },
+        {
+          "label": "Mail-order Tier 5 (Essential King)",
+          "value": "30%"
+        },
+        {
+          "label": "Mail-order Tier 5 (Key King)",
+          "value": "29%"
+        },
+        {
+          "label": "Mail-order Tier 5 (Essential Pierce/Snohomish/Thurston)",
+          "value": "31%"
+        },
+        {
+          "label": "Mail-order Tier 5 (Key Pierce/Snohomish/Thurston)",
+          "value": "31%"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "0%-20% coinsurance"
+        },
+        {
+          "label": "Insulin copay cap",
+          "value": "$35/month"
+        },
+        {
+          "label": "Catastrophic coverage",
           "value": "$0"
         }
       ]
@@ -190,8 +394,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 5.0
+  ]
 }

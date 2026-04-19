@@ -1,50 +1,79 @@
 {
   "plan_id": "H3219-005",
-  "plan_name": "Allina Health Aetna Medicare Eagle (PPO)",
   "carrier": "Allina Health Aetna Medicare",
-  "plan_type": "PPO",
-  "snp_type": null,
   "contract_number": "H3219",
   "org_name": "ALLINA HEALTH AND AETNA INSURANCE COMPANY",
   "geographic_area": "Twin Cities Metro and Select MN Counties",
   "states": "MN",
   "counties_count": "20",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 3.0,
+  "plan_name": "Allina Health Aetna Medicare Eagle (PPO)",
+  "plan_type": "PPO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$4,900",
+  "moop_out": "$7,000",
+  "part_b_premium_reduction": "$125",
   "moop_combined": "$7,000",
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "PCP visit (out-of-network)",
+          "value": "50%"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Specialist visit (in-network)",
+          "value": "$35"
         },
         {
-          "label": "Urgent Care",
-          "value": "$35 copay"
+          "label": "Specialist visit (out-of-network)",
+          "value": "50%"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room",
+          "value": "$130"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$90 allowance"
+          "label": "Urgent care (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Urgent care (out-of-network)",
+          "value": "$130"
+        },
+        {
+          "label": "Inpatient hospital (in-network)",
+          "value": "$295/day days 1-5, $0/day days 6-90, $0 additional days"
+        },
+        {
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "50% per stay"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$295 ground, 20% air"
+        },
+        {
+          "label": "Mental health inpatient (in-network)",
+          "value": "$295/day days 1-5, $0/day days 6-90"
+        },
+        {
+          "label": "Mental health inpatient (out-of-network)",
+          "value": "50% per stay"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$125"
         }
       ]
     },
@@ -53,12 +82,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,100"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$35 copay"
+          "label": "Dental allowance",
+          "value": "$2,100 annually for covered services"
         }
       ]
     },
@@ -67,12 +92,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "$50 max"
+          "label": "Vision eyewear allowance",
+          "value": "$250 annually for prescription eyewear"
         }
       ]
     },
@@ -81,12 +102,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids allowance",
+          "value": "$1,000 per ear annually"
         }
       ]
     },
@@ -95,42 +112,242 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$90 quarterly through CVS"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Fitness membership",
+          "value": "SilverSneakers basic membership at no cost"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Meal benefit",
+          "value": "Up to 14 meals for 7 days post-discharge"
+        },
+        {
+          "label": "24-Hour Nurse Line",
+          "value": "$0 copay anytime access"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$250,000 maximum coverage"
+        },
+        {
+          "label": "Visitor/travel program",
+          "value": "Up to 12 months outside service area with in-network costs"
+        },
+        {
+          "label": "Resources For Living",
+          "value": "Community resource connection service"
+        },
+        {
+          "label": "Acupuncture visits",
+          "value": "Up to 12 non-Medicare covered visits annually"
+        },
+        {
+          "label": "Chiropractic visits",
+          "value": "Up to 12 non-Medicare covered visits annually"
+        },
+        {
+          "label": "Podiatry visits",
+          "value": "Up to 12 non-Medicare covered visits annually"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Diagnostic tests (in-network)",
+          "value": "$20"
+        },
+        {
+          "label": "Diagnostic tests (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "X-rays (in-network)",
+          "value": "$15"
+        },
+        {
+          "label": "X-rays (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Advanced imaging (in-network)",
+          "value": "$250"
+        },
+        {
+          "label": "Advanced imaging (out-of-network)",
+          "value": "50%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient (in-network)",
+          "value": "$30"
+        },
+        {
+          "label": "Mental health outpatient (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Substance abuse outpatient (in-network)",
+          "value": "$30"
+        },
+        {
+          "label": "Substance abuse outpatient (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Occupational therapy (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Occupational therapy (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Speech therapy (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Speech therapy (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Chiropractic (in-network)",
+          "value": "$15"
+        },
+        {
+          "label": "Chiropractic (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Podiatry (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Podiatry (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Acupuncture (in-network)",
+          "value": "$20"
+        },
+        {
+          "label": "Acupuncture (out-of-network)",
+          "value": "50%"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0/day days 1-20, $218/day days 21-43, $0/day days 44-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "50% per stay"
+        },
+        {
+          "label": "Home health care (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Home health care (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Durable medical equipment (in-network)",
+          "value": "0%-20%"
+        },
+        {
+          "label": "Durable medical equipment (out-of-network)",
+          "value": "50%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Preventive care (out-of-network)",
+          "value": "0%-50%"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient hospital (in-network)",
+          "value": "$295"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient hospital (out-of-network)",
+          "value": "50%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient surgery (in-network)",
+          "value": "$245"
+        },
+        {
+          "label": "Outpatient surgery (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Prosthetics (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Prosthetics (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Diabetic supplies",
+          "value": "0%-20%"
+        }
+      ]
+    },
+    {
+      "title": "Prescription Drugs",
+      "icon": "pills",
+      "rows": [
+        {
+          "label": "Part B insulin",
+          "value": "$35"
+        },
+        {
+          "label": "Chemotherapy drugs",
+          "value": "0%-20% in-network, 50% out-of-network"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "0%-20% in-network, 50% out-of-network"
         }
       ]
     },
@@ -171,19 +388,6 @@
           "value": "www.AllinaHealthAetnaMedicare.com"
         }
       ]
-    },
-    {
-      "title": "Prescription Drugs",
-      "icon": "pills",
-      "rows": [
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "N/A"
-        }
-      ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 3.0
+  ]
 }

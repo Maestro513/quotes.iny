@@ -1,74 +1,67 @@
 {
   "plan_id": "H5420-014",
-  "plan_name": "UHC MedicareMax Complete Care FL-30 (HMO C-SNP)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "HMO",
-  "snp_type": "C-SNP",
   "contract_number": "H5420",
   "org_name": "Preferred Care Network, Inc.",
   "geographic_area": "Miami-Dade and Broward Counties",
   "states": "FL",
   "counties_count": "2",
+  "snp_type": "C-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 4.0,
+  "plan_name": "UHC MedicareMax Complete Care FL-30 (HMO C-SNP)",
+  "plan_type": "HMO C-SNP",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$3,400",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not covered",
+  "part_b_premium_reduction": "$14",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$150 copay"
+          "label": "Urgent care (in-network)",
+          "value": "$25"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$25 copay"
+          "label": "Urgent care (out-of-network)",
+          "value": "$0 outside US"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room (in-network)",
+          "value": "$150"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
-        {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Emergency room (out-of-network)",
+          "value": "$0 outside US"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$0 per stay"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$140 ground, $140 air"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$0 per stay"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$14"
         }
       ]
     },
@@ -77,12 +70,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "Up to 2 hearing aids per year"
         }
       ]
     },
@@ -91,34 +80,156 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC and food credit",
+          "value": "$40 per month for over-the-counter products and healthy food"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "28 home-delivered meals after inpatient hospital or SNF stay"
+        },
+        {
+          "label": "Transportation",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Fitness/gym",
+          "value": "Free gym membership"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "6 visits per year covered"
+        },
+        {
+          "label": "Diabetes self-management training",
+          "value": "Covered at $0 copay"
+        },
+        {
+          "label": "Therapeutic shoes or inserts",
+          "value": "Covered at $0 copay"
+        },
+        {
+          "label": "Opioid treatment program services",
+          "value": "Covered at $0 copay"
+        },
+        {
+          "label": "Additional covered drugs",
+          "value": "Vitamin D, Sildenafil, Cyanocobalamin, Folic Acid as Tier 2"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$0 mammogram, $100 otherwise"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "$30"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 days 1-20, $218 days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "$0"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$150 copay"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$0 colonoscopy, $50 otherwise"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "$0 copay"
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
+        },
+        {
+          "label": "Outpatient observation services",
+          "value": "$150"
         }
       ]
     },
@@ -127,24 +238,84 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1: Preferred Generic (30-day)",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 1: Preferred Generic (100-day)",
           "value": "$0"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 1: Preferred Generic (mail order 100-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2: Generic (30-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2: Generic (100-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2: Generic (mail order 100-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3: Preferred Brand (30-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3: Preferred Brand (100-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3: Preferred Brand (mail order 100-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Covered Insulin (30-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Covered Insulin (100-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Covered Insulin (mail order 100-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 4: Non-Preferred Drug (30-day)",
           "value": "40%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5: Specialty (30-day)",
           "value": "33%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Part B chemotherapy drugs",
+          "value": "20%"
+        },
+        {
+          "label": "Part B covered insulin",
+          "value": "20%, max $35"
+        },
+        {
+          "label": "Part B allergy antigens",
+          "value": "$0"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "20%"
         }
       ]
     },
@@ -186,8 +357,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 4.0
+  ]
 }

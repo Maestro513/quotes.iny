@@ -1,50 +1,53 @@
 {
   "plan_id": "H5422-014",
-  "plan_name": "Anthem Veteran (HMO-POS)",
   "carrier": "Anthem Blue Cross and Blue Shield",
-  "plan_type": "HMO-POS",
-  "snp_type": null,
   "contract_number": "H5422",
   "org_name": "BLUE CROSS BLUE SHIELD HEALTHCARE PLAN OF GEORGIA",
   "geographic_area": "Select Counties in Georgia",
   "states": "GA",
   "counties_count": "145",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "star_rating_overall": 3.5,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 3.0,
+  "plan_name": "Anthem Veteran (HMO-POS)",
+  "plan_type": "HMO-POS",
+  "monthly_premium": "$0.00",
   "annual_deductible_in": "$0",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "$9,250",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$35"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Emergency room",
+          "value": "$115"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Urgent care",
+          "value": "$40"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$400/day days 1-5, $0/day days 6-90"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$75 allowance"
+          "label": "Ambulance",
+          "value": "$275/trip"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$400/day days 1-5, $0/day days 6-90"
         }
       ]
     },
@@ -53,40 +56,24 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$1,600"
+          "label": "Essential Extras - Dental/Vision/Hearing Allowance",
+          "value": "$500 annual allowance on Benefits Mastercard for dental"
         },
         {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Dental allowance (combined preventive/comprehensive)",
+          "value": "$1,600 annual allowance"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
-        }
-      ]
-    },
-    {
-      "title": "Hearing",
-      "icon": "ear-listen",
-      "rows": [
-        {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Optional Supplemental Package 1 (Preventive Dental)",
+          "value": "$16/month extra premium, $500 annual benefit maximum"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Optional Supplemental Package 2 (Dental and Vision)",
+          "value": "$27/month extra premium"
+        },
+        {
+          "label": "Optional Supplemental Package 3 (Enhanced Dental and Vision)",
+          "value": "$40/month extra premium"
         }
       ]
     },
@@ -95,38 +82,186 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Over-the-counter allowance",
+          "value": "$75 every quarter on Benefits Mastercard"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Essential Extras - Assistive Devices",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Essential Extras - Transportation",
+          "value": "Up to 60 one-way rides per year to health-related locations"
+        },
+        {
+          "label": "Healthy meals post-discharge",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Medicare Community Resource Support",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "SilverSneakers fitness program",
+          "value": "Gym membership and fitness program included"
+        },
+        {
+          "label": "24/7 Nurseline",
+          "value": "24-hour access to nurse line, 7 days a week, 365 days a year"
+        },
+        {
+          "label": "LiveHealth Online",
+          "value": "Virtual visits with doctors"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$115 copay"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$25"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$50-$125"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$225-$400"
+        },
+        {
+          "label": "Ultrasounds",
+          "value": "$50-$125"
+        },
+        {
+          "label": "Diagnostic tests and procedures",
+          "value": "$75-$175"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$35"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$35"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$35"
+        },
+        {
+          "label": "Cardiac rehabilitation",
+          "value": "$30"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "$15"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$0-$35"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$15"
+        },
+        {
+          "label": "Outpatient substance abuse",
+          "value": "$35"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "20%"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Annual physical exam",
+          "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient hospital",
+          "value": "$400"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$325"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
+        },
+        {
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Prescription Drugs",
+      "icon": "pills",
+      "rows": [
+        {
+          "label": "Part B drugs (other)",
+          "value": "$0-20%"
+        },
+        {
+          "label": "Part B drugs (chemotherapy)",
+          "value": "$0-20%"
+        },
+        {
+          "label": "Part B drugs (insulin pump)",
+          "value": "$35"
         }
       ]
     },
@@ -167,19 +302,6 @@
           "value": "https://shop.anthem.com/medicare"
         }
       ]
-    },
-    {
-      "title": "Prescription Drugs",
-      "icon": "pills",
-      "rows": [
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "N/A"
-        }
-      ]
     }
-  ],
-  "star_rating_overall": 3.5,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 3.0
+  ]
 }

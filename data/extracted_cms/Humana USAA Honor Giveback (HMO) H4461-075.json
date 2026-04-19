@@ -1,50 +1,62 @@
 {
   "plan_id": "H4461-075",
-  "plan_name": "Humana USAA Honor Giveback (HMO)",
   "carrier": "Humana",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H4461",
   "org_name": "CARITEN HEALTH PLAN INC.",
   "geographic_area": "Alabama",
   "states": "AL",
   "counties_count": "67",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 3.0,
+  "plan_name": "Humana USAA Honor Giveback (HMO)",
+  "plan_type": "HMO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$4,150",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not covered",
+  "part_b_premium_reduction": "$130",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$20 copay"
+          "label": "Specialist visit",
+          "value": "$35"
         },
         {
-          "label": "Emergency Room",
-          "value": "$150 copay"
+          "label": "Urgent care",
+          "value": "$65"
         },
         {
-          "label": "Urgent Care",
-          "value": "$65 copay"
+          "label": "Emergency room",
+          "value": "$150"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$325/day days 1-5, $0/day days 6-90"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Ground ambulance",
+          "value": "$335"
+        },
+        {
+          "label": "Air ambulance",
+          "value": "20%"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$325/day days 1-5, $0/day days 6-90"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$130"
         }
       ]
     },
@@ -53,12 +65,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$35 copay"
+          "label": "Dental allowance",
+          "value": "$2,000 per year for preventive and comprehensive services"
         }
       ]
     },
@@ -67,12 +75,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -81,12 +85,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "$499 Advanced level"
         }
       ]
     },
@@ -95,34 +95,158 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Meal benefit",
+          "value": "14 meals (2 per day for 7 days) after hospital/SNF discharge"
+        },
+        {
+          "label": "In-home support services",
+          "value": "4-44 hours per year after discharge from hospital/SNF"
+        },
+        {
+          "label": "SilverSneakers fitness",
+          "value": "Fitness program at participating locations"
+        },
+        {
+          "label": "Go365 rewards program",
+          "value": "Rewards for completing healthy activities"
+        },
+        {
+          "label": "HMO travel benefit",
+          "value": "In-network benefits when traveling to other states"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0-$65"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$200-$335"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$20"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$35"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$20"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$20"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$20"
+        },
+        {
+          "label": "Cardiac rehabilitation",
+          "value": "$20"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "$20"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$35"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$295"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgery center",
+          "value": "$220"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "$0 copay or 20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0-$65"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0-20%"
+        }
+      ]
+    },
+    {
+      "title": "Prescription Drugs",
+      "icon": "pills",
+      "rows": [
+        {
+          "label": "Part B drugs",
+          "value": "20%"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "20% (max $35/month)"
+        },
+        {
+          "label": "Allergy shots",
+          "value": "$0"
+        },
+        {
+          "label": "Chemotherapy drugs",
+          "value": "20%"
+        },
+        {
+          "label": "Continuous glucose monitor",
+          "value": "$0"
         }
       ]
     },
@@ -163,19 +287,6 @@
           "value": "www.humana.com/medicare"
         }
       ]
-    },
-    {
-      "title": "Prescription Drugs",
-      "icon": "pills",
-      "rows": [
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "N/A"
-        }
-      ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 3.0
+  ]
 }

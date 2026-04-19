@@ -1,50 +1,79 @@
 {
   "plan_id": "H0028-067",
-  "plan_name": "Humana Gold Plus - Diabetes and Heart (HMO-POS C-SNP)",
   "carrier": "Humana",
-  "plan_type": "HMO-POS",
-  "snp_type": "C-SNP",
   "contract_number": "H0028",
   "org_name": "CHA HMO, INC.",
   "geographic_area": "Select Counties in Kansas",
   "states": "KS",
   "counties_count": "9",
+  "snp_type": "C-SNP",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
-  "annual_deductible_in": "$0",
+  "star_rating_overall": 3.5,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 3.0,
+  "plan_name": "Humana Gold Plus - Diabetes and Heart (HMO-POS C-SNP)",
+  "plan_type": "HMO-POS C-SNP",
+  "monthly_premium": "$28.10",
+  "annual_deductible_in": "$257",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not covered",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "20% coinsurance"
+          "label": "PCP visit",
+          "value": "20%"
         },
         {
-          "label": "Specialist Visit",
-          "value": "20% coinsurance"
+          "label": "PCP telehealth",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Specialist visit",
+          "value": "20%"
         },
         {
-          "label": "Urgent Care",
-          "value": "20% coinsurance"
+          "label": "Specialist telehealth",
+          "value": "20%"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Urgent care center",
+          "value": "20%"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Urgent care telehealth",
+          "value": "20%"
+        },
+        {
+          "label": "Emergency room",
+          "value": "$115"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "$2,230/admit"
+        },
+        {
+          "label": "Ground ambulance",
+          "value": "$335"
+        },
+        {
+          "label": "Air ambulance",
+          "value": "20%"
+        },
+        {
+          "label": "Lab services PCP",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services specialist",
+          "value": "$0"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$2,080/admit"
         }
       ]
     },
@@ -53,12 +82,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$4,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental benefit",
+          "value": "$4,000 annual maximum"
         }
       ]
     },
@@ -67,12 +92,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision benefit",
+          "value": "$100 standard or $200 PLUS provider allowance"
         }
       ]
     },
@@ -81,12 +102,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing benefit",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -95,46 +112,136 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Healthy Options Allowance",
+          "value": "$150 monthly prepaid card for qualifying chronic conditions"
+        },
+        {
+          "label": "Transportation",
+          "value": "24 one-way trips per year, unlimited for CKD/ESRD/Cancer"
+        },
+        {
+          "label": "Well Dine meal program",
+          "value": "2 meals per day for 7 days after hospital discharge"
+        },
+        {
+          "label": "Post discharge home care",
+          "value": "4-44 hours per year after SNF or hospital discharge"
+        },
+        {
+          "label": "Go365 rewards",
+          "value": "Rewards for healthy activities"
+        },
+        {
+          "label": "HMO travel benefit",
+          "value": "In-network benefits when traveling"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Coverage for emergency and urgent care worldwide"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services freestanding",
+          "value": "$30"
+        },
+        {
+          "label": "Lab services hospital",
+          "value": "20%"
+        },
+        {
+          "label": "X-rays",
+          "value": "20%"
+        },
+        {
+          "label": "Advanced imaging MRI/CT",
+          "value": "$200-$335"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient",
+          "value": "20%"
+        },
+        {
+          "label": "Substance abuse outpatient",
+          "value": "20%"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "20%"
+        },
+        {
+          "label": "Podiatry",
+          "value": "20%"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "20%"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "20%"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "20%"
+        },
+        {
+          "label": "Cardiac rehabilitation",
+          "value": "20%"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "20%"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 days 1-20, $218 days 21-100"
+        },
+        {
+          "label": "DME",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery",
+          "value": "20%"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgery",
+          "value": "20%"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Lab Services",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "$0 copay or 20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies",
+          "value": "$0-20%"
         }
       ]
     },
@@ -143,32 +250,72 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Drug deductible",
+          "value": "$0 Tier 1,2,6; $615 Tier 3,4,5"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic 30-day retail",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic 100-day retail",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "25%"
+          "label": "Tier 1 Preferred Generic 30-day mail",
+          "value": "$10"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
+          "label": "Tier 1 Preferred Generic 100-day mail",
+          "value": "$30"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 6: Select Care Drugs",
+          "label": "Tier 1 Preferred Generic CenterWell",
           "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic 30-day retail",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic 100-day retail",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic 30-day mail",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 2 Generic 100-day mail",
+          "value": "$60"
+        },
+        {
+          "label": "Tier 2 Generic CenterWell",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 Preferred Brand",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 5 Specialty",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 6 Select Care Drugs",
+          "value": "$0"
+        },
+        {
+          "label": "Insulin maximum",
+          "value": "$35/month"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
         }
       ]
     },
@@ -210,8 +357,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 3.5,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 3.0
+  ]
 }

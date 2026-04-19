@@ -1,46 +1,61 @@
 {
   "plan_id": "H4868-003",
-  "plan_name": "Wellcare Patriot Simple (HMO-POS)",
   "carrier": "Wellcare",
-  "plan_type": "HMO-POS",
-  "snp_type": null,
   "contract_number": "H4868",
   "org_name": "NEW YORK QUALITY HEALTHCARE CORPORATION",
   "geographic_area": "Select counties in NY",
   "states": "NY",
   "counties_count": "20",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.0,
+  "star_rating_part_c": 3.0,
+  "star_rating_part_d": 3.0,
+  "plan_name": "Wellcare Patriot Simple (HMO-POS)",
+  "plan_type": "HMO-POS",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$6,700",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "$6,700",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$20"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care",
+          "value": "$25"
         },
         {
-          "label": "Urgent Care",
-          "value": "$25 copay"
+          "label": "Emergency room",
+          "value": "$130"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Inpatient hospital",
+          "value": "$300/day days 1-5, $0/day days 6-90"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$250"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$350/stay days 1-90"
+        },
+        {
+          "label": "Worldwide emergency",
+          "value": "$130"
+        },
+        {
+          "label": "Worldwide urgent care",
+          "value": "$130"
         }
       ]
     },
@@ -49,8 +64,16 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$20 copay"
+          "label": "Dental coverage annual maximum",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Routine dental cleanings",
+          "value": "2 per year"
+        },
+        {
+          "label": "Routine dental exams",
+          "value": "2 per year"
         }
       ]
     },
@@ -59,12 +82,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Routine eye exam",
+          "value": "1 exam per year"
         }
       ]
     },
@@ -73,12 +92,12 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Hearing aid benefit",
+          "value": "Up to $750 allowance per ear per year"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Routine hearing exam",
+          "value": "1 exam per year"
         }
       ]
     },
@@ -87,34 +106,194 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Wellcare Spendables card",
+          "value": "$50 monthly allowance for OTC"
+        },
+        {
+          "label": "Post-acute meals",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Chronic meals",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Fitness program",
+          "value": "Access to nationwide gyms"
+        },
+        {
+          "label": "24-hour nurse advice line",
+          "value": "24/7 access to board certified doctors and nurses"
+        },
+        {
+          "label": "Annual routine physical",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Social support platform",
+          "value": "Online/app platform for mental health activities"
+        },
+        {
+          "label": "My Wellcare Rewards",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Virtual visits",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Chronic respiratory management",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Routine acupuncture",
+          "value": "24 visits per year"
+        },
+        {
+          "label": "Routine chiropractic",
+          "value": "Unlimited visits per year"
+        },
+        {
+          "label": "Fluoride treatment",
+          "value": "1 per year"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Health and wellness education",
+          "value": "Various programs - see Evidence of Coverage for details"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0 basic, $50 genetic"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$75 outpatient, $25 other"
+        },
+        {
+          "label": "Diagnostic tests",
+          "value": "$0"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0 individual, $0 group"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0 Medicare-covered, $0 routine"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$20"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$20"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$20"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "$35"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$0 PCP/Chiro, $20 specialist"
+        },
+        {
+          "label": "Opioid treatment",
+          "value": "$20"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-60, $0/day days 61-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$450 surgery, $75 non-surgery"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$50"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Outpatient observation",
+          "value": "$130 from ER, $450 from outpatient"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
+        },
+        {
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic therapeutic shoes",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Prescription Drugs",
+      "icon": "pills",
+      "rows": [
+        {
+          "label": "Plan does not cover Part D",
+          "value": "Not covered - must maintain creditable coverage"
         }
       ]
     },
@@ -155,19 +334,6 @@
           "value": "go.wellcare.com/Medicare"
         }
       ]
-    },
-    {
-      "title": "Prescription Drugs",
-      "icon": "pills",
-      "rows": [
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "N/A"
-        }
-      ]
     }
-  ],
-  "star_rating_overall": 3.0,
-  "star_rating_part_c": 3.0,
-  "star_rating_part_d": 3.0
+  ]
 }

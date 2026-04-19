@@ -1,84 +1,63 @@
 {
   "plan_id": "H5594-036",
-  "plan_name": "Optimum Diamond (HMO C-SNP)",
   "carrier": "Optimum HealthCare, Inc.",
-  "plan_type": "HMO",
-  "snp_type": "C-SNP",
   "contract_number": "H5594",
   "org_name": "OPTIMUM HEALTHCARE, INC.",
   "geographic_area": "Select counties in Florida",
   "states": "FL",
   "counties_count": "5",
+  "snp_type": "C-SNP",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 4.0,
+  "plan_name": "Optimum Diamond (HMO C-SNP) H5594_036",
+  "plan_type": "HMO C-SNP",
+  "monthly_premium": "$0.00",
   "annual_deductible_in": "$0",
   "moop_in": "$1,000",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not covered",
+  "part_b_premium_reduction": "$10.00",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$150 copay"
+          "label": "Urgent care",
+          "value": "$10"
         },
         {
-          "label": "Urgent Care",
-          "value": "$10 copay"
+          "label": "Emergency room",
+          "value": "$150"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$75 allowance"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
-        {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Inpatient hospital",
+          "value": "$0 per admission"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
-        }
-      ]
-    },
-    {
-      "title": "Hearing",
-      "icon": "ear-listen",
-      "rows": [
-        {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Ground ambulance",
+          "value": "$200"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Air ambulance",
+          "value": "20%"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$0 per admission"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$10.00"
         }
       ]
     },
@@ -87,38 +66,140 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Transportation",
+          "value": "Unlimited one-way trips, 50-mile limit"
+        },
+        {
+          "label": "SilverSneakers fitness",
+          "value": "Included at participating facilities"
+        },
+        {
+          "label": "24/7 Nurseline",
+          "value": "Available 24 hours, 7 days a week"
+        },
+        {
+          "label": "Active Fitness allowance",
+          "value": "$500 annual allowance for golf, swimming, tennis"
+        },
+        {
+          "label": "OTC allowance",
+          "value": "$75 per month, expires monthly"
+        },
+        {
+          "label": "Everyday Options allowance",
+          "value": "$70 per month for assistive devices"
+        },
+        {
+          "label": "Personal Emergency Response System",
+          "value": "1 PERS device and monitoring service included"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$100,000 annual limit, $500 copay per emergency"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0-$50"
+        },
+        {
+          "label": "Outpatient X-rays",
+          "value": "$0-$75"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$25-$75"
+        },
+        {
+          "label": "Diagnostic tests",
+          "value": "$0-$75 or 20%"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 days 1-20, $95 days 21-100"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "20%"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient hospital",
+          "value": "$75"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Eyeglasses",
+          "value": "$0 copay, $400 annual allowance"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Prosthetics",
+          "value": "20%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies",
+          "value": "$0"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$35 per month"
         }
       ]
     },
@@ -127,23 +208,47 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic retail 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Preferred Brand",
+          "label": "Tier 1 Preferred Generic mail-order 90-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Preferred Brand retail 30-day",
           "value": "$5"
         },
         {
-          "label": "Tier 3: Non-Preferred Drug",
+          "label": "Tier 2 Preferred Brand mail-order 90-day",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 3 Non-Preferred retail 30-day preferred",
           "value": "$40"
         },
         {
-          "label": "Tier 4: Specialty Tier",
+          "label": "Tier 3 Non-Preferred retail 30-day standard",
+          "value": "$45"
+        },
+        {
+          "label": "Tier 3 Non-Preferred mail-order 90-day",
+          "value": "$80"
+        },
+        {
+          "label": "Tier 4 Specialty retail 30-day",
           "value": "33%"
         },
         {
-          "label": "Tier 5: Select Diabetic Drugs",
+          "label": "Tier 5 Select Diabetic retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 5 Select Diabetic mail-order 90-day",
+          "value": "$0"
+        },
+        {
+          "label": "Catastrophic coverage",
           "value": "$0"
         }
       ]
@@ -186,8 +291,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 4.0
+  ]
 }

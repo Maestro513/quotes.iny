@@ -1,50 +1,67 @@
 {
   "plan_id": "H5294-022",
-  "plan_name": "Wellcare Dual Liberty Sync (HMO D-SNP)",
   "carrier": "Wellcare By Allwell",
-  "plan_type": "HMO",
-  "snp_type": "D-SNP",
   "contract_number": "H5294",
   "org_name": "SUPERIOR HEALTHPLAN, INC.",
   "geographic_area": "Select counties in TX",
   "states": "TX",
   "counties_count": "13",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.5,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 3.0,
+  "plan_name": "Wellcare Dual Liberty (HMO D-SNP) and Wellcare Dual Access (HMO D-SNP)",
+  "plan_type": "HMO D-SNP",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not covered - HMO plan",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "20% coinsurance"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "20% coinsurance"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Emergency room",
+          "value": "$0"
         },
         {
-          "label": "Ambulance",
-          "value": "20% coinsurance"
+          "label": "Inpatient hospital",
+          "value": "$0"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Ambulance ground",
+          "value": "$0"
+        },
+        {
+          "label": "Ambulance air",
+          "value": "$0"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$115"
+        },
+        {
+          "label": "Worldwide urgent care",
+          "value": "$115"
         }
       ]
     },
@@ -53,8 +70,12 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental comprehensive coverage - Liberty",
+          "value": "Up to $5,000 per plan year"
+        },
+        {
+          "label": "Dental comprehensive coverage - Access",
+          "value": "Up to $3,000 per plan year"
         }
       ]
     },
@@ -63,12 +84,12 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Vision eyewear allowance - Liberty",
+          "value": "Up to $400 combined allowance every year"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance - Access",
+          "value": "Up to $300 combined allowance every year"
         }
       ]
     },
@@ -77,12 +98,12 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Hearing aid allowance - Liberty",
+          "value": "Up to $1,500 per ear every year"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aid allowance - Access",
+          "value": "Up to $750 per ear every year"
         }
       ]
     },
@@ -91,46 +112,184 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Transportation - Liberty",
+          "value": "Up to 48 one-way rides per year"
+        },
+        {
+          "label": "Transportation - Access",
+          "value": "Up to 36 one-way rides per year"
+        },
+        {
+          "label": "Wellcare Spendables card - Liberty",
+          "value": "$174 monthly for OTC, dental, vision, hearing"
+        },
+        {
+          "label": "Wellcare Spendables card - Access",
+          "value": "$62 monthly for OTC, dental, vision, hearing"
+        },
+        {
+          "label": "My Wellcare Rewards",
+          "value": "Earn up to $100 for health activities"
+        },
+        {
+          "label": "Post-acute meals",
+          "value": "Up to 3 meals per day for up to 14 days"
+        },
+        {
+          "label": "Fitness program",
+          "value": "Access to gyms, on-demand programs, home fitness kits"
+        },
+        {
+          "label": "Personal Emergency Response System (PERS)",
+          "value": "$0 copay"
+        },
+        {
+          "label": "24-Hour Nurse Advice Line",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Virtual visits",
+          "value": "$0 copay 24/7 access"
+        },
+        {
+          "label": "Social support platform",
+          "value": "$0 copay online wellness platform"
+        },
+        {
+          "label": "Annual routine physical exam",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$50,000 maximum plan coverage"
+        },
+        {
+          "label": "SSBCI benefits (if eligible)",
+          "value": "Gas, healthy food, home assistance, rent/utility assistance"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$0"
+        },
+        {
+          "label": "Diagnostic tests and procedures",
+          "value": "$0"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient individual)",
+          "value": "$0"
+        },
+        {
+          "label": "Mental health (outpatient group)",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "$0"
+        },
+        {
+          "label": "Opioid treatment program",
+          "value": "$0"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 days 1-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$0"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Outpatient observation",
+          "value": "$0"
         },
         {
-          "label": "Lab Services",
-          "value": "20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "15% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic therapeutic shoes",
+          "value": "$0"
         }
       ]
     },
@@ -139,31 +298,83 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Part D deductible",
+          "value": "$0"
         },
         {
-          "label": "Tier 1: Preferred Generic",
-          "value": "$18"
+          "label": "Tier 1 Preferred Generic - Preferred retail",
+          "value": "Generics: $0/30-day, Brands: $0/30-day"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "$19"
+          "label": "Tier 1 Preferred Generic - Standard retail",
+          "value": "Generics: $0/$1.60/$5.10, Brands: $0/$4.90/$12.65"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "25%"
+          "label": "Tier 2 Generic - Preferred retail",
+          "value": "Generics: $0/30-day, Brands: $0/30-day"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "$100"
+          "label": "Tier 2 Generic - Standard retail",
+          "value": "Generics: $0/$1.60/$5.10, Brands: $0/$4.90/$12.65"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
+          "label": "Tier 3 Preferred Brand - Preferred retail",
+          "value": "Generics: $0/30-day, Brands: $0/30-day"
         },
         {
-          "label": "Tier 6: Select Care Drugs",
+          "label": "Tier 3 Preferred Brand - Standard retail",
+          "value": "Generics: $0/$1.60/$5.10, Brands: $0/$4.90/$12.65"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug - Preferred retail",
+          "value": "Generics: $0/30-day, Brands: $0/30-day"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug - Standard retail",
+          "value": "Generics: $0/$1.60/$5.10, Brands: $0/$4.90/$12.65"
+        },
+        {
+          "label": "Tier 5 Specialty - Preferred retail",
+          "value": "Generics: $0/30-day, Brands: $0/30-day"
+        },
+        {
+          "label": "Tier 5 Specialty - Standard retail",
+          "value": "Generics: $0/$1.60/$5.10, Brands: $0/$4.90/$12.65"
+        },
+        {
+          "label": "Tier 6 Select Care Drugs - Liberty",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 6 Select Care Drugs - Access Preferred",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 6 Select Care Drugs - Access Standard",
+          "value": "Generics: $0/$1.60/$5.10, Brands: $0/$4.90/$12.65"
+        },
+        {
+          "label": "Mail order Tier 1-2 Preferred",
+          "value": "$0"
+        },
+        {
+          "label": "Mail order Tier 3-6",
+          "value": "Varies by tier and plan"
+        },
+        {
+          "label": "Insulin Tier 3",
+          "value": "Lesser of 25%/20% or $35/month max"
+        },
+        {
+          "label": "Insulin Tier 4",
+          "value": "Lesser of 25% or $35/month max"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "$0"
+        },
+        {
+          "label": "Catastrophic coverage",
           "value": "$0"
         }
       ]
@@ -206,8 +417,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 3.5,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 3.0
+  ]
 }

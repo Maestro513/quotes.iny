@@ -1,92 +1,79 @@
 {
   "plan_id": "H1608-061",
-  "plan_name": "Aetna Medicare Eagle (PPO)",
   "carrier": "Aetna Medicare",
-  "plan_type": "PPO",
-  "snp_type": null,
   "contract_number": "H1608",
   "org_name": "COVENTRY HEALTH AND LIFE INSURANCE COMPANY",
   "geographic_area": "South Dakota",
   "states": "SD",
   "counties_count": "34",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.5,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 3.5,
+  "plan_name": "Aetna Medicare Eagle (PPO) H1608-061",
+  "plan_type": "PPO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$6,750",
+  "moop_out": "$10,000",
+  "part_b_premium_reduction": "$70",
   "moop_combined": "$10,000",
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "PCP visit (out-of-network)",
+          "value": "50%"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Specialist visit (in-network)",
+          "value": "$40"
         },
         {
-          "label": "Urgent Care",
-          "value": "$50 copay"
+          "label": "Specialist visit (out-of-network)",
+          "value": "50%"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Urgent care (in-network)",
+          "value": "$50"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$45 allowance"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
-        {
-          "label": "Preventive Dental",
-          "value": "$2,000"
+          "label": "Urgent care (out-of-network)",
+          "value": "$130"
         },
         {
-          "label": "Comprehensive Dental",
-          "value": "$40 copay"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Emergency room",
+          "value": "$130"
         },
         {
-          "label": "Eyewear",
-          "value": "$50 max"
-        }
-      ]
-    },
-    {
-      "title": "Hearing",
-      "icon": "ear-listen",
-      "rows": [
-        {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Inpatient hospital (in-network)",
+          "value": "$325/day days 1-6, $0/day days 7-90, $0 additional days"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "50% per stay"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$320 ground, 20% air"
+        },
+        {
+          "label": "Mental health (inpatient) (in-network)",
+          "value": "$370/day days 1-5, $0/day days 6-90"
+        },
+        {
+          "label": "Mental health (inpatient) (out-of-network)",
+          "value": "50% per stay"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$70"
         }
       ]
     },
@@ -95,42 +82,230 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$45 quarterly allowance for over-the-counter products"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Fitness/gym",
+          "value": "Covered — see Summary of Benefits"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Meal benefit",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Nurse hotline",
+          "value": "$0 copay for 24-hour nurse line"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Maximum coverage $250"
+        },
+        {
+          "label": "Resources For Living",
+          "value": "Connection to community resources including senior housing"
+        },
+        {
+          "label": "Visitor/travel program",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Lab services (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (in-network)",
+          "value": "$10"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI) (in-network)",
+          "value": "$250"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI) (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Diagnostic tests (in-network)",
+          "value": "$20"
+        },
+        {
+          "label": "Diagnostic tests (out-of-network)",
+          "value": "50%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient) (in-network)",
+          "value": "$40 individual, $40 group"
+        },
+        {
+          "label": "Mental health (outpatient) (out-of-network)",
+          "value": "50% individual, 50% group"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$40"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Occupational therapy (in-network)",
+          "value": "$40"
+        },
+        {
+          "label": "Occupational therapy (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Speech therapy (in-network)",
+          "value": "$40"
+        },
+        {
+          "label": "Speech therapy (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Chiropractic (in-network)",
+          "value": "$15"
+        },
+        {
+          "label": "Chiropractic (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Podiatry/foot care (in-network)",
+          "value": "$40"
+        },
+        {
+          "label": "Podiatry/foot care (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Acupuncture (in-network)",
+          "value": "$40"
+        },
+        {
+          "label": "Acupuncture (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Substance abuse (outpatient) (in-network)",
+          "value": "$40 individual, $40 group"
+        },
+        {
+          "label": "Substance abuse (outpatient) (out-of-network)",
+          "value": "50% individual, 50% group"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "50% per stay"
+        },
+        {
+          "label": "Home health care (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Home health care (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Durable medical equipment (in-network)",
+          "value": "0%-20%"
+        },
+        {
+          "label": "Durable medical equipment (out-of-network)",
+          "value": "50%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Preventive care (out-of-network)",
+          "value": "0%-50%"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient hospital (in-network)",
+          "value": "$325"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient hospital (out-of-network)",
+          "value": "50%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient surgery (in-network)",
+          "value": "$275"
+        },
+        {
+          "label": "Outpatient surgery (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Prosthetics/orthotics (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Prosthetics/orthotics (out-of-network)",
+          "value": "50%"
+        },
+        {
+          "label": "Diabetic supplies/monitoring",
+          "value": "0%-20%"
+        }
+      ]
+    },
+    {
+      "title": "Prescription Drugs",
+      "icon": "pills",
+      "rows": [
+        {
+          "label": "Part B Insulin",
+          "value": "$35"
+        },
+        {
+          "label": "Chemotherapy drugs",
+          "value": "0%-20% in-network, 50% out-of-network"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "0%-20% in-network, 50% out-of-network"
         }
       ]
     },
@@ -171,19 +346,6 @@
           "value": "www.aetna.com/medicare"
         }
       ]
-    },
-    {
-      "title": "Prescription Drugs",
-      "icon": "pills",
-      "rows": [
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "N/A"
-        }
-      ]
     }
-  ],
-  "star_rating_overall": 3.5,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 3.5
+  ]
 }

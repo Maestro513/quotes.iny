@@ -1,92 +1,58 @@
 {
   "plan_id": "H3449-012",
-  "plan_name": "Blue Medicare Medical Only (HMO-POS)",
   "carrier": "Blue Cross and Blue Shield of North Carolina",
-  "plan_type": "HMO-POS",
-  "snp_type": null,
   "contract_number": "H3449",
   "org_name": "BLUE CROSS AND BLUE SHIELD OF NORTH CAROLINA",
   "geographic_area": "Select North Carolina Counties",
   "states": "NC",
   "counties_count": "100",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 4.0,
+  "plan_name": "Blue Medicare Medical Only (HMO-POS)",
+  "plan_type": "HMO-POS",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$3,900",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not covered",
+  "part_b_premium_reduction": "$35",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$20 copay"
+          "label": "Specialist visit",
+          "value": "$25"
         },
         {
-          "label": "Emergency Room",
-          "value": "$150 copay"
+          "label": "Urgent care",
+          "value": "$65"
         },
         {
-          "label": "Urgent Care",
-          "value": "$65 copay"
+          "label": "Emergency room",
+          "value": "$150"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$295/day days 1-6, $0/day days 7-90, $0/day days 91+"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$100 allowance"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
-        {
-          "label": "Preventive Dental",
-          "value": "$2,000"
+          "label": "Ambulance",
+          "value": "$250"
         },
         {
-          "label": "Comprehensive Dental",
-          "value": "$25 copay"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Mental health (inpatient)",
+          "value": "$295/day days 1-5, $0/day days 6-90"
         },
         {
-          "label": "Eyewear",
-          "value": "$300 max"
-        }
-      ]
-    },
-    {
-      "title": "Hearing",
-      "icon": "ear-listen",
-      "rows": [
-        {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Part B Giveback",
+          "value": "$35"
         }
       ]
     },
@@ -95,34 +61,148 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$100 per quarter"
+        },
+        {
+          "label": "Transportation",
+          "value": "12 one-way rides to health-related locations per year"
+        },
+        {
+          "label": "Fitness/gym",
+          "value": "SilverSneakers gym membership and digital platform access"
+        },
+        {
+          "label": "Meals benefit",
+          "value": "Two meals per day for 14 days post-discharge"
+        },
+        {
+          "label": "Support for caregivers",
+          "value": "Support and resources for non-professional caregivers"
+        },
+        {
+          "label": "In-home support services",
+          "value": "60 hours per year, no rollover"
+        },
+        {
+          "label": "Personal emergency response system",
+          "value": "Wearable device with fast access to emergency services"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0 PCP office, $5 other setting"
+        },
+        {
+          "label": "X-rays",
+          "value": "$0 PCP office, $15 other setting"
+        },
+        {
+          "label": "Diagnostic tests and procedures",
+          "value": "$0 PCP office, $25 other setting"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI)",
+          "value": "$0 PCP office, lesser of 20% or $150 other setting"
+        },
+        {
+          "label": "PET scan",
+          "value": "$0 PCP office, $300 other setting"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$25"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$25"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$25"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$25"
+        },
+        {
+          "label": "Cardiac rehabilitation",
+          "value": "$0"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry",
+          "value": "$25"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "20% of cost"
+        },
+        {
+          "label": "Part B drugs (insulin)",
+          "value": "$35"
+        },
+        {
+          "label": "Part B drugs (chemotherapy/other)",
+          "value": "0-20% of cost"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient hospital",
+          "value": "$0-$275"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$0-$225"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Therapeutic radiological services",
+          "value": "$0 PCP office, lesser of 20% or $60 other setting"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies (preferred)",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies (non-preferred)",
+          "value": "20% of cost"
+        },
+        {
+          "label": "Diabetic shoes/inserts",
+          "value": "20% of cost"
         }
       ]
     },
@@ -163,19 +243,6 @@
           "value": "https://www.bluecrossnc.com/medicare"
         }
       ]
-    },
-    {
-      "title": "Prescription Drugs",
-      "icon": "pills",
-      "rows": [
-        {
-          "label": "Tier 1: Preferred Generic",
-          "value": "N/A"
-        }
-      ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 4.0
+  ]
 }

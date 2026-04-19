@@ -1,50 +1,53 @@
 {
   "plan_id": "H1230-001",
-  "plan_name": "Kaiser Permanente Senior Advantage Enhanced (HMO)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H1230",
   "org_name": "KAISER FOUNDATION HP, INC.",
   "geographic_area": "Island of Oahu",
   "states": "HI",
   "counties_count": "1",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$146.30",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Kaiser Permanente Senior Advantage Basic Plan (HMO) and Kaiser Permanente Senior Advantage Enhanced Plan (HMO)",
+  "plan_type": "HMO",
+  "monthly_premium": "$42 Basic Plan, $160 Enhanced Plan",
   "annual_deductible_in": "$0",
-  "moop_in": "$5,100",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_in": "$7,750 Basic Plan, $5,100 Enhanced Plan",
+  "moop_out": "HMO - no out of network coverage",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$5 copay"
+          "label": "PCP visit",
+          "value": "$15 Basic Plan, $5 Enhanced Plan"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$50 Basic Plan, $35 Enhanced Plan"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care",
+          "value": "$40"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Emergency room",
+          "value": "$115 Basic Plan, $130 Enhanced Plan"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$400/day days 1-6"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Ambulance",
+          "value": "$320 Basic Plan, $250 Enhanced Plan"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$350/day days 1-5"
         }
       ]
     },
@@ -53,8 +56,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$35 copay"
+          "label": "Advantage Plus Dental",
+          "value": "30%-50% coinsurance up to $1,000 annual limit"
         }
       ]
     },
@@ -63,12 +66,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Advantage Plus Eyewear",
+          "value": "$300 allowance per year"
         }
       ]
     },
@@ -77,12 +76,12 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Advantage Plus Hearing Aids",
+          "value": "$1,500 allowance every 36 months for both ears"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Advantage Plus Hearing Aid Exams",
+          "value": "$0"
         }
       ]
     },
@@ -91,42 +90,100 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Advantage Plus Premium",
+          "value": "$46 per month additional"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Fitness Benefit One Pass",
+          "value": "$0 - includes gym access"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Acupuncture Not Covered by Medicare",
+          "value": "$20 per visit, 20 visits per year"
+        },
+        {
+          "label": "Chiropractic Not Covered by Medicare",
+          "value": "$20 per visit, 20 visits per year"
+        },
+        {
+          "label": "Lively Mobile Plus PERS",
+          "value": "Discounted pricing available"
+        },
+        {
+          "label": "Mom's Meals Delivery",
+          "value": "Discounted pricing and free shipping"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0 diabetes/heart/liver specific labs, $15/day other labs Basic Plan; $0 diabetes/heart/liver specific labs, $0 other labs Enhanced Plan"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$25 Basic Plan, $10 Enhanced Plan"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$325 Basic Plan, $265 Enhanced Plan"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient group)",
+          "value": "$15 Basic Plan, $5 Enhanced Plan"
+        },
+        {
+          "label": "Mental health (outpatient individual)",
+          "value": "$50 Basic Plan, $35 Enhanced Plan"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$15 Basic Plan, $5 Enhanced Plan"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$20/visit (20 visits per year)"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$20/visit (20 visits per year)"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 days 1-20, $218/day days 21-40, $0 days 41-100 Basic Plan; $0 days 1-20, $175/day days 21-40, $0 days 41-100 Enhanced Plan"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient hospital",
+          "value": "$0-$375 Basic Plan, $0-$315 Enhanced Plan"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient surgery",
+          "value": "$375 Basic Plan, $315 Enhanced Plan"
         }
       ]
     },
@@ -135,28 +192,120 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Part D Deductible",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Retail 30-day",
           "value": "$4"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Retail 31-60 day",
+          "value": "$8"
+        },
+        {
+          "label": "Tier 1 Retail 61-90 day",
+          "value": "$12"
+        },
+        {
+          "label": "Tier 1 Mail Order 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Retail 30-day",
           "value": "$10"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 Retail 31-60 day",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 2 Retail 61-90 day",
+          "value": "$30"
+        },
+        {
+          "label": "Tier 2 Mail Order 31-60 day",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 2 Mail Order 61-90 day",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 3 Retail 30-day",
           "value": "$43"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Retail 31-60 day",
+          "value": "$86"
+        },
+        {
+          "label": "Tier 3 Retail 61-90 day",
+          "value": "$129"
+        },
+        {
+          "label": "Tier 3 Mail Order 31-60 day",
+          "value": "$43"
+        },
+        {
+          "label": "Tier 3 Mail Order 61-90 day",
+          "value": "$86"
+        },
+        {
+          "label": "Tier 4 Retail 30-day",
           "value": "$90"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 Retail 31-60 day",
+          "value": "$180"
+        },
+        {
+          "label": "Tier 4 Retail 61-90 day",
+          "value": "$270"
+        },
+        {
+          "label": "Tier 4 Mail Order 31-60 day",
+          "value": "$90"
+        },
+        {
+          "label": "Tier 4 Mail Order 61-90 day",
+          "value": "$180"
+        },
+        {
+          "label": "Tier 5 Specialty Basic Plan",
+          "value": "30%"
+        },
+        {
+          "label": "Tier 5 Specialty Enhanced Plan",
           "value": "29%"
         },
         {
-          "label": "Tier 6: Vaccines",
+          "label": "Tier 6 Injectable Part D Vaccines",
           "value": "$0"
+        },
+        {
+          "label": "Part B Drugs Generic",
+          "value": "$10"
+        },
+        {
+          "label": "Part B Drugs Brand",
+          "value": "$43"
+        },
+        {
+          "label": "Part B Insulin",
+          "value": "$35"
+        },
+        {
+          "label": "Part B Drugs Coinsurance",
+          "value": "0%-20%"
+        },
+        {
+          "label": "Catastrophic Coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Insulin Monthly Cap",
+          "value": "$35"
         }
       ]
     },
@@ -198,8 +347,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 5.0
+  ]
 }

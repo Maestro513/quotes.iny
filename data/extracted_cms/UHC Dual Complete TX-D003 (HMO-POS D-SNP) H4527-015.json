@@ -1,54 +1,67 @@
 {
   "plan_id": "H4527-015",
-  "plan_name": "UHC Dual Complete TX-D003 (HMO-POS D-SNP)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "HMO-POS",
-  "snp_type": "D-SNP",
   "contract_number": "H4527",
   "org_name": "PHYSICIANS HEALTH CHOICE OF TEXAS, LLC",
   "geographic_area": "Cameron, Hidalgo, and Willacy Counties",
   "states": "TX",
   "counties_count": "3",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 4.0,
+  "plan_name": "UHC Dual Complete TX-D003 (HMO-POS D-SNP)",
+  "plan_type": "HMO-POS D-SNP",
   "monthly_premium": "$0",
-  "annual_deductible_in": "$0",
+  "annual_deductible_in": "$283",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not specified",
   "drug_deductible": "$122",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "0-20% coinsurance"
+          "label": "PCP visit",
+          "value": "$0 or 20%"
         },
         {
-          "label": "Specialist Visit",
-          "value": "20% coinsurance"
+          "label": "Specialist visit",
+          "value": "$0 or 20%"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care (in-network)",
+          "value": "$0 or $40"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$40 copay"
+          "label": "Urgent care (out-of-network)",
+          "value": "$0 outside US"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room (in-network)",
+          "value": "$0 or $115"
         },
         {
-          "label": "Ambulance",
-          "value": "20% coinsurance"
+          "label": "Emergency room (out-of-network)",
+          "value": "$0 outside US"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Inpatient hospital",
+          "value": "$0 or $2,230/stay"
+        },
+        {
+          "label": "Ambulance ground",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Ambulance air",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Mental health inpatient",
+          "value": "$0 or $2,080/stay 90 days"
         }
       ]
     },
@@ -57,12 +70,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$1,500"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -71,12 +80,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -85,12 +90,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -99,42 +100,168 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$60 per month for OTC products"
+        },
+        {
+          "label": "Transportation",
+          "value": "$0 for 24 one-way trips per year to approved locations"
+        },
+        {
+          "label": "Fitness program",
+          "value": "$0 gym membership"
+        },
+        {
+          "label": "24-hour nurse line",
+          "value": "Virtual telehealth visits at $0 copay"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "Diagnostic tests and procedures",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "X-rays",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$0 mammogram, $0 or 20% other"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "$0 or 20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient individual",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Mental health outpatient group",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Virtual mental health visits",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse outpatient individual",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Substance abuse outpatient group",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Opioid treatment program",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$0 or 20%"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 days 1-100 or $0 days 1-20, $217 days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "$0 or 20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Virtual medical visits",
+          "value": "$0"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient surgery",
+          "value": "$0 colonoscopy, $0 or 20% other"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Outpatient hospital observation",
+          "value": "$0 or 20%"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$0 colonoscopy, $0 or 20% other"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetes self-management training",
+          "value": "$0"
+        },
+        {
+          "label": "Therapeutic shoes or inserts",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Prosthetics/orthotics",
+          "value": "$0 or 20%"
         }
       ]
     },
@@ -143,28 +270,44 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$122"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Generic Tier 1-2 retail 30/100-day",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "25%"
+          "label": "Generic other retail 30/100-day",
+          "value": "$0, $1.60, or $5.10"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
+          "label": "All other drugs Tier 1-2 retail",
+          "value": "$0"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
+          "label": "All other drugs retail",
+          "value": "$0, $4.90, or $12.65"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$0 or 20%, up to $35"
+        },
+        {
+          "label": "Part B chemotherapy",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Part B allergy antigens",
+          "value": "$0"
+        },
+        {
+          "label": "Part B other drugs",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
         }
       ]
     },
@@ -206,8 +349,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 4.0
+  ]
 }

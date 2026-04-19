@@ -1,60 +1,55 @@
 {
   "plan_id": "H2715-003",
-  "plan_name": "Molina Medicare Choice Care (HMO)",
   "carrier": "Molina Healthcare of Illinois",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H2715",
   "org_name": "MOLINA HEALTHCARE OF ILLINOIS INC",
   "geographic_area": "Select counties in IL",
   "states": "IL",
   "counties_count": "46",
   "source": "CMS PBP 2026",
+  "plan_name": "Molina Medicare Choice Care (HMO) H2715-003",
+  "plan_type": "HMO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not covered",
+  "part_b_premium_reduction": "$51",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "20% coinsurance"
+          "label": "Specialist visit",
+          "value": "$40"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care",
+          "value": "$40"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Emergency room",
+          "value": "$115"
         },
         {
-          "label": "Ambulance",
-          "value": "20% coinsurance"
+          "label": "Inpatient hospital",
+          "value": "$295/day days 1-6, $0/day days 7-90"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
+          "label": "Ambulance ground",
+          "value": "20%"
+        },
         {
-          "label": "Comprehensive Dental",
-          "value": "$40 copay"
+          "label": "Ambulance air",
+          "value": "20%"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$51"
         }
       ]
     },
@@ -63,38 +58,148 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
+          "label": "24/7 Telehealth",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Smoking cessation counseling",
+          "value": "$0 copay, 8 additional visits beyond Medicare"
+        },
+        {
+          "label": "Annual physical exam",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Gym membership",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Nutritional/dietary benefit",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Opioid treatment",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Worldwide emergency care urgent",
+          "value": "$0 copay"
+        },
+        {
+          "label": "Worldwide emergency care ER",
+          "value": "Coverage up to $10,000"
+        },
+        {
+          "label": "Worldwide emergency transportation",
           "value": "Covered"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays",
+          "value": "$0"
+        },
+        {
+          "label": "Advanced imaging (MRI/CT)",
+          "value": "20%"
+        },
+        {
+          "label": "Diagnostic tests",
+          "value": "$0-20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health outpatient individual",
+          "value": "$45"
+        },
+        {
+          "label": "Mental health outpatient group",
+          "value": "$45"
+        },
+        {
+          "label": "Substance abuse outpatient group",
+          "value": "$40"
+        },
+        {
+          "label": "Substance abuse outpatient individual",
+          "value": "$40"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$35"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "20%"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$40"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $145/day days 21-100"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "20%"
+        },
+        {
+          "label": "Part B drugs chemotherapy",
+          "value": "20% unless capped by IRA"
+        },
+        {
+          "label": "Part B drugs other",
+          "value": "20% unless capped by IRA"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient hospital",
+          "value": "$0-$500"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgery center",
+          "value": "$0-$250"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Telehealth",
+          "value": "$0-$45"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Part B insulin",
+          "value": "20% unless capped by IRA, max $35/month"
         }
       ]
     },
@@ -103,28 +208,68 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic retail 31-day",
           "value": "$3"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic mail 100-day",
+          "value": "$6"
+        },
+        {
+          "label": "Tier 2 Generic retail 31-day",
           "value": "$12"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 Generic mail 100-day",
+          "value": "$24"
+        },
+        {
+          "label": "Tier 3 Preferred Brand retail 31-day",
           "value": "$47"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Preferred Brand mail 100-day",
+          "value": "$94"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Brand retail 31-day",
           "value": "40%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 Non-Preferred Brand mail 100-day",
+          "value": "40%"
+        },
+        {
+          "label": "Tier 5 Specialty retail 31-day",
           "value": "33%"
         },
         {
-          "label": "Tier 6: Select Care Drugs",
+          "label": "Tier 5 Specialty mail",
+          "value": "Not available"
+        },
+        {
+          "label": "Tier 6 Select Care retail 31-day",
           "value": "$0"
+        },
+        {
+          "label": "Tier 6 Select Care mail 100-day",
+          "value": "$0"
+        },
+        {
+          "label": "Part D insulins retail 31-day",
+          "value": "$35"
+        },
+        {
+          "label": "Part D insulins mail 100-day",
+          "value": "$94"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "Plan pays full cost after $2,100 out-of-pocket"
         }
       ]
     },

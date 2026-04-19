@@ -1,50 +1,61 @@
 {
   "plan_id": "H0524-037",
-  "plan_name": "Kaiser Permanente Senior Advantage San Diego (HMO)",
   "carrier": "Kaiser Permanente",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H0524",
   "org_name": "KAISER FOUNDATION HP, INC.",
   "geographic_area": "San Diego County Plan",
   "states": "CA",
   "counties_count": "1",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 5.0,
+  "plan_name": "Kaiser Permanente Senior Advantage San Diego County Plan (HMO)",
+  "plan_type": "HMO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$1,800",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Out-of-network not covered",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$150 copay"
+          "label": "Urgent care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0 copay"
+          "label": "Urgent care (out-of-network)",
+          "value": "$0 worldwide"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room (in-network)",
+          "value": "$150"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$25 allowance"
+          "label": "Emergency room (out-of-network)",
+          "value": "$150 worldwide"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "$170/day days 1-5, $0 days 6+"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$300 per one-way trip"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$170/day days 1-5, $0 days 6+"
         }
       ]
     },
@@ -53,8 +64,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Advantage Plus dental",
+          "value": "DeltaCare USA Dental HMO Program - varies by service"
         }
       ]
     },
@@ -63,12 +74,18 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
+          "label": "Advantage Plus eyewear",
+          "value": "$300 allowance every 24 months"
+        }
+      ]
+    },
+    {
+      "title": "Hearing",
+      "icon": "ear-listen",
+      "rows": [
         {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Advantage Plus hearing aids",
+          "value": "$1,000 allowance per ear every 36 months"
         }
       ]
     },
@@ -77,42 +94,92 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$25 per quarter (reloaded quarterly, no rollover)"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Fitness benefit",
+          "value": "$0 - One Pass complete fitness program including gym network"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Advantage Plus premium",
+          "value": "$17/month additional for San Diego Plan"
+        },
+        {
+          "label": "Member discount Lively Mobile Plus",
+          "value": "Personal emergency response system with reduced device fee"
+        },
+        {
+          "label": "Member discount CareLinx",
+          "value": "In-home care services discount"
+        },
+        {
+          "label": "Member discount Comfort Keepers",
+          "value": "In-home care services discount and free safety assessment"
+        },
+        {
+          "label": "Member discount Mom's Meals",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$15"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$200"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0-$15"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 days 1-20, $150/day days 21-100"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0-$150"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "0-20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory Surgical Center",
+          "value": "$150"
         }
       ]
     },
@@ -121,27 +188,107 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 retail 30-day",
           "value": "$10"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 3 retail 30-day",
           "value": "$47"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 4 retail 30-day",
           "value": "$100"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "32%"
+          "label": "Tier 5 retail",
+          "value": "32% coinsurance"
         },
         {
-          "label": "Tier 6: Vaccines",
+          "label": "Tier 6 injectable vaccines",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 retail 60-day",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 3 retail 60-day",
+          "value": "$94"
+        },
+        {
+          "label": "Tier 4 retail 60-day",
+          "value": "$200"
+        },
+        {
+          "label": "Tier 2 retail 100-day",
+          "value": "$30"
+        },
+        {
+          "label": "Tier 3 retail 100-day",
+          "value": "$141"
+        },
+        {
+          "label": "Tier 4 retail 100-day",
+          "value": "$300"
+        },
+        {
+          "label": "Tier 1 mail order 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 mail order 30-day",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 3 mail order 30-day",
+          "value": "$47"
+        },
+        {
+          "label": "Tier 4 mail order 30-day",
+          "value": "$100"
+        },
+        {
+          "label": "Tier 5 mail order",
+          "value": "32% coinsurance"
+        },
+        {
+          "label": "Tier 2 mail order 60-day",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 3 mail order 60-day",
+          "value": "$94"
+        },
+        {
+          "label": "Tier 4 mail order 60-day",
+          "value": "$200"
+        },
+        {
+          "label": "Part B drugs (administered)",
+          "value": "0%-20% coinsurance"
+        },
+        {
+          "label": "Part B generic drugs 30-day",
+          "value": "$10"
+        },
+        {
+          "label": "Part B brand drugs 30-day",
+          "value": "$47"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$35"
+        },
+        {
+          "label": "Catastrophic coverage",
           "value": "$0"
         }
       ]
@@ -184,8 +331,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 5.0
+  ]
 }

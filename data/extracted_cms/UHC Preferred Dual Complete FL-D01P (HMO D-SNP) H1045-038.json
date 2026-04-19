@@ -1,60 +1,55 @@
 {
   "plan_id": "H1045-038",
-  "plan_name": "UHC Preferred Dual Complete FL-D01P (HMO D-SNP)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "HMO",
-  "snp_type": "D-SNP",
   "contract_number": "H1045",
   "org_name": "PREFERRED CARE PARTNERS, INC.",
   "geographic_area": "Palm Beach County",
   "states": "FL",
   "counties_count": "1",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
-  "annual_deductible_in": "$0",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 4.5,
+  "plan_name": "UHC Preferred Dual Complete FL-D01P (HMO D-SNP)",
+  "plan_type": "HMO D-SNP",
+  "monthly_premium": "$4.80",
+  "annual_deductible_in": "$283",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not applicable - HMO plan",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "0-20% coinsurance"
+          "label": "PCP visit",
+          "value": "$0 or 20%"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$95 copay"
+          "label": "Urgent care",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0 copay"
+          "label": "Emergency room",
+          "value": "$0 or $95"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$0 or $2,085 per stay"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
+          "label": "Ambulance",
+          "value": "$0 ground/$0 air"
+        },
         {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Mental health (inpatient)",
+          "value": "$0 or $2,080 per stay"
         }
       ]
     },
@@ -63,12 +58,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision allowance",
+          "value": "$300 per year for lenses/frames/contacts"
         }
       ]
     },
@@ -77,12 +68,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "$2,500 allowance every 2 years with 3-year warranty"
         }
       ]
     },
@@ -91,30 +78,128 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$234 per month for OTC"
+        },
+        {
+          "label": "Fitness benefit",
+          "value": "Free gym membership and fitness programs"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "28 home-delivered meals after inpatient stay"
+        },
+        {
+          "label": "Transportation",
+          "value": "Unlimited one-way trips to medical appointments"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "6 visits per year"
+        },
+        {
+          "label": "Member discounts",
+          "value": "Discounts on hundreds of products and services"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$0 or 20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0 or 20%"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0 or 20%"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "$0"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0 or 20%"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "$0 copay"
+          "label": "Prosthetics/orthotics",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
         }
       ]
     },
@@ -123,28 +208,28 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
-        },
-        {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "25%"
+          "label": "Generic (Tier 1)",
+          "value": "$0, $1.60, or $5.10"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "25%"
+          "label": "All other drugs (Tiers 2-6)",
+          "value": "$0, $4.90, or $12.65"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
+          "label": "Part B drugs",
+          "value": "$0"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
+          "label": "Part B insulin",
+          "value": "$0"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
         }
       ]
     },
@@ -186,8 +271,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 4.5
+  ]
 }

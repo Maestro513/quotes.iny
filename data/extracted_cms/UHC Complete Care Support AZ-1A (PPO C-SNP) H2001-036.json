@@ -1,54 +1,81 @@
 {
   "plan_id": "H2001-036",
-  "plan_name": "UHC Complete Care Support AZ-1A (PPO C-SNP)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "PPO",
-  "snp_type": "C-SNP",
   "contract_number": "H2001",
   "org_name": "SIERRA HEALTH AND LIFE INSURANCE COMPANY, INC.",
   "geographic_area": "Select Counties in Arizona",
   "states": "AZ",
   "counties_count": "6",
+  "snp_type": "C-SNP",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
-  "annual_deductible_in": "$0",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 4.0,
+  "plan_name": "UHC Complete Care Support AZ-1A (PPO C-SNP)",
+  "plan_type": "PPO",
+  "monthly_premium": "$13.30",
+  "annual_deductible_in": "$283",
   "moop_in": "$9,250",
+  "moop_out": "$13,900",
+  "part_b_premium_reduction": "$0.60",
   "moop_combined": "$13,900",
-  "moop_out": null,
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "0-20% coinsurance"
+          "label": "PCP visit (in-network)",
+          "value": "$0 or 20% coinsurance"
         },
         {
-          "label": "Specialist Visit",
+          "label": "PCP visit (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Specialist visit (in-network)",
+          "value": "$0 or 20% coinsurance"
+        },
+        {
+          "label": "Specialist visit (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Urgent care",
+          "value": "$0 or $40"
+        },
+        {
+          "label": "Emergency room",
+          "value": "$0 or $115"
+        },
+        {
+          "label": "Inpatient hospital (in-network)",
+          "value": "$0 or $1,670 per stay"
+        },
+        {
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "30% coinsurance per stay"
+        },
+        {
+          "label": "Ambulance (in-network)",
+          "value": "$0 or 20% coinsurance"
+        },
+        {
+          "label": "Ambulance (out-of-network)",
           "value": "20% coinsurance"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Mental health (inpatient) (in-network)",
+          "value": "$0 or $1,670 per stay"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$40 copay"
+          "label": "Mental health (inpatient) (out-of-network)",
+          "value": "30% coinsurance per stay"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
-        },
-        {
-          "label": "Ambulance",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Part B Giveback",
+          "value": "$0.60"
         }
       ]
     },
@@ -57,12 +84,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -71,12 +94,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$200 allowance per year for frames or contacts"
         }
       ]
     },
@@ -85,12 +104,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aid allowance",
+          "value": "$2,200 allowance for 2 hearing aids every 2 years"
         }
       ]
     },
@@ -99,42 +114,200 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC and food credit",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Routine transportation",
+          "value": "24 one-way trips per year to approved locations"
+        },
+        {
+          "label": "Fitness/gym",
+          "value": "$0 copay - free gym membership"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "4 visits per year"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (in-network)",
+          "value": "$0 or 20% coinsurance"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (in-network)",
+          "value": "$0 or 20% coinsurance"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (out-of-network)",
+          "value": "30% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient) (in-network)",
+          "value": "$0 or 20% coinsurance"
+        },
+        {
+          "label": "Mental health (outpatient) (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Substance abuse (outpatient) (in-network)",
+          "value": "$0 or 20% coinsurance"
+        },
+        {
+          "label": "Substance abuse (outpatient) (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Chiropractic (in-network)",
+          "value": "$0 or 20% coinsurance"
+        },
+        {
+          "label": "Chiropractic (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Podiatry/foot care (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry/foot care (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$0 or 20% coinsurance"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Occupational therapy (in-network)",
+          "value": "$0 or 20% coinsurance"
+        },
+        {
+          "label": "Occupational therapy (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Speech therapy (in-network)",
+          "value": "$0 or 20% coinsurance"
+        },
+        {
+          "label": "Speech therapy (out-of-network)",
+          "value": "30% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0 days 1-100 or $0 days 1-20, $217 days 21-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "30% coinsurance per stay"
+        },
+        {
+          "label": "Home health care (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Home health care (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (DME) (in-network)",
+          "value": "$0 or 20% coinsurance"
+        },
+        {
+          "label": "Durable medical equipment (DME) (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Kidney disease/dialysis (in-network)",
+          "value": "$0 or 20% coinsurance"
+        },
+        {
+          "label": "Kidney disease/dialysis (out-of-network)",
+          "value": "20% coinsurance"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Preventive care (out-of-network)",
+          "value": "$0-30% coinsurance"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-20% coinsurance"
+          "label": "Outpatient surgery/services (in-network)",
+          "value": "$0 or 20% coinsurance"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery/services (out-of-network)",
+          "value": "30% coinsurance"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Prosthetics/orthotics (in-network)",
+          "value": "$0 or 20% coinsurance"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Prosthetics/orthotics (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Diabetic supplies/monitoring (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies/monitoring (out-of-network)",
+          "value": "30% coinsurance"
+        },
+        {
+          "label": "Outpatient rehabilitation (in-network)",
+          "value": "$0 or 20% coinsurance"
+        },
+        {
+          "label": "Outpatient rehabilitation (out-of-network)",
+          "value": "30% coinsurance"
         }
       ]
     },
@@ -143,12 +316,48 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Drug deductible (LIS qualified)",
+          "value": "$0"
+        },
+        {
+          "label": "Drug deductible (not LIS qualified)",
           "value": "$615"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Generic (LIS qualified)",
+          "value": "$0, $1.60, or $5.10 copay"
+        },
+        {
+          "label": "All other drugs (LIS qualified)",
+          "value": "$0, $4.90, or $12.65 copay"
+        },
+        {
+          "label": "All covered drugs (not LIS qualified) - retail 30-day",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "All covered drugs (not LIS qualified) - retail 100-day",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "All covered drugs (not LIS qualified) - mail order 100-day",
+          "value": "25% coinsurance"
+        },
+        {
+          "label": "Catastrophic coverage",
           "value": "$0"
+        },
+        {
+          "label": "Part B chemotherapy drugs",
+          "value": "$0 or 20% coinsurance in-network, 20% coinsurance out-of-network"
+        },
+        {
+          "label": "Part B covered insulin",
+          "value": "$0 or 20% coinsurance up to $35 in-network, 20% coinsurance out-of-network"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "$0 allergy antigens, $0 or 20% coinsurance others in-network, $0 allergy antigens, 20% coinsurance others out-of-network"
         }
       ]
     },
@@ -190,8 +399,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 4.0
+  ]
 }

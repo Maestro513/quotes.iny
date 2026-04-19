@@ -1,50 +1,55 @@
 {
   "plan_id": "H5410-055",
-  "plan_name": "HealthSpring TotalCare (HMO D-SNP)",
   "carrier": "Cigna Healthcare",
-  "plan_type": "HMO",
-  "snp_type": "D-SNP",
   "contract_number": "H5410",
   "org_name": "HEALTHSPRING OF FLORIDA, INC.",
   "geographic_area": "South Florida",
   "states": "FL",
   "counties_count": "6",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "star_rating_overall": 3.5,
+  "star_rating_part_c": 3.5,
+  "star_rating_part_d": 3.5,
+  "plan_name": "HealthSpring TotalCare (HMO D-SNP)",
+  "plan_type": "HMO D-SNP",
+  "monthly_premium": "$0 with QMB, $4.80 with SLMB/QI/QDWI",
   "annual_deductible_in": "$0",
   "moop_in": "$4,500",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not covered",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$0 copay"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care",
+          "value": "$0 QMB, $20 others"
         },
         {
-          "label": "Urgent Care",
-          "value": "$20 copay"
+          "label": "Emergency room",
+          "value": "$0 QMB, $130 others"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$0 QMB, $150/day days 1-5 others"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$110 allowance"
+          "label": "Ambulance",
+          "value": "$0 ground QMB"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$0 QMB, $150/day days 1-5 others"
         }
       ]
     },
@@ -53,12 +58,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$3,500"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Dental allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -67,12 +68,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$275 yearly allowance for eyeglasses, frames, contacts"
         }
       ]
     },
@@ -81,12 +78,12 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Hearing aids",
+          "value": "Covered — see Summary of Benefits"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "OTC hearing aids",
+          "value": "$399 copay per kit, 2 kits per year"
         }
       ]
     },
@@ -95,38 +92,176 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$110 per quarter"
+        },
+        {
+          "label": "Flex card",
+          "value": "Varies by plan benefits, loaded quarterly, no carryover"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "14 meals per discharge up to 3 stays per year"
+        },
+        {
+          "label": "Transportation",
+          "value": "40 one-way trips up to 70 miles per year"
+        },
+        {
+          "label": "Fitness/gym",
+          "value": "Fitness center membership"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$130 copay, $50,000 yearly maximum"
+        },
+        {
+          "label": "Telehealth MDLIVE",
+          "value": "$0 for urgent care, mental health, dermatology visits"
+        },
+        {
+          "label": "Care management",
+          "value": "Personal care manager support at no cost"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0 in office, $0 QMB/$75 others other facilities"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "0% QMB, 0%-20% others"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "0% QMB, 20% others"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$0"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$0"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 QMB, $0 days 1-20/$218 days 21-100 others"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0 consultation"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "0% QMB, 20% others"
+        },
+        {
+          "label": "Other Part B drugs",
+          "value": "0% QMB, 0%-20% others"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$0 QMB, $150 others ($0 colorectal screening)"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "0-20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$0 QMB, $100 others ($0 colorectal screening)"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Outpatient observation",
+          "value": "$0 QMB, $150/stay others"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Genetic testing",
+          "value": "$50"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diagnostic procedures",
+          "value": "0% QMB, 0% EKG/20% others"
+        },
+        {
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
+        },
+        {
+          "label": "Prosthetics/orthotics",
+          "value": "0% QMB, 20% others"
+        },
+        {
+          "label": "Medical supplies",
+          "value": "0% QMB, 20% others"
+        },
+        {
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0 monitoring, 0% shoes QMB/20% shoes others, $0 training"
+        },
+        {
+          "label": "Annual physical exam",
+          "value": "$0"
+        },
+        {
+          "label": "Part B insulin drugs",
+          "value": "$0 QMB, $35/month others"
+        },
+        {
+          "label": "Part B chemotherapy drugs",
+          "value": "0% QMB, 0%-20% others"
         }
       ]
     },
@@ -135,28 +270,20 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Part D deductible",
+          "value": "$0 with Extra Help"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Generic drugs (initial coverage)",
+          "value": "$0 or $1.60 or $5.10 copay"
+        },
+        {
+          "label": "All other drugs (initial coverage)",
+          "value": "$0 or $4.90 or $12.65 copay"
+        },
+        {
+          "label": "All drugs (catastrophic coverage)",
           "value": "$0"
-        },
-        {
-          "label": "Tier 2: Generic",
-          "value": "$20"
-        },
-        {
-          "label": "Tier 3: Preferred Brand",
-          "value": "23%"
-        },
-        {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
-        },
-        {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
         }
       ]
     },
@@ -194,8 +321,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 3.5,
-  "star_rating_part_c": 3.5,
-  "star_rating_part_d": 3.5
+  ]
 }

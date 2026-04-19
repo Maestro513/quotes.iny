@@ -1,46 +1,76 @@
 {
   "plan_id": "H6348-008",
-  "plan_name": "Wellcare Giveback Open (PPO)",
   "carrier": "Wellcare",
-  "plan_type": "PPO",
-  "snp_type": null,
   "contract_number": "H6348",
   "org_name": "COORDINATED CARE CORPORATION",
   "geographic_area": "Statewide - Indiana",
   "states": "IN",
   "counties_count": "90",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.0,
+  "star_rating_part_c": 3.0,
+  "star_rating_part_d": 3.5,
+  "plan_name": "Wellcare Giveback Open (PPO) H6348-008",
+  "plan_type": "PPO",
   "monthly_premium": "$0",
-  "annual_deductible_in": "$500",
+  "annual_deductible_in": "$500 for select Part B services",
   "moop_in": "$8,500",
+  "moop_out": "$10,000",
+  "part_b_premium_reduction": "$79",
   "moop_combined": "$10,000",
-  "moop_out": null,
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "PCP visit (out-of-network)",
+          "value": "$25"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Specialist visit (in-network)",
+          "value": "$40"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Specialist visit (out-of-network)",
+          "value": "$60"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Urgent care",
+          "value": "$40"
+        },
+        {
+          "label": "Emergency room",
+          "value": "$115"
+        },
+        {
+          "label": "Inpatient hospital (in-network)",
+          "value": "$400/day days 1-5, $0/day days 6-90"
+        },
+        {
+          "label": "Inpatient hospital (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$280"
+        },
+        {
+          "label": "Mental health (inpatient) (in-network)",
+          "value": "$350/day days 1-5, $0/day days 6-90"
+        },
+        {
+          "label": "Mental health (inpatient) (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "$79"
         }
       ]
     },
@@ -49,8 +79,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$40 copay"
+          "label": "Dental annual maximum",
+          "value": "$1,000 per year for comprehensive services"
         }
       ]
     },
@@ -59,12 +89,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision allowance",
+          "value": "$200 combined for contacts and glasses per year"
         }
       ]
     },
@@ -73,12 +99,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aid allowance",
+          "value": "$350 per ear per year"
         }
       ]
     },
@@ -87,38 +109,180 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$15 monthly via Wellcare Spendables card"
+        },
+        {
+          "label": "Fitness/gym",
+          "value": "$0 copay - access to fitness locations nationwide"
+        },
+        {
+          "label": "24-hour nurse advice line",
+          "value": "$0 copay"
+        },
+        {
+          "label": "My Wellcare Rewards",
+          "value": "Up to $100 earned for health activities"
+        },
+        {
+          "label": "Social support platform",
+          "value": "$0 copay - online/app-based wellness platform available 24/7"
+        },
+        {
+          "label": "Annual routine physical exam",
+          "value": "$0 copay in-network and out-of-network"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$115 copay, $50,000 maximum plan coverage"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$0 copay PCP office"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services (in-network)",
+          "value": "$0 except $50 genetic testing"
+        },
+        {
+          "label": "Lab services (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (in-network)",
+          "value": "$50"
+        },
+        {
+          "label": "X-rays/diagnostic imaging (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (in-network)",
+          "value": "$400 outpatient, $350 other locations"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET) (out-of-network)",
+          "value": "40%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$40"
+        },
+        {
+          "label": "Chiropractic (in-network)",
+          "value": "$15"
+        },
+        {
+          "label": "Chiropractic (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$40"
+        },
+        {
+          "label": "Physical therapy (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Physical therapy (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Occupational therapy (in-network)",
+          "value": "$35"
+        },
+        {
+          "label": "Occupational therapy (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Pulmonary rehabilitation (in-network)",
+          "value": "$25"
+        },
+        {
+          "label": "Pulmonary rehabilitation (out-of-network)",
+          "value": "40%"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility (in-network)",
+          "value": "$0/day days 1-20, $218/day days 21-60, $0/day days 61-100"
+        },
+        {
+          "label": "Skilled nursing facility (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Home health care (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Home health care (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Durable medical equipment (DME) (in-network)",
+          "value": "20%"
+        },
+        {
+          "label": "Durable medical equipment (DME) (out-of-network)",
+          "value": "30%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services (in-network)",
+          "value": "20% for surgical, $400 for non-surgical"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "20% coinsurance"
+          "label": "Outpatient surgery/services (out-of-network)",
+          "value": "40%"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Prosthetics/orthotics (in-network)",
+          "value": "20%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Prosthetics/orthotics (out-of-network)",
+          "value": "40%"
+        },
+        {
+          "label": "Diabetic supplies/monitoring (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies/monitoring (out-of-network)",
+          "value": "40%"
         }
       ]
     },
@@ -127,32 +291,68 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Part D deductible",
+          "value": "$615 (Tiers 3-5)"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic (30-day preferred)",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic (30-day standard)",
+          "value": "$5"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (100-day preferred)",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 1 Preferred Generic (100-day standard)",
+          "value": "$15"
+        },
+        {
+          "label": "Tier 2 Generic (30-day preferred)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic (30-day standard)",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 2 Generic (100-day preferred)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic (100-day standard)",
+          "value": "$30"
+        },
+        {
+          "label": "Tier 3 Preferred Brand (30-day)",
           "value": "25%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 4 Non-Preferred Drug (30-day preferred)",
           "value": "34%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 Non-Preferred Drug (30-day standard)",
+          "value": "35%"
+        },
+        {
+          "label": "Tier 5 Specialty (30-day)",
           "value": "25%"
         },
         {
-          "label": "Tier 6: Select Care Drugs",
+          "label": "Tier 6 Select Care Drugs",
           "value": "$0"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "20% in-network, 40% out-of-network"
+        },
+        {
+          "label": "Insulin",
+          "value": "$35/month maximum"
         }
       ]
     },
@@ -194,8 +394,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 3.0,
-  "star_rating_part_c": 3.0,
-  "star_rating_part_d": 3.5
+  ]
 }

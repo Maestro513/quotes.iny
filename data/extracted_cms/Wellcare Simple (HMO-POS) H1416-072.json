@@ -1,50 +1,54 @@
 {
   "plan_id": "H1416-072",
-  "plan_name": "Wellcare Simple (HMO-POS)",
   "carrier": "Wellcare",
-  "plan_type": "HMO-POS",
-  "snp_type": null,
   "contract_number": "H1416",
   "org_name": "HARMONY HEALTH PLAN,  INC.",
   "geographic_area": "Select counties in MS",
   "states": "MS",
   "counties_count": "10",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 3.0,
+  "star_rating_part_c": 3.0,
+  "star_rating_part_d": 3.5,
+  "plan_name": "Wellcare Simple (HMO-POS) H1416-072",
+  "plan_type": "HMO-POS",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$5,500",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "$5,500",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$15"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care",
+          "value": "$40"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Emergency room",
+          "value": "$130"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$250/day days 1-8, $0/day days 9-90, $0/day days 91-95"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Ambulance",
+          "value": "$300"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$275/day days 1-6, $0/day days 7-90"
         }
       ]
     },
@@ -53,8 +57,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$15 copay"
+          "label": "Dental coverage maximum",
+          "value": "$4,000 per plan year for comprehensive services"
         }
       ]
     },
@@ -63,12 +67,12 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
+          "label": "Eyewear allowance",
+          "value": "$400 combined for contacts and glasses per year"
         },
         {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Routine eye exam",
+          "value": "1 exam per year"
         }
       ]
     },
@@ -77,12 +81,12 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
+          "label": "Hearing aid allowance",
+          "value": "$500 per ear per year, 2 hearing aids max per year"
         },
         {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Routine hearing exam",
+          "value": "1 exam per year"
         }
       ]
     },
@@ -91,34 +95,144 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Wellcare Spendables card",
+          "value": "$45 monthly allowance for OTC, dental, vision, hearing"
+        },
+        {
+          "label": "Transportation services",
+          "value": "12 one-way trips per year to healthcare locations"
+        },
+        {
+          "label": "Post-acute meals",
+          "value": "Up to 45 days"
+        },
+        {
+          "label": "Fitness program",
+          "value": "SilverSneakers access, fitness centers, home fitness kits"
+        },
+        {
+          "label": "24-hour nurse advice line",
+          "value": "Available 24/7"
+        },
+        {
+          "label": "Annual routine physical exam",
+          "value": "1 exam per year"
+        },
+        {
+          "label": "My Wellcare Rewards",
+          "value": "Up to $100 for completing health activities"
+        },
+        {
+          "label": "Social support platform",
+          "value": "Online/app-based platform for mental wellness"
+        },
+        {
+          "label": "Virtual visits",
+          "value": "24/7 access to board certified doctors"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$50,000 maximum coverage"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "Medicare-covered services"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0 (genetic testing $50)"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$45"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$280 outpatient, $150 other locations"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$25"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$15"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$20"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$20"
+        },
+        {
+          "label": "Pulmonary rehabilitation",
+          "value": "$35"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-50, $0/day days 51-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$300 surgical, $280 non-surgical"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
+        },
+        {
+          "label": "Outpatient observation",
+          "value": "$130 ER entry, $300 outpatient entry"
         }
       ]
     },
@@ -127,31 +241,83 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Drug deductible",
+          "value": "$615 (Tiers 3-5 only)"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic (Preferred 30-day)",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic (Preferred 100-day)",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 1 Preferred Generic (Standard 30-day)",
+          "value": "$5"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (Standard 100-day)",
+          "value": "$15"
+        },
+        {
+          "label": "Tier 1 Preferred Generic (Mail order 100-day)",
+          "value": "$0 preferred, $15 standard"
+        },
+        {
+          "label": "Tier 2 Generic (Preferred 30-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic (Preferred 100-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic (Standard 30-day)",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 2 Generic (Standard 100-day)",
+          "value": "$30"
+        },
+        {
+          "label": "Tier 2 Generic (Mail order 100-day)",
+          "value": "$0 preferred, $30 standard"
+        },
+        {
+          "label": "Tier 3 Preferred Brand (Preferred)",
           "value": "25%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Preferred Brand (Standard)",
+          "value": "25%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug (Preferred)",
           "value": "33%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 Non-Preferred Drug (Standard)",
+          "value": "34%"
+        },
+        {
+          "label": "Tier 5 Specialty (30-day only)",
           "value": "25%"
         },
         {
-          "label": "Tier 6: Select Care Drugs",
+          "label": "Tier 6 Select Care Drugs",
+          "value": "$0"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "20%"
+        },
+        {
+          "label": "Insulin",
+          "value": "$35/month max"
+        },
+        {
+          "label": "Catastrophic coverage",
           "value": "$0"
         }
       ]
@@ -194,8 +360,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 3.0,
-  "star_rating_part_c": 3.0,
-  "star_rating_part_d": 3.5
+  ]
 }

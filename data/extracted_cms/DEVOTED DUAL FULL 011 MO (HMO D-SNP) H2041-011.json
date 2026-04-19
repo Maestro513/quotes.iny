@@ -1,82 +1,56 @@
 {
   "plan_id": "H2041-011",
-  "plan_name": "DEVOTED DUAL FULL 011 MO (HMO D-SNP)",
   "carrier": "Devoted Health",
-  "plan_type": "HMO",
-  "snp_type": "D-SNP",
   "contract_number": "H2041",
   "org_name": "DEVOTED HEALTH PLAN OF MISSOURI INC",
   "geographic_area": "Missouri",
   "states": "MO",
   "counties_count": "59",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
-  "annual_deductible_in": "$600",
+  "plan_name": "DEVOTED DUAL FULL 011 MO (HMO D-SNP)",
+  "plan_type": "HMO D-SNP",
+  "monthly_premium": "$0 to $35.80",
+  "annual_deductible_in": "$0 to $600",
   "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "N/A",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "With Medicaid: $0, Without Medicaid: $0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "30% coinsurance"
+          "label": "Specialist visit",
+          "value": "With Medicaid: $0, Without Medicaid: 30%"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care",
+          "value": "With Medicaid: $0, Without Medicaid: 30%"
         },
         {
-          "label": "Urgent Care",
-          "value": "0-30% coinsurance"
+          "label": "Emergency room (in-network)",
+          "value": "With Medicaid: $0, Without Medicaid: $115"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room (out-of-network)",
+          "value": "Covered worldwide"
+        },
+        {
+          "label": "Inpatient hospital",
+          "value": "With Medicaid: $0, Without Medicaid: $2,230"
         },
         {
           "label": "Ambulance",
-          "value": "0-50% coinsurance"
+          "value": "With Medicaid: $0, Without Medicaid: 50%"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$50 allowance"
-        }
-      ]
-    },
-    {
-      "title": "Dental",
-      "icon": "tooth",
-      "rows": [
-        {
-          "label": "Preventive Dental",
-          "value": "$2,500"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "30% coinsurance"
-        }
-      ]
-    },
-    {
-      "title": "Vision",
-      "icon": "eye",
-      "rows": [
-        {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Mental health (inpatient)",
+          "value": "With Medicaid: $0, Without Medicaid: $2,080"
         }
       ]
     },
@@ -85,12 +59,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "Up to 2 TruHearing aids with 60-day trial"
         }
       ]
     },
@@ -99,50 +69,128 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$50 per quarter"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Food & Home Card",
+          "value": "$332 per month for eligible food"
+        },
+        {
+          "label": "Fitness/gym",
+          "value": "SilverSneakers $0 membership"
+        },
+        {
+          "label": "Wellness Bucks",
+          "value": "$150 per year for fitness and wellness items"
+        },
+        {
+          "label": "Devoted Dollars rewards",
+          "value": "$20 for completing yearly HRA"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Included as supplemental benefit"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "With Medicaid: $0, Without Medicaid: 50%"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "With Medicaid: $0, Without Medicaid: 30%"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "With Medicaid: $0, Without Medicaid: 50%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "With Medicaid: $0, Without Medicaid: 30%"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "With Medicaid: $0, Without Medicaid: 30%"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "With Medicaid: $0, Without Medicaid: 30%"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "With Medicaid: $0, Without Medicaid: 30%"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "With Medicaid: $0, Without Medicaid: 30%"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "With Medicaid: $0, Without Medicaid: 30%"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "With Medicaid: $0, Without Medicaid: Days 1-20: $0, Days 21-100: $218/day"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "With Medicaid: $0, Without Medicaid: 20%"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "With Medicaid: $0, Without Medicaid: 20%"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "With Medicaid: $0, Without Medicaid: 20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "With Medicaid: $0, Without Medicaid: 50%"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "0-50% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "Same as in-person visit"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "0-50% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "With Medicaid: $0, Without Medicaid: 20%"
         },
         {
-          "label": "Lab Services",
-          "value": "50% coinsurance"
-        },
-        {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
-        },
-        {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "With Medicaid: $0, Without Medicaid: 20%"
         }
       ]
     },
@@ -151,32 +199,72 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
-          "value": "$615"
+          "label": "Drug deductible",
+          "value": "$615 (Tiers 1-5 only, $0 with Extra Help)"
         },
         {
-          "label": "Tier 1: Preferred Generic",
-          "value": "25%"
+          "label": "Tier 1 Preferred Generic - 30-day retail",
+          "value": "25% of total cost"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "25%"
+          "label": "Tier 1 Preferred Generic - 100-day mail",
+          "value": "25% of total cost"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "25%"
+          "label": "Tier 2 Generic - 30-day retail",
+          "value": "25% of total cost"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
+          "label": "Tier 2 Generic - 100-day mail",
+          "value": "25% of total cost"
         },
         {
-          "label": "Tier 5: Specialty Tier",
-          "value": "25%"
+          "label": "Tier 3 Preferred Brand - 30-day retail",
+          "value": "25% of total cost"
         },
         {
-          "label": "Tier 6: Select Care Drugs",
+          "label": "Tier 3 Preferred Brand - 100-day mail",
+          "value": "25% of total cost"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drugs - 30-day retail",
+          "value": "25% of total cost"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drugs - 100-day mail",
+          "value": "25% of total cost"
+        },
+        {
+          "label": "Tier 5 Specialty - 30-day retail",
+          "value": "25% of total cost"
+        },
+        {
+          "label": "Tier 6 Select Care Drugs - 30-day retail",
           "value": "$0"
+        },
+        {
+          "label": "Tier 6 Select Care Drugs - 100-day mail",
+          "value": "$0"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0 after $2,100 out-of-pocket"
+        },
+        {
+          "label": "Insulin coverage",
+          "value": "Maximum $35 for 30-day supply"
+        },
+        {
+          "label": "Vitamin D (ergocalciferol)",
+          "value": "$0 at Tier 6"
+        },
+        {
+          "label": "B12 injection",
+          "value": "$0 at Tier 6"
+        },
+        {
+          "label": "Sildenafil (generic Viagra)",
+          "value": "$0 at Tier 6 (up to 6 tablets/month)"
         }
       ]
     },

@@ -1,50 +1,58 @@
 {
   "plan_id": "H5253-169",
-  "plan_name": "AARP Medicare Advantage CareFlex from UHC RI-5 (HMO-POS)",
   "carrier": "UnitedHealthcare",
-  "plan_type": "HMO-POS",
-  "snp_type": null,
   "contract_number": "H5253",
   "org_name": "UNITEDHEALTHCARE OF WISCONSIN, INC.",
   "geographic_area": "State of Rhode Island",
   "states": "RI",
   "counties_count": "5",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 4.0,
+  "star_rating_part_c": 4.0,
+  "star_rating_part_d": 4.0,
+  "plan_name": "AARP Medicare Advantage CareFlex from UHC RI-5 (HMO-POS)",
+  "plan_type": "HMO-POS",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$6,700",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_out": "Not specified",
   "drug_deductible": "$520",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$60"
         },
         {
-          "label": "Emergency Room",
-          "value": "$130 copay"
+          "label": "Urgent care",
+          "value": "$50"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$50 copay"
+          "label": "Emergency room (in-network)",
+          "value": "$130"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room (out-of-network)",
+          "value": "$0 outside US"
         },
         {
-          "label": "OTC Allowance",
-          "value": "Included"
+          "label": "Inpatient hospital",
+          "value": "$550/day days 1-5, $0/day days 6+"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$275 ground, $275 air"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$550/day days 1-4, $0/day days 5-90"
         }
       ]
     },
@@ -53,8 +61,12 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Routine dental coverage",
+          "value": "In and out-of-network preventive services"
+        },
+        {
+          "label": "Optional Platinum Dental Rider",
+          "value": "$44/month for $1"
         }
       ]
     },
@@ -63,12 +75,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$300 every 2 years for frames or contacts"
         }
       ]
     },
@@ -77,12 +85,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aid benefits",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -91,34 +95,176 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "CareFlex credit",
+          "value": "$550 quarterly credit for covered medical services"
+        },
+        {
+          "label": "Fitness program",
+          "value": "Free gym membership"
+        },
+        {
+          "label": "OTC credit",
+          "value": "$30 every quarter for OTC products"
+        },
+        {
+          "label": "Meal benefit",
+          "value": "28 home-delivered meals after inpatient hospital or SNF stay"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "6 visits per year"
+        },
+        {
+          "label": "Virtual mental health visits",
+          "value": "$0 copay for telehealth"
+        },
+        {
+          "label": "Virtual medical visits",
+          "value": "$0 copay for telehealth"
+        },
+        {
+          "label": "Member discounts",
+          "value": "Access to discounts on hundreds of products and services"
+        },
+        {
+          "label": "24-hour nurse line",
+          "value": "Available through telehealth services"
+        },
+        {
+          "label": "Diabetes management supplies",
+          "value": "Contour and Accu-Chek brands only"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$30"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$260"
+        },
+        {
+          "label": "Diagnostic tests",
+          "value": "$50"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$55 group, $55 individual"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "$55 group, $55 individual"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$45"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$60"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$50"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$60"
+        },
+        {
+          "label": "Opioid treatment program",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment (DME)",
+          "value": "50%"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$550 (ASC), $550 (hospital)"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "50% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "50%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
+        },
+        {
+          "label": "Outpatient observation",
+          "value": "$550"
+        },
+        {
+          "label": "Diabetes self-management training",
+          "value": "$0"
+        },
+        {
+          "label": "Therapeutic shoes/inserts",
+          "value": "50%"
+        },
+        {
+          "label": "Routine foot care",
+          "value": "$45, 6 visits/year"
         }
       ]
     },
@@ -127,28 +273,92 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Drug deductible Tier 1-2",
+          "value": "$0"
+        },
+        {
+          "label": "Drug deductible Tier 3-5",
           "value": "$520"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic (30-day)",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic (100-day retail)",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 1 Preferred Generic (100-day mail)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic (30-day)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic (100-day retail)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Generic (100-day mail)",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 Preferred Brand (30-day)",
           "value": "16%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 3 Preferred Brand (100-day retail)",
+          "value": "16%"
+        },
+        {
+          "label": "Tier 3 Preferred Brand (100-day mail)",
+          "value": "16%"
+        },
+        {
+          "label": "Tier 4 Non-Preferred Drug (30-day)",
           "value": "39%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 Specialty (30-day)",
           "value": "27%"
+        },
+        {
+          "label": "Covered insulin (30-day)",
+          "value": "16%, up to $105"
+        },
+        {
+          "label": "Covered insulin (100-day retail)",
+          "value": "16%, up to $105"
+        },
+        {
+          "label": "Covered insulin (100-day mail)",
+          "value": "16%, up to $35"
+        },
+        {
+          "label": "Part B chemotherapy drugs",
+          "value": "20%"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "20%, up to $35"
+        },
+        {
+          "label": "Other Part B drugs - allergy antigens",
+          "value": "$0"
+        },
+        {
+          "label": "Other Part B drugs - all others",
+          "value": "20%"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
+        },
+        {
+          "label": "Additional covered drugs",
+          "value": "Vitamin D, Sildenafil, Cyanocobalamin, Folic Acid as Tier 2"
         }
       ]
     },
@@ -190,8 +400,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.0,
-  "star_rating_part_c": 4.0,
-  "star_rating_part_d": 4.0
+  ]
 }

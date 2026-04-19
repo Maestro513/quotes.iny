@@ -1,50 +1,57 @@
 {
   "plan_id": "H4624-038",
-  "plan_name": "Zing Select Care OH (HMO)",
   "carrier": "Zing Health",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H4624",
   "org_name": "ZING HEALTH OF MICHIGAN, INC.",
   "geographic_area": "Select Counties in Northern Ohio",
   "states": "OH",
   "counties_count": "11",
   "source": "CMS PBP 2026",
+  "star_rating_overall": 2.5,
+  "star_rating_part_c": 2.5,
+  "star_rating_part_d": 2.5,
+  "plan_name": "H4624-038 Zing Select Care OH (HMO)",
+  "plan_type": "HMO",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
   "moop_in": "$4,500",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not covered",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$15 copay"
+          "label": "Specialist visit",
+          "value": "$15"
         },
         {
-          "label": "Emergency Room",
-          "value": "$125 copay"
+          "label": "Urgent care",
+          "value": "$0 at PCP office, $10 other locations"
         },
         {
-          "label": "Urgent Care",
-          "value": "$0-$10 copay"
+          "label": "Emergency room",
+          "value": "$125"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Inpatient hospital",
+          "value": "$350/day days 1-6, $0/day days 7+"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$105 allowance"
+          "label": "Ambulance ground",
+          "value": "$200"
+        },
+        {
+          "label": "Ambulance air",
+          "value": "20%"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$350/day days 1-6, $0/day days 7-90"
         }
       ]
     },
@@ -53,12 +60,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,000"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Dental allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -67,12 +70,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$300 per year for glasses, lenses, frames, or contacts"
         }
       ]
     },
@@ -81,12 +80,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aid allowance",
+          "value": "$750 per ear every 3 years"
         }
       ]
     },
@@ -95,34 +90,172 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$105 per quarter"
+        },
+        {
+          "label": "Transportation",
+          "value": "12 one-way trips per year, 30-mile limit"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "$0 copay, up to $50,000 maximum per year"
+        },
+        {
+          "label": "In-home support services",
+          "value": "30 hours per year Papa Pals services"
+        },
+        {
+          "label": "Fitness/gym membership",
+          "value": "$0 health club membership"
+        },
+        {
+          "label": "24/7 nurse hotline",
+          "value": "$0"
+        },
+        {
+          "label": "Post-discharge meals",
+          "value": "14 meals after each inpatient discharge or surgery"
+        },
+        {
+          "label": "Chronic conditions allowance (SSBCI)",
+          "value": "$75 per month for food/utilities for qualifying members"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0"
+        },
+        {
+          "label": "X-rays",
+          "value": "$0"
+        },
+        {
+          "label": "Diagnostic tests",
+          "value": "$0 COVID tests, $25 other tests"
+        },
+        {
+          "label": "Advanced imaging (CT/MRI/PET)",
+          "value": "$50 at doctor's office, $150 at facility"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse (outpatient)",
+          "value": "$0 individual/group, $35 opioid treatment"
+        },
+        {
+          "label": "Chiropractic",
+          "value": "$15"
+        },
+        {
+          "label": "Podiatry (Medicare-covered)",
+          "value": "$35"
+        },
+        {
+          "label": "Podiatry (routine)",
+          "value": "$20, up to 4 visits/year"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$20"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$20"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$20"
+        },
+        {
+          "label": "Cardiac rehabilitation",
+          "value": "$0"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0 days 1-20, $214/day days 21-100"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "Part of cost for outpatient drugs"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "20%"
+        },
+        {
+          "label": "Kidney disease/dialysis",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$225"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$125"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0 preferred brands, 20% non-preferred"
+        },
+        {
+          "label": "Diabetic shoes/inserts",
+          "value": "20%"
+        },
+        {
+          "label": "Diabetic self-management training",
+          "value": "$0"
+        },
+        {
+          "label": "Kidney disease education",
+          "value": "$0"
         }
       ]
     },
@@ -131,24 +264,72 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
-          "value": "$8"
+          "label": "Tier 1 - Preferred Generic retail (30/60/100 days)",
+          "value": "$0/$0/$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
-          "value": "$47"
+          "label": "Tier 2 - Generic retail (30/60/100 days)",
+          "value": "$8/$16/$24"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
-          "value": "25%"
+          "label": "Tier 3 - Preferred Brand retail (30/60/100 days)",
+          "value": "$47/$94/$141"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 4 - Non-Preferred Drug retail (30/60/100 days)",
+          "value": "25%/25%/25%"
+        },
+        {
+          "label": "Tier 5 - Specialty retail (30 days only)",
           "value": "33%"
+        },
+        {
+          "label": "Tier 1 - Preferred Generic mail order (30/60/100 days)",
+          "value": "$0/$0/$0"
+        },
+        {
+          "label": "Tier 2 - Generic mail order (30/60/100 days)",
+          "value": "$0/$0/$0"
+        },
+        {
+          "label": "Tier 3 - Preferred Brand mail order (30/60/100 days)",
+          "value": "$47/$94/$94"
+        },
+        {
+          "label": "Tier 4 - Non-Preferred Drug mail order (30/60/100 days)",
+          "value": "25%/25%/25%"
+        },
+        {
+          "label": "Tier 5 - Specialty mail order (30 days only)",
+          "value": "33%"
+        },
+        {
+          "label": "Insulin (30 days)",
+          "value": "$0 Tiers 1,3,5; up to $35 Tier 4"
+        },
+        {
+          "label": "Insulin mail order (100 days)",
+          "value": "$0 Tiers 1,3; up to $70 Tier 4"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "0-20% coinsurance, max $35/month"
+        },
+        {
+          "label": "Part B chemotherapy/other drugs",
+          "value": "0-20% coinsurance"
+        },
+        {
+          "label": "Erectile dysfunction (sildenafil)",
+          "value": "Tier 2 cost-share"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
         }
       ]
     },
@@ -190,8 +371,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 2.5,
-  "star_rating_part_c": 2.5,
-  "star_rating_part_d": 2.5
+  ]
 }

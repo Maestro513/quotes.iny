@@ -1,54 +1,73 @@
 {
   "plan_id": "H9771-001",
-  "plan_name": "Aetna Medicare FIDE (HMO D-SNP)",
   "carrier": "Aetna Medicare FIDE",
-  "plan_type": "HMO",
-  "snp_type": "D-SNP",
   "contract_number": "H9771",
   "org_name": "AETNA BETTER HEALTH PREMIER PLAN MMAI INC.",
   "geographic_area": "IL",
   "states": "IL",
   "counties_count": "102",
+  "snp_type": "D-SNP",
   "source": "CMS PBP 2026",
+  "plan_name": "Aetna Medicare FIDE (HMO D-SNP)",
+  "plan_type": "HMO D-SNP",
   "monthly_premium": "$0",
   "annual_deductible_in": "$0",
-  "moop_in": "$9,250",
-  "moop_combined": null,
-  "moop_out": null,
+  "moop_in": "$0",
+  "moop_out": "Not offered - HMO plan",
+  "part_b_premium_reduction": "Covered by Medicaid",
   "drug_deductible": "$615",
-  "part_b_premium_reduction": null,
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "20% coinsurance"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "20% coinsurance"
+          "label": "Specialist visit",
+          "value": "$0"
         },
         {
-          "label": "Emergency Room",
-          "value": "$115 copay"
+          "label": "Urgent care (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Urgent Care",
-          "value": "$40 copay"
+          "label": "Urgent care (out-of-network)",
+          "value": "$0 worldwide"
         },
         {
-          "label": "Inpatient Hospital",
-          "value": "Covered"
+          "label": "Emergency room (in-network)",
+          "value": "$0"
         },
         {
-          "label": "Ambulance",
-          "value": "20% coinsurance"
+          "label": "Emergency room (out-of-network)",
+          "value": "$0 worldwide"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$225 allowance"
+          "label": "Inpatient hospital",
+          "value": "$0"
+        },
+        {
+          "label": "Ambulance (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Ambulance (out-of-network)",
+          "value": "$0 worldwide"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Substance abuse (inpatient)",
+          "value": "$0"
+        },
+        {
+          "label": "Part B Giveback",
+          "value": "Covered by Medicaid"
         }
       ]
     },
@@ -57,12 +76,8 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Preventive Dental",
-          "value": "$2,500"
-        },
-        {
-          "label": "Comprehensive Dental",
-          "value": "20% coinsurance"
+          "label": "Dental allowance",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
@@ -71,12 +86,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear allowance",
+          "value": "$200 annually for prescription eyewear through March Vision"
         }
       ]
     },
@@ -85,12 +96,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids allowance",
+          "value": "$1,000 per ear annually through NationsHearing network"
         }
       ]
     },
@@ -99,58 +106,176 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Flex/SSBCI",
-          "value": "Personal Care Items"
+          "label": "OTC allowance",
+          "value": "$225 monthly on Aetna Medicare Extra Benefits Card"
         },
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "Extra Supports Wallet",
+          "value": "Covered — see Summary of Benefits"
         },
         {
-          "label": "Transportation",
-          "value": "Covered"
+          "label": "Fitness membership",
+          "value": "Covered — see Summary of Benefits"
         },
         {
-          "label": "In-Home Support",
-          "value": "Covered"
+          "label": "Fall prevention allowance",
+          "value": "$100 annually for approved home and bathroom safety products"
+        },
+        {
+          "label": "Post-discharge meals",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Personal emergency response system",
+          "value": "LifeStation Medical Alert system with 24/7 access"
+        },
+        {
+          "label": "24-hour nurse line",
+          "value": "Free access to registered nurses 24/7 for health questions"
+        },
+        {
+          "label": "Transportation to medical appointments",
+          "value": "Covered transportation with prior authorization"
+        },
+        {
+          "label": "Worldwide emergency coverage",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Telehealth services",
+          "value": "Covered — see Summary of Benefits"
+        },
+        {
+          "label": "Wigs",
+          "value": "$400 annual allowance for hair loss from chemotherapy"
+        },
+        {
+          "label": "Home and community services",
+          "value": "Covered — see Summary of Benefits"
         }
       ]
     },
     {
-      "title": "Medical Services",
-      "icon": "hospital",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
-        },
-        {
-          "label": "Home Health",
+          "label": "Lab services",
           "value": "$0"
         },
         {
-          "label": "Outpatient Hospital",
-          "value": "20% coinsurance"
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Advanced imaging",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$0"
         },
         {
-          "label": "Lab Services",
-          "value": "20% coinsurance"
+          "label": "Substance abuse (outpatient)",
+          "value": "$0"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Chiropractic",
+          "value": "$0"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Podiatry/foot care",
+          "value": "$0"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Physical therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$0"
+        },
+        {
+          "label": "Acupuncture",
+          "value": "$0"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0"
+        },
+        {
+          "label": "Home health care",
+          "value": "$0"
+        },
+        {
+          "label": "Hospice",
+          "value": "$0"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "$0"
+        },
+        {
+          "label": "Kidney disease/dialysis (in-network)",
+          "value": "$0"
+        },
+        {
+          "label": "Kidney disease/dialysis (out-of-network)",
+          "value": "$0 out-of-area"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
+      "icon": "hospital",
+      "rows": [
+        {
+          "label": "Preventive care",
+          "value": "$0"
+        },
+        {
+          "label": "Outpatient surgery/services",
+          "value": "$0"
+        },
+        {
+          "label": "Ambulatory surgical center",
+          "value": "$0"
+        },
+        {
+          "label": "Telehealth/virtual visits",
+          "value": "$0"
+        },
+        {
+          "label": "Prosthetics/orthotics",
+          "value": "$0"
+        },
+        {
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0"
+        },
+        {
+          "label": "Outpatient rehabilitation",
+          "value": "$0"
+        },
+        {
+          "label": "Transportation to medical appointments",
+          "value": "$0"
         }
       ]
     },
@@ -159,28 +284,52 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Drug Deductible",
+          "label": "Drug deductible (Tiers 3-5)",
           "value": "$615"
         },
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Drug deductible (Extra Help)",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Generic",
+          "label": "Tier 1 Preferred Generic",
           "value": "$0"
         },
         {
-          "label": "Tier 3: Preferred Brand",
+          "label": "Tier 2 Generic",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 3 Preferred Brand",
           "value": "22%"
         },
         {
-          "label": "Tier 4: Non-Preferred Drug",
+          "label": "Tier 4 Non-Preferred Drug",
           "value": "25%"
         },
         {
-          "label": "Tier 5: Specialty Tier",
+          "label": "Tier 5 Specialty",
           "value": "25%"
+        },
+        {
+          "label": "Insulin (all tiers)",
+          "value": "$35 max/month"
+        },
+        {
+          "label": "Extra Help Generic",
+          "value": "$0, $1.60, or $5.10"
+        },
+        {
+          "label": "Extra Help All Other Covered Drugs",
+          "value": "$0, $4.90, or $12.65"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "$0"
+        },
+        {
+          "label": "Over-the-counter drugs",
+          "value": "$0"
         }
       ]
     },

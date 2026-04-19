@@ -1,46 +1,53 @@
 {
   "plan_id": "H5594-019",
-  "plan_name": "Optimum Gold Plan (HMO)",
   "carrier": "Optimum HealthCare, Inc.",
-  "plan_type": "HMO",
-  "snp_type": null,
   "contract_number": "H5594",
   "org_name": "OPTIMUM HEALTHCARE, INC.",
   "geographic_area": "Select Counties in Florida",
   "states": "FL",
   "counties_count": "3",
   "source": "CMS PBP 2026",
-  "monthly_premium": "$0",
+  "star_rating_overall": 4.5,
+  "star_rating_part_c": 4.5,
+  "star_rating_part_d": 4.0,
+  "plan_name": "Optimum Gold Plan (HMO)",
+  "plan_type": "HMO",
+  "monthly_premium": "$0.00",
   "annual_deductible_in": "$0",
   "moop_in": "$4,200",
-  "moop_combined": null,
-  "moop_out": null,
-  "drug_deductible": null,
-  "part_b_premium_reduction": null,
+  "moop_out": "Not covered",
   "sections": [
     {
       "title": "Key Benefits",
       "icon": "heart-pulse",
       "rows": [
         {
-          "label": "PCP Visit",
-          "value": "$0 copay"
+          "label": "PCP visit",
+          "value": "$0"
         },
         {
-          "label": "Specialist Visit",
-          "value": "$20 copay"
+          "label": "Specialist visit",
+          "value": "$30"
         },
         {
-          "label": "Emergency Room",
-          "value": "$150 copay"
+          "label": "Urgent care",
+          "value": "$20"
         },
         {
-          "label": "Urgent Care",
-          "value": "$20 copay"
+          "label": "Emergency room",
+          "value": "$150"
         },
         {
-          "label": "OTC Allowance",
-          "value": "$60 allowance"
+          "label": "Inpatient hospital",
+          "value": "$195/day days 1-7, $0/day days 8-90"
+        },
+        {
+          "label": "Ambulance",
+          "value": "$200 ground, 20% air"
+        },
+        {
+          "label": "Mental health (inpatient)",
+          "value": "$195/day days 1-7, $0/day days 8-90"
         }
       ]
     },
@@ -49,8 +56,12 @@
       "icon": "tooth",
       "rows": [
         {
-          "label": "Comprehensive Dental",
-          "value": "$0 copay"
+          "label": "Dental preventive",
+          "value": "2 oral exams"
+        },
+        {
+          "label": "Dental comprehensive",
+          "value": "2 fillings"
         }
       ]
     },
@@ -59,12 +70,8 @@
       "icon": "eye",
       "rows": [
         {
-          "label": "Eye Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Eyewear",
-          "value": "Covered"
+          "label": "Vision eyewear",
+          "value": "$100 allowance annually with $10 copay"
         }
       ]
     },
@@ -73,12 +80,8 @@
       "icon": "ear-listen",
       "rows": [
         {
-          "label": "Hearing Exam",
-          "value": "$0 copay"
-        },
-        {
-          "label": "Hearing Aids",
-          "value": "Covered"
+          "label": "Hearing aids",
+          "value": "$1,000 allowance annually, $500 per aid"
         }
       ]
     },
@@ -87,38 +90,120 @@
       "icon": "hand-holding-heart",
       "rows": [
         {
-          "label": "Meals",
-          "value": "Covered"
+          "label": "OTC allowance",
+          "value": "$60 per month, unused amounts expire monthly"
+        },
+        {
+          "label": "Transportation",
+          "value": "8 one-way trips per year, 50 mile limit"
+        },
+        {
+          "label": "SilverSneakers fitness",
+          "value": "$0 copay for participating facilities"
+        },
+        {
+          "label": "24/7 Nurseline",
+          "value": "$0 copay for health advice"
+        },
+        {
+          "label": "Worldwide emergency",
+          "value": "$500 copay, $100,000 coverage limit annually"
         }
       ]
     },
     {
-      "title": "Medical Services",
+      "title": "Diagnostic Tests & Imaging",
+      "icon": "microscope",
+      "rows": [
+        {
+          "label": "Lab services",
+          "value": "$0-$50"
+        },
+        {
+          "label": "X-rays/diagnostic imaging",
+          "value": "$0-$195"
+        },
+        {
+          "label": "Advanced imaging",
+          "value": "$25-$195"
+        },
+        {
+          "label": "Diagnostic tests",
+          "value": "$0-$195 or 20%"
+        },
+        {
+          "label": "Therapeutic radiology",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Specialty & Therapy Care",
+      "icon": "stethoscope",
+      "rows": [
+        {
+          "label": "Mental health (outpatient)",
+          "value": "$30"
+        },
+        {
+          "label": "Physical therapy",
+          "value": "$30"
+        },
+        {
+          "label": "Occupational therapy",
+          "value": "$30"
+        },
+        {
+          "label": "Speech therapy",
+          "value": "$30"
+        },
+        {
+          "label": "Podiatry/foot care",
+          "value": "$30"
+        }
+      ]
+    },
+    {
+      "title": "Home & Post-Acute Care",
+      "icon": "house-medical",
+      "rows": [
+        {
+          "label": "Skilled nursing facility",
+          "value": "$0/day days 1-20, $218/day days 21-100"
+        },
+        {
+          "label": "Durable medical equipment",
+          "value": "20%"
+        }
+      ]
+    },
+    {
+      "title": "Other Medical Services",
       "icon": "hospital",
       "rows": [
         {
-          "label": "Skilled Nursing (SNF)",
-          "value": "Covered"
+          "label": "Preventive care",
+          "value": "$0"
         },
         {
-          "label": "Home Health",
-          "value": "$0 copay"
+          "label": "Outpatient surgery/services",
+          "value": "$195"
         },
         {
-          "label": "Diagnostics/Imaging",
-          "value": "20% coinsurance"
+          "label": "Ambulatory surgical center",
+          "value": "$25"
         },
         {
-          "label": "Renal Dialysis",
-          "value": "20% coinsurance"
+          "label": "Prosthetics/orthotics",
+          "value": "20%"
         },
         {
-          "label": "DME/Medical Equipment",
-          "value": "20% coinsurance"
+          "label": "Diabetic supplies/monitoring",
+          "value": "$0 mail order, 20% retail"
         },
         {
-          "label": "Part B Drugs",
-          "value": "0-20% coinsurance"
+          "label": "Transportation",
+          "value": "$0"
         }
       ]
     },
@@ -127,20 +212,60 @@
       "icon": "pills",
       "rows": [
         {
-          "label": "Tier 1: Preferred Generic",
+          "label": "Tier 1 Preferred Generic - Preferred retail 30-day",
           "value": "$0"
         },
         {
-          "label": "Tier 2: Preferred Brand",
+          "label": "Tier 1 Preferred Generic - Standard retail 30-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 1 Preferred Generic - Mail order 90-day",
+          "value": "$0"
+        },
+        {
+          "label": "Tier 2 Preferred Brand - Preferred retail 30-day",
           "value": "$10"
         },
         {
-          "label": "Tier 3: Non-Preferred Drug",
+          "label": "Tier 2 Preferred Brand - Standard retail 30-day",
+          "value": "$10"
+        },
+        {
+          "label": "Tier 2 Preferred Brand - Mail order 90-day",
+          "value": "$20"
+        },
+        {
+          "label": "Tier 3 Non-Preferred Drug - Preferred retail 30-day",
           "value": "$50"
         },
         {
-          "label": "Tier 4: Specialty Tier",
+          "label": "Tier 3 Non-Preferred Drug - Standard retail 30-day",
+          "value": "$55"
+        },
+        {
+          "label": "Tier 3 Non-Preferred Drug - Mail order 90-day",
+          "value": "$100"
+        },
+        {
+          "label": "Tier 4 Specialty - Preferred retail 30-day",
           "value": "33%"
+        },
+        {
+          "label": "Tier 4 Specialty - Standard retail 30-day",
+          "value": "33%"
+        },
+        {
+          "label": "Part B drugs",
+          "value": "20% chemotherapy and other Part B drugs"
+        },
+        {
+          "label": "Part B insulin",
+          "value": "$35 one-month supply"
+        },
+        {
+          "label": "Catastrophic coverage",
+          "value": "$0"
         }
       ]
     },
@@ -182,8 +307,5 @@
         }
       ]
     }
-  ],
-  "star_rating_overall": 4.5,
-  "star_rating_part_c": 4.5,
-  "star_rating_part_d": 4.0
+  ]
 }
