@@ -98,7 +98,9 @@
 .plan-card{background:#fff;border:1px solid var(--rule);border-radius:16px;display:flex;flex-direction:column;transition:all .2s;position:relative;overflow:hidden}
 .plan-card:hover{border-color:var(--bright-purple);box-shadow:0 10px 28px rgba(80,11,126,.12);transform:translateY(-2px)}
 .card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:18px 20px 0 20px}
-.card-carrier{font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--bright-purple)}
+.carrier-lockup{display:flex;align-items:center;gap:10px;min-width:0}
+.carrier-logo{height:28px;width:auto;max-width:110px;object-fit:contain;flex-shrink:0}
+.card-carrier{font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--bright-purple);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .save-heart{background:transparent;border:none;cursor:pointer;color:var(--grey);padding:4px;display:flex;transition:all .15s;width:28px;height:28px;align-items:center;justify-content:center;border-radius:50%}
 .save-heart:hover{background:rgba(164,52,153,.08);color:var(--pink)}
 .save-heart.saved{color:var(--pink)}

@@ -167,7 +167,7 @@ function Under65Content() {
         </div>
 
         {/* Top filter bar — sort + filters (moved from sidebar) */}
-        <div className="mb-6 bg-white/[0.03] border border-white/10 rounded-xl p-4 space-y-4">
+        <div className="mb-6 bg-[#1e0f36] border border-white/10 rounded-xl p-4 space-y-4">
           <div className="flex flex-wrap items-end gap-4">
             <div className="min-w-[170px]">
               <label className={filterBarLabel}>Sort By</label>
