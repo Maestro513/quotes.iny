@@ -1,202 +1,142 @@
-import type { MedicarePlan, MedicarePlanType, DrugEstimate } from "@/types/medicare";
+"use client";
 
-interface MedicarePlanCardProps {
+import Link from "next/link";
+import { useState } from "react";
+import type { MedicarePlan, DrugEstimate } from "@/types/medicare";
+
+interface Props {
   plan: MedicarePlan;
-  isFeatured?: boolean;
   drugEstimate?: DrugEstimate;
 }
 
-const TYPE_LABEL: Record<MedicarePlanType, string> = {
-  MA: "Medicare Advantage",
-  Supplement: "Medigap Supplement",
-  PartD: "Part D Prescription",
-};
+const CheckIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+);
 
-const TYPE_DOT: Record<MedicarePlanType, string> = {
-  MA: "bg-violet-500",
-  Supplement: "bg-sky-500",
-  PartD: "bg-amber-500",
-};
+const HeartIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+  </svg>
+);
 
-const TYPE_BADGE: Record<MedicarePlanType, string> = {
-  MA: "text-violet-700 bg-violet-50 border-violet-200",
-  Supplement: "text-sky-700 bg-sky-50 border-sky-200",
-  PartD: "text-amber-700 bg-amber-50 border-amber-200",
-};
+const PhoneIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+  </svg>
+);
 
-function FeatureCard({ icon, label, value, color }: { icon: string; label: string; value: string; color: string }) {
+function fmtUSD(n: number) {
+  return n === 0 ? "$0" : `$${n.toLocaleString()}`;
+}
+
+function BenefitPill({ label, present, annotation }: { label: string; present: boolean; annotation?: string }) {
+  if (!present) return <span className="bpill absent">{label}</span>;
   return (
-    <div className={`rounded-lg border ${color} p-3 text-center min-w-0`}>
-      <div className="text-2xl mb-1">{icon}</div>
-      <div className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-0.5">{label}</div>
-      <div className="text-sm font-bold text-gray-800 leading-tight">{value}</div>
-    </div>
+    <span className="bpill">
+      <CheckIcon />
+      {annotation ? `${label} ${annotation}` : label}
+    </span>
   );
 }
 
-export default function MedicarePlanCard({ plan, isFeatured, drugEstimate }: MedicarePlanCardProps) {
-  const { id, name, carrier, type, premium_monthly, deductible, outOfPocketMax, benefits, highlights, starRatingOverall } = plan;
+export default function MedicarePlanCard({ plan, drugEstimate }: Props) {
+  const [saved, setSaved] = useState(false);
 
-  const fmt = (n: number) => n === 0 ? "$0" : `$${n.toLocaleString(undefined, { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 })}`;
+  const { id, name, carrier, benefits, premium_monthly, deductible, outOfPocketMax, starRatingOverall, partBGivebackAmount, otcAllowanceAmount } = plan;
+
+  const rating = starRatingOverall ? starRatingOverall.toFixed(1) : null;
+  const hasGiveback = (partBGivebackAmount ?? 0) > 0 && benefits.partBGiveback;
+  const hasOtc = (otcAllowanceAmount ?? 0) > 0 && benefits.otcAllowance;
 
   return (
-    <div
-      className={`rounded-xl overflow-hidden transition-all duration-200 hover:shadow-lg ${isFeatured ? "ring-2 ring-[#22c55e]/60" : ""}`}
-      style={{
-        background: "rgba(255,255,255,0.97)",
-        boxShadow: "0 1px 6px rgba(0,0,0,0.08)",
-        border: "1px solid rgba(0,0,0,0.06)",
-      }}
-    >
-      {/* Header */}
-      <div className="px-5 pt-4 pb-3 border-b border-gray-100 flex items-start justify-between gap-4">
-        <div className="flex-1 min-w-0">
-          <p className="text-gray-400 text-xs font-medium tracking-wide">{carrier}</p>
-          <h3 className="text-gray-900 font-bold text-base leading-snug mt-0.5">{name}</h3>
-          <p className="text-gray-400 text-[11px] mt-0.5 font-mono">{id}</p>
-          <div className="flex items-center gap-2 mt-1.5">
-            <span className={`w-2 h-2 rounded-full ${TYPE_DOT[type]}`} />
-            <span className={`text-[11px] font-semibold border px-2 py-0.5 rounded-full ${TYPE_BADGE[type]}`}>
-              {TYPE_LABEL[type]}
-            </span>
-            {isFeatured && <span className="text-[10px] font-bold text-white bg-[#22c55e] px-2 py-0.5 rounded-full uppercase">Best Value</span>}
-            {starRatingOverall != null && (
-              <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">
-                <span className="text-amber-500">★</span> {starRatingOverall.toFixed(1)}
-              </span>
-            )}
-          </div>
-        </div>
-        {premium_monthly === 0 && (
-          <div className="bg-[#22c55e]/10 border border-[#22c55e]/30 rounded-lg px-3 py-1.5 text-center shrink-0">
-            <div className="text-[#22c55e] text-lg font-extrabold">$0</div>
-            <div className="text-[#22c55e] text-[10px] font-semibold">Premium</div>
+    <article className="plan-card">
+      <div className="card-top">
+        <span className="card-carrier">{carrier}</span>
+        <button
+          className={`save-heart${saved ? " saved" : ""}`}
+          onClick={() => setSaved((s) => !s)}
+          aria-label={saved ? "Remove from saved" : "Save plan"}
+          aria-pressed={saved}
+        >
+          <HeartIcon />
+        </button>
+      </div>
+
+      <div className="card-body">
+        <h3 className="plan-name">{name}</h3>
+
+        {rating && (
+          <div className="rating-block">
+            <div className="rating-num">{rating}</div>
+            <div className="rating-meta">
+              CMS Stars
+              <br />
+              2026 Rating
+            </div>
           </div>
         )}
-      </div>
 
-      {/* Costs + Coverage side by side */}
-      <div className="px-5 py-4 flex flex-col lg:flex-row gap-6">
-        {/* Left: Key costs */}
-        <div className="shrink-0 lg:w-56">
-          <div className="text-gray-400 text-[10px] font-bold uppercase tracking-wider mb-3">Plan Costs</div>
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-500 font-medium">Monthly Premium</span>
-              <span className="text-xl font-extrabold text-[#22c55e]">{fmt(premium_monthly)}</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-500 font-medium">Deductible</span>
-              <span className="text-lg font-bold text-gray-800">{fmt(deductible)}</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-500 font-medium">Max Out-of-Pocket</span>
-              <span className="text-lg font-bold text-gray-800">{fmt(outOfPocketMax)}</span>
-            </div>
-            {drugEstimate && (
-              <>
-                <div className="border-t border-gray-100 pt-3 mt-1">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500 font-medium">Est. Annual Drug Cost</span>
-                    <span className="text-lg font-bold text-violet-700">{fmt(drugEstimate.annualCost)}</span>
-                  </div>
-                </div>
-                {drugEstimate.uncoveredDrugs.length > 0 && (
-                  <div className="mt-1">
-                    {drugEstimate.uncoveredDrugs.map((d) => (
-                      <span key={d} className="inline-flex items-center gap-1 text-[10px] font-semibold text-red-600 bg-red-50 border border-red-200 rounded-full px-2 py-0.5 mr-1 mb-0.5">
-                        ✕ {d.split(" ")[0]} not covered
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </>
-            )}
+        <div className="premium-hero">
+          <span className="premium-amount">{fmtUSD(premium_monthly)}</span>
+          <div className="premium-label">Monthly premium</div>
+          <div className="premium-note">+ your Part B premium</div>
+        </div>
+
+        <div className="stat-row">
+          <div className="stat-cell">
+            <span className="k">Primary Doctor</span>
+            <span className="v">{benefits.primaryCare}</span>
+          </div>
+          <div className="stat-cell">
+            <span className="k">Specialist</span>
+            <span className="v">{benefits.specialist}</span>
+          </div>
+          <div className="stat-cell">
+            <span className="k">In-Network Max</span>
+            <span className="v">{fmtUSD(outOfPocketMax)}</span>
+          </div>
+          <div className="stat-cell">
+            <span className="k">Rx Deductible</span>
+            <span className="v">{fmtUSD(deductible)}</span>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="hidden lg:block w-px bg-gray-200" />
-        <div className="lg:hidden h-px bg-gray-200" />
-
-        {/* Right: Coverage details */}
-        <div className="flex-1 min-w-0">
-          <div className="text-gray-400 text-[10px] font-bold uppercase tracking-wider mb-3">Coverage Details</div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2">
-            <div className="flex items-center justify-between col-span-1">
-              <span className="text-sm text-gray-500">Primary Care</span>
-              <span className="text-sm font-bold text-gray-800 ml-2">{benefits.primaryCare}</span>
-            </div>
-            <div className="flex items-center justify-between col-span-1">
-              <span className="text-sm text-gray-500">Specialist</span>
-              <span className="text-sm font-bold text-gray-800 ml-2">{benefits.specialist}</span>
-            </div>
-            <div className="flex items-center justify-between col-span-1">
-              <span className="text-sm text-gray-500">Emergency Room</span>
-              <span className="text-sm font-bold text-gray-800 ml-2">{benefits.emergencyRoom}</span>
-            </div>
-            <div className="flex items-center justify-between col-span-1">
-              <span className="text-sm text-gray-500">Urgent Care</span>
-              <span className="text-sm font-bold text-gray-800 ml-2">{benefits.urgentCare}</span>
-            </div>
-            <div className="flex items-center justify-between col-span-1">
-              <span className="text-sm text-gray-500">Rx (Tier 1)</span>
-              <span className="text-sm font-bold text-gray-800 ml-2">{benefits.rxCoverage}</span>
-            </div>
+        {hasGiveback && (
+          <div className="highlight">
+            <strong>Part B giveback:</strong>&nbsp;{benefits.partBGiveback}
           </div>
+        )}
+
+        {drugEstimate && drugEstimate.annualCost > 0 && (
+          <div className="highlight" style={{ borderLeftColor: "var(--bright-purple)", background: "rgba(80,11,126,.06)" }}>
+            <strong style={{ color: "var(--bright-purple)" }}>Est. annual Rx cost:</strong>&nbsp;{fmtUSD(drugEstimate.annualCost)}
+            {drugEstimate.uncoveredDrugs.length > 0 && ` · ${drugEstimate.uncoveredDrugs.length} not covered`}
+          </div>
+        )}
+
+        <div className="benefit-pills">
+          <BenefitPill label="Dental" present={Boolean(benefits.dental)} />
+          <BenefitPill label="Vision" present={Boolean(benefits.vision)} />
+          <BenefitPill label="Hearing" present={Boolean(benefits.hearing)} />
+          <BenefitPill label="Rx" present={Boolean(benefits.rxCoverage && benefits.rxCoverage !== "—")} />
+          {hasOtc && <BenefitPill label="OTC" present annotation={`$${otcAllowanceAmount}`} />}
+        </div>
+
+        <a href="tel:18444676968" className="enroll-btn">
+          <PhoneIcon />
+          Talk to a licensed agent
+        </a>
+
+        <div className="card-actions">
+          <Link href={`/medicare/${id}`} className="card-secondary">View full details</Link>
+          <button className="card-secondary" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14" /></svg>
+            Check network
+          </button>
         </div>
       </div>
-
-      {/* Feature cards: Dental, Vision, Hearing, OTC, Part B Giveback */}
-      {(benefits.dental || benefits.vision || benefits.hearing || benefits.otcAllowance || benefits.partBGiveback) && (
-        <div className="px-5 pb-4">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
-            {benefits.dental && (
-              <FeatureCard icon="🦷" label="Dental" value={benefits.dental} color="bg-blue-50 border-blue-200" />
-            )}
-            {benefits.vision && (
-              <FeatureCard icon="👁️" label="Vision" value={benefits.vision} color="bg-purple-50 border-purple-200" />
-            )}
-            {benefits.hearing && (
-              <FeatureCard icon="👂" label="Hearing" value={benefits.hearing} color="bg-amber-50 border-amber-200" />
-            )}
-            {benefits.otcAllowance && (
-              <FeatureCard icon="🛒" label="OTC Allowance" value={benefits.otcAllowance} color="bg-emerald-50 border-emerald-200" />
-            )}
-            {benefits.partBGiveback && (
-              <FeatureCard icon="💰" label="Part B Giveback" value={benefits.partBGiveback} color="bg-rose-50 border-rose-200" />
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* Highlights */}
-      {highlights.length > 0 && (
-        <div className="px-5 py-3 border-t border-gray-100">
-          <div className="flex flex-wrap gap-2">
-            {highlights.map((h) => (
-              <span key={h} className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-700 bg-violet-50 border border-violet-100 rounded-full px-3 py-1">
-                <svg className="w-3 h-3 text-[#22c55e] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-                {h}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Footer */}
-      <div className="px-5 py-2.5 bg-gray-50/60 border-t border-gray-100 flex items-center justify-between">
-        <div className="flex gap-5">
-          <span className="text-violet-600 text-sm font-medium cursor-pointer hover:text-violet-800">Benefits</span>
-          <span className="text-violet-600 text-sm font-medium cursor-pointer hover:text-violet-800">Coverage</span>
-        </div>
-        <div className="flex gap-2">
-          <button className="px-4 py-1.5 text-sm font-medium rounded-lg border border-gray-200 text-gray-500 hover:border-gray-300 cursor-pointer">Plan Details</button>
-          <button className="px-5 py-1.5 text-sm font-semibold rounded-lg bg-[#22c55e] text-white hover:bg-green-400 cursor-pointer">Enroll Now</button>
-        </div>
-      </div>
-    </div>
+    </article>
   );
 }
