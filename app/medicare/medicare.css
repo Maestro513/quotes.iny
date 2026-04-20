@@ -94,44 +94,51 @@
 @media (max-width:1100px){.plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:720px){.plan-grid{grid-template-columns:1fr}}
 
-/* Plan card */
-.plan-card{background:#fff;border:1px solid var(--rule);border-radius:16px;display:flex;flex-direction:column;transition:all .2s;position:relative;overflow:hidden}
-.plan-card:hover{border-color:var(--bright-purple);box-shadow:0 10px 28px rgba(80,11,126,.12);transform:translateY(-2px)}
-.card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:18px 20px 0 20px}
-.carrier-lockup{display:flex;align-items:center;gap:10px;min-width:0}
-.carrier-logo{height:28px;width:auto;max-width:110px;object-fit:contain;flex-shrink:0}
-.card-carrier{font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--bright-purple);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.save-heart{background:transparent;border:none;cursor:pointer;color:var(--grey);padding:4px;display:flex;transition:all .15s;width:28px;height:28px;align-items:center;justify-content:center;border-radius:50%}
+/* Plan card — polished: layered shadow, tabular nums, smoother hover */
+.plan-card{background:#fff;border:1px solid rgba(15,2,32,.08);border-radius:18px;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;position:relative;overflow:hidden;box-shadow:0 1px 2px rgba(15,2,32,.04),0 8px 24px rgba(15,2,32,.06)}
+.plan-card:hover{border-color:rgba(138,53,167,.25);box-shadow:0 2px 4px rgba(15,2,32,.05),0 18px 40px rgba(15,2,32,.1);transform:translateY(-2px)}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 20px 0 20px}
+.carrier-lockup{display:flex;align-items:center;gap:12px;min-width:0}
+.carrier-logo{height:36px;width:36px;max-width:36px;object-fit:contain;flex-shrink:0;border-radius:9px;background:#fff;padding:3px;border:1px solid rgba(15,2,32,.08);box-shadow:0 1px 2px rgba(15,2,32,.04) inset}
+.card-carrier{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-purple);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.save-heart{background:transparent;border:none;cursor:pointer;color:#cbb5de;padding:0;display:flex;transition:all .15s;width:32px;height:32px;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0}
 .save-heart:hover{background:rgba(164,52,153,.08);color:var(--pink)}
 .save-heart.saved{color:var(--pink)}
-.save-heart svg{width:18px;height:18px}
+.save-heart svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
 .save-heart.saved svg{fill:currentColor}
-.card-body{padding:12px 20px 20px 20px;display:flex;flex-direction:column;gap:14px;flex:1}
-.plan-name{font-size:16px;font-weight:700;color:var(--black);line-height:1.35;margin:0;letter-spacing:-.01em}
-.rating-block{display:flex;align-items:center;gap:10px}
-.rating-num{font-size:22px;font-weight:800;color:var(--bright-purple);letter-spacing:-.02em;line-height:1}
-.rating-num::after{content:"★";color:#facc15;font-weight:400;margin-left:2px}
-.rating-meta{font-size:11.5px;color:var(--grey);line-height:1.3;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
-.premium-hero{background:var(--offwhite);border-radius:12px;padding:14px 16px;text-align:center;border:1px solid rgba(80,11,126,.08)}
-.premium-amount{font-size:34px;font-weight:800;color:var(--black);letter-spacing:-.03em;line-height:1;display:block}
-.premium-label{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em;margin-top:4px;font-weight:600}
-.premium-note{font-size:11.5px;color:var(--grey);margin-top:6px;font-style:italic}
-.stat-row{display:flex;flex-direction:column;gap:8px}
-.stat-cell{display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding:10px 12px;background:#f9f5ed;border-radius:10px;border:1px solid rgba(80,11,126,.06)}
-.stat-cell .k{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.04em;font-weight:600}
-.stat-cell .v{font-size:14px;font-weight:700;color:var(--black)}
-.benefit-pills{display:flex;flex-wrap:wrap;gap:5px}
-.bpill{display:inline-flex;align-items:center;gap:4px;padding:4px 9px;background:rgba(0,189,132,.1);color:var(--green-dark);border:1px solid rgba(0,189,132,.25);border-radius:999px;font-size:11.5px;font-weight:600;letter-spacing:.01em}
-.bpill.absent{background:transparent;color:var(--grey);border-color:#e4e4e7;text-decoration:line-through}
-.bpill svg{width:10px;height:10px}
+.save-heart:focus-visible{outline:2px solid rgba(164,52,153,.4);outline-offset:2px}
+.card-body{padding:14px 20px 18px 20px;display:flex;flex-direction:column;gap:14px;flex:1}
+.plan-name{font-size:16.5px;font-weight:600;color:var(--text,#1a1229);line-height:1.35;margin:0;letter-spacing:-.01em}
+/* Rating row — inline, de-emphasized (premium hero owns primary visual weight) */
+.rating-block{display:flex;align-items:center;gap:6px;color:var(--grey);font-size:11.5px;font-weight:500;margin-top:-4px}
+.rating-num{font-size:13px;font-weight:700;color:var(--black);letter-spacing:0;line-height:1}
+.rating-num::after{content:none}
+.rating-stars{display:inline-flex;gap:1px;color:#f59e0b}
+.rating-stars svg{width:13px;height:13px;fill:currentColor}
+.rating-stars .off{opacity:.25}
+.rating-meta{font-size:11.5px;color:var(--grey);line-height:1.3;text-transform:none;letter-spacing:0;font-weight:500}
+.premium-hero{background:linear-gradient(180deg,#faf7f2 0%,var(--offwhite) 100%);border-radius:14px;padding:18px 20px;text-align:center;border:1px solid rgba(15,2,32,.05)}
+.premium-amount{font-size:40px;font-weight:700;color:var(--green);letter-spacing:-.03em;line-height:1;display:block;font-variant-numeric:tabular-nums}
+.premium-label{font-size:10.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.1em;margin-top:8px;font-weight:600}
+.premium-note{font-size:11px;color:#8b7e9c;margin-top:4px;font-style:normal}
+.stat-row{display:flex;flex-direction:column;gap:6px}
+.stat-cell{display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding:10px 14px;background:#fafafa;border-radius:10px;border:1px solid rgba(15,2,32,.04)}
+.stat-cell .k{font-size:11px;color:var(--grey);letter-spacing:.02em;font-weight:500;text-transform:none}
+.stat-cell .v{font-size:14px;font-weight:700;color:var(--black);font-variant-numeric:tabular-nums}
+.benefit-pills{display:flex;flex-wrap:wrap;gap:6px}
+.bpill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;border-radius:7px;font-size:11px;font-weight:600;letter-spacing:0}
+.bpill.absent{background:#f9fafb;color:#9ca3af;border-color:#f3f4f6;text-decoration:none;font-weight:500}
+.bpill svg{width:11px;height:11px}
 .highlight{display:flex;gap:8px;padding:10px 12px;background:rgba(164,52,153,.06);border-left:3px solid var(--pink);border-radius:0 8px 8px 0;font-size:12.5px;color:var(--black);line-height:1.4}
 .highlight strong{color:var(--pink);font-weight:700}
-.enroll-btn{width:100%;padding:13px 16px;background:var(--green);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit;letter-spacing:.01em;transition:all .15s;box-shadow:0 3px 10px rgba(0,189,132,.25);display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none}
-.enroll-btn:hover{background:var(--green-dark);transform:translateY(-1px)}
-.enroll-btn svg{width:14px;height:14px}
+.enroll-btn{width:100%;padding:11px 16px;background:var(--green);color:#fff;border:1px solid var(--green);border-radius:10px;font-weight:600;font-size:13.5px;cursor:pointer;font-family:inherit;letter-spacing:-.005em;transition:all .15s ease;box-shadow:0 1px 2px rgba(0,189,132,.15),0 4px 12px rgba(0,189,132,.2);display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none}
+.enroll-btn:hover{background:var(--green-dark);border-color:var(--green-dark);box-shadow:0 2px 4px rgba(0,189,132,.2),0 8px 18px rgba(0,189,132,.25);transform:translateY(-1px)}
+.enroll-btn:focus-visible{outline:2px solid #86efac;outline-offset:2px}
+.enroll-btn svg{width:12px;height:12px}
 .card-actions{display:flex;gap:8px}
-.card-secondary{flex:1;padding:10px;background:transparent;border:1px solid var(--rule);border-radius:10px;color:var(--bright-purple);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px;transition:all .15s;text-decoration:none;text-align:center}
-.card-secondary:hover{border-color:var(--bright-purple);background:rgba(80,11,126,.04)}
+.card-secondary{flex:1;padding:10px 14px;background:#fff;border:1px solid #d6cde3;border-radius:10px;color:#4c2f6a;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px;transition:all .15s;text-decoration:none;text-align:center;letter-spacing:-.005em}
+.card-secondary:hover{border-color:var(--bright-purple);background:#faf7ff;color:#4c1d95}
+.card-secondary:focus-visible{outline:2px solid #c4b5fd;outline-offset:2px}
 .card-secondary svg{width:13px;height:13px}
 
 /* Load more */

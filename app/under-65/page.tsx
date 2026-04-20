@@ -156,11 +156,18 @@ function Under65Content() {
 
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-white text-2xl font-bold tracking-tight">Find Your Best Health Plan</h1>
+            <h1 className="text-white text-[26px] font-semibold tracking-tight leading-tight">Find Your Best Health Plan</h1>
             {!search.loading && !search.error && search.allPlans.length > 0 && (
-              <p className="text-white/40 text-sm mt-1">
-                {filters.filteredPlans.length} of {search.allPlans.length} plan{search.allPlans.length !== 1 ? "s" : ""}
-                {filters.activeFilterCount > 0 && " match your filters"}
+              <p className="text-white/55 text-sm mt-1.5 flex items-center gap-2 flex-wrap">
+                <span className="font-semibold text-white">
+                  {filters.filteredPlans.length} of {search.allPlans.length} plan{search.allPlans.length !== 1 ? "s" : ""}
+                </span>
+                {filters.activeFilterCount > 0 && (
+                  <>
+                    <span className="w-[3px] h-[3px] rounded-full bg-current opacity-40" />
+                    <span>match your filters</span>
+                  </>
+                )}
               </p>
             )}
           </div>
