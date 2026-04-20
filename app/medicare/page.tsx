@@ -111,7 +111,7 @@ function MedicareContent() {
     <div className="flex min-h-[calc(100vh-4rem)]">
       {/* Sidebar — search + individual filters */}
       <aside
-        className={`w-full lg:w-80 shrink-0 bg-[#4a2a6e]/90 backdrop-blur-md border-r border-white/[0.10] p-5 overflow-y-auto ${
+        className={`w-full lg:w-80 shrink-0 bg-[#1e0f36]/80 backdrop-blur-md border-r border-white/[0.10] p-5 overflow-y-auto ${
           sidebarOpen ? "block" : "hidden"
         } lg:block`}
       >
@@ -290,8 +290,8 @@ function MedicareContent() {
           )}
         </div>
 
-        {/* Top bar — quick-preset tabs + sort */}
-        <div className="mb-6 bg-[#4a2a6e] border border-white/10 rounded-xl p-4 space-y-3">
+        {/* Top bar — off-white surface with quick-preset tabs + sort */}
+        <div className="mb-6 bg-[#f5f1ec] border border-black/5 rounded-xl p-4 space-y-3 shadow-sm">
           <div className="flex flex-wrap gap-1.5" role="tablist">
             {PRESET_TABS.map(({ key, label }) => {
               const count = filters.presetCounts[key];
@@ -306,7 +306,7 @@ function MedicareContent() {
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all duration-150 cursor-pointer ${
                     active
                       ? "bg-[#22c55e] border-[#22c55e] text-white shadow-[0_0_12px_rgba(34,197,94,0.25)]"
-                      : "border-white/20 text-white/70 hover:border-white/40 hover:text-white"
+                      : "bg-white border-gray-300 text-gray-700 hover:border-gray-500 hover:text-gray-900"
                   }`}
                 >
                   {label} <span className="opacity-70 font-normal">({count})</span>
@@ -315,15 +315,15 @@ function MedicareContent() {
             })}
           </div>
 
-          <div className="flex items-center gap-3 pt-3 border-t border-white/[0.10]">
-            <label className="text-white/60 text-[11px] uppercase tracking-wider font-medium">Sort by</label>
+          <div className="flex items-center gap-3 pt-3 border-t border-black/[0.08]">
+            <label className="text-gray-500 text-[11px] uppercase tracking-wider font-medium">Sort by</label>
             <select
               value={filters.sortBy}
               onChange={(e) => filters.setSortBy(e.target.value as typeof filters.sortBy)}
-              className="bg-white/10 border border-white/15 rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:border-[#22c55e]/60"
+              className="bg-white border border-gray-300 rounded-lg px-3 py-1.5 text-gray-800 text-sm focus:outline-none focus:border-[#22c55e]/60"
             >
               {SORT_OPTIONS.map((o) => (
-                <option key={o.value} value={o.value} className="bg-[#1e0f36] text-white">{o.label}</option>
+                <option key={o.value} value={o.value} className="bg-white text-gray-800">{o.label}</option>
               ))}
             </select>
           </div>
@@ -343,7 +343,7 @@ function MedicareContent() {
 
         {!search.loading && !search.error && filters.filteredPlans.length > 0 && (
           <>
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
               {filters.visiblePlans.map((plan) => (
                 <MedicarePlanCard key={plan.id} plan={plan} drugEstimate={drugEstimates[plan.id]} />
               ))}

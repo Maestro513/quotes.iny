@@ -28,10 +28,10 @@ const sidebarLabel = "text-white/50 text-[11px] uppercase tracking-wider block m
 const sectionTitle = "text-white/70 font-semibold text-xs uppercase tracking-widest mb-3";
 const divider = "border-t border-white/[0.07] pt-4";
 
-// Filter-bar specific (compact horizontal layout above results)
+// Filter-bar specific (compact horizontal layout above results) — off-white surface
 const filterBarInput =
-  "bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-[#22c55e]/60 focus:bg-white/10 transition-colors";
-const filterBarLabel = "text-white/50 text-[10px] uppercase tracking-wider block mb-1 font-medium";
+  "bg-white border border-gray-300 rounded-lg px-3 py-2 text-gray-800 text-sm placeholder:text-gray-400 focus:outline-none focus:border-[#22c55e]/60 transition-colors";
+const filterBarLabel = "text-gray-500 text-[10px] uppercase tracking-wider block mb-1 font-medium";
 
 function CheckPill({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) {
   return (
@@ -40,8 +40,8 @@ function CheckPill({ label, checked, onChange }: { label: string; checked: boole
       onClick={onChange}
       className={`px-3 py-1 rounded-full text-xs font-medium border transition-all duration-150 cursor-pointer ${
         checked
-          ? "bg-[#22c55e]/20 border-[#22c55e]/60 text-[#22c55e]"
-          : "border-white/15 text-white/50 hover:border-white/30 hover:text-white/80"
+          ? "bg-[#22c55e]/15 border-[#22c55e] text-[#15803d]"
+          : "bg-white border-gray-300 text-gray-700 hover:border-gray-500 hover:text-gray-900"
       }`}
     >
       {label}
@@ -76,7 +76,7 @@ function Under65Content() {
     <div className="flex min-h-[calc(100vh-4rem)]">
       {/* Sidebar — search form only */}
       <aside
-        className={`w-full lg:w-72 shrink-0 bg-[#4a2a6e]/90 backdrop-blur-md border-r border-white/[0.07] p-5 overflow-y-auto ${
+        className={`w-full lg:w-72 shrink-0 bg-[#1e0f36]/80 backdrop-blur-md border-r border-white/[0.07] p-5 overflow-y-auto ${
           sidebarOpen ? "block" : "hidden"
         } lg:block`}
       >
@@ -167,7 +167,7 @@ function Under65Content() {
         </div>
 
         {/* Top filter bar — sort + filters (moved from sidebar) */}
-        <div className="mb-6 bg-[#4a2a6e] border border-white/10 rounded-xl p-4 space-y-4">
+        <div className="mb-6 bg-[#f5f1ec] border border-black/5 rounded-xl p-4 space-y-4 shadow-sm">
           <div className="flex flex-wrap items-end gap-4">
             <div className="min-w-[170px]">
               <label className={filterBarLabel}>Sort By</label>
@@ -209,7 +209,7 @@ function Under65Content() {
 
             <label className="flex items-center gap-2 cursor-pointer group self-center mt-3">
               <input type="checkbox" checked={filters.hsaOnly} onChange={(e) => filters.setHsaOnly(e.target.checked)} className="w-4 h-4 accent-[#22c55e]" />
-              <span className="text-white/60 text-sm group-hover:text-white/80 transition-colors">HSA eligible</span>
+              <span className="text-gray-700 text-sm group-hover:text-gray-900 transition-colors">HSA eligible</span>
             </label>
 
             {filters.activeFilterCount > 0 && (
@@ -220,14 +220,14 @@ function Under65Content() {
                   coverage.clearDoctor(() => {});
                   coverage.clearDrug(() => {});
                 }}
-                className="ml-auto text-xs text-white/50 hover:text-white border border-white/15 hover:border-white/30 rounded-lg px-3 py-2 transition-colors cursor-pointer self-center mt-3"
+                className="ml-auto text-xs text-gray-600 hover:text-gray-900 bg-white border border-gray-300 hover:border-gray-500 rounded-lg px-3 py-2 transition-colors cursor-pointer self-center mt-3"
               >
                 Clear all ({filters.activeFilterCount})
               </button>
             )}
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4 pt-3 border-t border-white/[0.07]">
+          <div className="grid md:grid-cols-2 gap-4 pt-3 border-t border-black/[0.08]">
             <div>
               <label className={filterBarLabel}>Find My Doctor</label>
               <CoverageSearch
@@ -263,7 +263,7 @@ function Under65Content() {
         )}
 
         {!search.loading && !search.error && (
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
             {filters.pagePlans.map((plan, i) => (
               <PlanCard
                 key={plan.id}
