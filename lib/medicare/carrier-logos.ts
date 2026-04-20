@@ -28,6 +28,27 @@ const CARRIER_LOGOS: Record<string, string> = {
   "Clover Health": "/iny-assets/carriers/clover-health.jpg",
   "Excellus Health Plan, Inc": "/iny-assets/carriers/excellus.png",
   "BlueCross BlueShield of Tennessee": "/iny-assets/carriers/bcbs-tennessee.svg",
+
+  // ACA / under-65 carriers (also appear on some Medicare lines)
+  "Oscar Insurance Company": "/iny-assets/686ca2e914dd244075093f85_oscar-logo.png",
+  "Oscar Health": "/iny-assets/686ca2e914dd244075093f85_oscar-logo.png",
+  Oscar: "/iny-assets/686ca2e914dd244075093f85_oscar-logo.png",
+  Ambetter: "/iny-assets/686ca2e9cd721ab886e5ff3b_ambetter-logo.png",
+  "Ambetter from Sunshine Health": "/iny-assets/686ca2e9cd721ab886e5ff3b_ambetter-logo.png",
+  "Ambetter Health": "/iny-assets/686ca2e9cd721ab886e5ff3b_ambetter-logo.png",
+  Centene: "/iny-assets/carriers/centene.jpg",
+  "CVS Health": "/iny-assets/carriers/cvs-aetna.png",
+  "Aetna CVS Health": "/iny-assets/carriers/cvs-aetna.png",
+  "Elevance Health": "/iny-assets/carriers/elevance-health.jpg",
+  EmblemHealth: "/iny-assets/carriers/emblem-health.png",
+  "Emblem Health": "/iny-assets/carriers/emblem-health.png",
+  "Molina Healthcare": "/iny-assets/carriers/molina-healthcare.png",
+  Molina: "/iny-assets/carriers/molina-healthcare.png",
+  "Mutual of Omaha": "/iny-assets/carriers/mutual-of-omaha.png",
+  "AARP Medicare": "/iny-assets/carriers/aarp-medicare.png",
+  AARP: "/iny-assets/carriers/aarp-medicare.png",
+  "Health First Health Plans": "/iny-assets/carriers/health-first-ny.png",
+  "Healthfirst": "/iny-assets/carriers/health-first-ny.png",
 };
 
 const FALLBACK = "/iny-assets/carriers/bcbs-association.png";

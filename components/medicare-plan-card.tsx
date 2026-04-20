@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { MedicarePlan, DrugEstimate } from "@/types/medicare";
+import { carrierLogo } from "@/lib/medicare/carrier-logos";
 
 interface Props {
   plan: MedicarePlan;
@@ -53,7 +54,14 @@ export default function MedicarePlanCard({ plan, drugEstimate }: Props) {
   return (
     <article className="plan-card">
       <div className="card-top">
-        <span className="card-carrier">{carrier}</span>
+        <div className="carrier-lockup">
+          <img
+            src={carrierLogo(carrier)}
+            alt={carrier}
+            className="carrier-logo"
+          />
+          <span className="card-carrier">{carrier}</span>
+        </div>
         <button
           className={`save-heart${saved ? " saved" : ""}`}
           onClick={() => setSaved((s) => !s)}

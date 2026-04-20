@@ -1,4 +1,5 @@
 import type { PlanBenefits } from "@/types/under65";
+import { carrierLogo } from "@/lib/medicare/carrier-logos";
 
 interface Props {
   planName: string;
@@ -50,9 +51,16 @@ export default function PlanCard({
       <div className="p-5">
         {/* Carrier + name / badges */}
         <div className="flex items-start justify-between gap-4">
-          <div className="min-w-0">
-            <p className="text-gray-400 text-xs mb-0.5">{carrier}</p>
-            <h3 className="text-gray-900 font-bold text-base leading-snug">{planName}</h3>
+          <div className="min-w-0 flex items-start gap-3">
+            <img
+              src={carrierLogo(carrier)}
+              alt={carrier}
+              className="h-8 w-8 object-contain rounded-md bg-white p-0.5 border border-gray-200 shrink-0 mt-0.5"
+            />
+            <div className="min-w-0">
+              <p className="text-gray-400 text-xs mb-0.5">{carrier}</p>
+              <h3 className="text-gray-900 font-bold text-base leading-snug">{planName}</h3>
+            </div>
           </div>
           <div className="flex items-center gap-1.5 flex-wrap shrink-0 mt-0.5">
             {metalTier && (
