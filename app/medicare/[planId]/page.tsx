@@ -589,34 +589,34 @@ export default async function PlanDetailPage({ params }: Params) {
           </div>
           <div className="foot-disclaimer">
             <p style={{ marginBottom: 12 }}>
-              <strong>If you need help, please call 1-844-216-3636. TTY users 711. Mon–Fri: 8am–7pm ET</strong> for licensed insurance agents who can assist with finding information on available Medicare Advantage, Medicare Supplement Insurance, and Prescription Drug Plans.
+              <strong>Need help choosing a plan?</strong> A state-licensed agent is available Monday–Friday, 8am–7pm ET at <a href="tel:18442163636">1-844-216-3636</a> (TTY users: 711). We can walk you through Medicare Advantage, Medicare Supplement, and prescription drug plans available where you live — no cost, no pressure.
             </p>
             <p style={{ marginBottom: 10 }}>
-              We do not offer every plan available in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program (SHIP) to get information on all of your options. Not all plans offer all of these benefits. Benefits may vary by carrier and location. Limitations and exclusions may apply.
+              We don&rsquo;t represent every plan sold in your area. For the full universe of options, call 1-800-MEDICARE, visit Medicare.gov, or contact your State Health Insurance Program (SHIP). Benefits, copays, and plan availability vary by carrier and county; limitations and exclusions apply.
             </p>
             <p style={{ marginBottom: 10 }}>
-              A benefits advisor is a licensed insurance agent. * Depending on service provided. See Summary of Benefits for more details.
+              Throughout this site, &ldquo;benefits advisor&rdquo; means a state-licensed insurance agent. An asterisk (*) next to any cost means the amount depends on where the service is provided — each plan&rsquo;s Summary of Benefits has the full breakdown.
             </p>
             <p style={{ marginBottom: 10 }}>
-              <strong>Insurance Ad — No Government Affiliation.</strong> This ad is not from the government. It&rsquo;s from Insurance &apos;n You, an independent Medicare insurance agency selling plans from many insurance companies. The Medicare plans represented are PDP, HMO, PPO, or PFFS plans with a Medicare contract. Enrollment in plans depends on contract renewal. Enrollment in a plan may be limited to certain times. Eligibility may require a Special or Initial Enrollment Period. Insurance &apos;n You and Medicare supplement insurance plans are not connected with or endorsed by the U.S. government or the federal Medicare program.
+              <strong>Not a government site.</strong> Insurance &apos;n You is a private independent insurance agency — nothing you read here is a federal communication. The Medicare plans shown are PDP, HMO, PPO, or PFFS plans that hold a contract with Medicare. Plan contracts renew yearly, and enrollment generally requires an open, Special, or Initial Enrollment Period. Neither Insurance &apos;n You nor the Medicare supplement plans listed are endorsed by or affiliated with the U.S. government or the federal Medicare program.
             </p>
             <p style={{ marginBottom: 10 }}>
-              By initiating a chat or scheduling a call, you are agreeing to be contacted by a licensed sales agent by email, text message or phone call (including by autodialer or prerecorded/artificial voice) to discuss information about Medicare plans. This is a solicitation for insurance. Standard messaging rates apply.
+              Starting a chat or scheduling a callback means you&rsquo;re OK with a licensed agent reaching you by phone, text, or email — including via autodialer or recorded voice. This site solicits insurance. Standard message and data rates may apply.
             </p>
             <p style={{ marginBottom: 10 }}>
-              Benefits shown are for the 2026 plan year. Not all plans offer all benefits mentioned. Benefits may vary by carrier and location. Deductibles, copays, and coinsurance may apply. Limitations and exclusions may apply. $0 premium plans are not available in all areas. You must continue to pay your Part B premium.
+              All benefits on this page are for the 2026 plan year. Coverage, copays, deductibles, coinsurance, and $0-premium availability vary by plan and location. Your Medicare Part B premium always applies in addition to any Medicare Advantage premium shown.
             </p>
             <p style={{ marginBottom: 10 }}>
-              Your information and use of this site is governed by our most recent <Link href="/terms">Terms of Use</Link> and <Link href="/privacy">Privacy Policy</Link>. Insurance &apos;n You is your independent Medicare insurance advisor.
+              Use of this site is governed by our <Link href="/terms">Terms of Use</Link> and <Link href="/privacy">Privacy Policy</Link>. Insurance &apos;n You serves as your independent Medicare insurance advisor.
             </p>
             <p style={{ marginBottom: 10 }}>
-              Insurance &apos;n You&rsquo;s website is operated by <strong>1 World Insurance, LLC</strong>, a licensed health insurance agency doing business as Insurance &apos;n You (NPN 20116201). The purpose of this site is to solicit insurance. Insurance &apos;n You is not affiliated with the Health Insurance Marketplace&reg; or any federal or state insurance marketplace. You may be contacted by an insurance agent/producer or insurance company. Invitations for insurance applications are made through 1 World Insurance, LLC, only where licensed and appointed.
+              Insurancenyou.com is operated by <strong>1 World Insurance, LLC</strong> — a licensed health insurance agency doing business as Insurance &apos;n You (NPN 20116201). The purpose of this site is to solicit insurance. We are not affiliated with the Health Insurance Marketplace&reg; or any federal or state marketplace. An insurance agent or producer may contact you using the information you provide. Applications are offered through 1 World Insurance, LLC only in states where it is licensed and appointed.
             </p>
             <p style={{ marginBottom: 10 }}>
-              Insurancenyou.com is required to comply with all applicable federal law, including the standards established under 45 CFR 155.220(c) and (d) and standards established under 45 CFR 155.260 to protect the privacy and security of personally identifiable information. This website does not provide a complete listing of, or display all data on, all Qualified Health Plans being offered in your state or service area through the Marketplace website or the federal Medicare program. To see all available data on Qualified Health Plan options in your state, visit your state Marketplace website or go to the Health Insurance Marketplace website at <a href="https://www.healthcare.gov" target="_blank" rel="noopener">https://www.healthcare.gov</a>.
+              Per 45 CFR 155.220(c)(d) and 155.260, we protect the privacy and security of any personally identifiable information you share with us. This site does not list every Qualified Health Plan offered in your state through the Marketplace or the federal Medicare program. For the complete set of plans in your state, check your state Marketplace website or the federal Health Insurance Marketplace at <a href="https://www.healthcare.gov" target="_blank" rel="noopener">healthcare.gov</a>.
             </p>
             <p>
-              Benefit(s) mentioned may be part of a Special Supplemental Benefit for the Chronically Ill (SSBCI). You may qualify if you have one or more medically complex chronic conditions that are life-threatening or significantly limit your overall health or function, have a high risk of hospitalization, and require intensive care coordination to manage one or more of the following conditions: Chronic Heart Failure, Cardiovascular Disorders, Chronic Lung Disorders, Chronic Kidney Disease, or Diabetes. This is not a complete list of qualifying conditions. Having a qualifying condition alone does not mean you will receive the benefit(s). Other requirements may apply. Please refer to the Evidence of Coverage.
+              Certain benefits shown may be Special Supplemental Benefits for the Chronically Ill (SSBCI). Eligibility typically requires one or more medically complex chronic conditions that threaten your health, create a high hospitalization risk, and need intensive care coordination — examples include chronic heart failure, cardiovascular or lung disorders, chronic kidney disease, and diabetes. That list is not exhaustive, and having a qualifying condition alone doesn&rsquo;t guarantee access to a given benefit. Each plan&rsquo;s Evidence of Coverage has the full eligibility rules.
             </p>
           </div>
         </div>
