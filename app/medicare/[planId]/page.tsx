@@ -588,7 +588,30 @@ export default async function PlanDetailPage({ params }: Params) {
             </div>
           </div>
           <div className="foot-disclaimer">
-            Insurance &apos;n You is an independent insurance agency. We do not offer every plan available in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program (SHIP) to get information on all of your options. Plan availability varies by region. Last updated for plan year 2026.
+            <p style={{ marginBottom: 12 }}>
+              <strong>If you need help, please call 1-844-216-3636. TTY users 711. Mon–Fri: 8am–7pm ET</strong> for licensed insurance agents who can assist with finding information on available Medicare Advantage, Medicare Supplement Insurance, and Prescription Drug Plans.
+            </p>
+            <p style={{ marginBottom: 10 }}>
+              We do not offer every plan available in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program (SHIP) to get information on all of your options. Not all plans offer all of these benefits. Benefits may vary by carrier and location. Limitations and exclusions may apply.
+            </p>
+            <p style={{ marginBottom: 10 }}>
+              A benefits advisor is a licensed insurance agent. * Depending on service provided. See Summary of Benefits for more details.
+            </p>
+            <p style={{ marginBottom: 10 }}>
+              <strong>Insurance Ad — No Government Affiliation.</strong> This ad is not from the government. It&rsquo;s from Insurance &apos;n You, an independent Medicare insurance agency selling plans from many insurance companies. The Medicare plans represented are PDP, HMO, PPO, or PFFS plans with a Medicare contract. Enrollment in plans depends on contract renewal. Enrollment in a plan may be limited to certain times. Eligibility may require a Special or Initial Enrollment Period. Insurance &apos;n You and Medicare supplement insurance plans are not connected with or endorsed by the U.S. government or the federal Medicare program.
+            </p>
+            <p style={{ marginBottom: 10 }}>
+              By initiating a chat or scheduling a call, you are agreeing to be contacted by a licensed sales agent by email, text message or phone call (including by autodialer or prerecorded/artificial voice) to discuss information about Medicare plans. This is a solicitation for insurance. Standard messaging rates apply.
+            </p>
+            <p style={{ marginBottom: 10 }}>
+              Benefits shown are for the 2026 plan year. Not all plans offer all benefits mentioned. Benefits may vary by carrier and location. Deductibles, copays, and coinsurance may apply. Limitations and exclusions may apply. $0 premium plans are not available in all areas. You must continue to pay your Part B premium.
+            </p>
+            <p style={{ marginBottom: 10 }}>
+              Your information and use of this site is governed by our most recent <Link href="/terms">Terms of Use</Link> and <Link href="/privacy">Privacy Policy</Link>. Insurance &apos;n You is your independent Medicare insurance advisor.
+            </p>
+            <p>
+              Benefit(s) mentioned may be part of a Special Supplemental Benefit for the Chronically Ill (SSBCI). You may qualify if you have one or more medically complex chronic conditions that are life-threatening or significantly limit your overall health or function, have a high risk of hospitalization, and require intensive care coordination to manage one or more of the following conditions: Chronic Heart Failure, Cardiovascular Disorders, Chronic Lung Disorders, Chronic Kidney Disease, or Diabetes. This is not a complete list of qualifying conditions. Having a qualifying condition alone does not mean you will receive the benefit(s). Other requirements may apply. Please refer to the Evidence of Coverage.
+            </p>
           </div>
         </div>
       </footer>

@@ -1,8 +1,11 @@
+import "server-only";
 import fs from "node:fs";
 import path from "node:path";
 import type { PlanDetail } from "@/types/plan-detail";
 
-const DATA_DIR = path.join(process.cwd(), "data", "extracted_cms");
+// Path constructed indirectly so Turbopack's static analyzer doesn't try to
+// bundle all 13,860 plan JSONs. fs.readFileSync works normally at runtime.
+const DATA_DIR = path.join(process.cwd(), "data", "extracted" + "_cms");
 
 // Build-time index: plan_id -> filename. Built once, memoized.
 let _index: Map<string, string> | null = null;
@@ -66,17 +69,16 @@ export function allPlanIds(): string[] {
 }
 
 /**
- * Same as allPlanIds but each plan_id rendered in its 3-segment display form
- * — useful for generateStaticParams so `/medicare/H0609-048-000` works directly.
+ * Return empty list so all plan pages render on-demand with ISR caching.
+ * Pre-generating all 13,694 variants at build time blew past Vercel's
+ * deployment-size limits. Each plan still renders as a static HTML response
+ * (cached for 24h via `revalidate`), but only after first visit — Google's
+ * crawler will hit them as part of sitemap crawl, no SEO loss.
+ *
+ * If we want to pre-warm the top-N most-searched plans for faster first-hit,
+ * return a curated subset here (e.g., UHC Medicare Advantage plans for the top
+ * 20 states). For now: fully on-demand.
  */
 export function allPlanIdParams(): { planId: string }[] {
-  const out: { planId: string }[] = [];
-  const idx = buildIndex();
-  for (const id of idx.keys()) {
-    const parts = id.split("-");
-    // Store BOTH the 2-seg (input) and 3-seg-000 form so both URL shapes match
-    out.push({ planId: id });
-    if (parts.length === 2) out.push({ planId: `${id}-000` });
-  }
-  return out;
+  return [];
 }
