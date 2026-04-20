@@ -3,18 +3,15 @@
 import { useState, useMemo } from "react";
 import type { MedicarePlan, MedicarePlanType, MedicareNetworkType, DrugEstimate } from "@/types/medicare";
 
-export type SortOption = "premium-asc" | "premium-desc" | "alpha" | "moop-asc" | "moop-desc" | "rating-desc" | "drugcost-asc";
-
-/** Quick-filter preset tabs: one-click bundles that override individual filters. */
-export type QuickPreset =
-  | "all"
-  | "zero-premium"
-  | "highly-rated"
-  | "low-moop"
-  | "with-giveback"
-  | "high-otc"
-  | "ppo"
-  | "hmo";
+export type SortOption =
+  | "premium-asc"
+  | "premium-desc"
+  | "rating-desc"
+  | "moop-asc"
+  | "giveback-desc"
+  | "otc-desc"
+  | "drugcost-asc"
+  | "alpha";
 
 const PAGE_SIZE = 20;
 
@@ -29,7 +26,6 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
   const [minOtc, setMinOtc] = useState<number>(0);
   const [requiredBenefits, setRequiredBenefits] = useState<Set<string>>(new Set());
   const [sortBy, setSortBy] = useState<SortOption>("premium-asc");
-  const [quickPreset, setQuickPreset] = useState<QuickPreset>("all");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   const carriers = useMemo(() => {
@@ -39,17 +35,6 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
 
   const filteredPlans = useMemo(() => {
     let result = allPlans;
-
-    // Quick presets override individual controls
-    switch (quickPreset) {
-      case "zero-premium": result = result.filter((p) => p.premium_monthly === 0); break;
-      case "highly-rated": result = result.filter((p) => (p.starRatingOverall ?? 0) >= 4.5); break;
-      case "low-moop": result = result.filter((p) => p.outOfPocketMax > 0 && p.outOfPocketMax <= 5000); break;
-      case "with-giveback": result = result.filter((p) => (p.partBGivebackAmount ?? 0) > 0); break;
-      case "high-otc": result = result.filter((p) => (p.otcAllowanceAmount ?? 0) >= 45); break;
-      case "ppo": result = result.filter((p) => p.networkType === "PPO"); break;
-      case "hmo": result = result.filter((p) => p.networkType === "HMO"); break;
-    }
 
     if (planTypeFilter) result = result.filter((p) => p.type === planTypeFilter);
     if (networkTypeFilter) result = result.filter((p) => p.networkType === networkTypeFilter);
@@ -79,17 +64,23 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
       switch (sortBy) {
         case "premium-asc": return a.premium_monthly - b.premium_monthly;
         case "premium-desc": return b.premium_monthly - a.premium_monthly;
-        case "alpha": return a.name.localeCompare(b.name);
-        case "moop-asc": return a.outOfPocketMax - b.outOfPocketMax;
-        case "moop-desc": return b.outOfPocketMax - a.outOfPocketMax;
         case "rating-desc": return (b.starRatingOverall ?? 0) - (a.starRatingOverall ?? 0);
+        case "moop-asc": {
+          // Plans with $0 or missing MOOP sort to the bottom (likely data gap, not genuinely unlimited)
+          const am = a.outOfPocketMax > 0 ? a.outOfPocketMax : Infinity;
+          const bm = b.outOfPocketMax > 0 ? b.outOfPocketMax : Infinity;
+          return am - bm;
+        }
+        case "giveback-desc": return (b.partBGivebackAmount ?? 0) - (a.partBGivebackAmount ?? 0);
+        case "otc-desc": return (b.otcAllowanceAmount ?? 0) - (a.otcAllowanceAmount ?? 0);
         case "drugcost-asc": return (drugEstimates[a.id]?.annualCost ?? Infinity) - (drugEstimates[b.id]?.annualCost ?? Infinity);
+        case "alpha": return a.name.localeCompare(b.name);
         default: return 0;
       }
     });
 
     return result;
-  }, [allPlans, planTypeFilter, networkTypeFilter, carrierFilter, zeroPremiumOnly, maxPremium, maxMoop, minGiveback, minOtc, requiredBenefits, sortBy, drugEstimates, quickPreset]);
+  }, [allPlans, planTypeFilter, networkTypeFilter, carrierFilter, zeroPremiumOnly, maxPremium, maxMoop, minGiveback, minOtc, requiredBenefits, sortBy, drugEstimates]);
 
   const visiblePlans = filteredPlans.slice(0, visibleCount);
 
@@ -110,7 +101,6 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
     setMinOtc(0);
     setRequiredBenefits(new Set());
     setSortBy("premium-asc");
-    setQuickPreset("all");
     setVisibleCount(PAGE_SIZE);
   }
 
@@ -118,26 +108,12 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
     setVisibleCount((c) => c + PAGE_SIZE);
   }
 
-  // Preset counts — computed against base allPlans so tab labels reflect the full universe, not current filter
-  const presetCounts = useMemo(() => ({
-    all: allPlans.length,
-    "zero-premium": allPlans.filter((p) => p.premium_monthly === 0).length,
-    "highly-rated": allPlans.filter((p) => (p.starRatingOverall ?? 0) >= 4.5).length,
-    "low-moop": allPlans.filter((p) => p.outOfPocketMax > 0 && p.outOfPocketMax <= 5000).length,
-    "with-giveback": allPlans.filter((p) => (p.partBGivebackAmount ?? 0) > 0).length,
-    "high-otc": allPlans.filter((p) => (p.otcAllowanceAmount ?? 0) >= 45).length,
-    ppo: allPlans.filter((p) => p.networkType === "PPO").length,
-    hmo: allPlans.filter((p) => p.networkType === "HMO").length,
-  }), [allPlans]);
-
   return {
     planTypeFilter, networkTypeFilter, carrierFilter, zeroPremiumOnly,
-    maxPremium, maxMoop, minGiveback, minOtc, requiredBenefits,
-    sortBy, quickPreset,
-    carriers, filteredPlans, visiblePlans, activeFilterCount, presetCounts, visibleCount,
+    maxPremium, maxMoop, minGiveback, minOtc, requiredBenefits, sortBy,
+    carriers, filteredPlans, visiblePlans, activeFilterCount, visibleCount,
     setPlanTypeFilter, setNetworkTypeFilter, setCarrierFilter, setZeroPremiumOnly,
-    setMaxPremium, setMaxMoop, setMinGiveback, setMinOtc, setRequiredBenefits,
-    setSortBy, setQuickPreset,
+    setMaxPremium, setMaxMoop, setMinGiveback, setMinOtc, setRequiredBenefits, setSortBy,
     clearAll, loadMore,
   };
 }

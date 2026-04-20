@@ -10,7 +10,7 @@ import MedicarePlanCard from "@/components/medicare-plan-card";
 import MedicationInput, { type SelectedDrug } from "@/components/medication-input";
 import EmptyState from "@/components/empty-state";
 import { useMedicareSearch } from "@/hooks/use-medicare-search";
-import { useMedicareFilters, type QuickPreset } from "@/hooks/use-medicare-filters";
+import { useMedicareFilters, type SortOption } from "@/hooks/use-medicare-filters";
 
 const NETWORK_OPTIONS: { label: string; value: MedicareNetworkType | "" }[] = [
   { label: "Any type", value: "" },
@@ -34,15 +34,14 @@ const BENEFIT_OPTIONS: { key: string; label: string }[] = [
   { key: "hearing", label: "Hearing" },
 ];
 
-const PRESET_TABS: { key: QuickPreset; label: string }[] = [
-  { key: "all", label: "All Plans" },
-  { key: "zero-premium", label: "$0 Premium" },
-  { key: "highly-rated", label: "Highly Rated (4.5+★)" },
-  { key: "low-moop", label: "Low MOOP <$5k" },
-  { key: "with-giveback", label: "With Giveback" },
-  { key: "high-otc", label: "High OTC" },
-  { key: "ppo", label: "PPO" },
-  { key: "hmo", label: "HMO" },
+const SORT_TABS: { key: SortOption; label: string }[] = [
+  { key: "premium-asc", label: "Lowest premium" },
+  { key: "rating-desc", label: "Highest rated" },
+  { key: "moop-asc", label: "Lowest MOOP" },
+  { key: "giveback-desc", label: "Biggest giveback" },
+  { key: "otc-desc", label: "Biggest OTC" },
+  { key: "drugcost-asc", label: "Best drug value" },
+  { key: "premium-desc", label: "Highest premium" },
 ];
 
 type PopoverKey = "plan-type" | "premium" | "moop" | "benefits" | "carrier" | null;
@@ -171,7 +170,7 @@ function MedicareContent() {
                   <div className="results-title-sub">
                     {search.loading
                       ? "Loading plans…"
-                      : `${filters.filteredPlans.length} plan${filters.filteredPlans.length !== 1 ? "s" : ""} ${filters.activeFilterCount || filters.quickPreset !== "all" ? `(filtered from ${totalInArea})` : "available in your area"}`}
+                      : `${filters.filteredPlans.length} plan${filters.filteredPlans.length !== 1 ? "s" : ""} ${filters.activeFilterCount ? `(filtered from ${totalInArea})` : "available in your area"}`}
                   </div>
                 </div>
                 {search.zip && (
@@ -367,20 +366,25 @@ function MedicareContent() {
                 )}
               </div>
 
-              {/* Quick-preset tabs */}
-              <div className="tab-strip" role="tablist">
-                {PRESET_TABS.map(({ key, label }) => (
-                  <button
-                    key={key}
-                    type="button"
-                    role="tab"
-                    aria-selected={filters.quickPreset === key}
-                    className={`tab${filters.quickPreset === key ? " active" : ""}`}
-                    onClick={() => filters.setQuickPreset(key)}
-                  >
-                    {label} <span className="tab-count">({filters.presetCounts[key]})</span>
-                  </button>
-                ))}
+              {/* Sort by tabs */}
+              <div className="sort-strip" role="tablist" aria-label="Sort plans by">
+                <span className="sort-label">Sort by:</span>
+                {SORT_TABS.map(({ key, label }) => {
+                  // Hide drug-cost sort until drugs added (otherwise it's a dead option)
+                  if (key === "drugcost-asc" && selectedDrugs.length === 0) return null;
+                  return (
+                    <button
+                      key={key}
+                      type="button"
+                      role="tab"
+                      aria-selected={filters.sortBy === key}
+                      className={`tab${filters.sortBy === key ? " active" : ""}`}
+                      onClick={() => filters.setSortBy(key)}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
               </div>
 
               {/* Results */}
