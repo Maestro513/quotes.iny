@@ -28,6 +28,11 @@ const sidebarLabel = "text-white/50 text-[11px] uppercase tracking-wider block m
 const sectionTitle = "text-white/70 font-semibold text-xs uppercase tracking-widest mb-3";
 const divider = "border-t border-white/[0.07] pt-4";
 
+// Filter-bar specific (compact horizontal layout above results)
+const filterBarInput =
+  "bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-[#22c55e]/60 focus:bg-white/10 transition-colors";
+const filterBarLabel = "text-white/50 text-[10px] uppercase tracking-wider block mb-1 font-medium";
+
 function CheckPill({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) {
   return (
     <button
@@ -69,7 +74,7 @@ function Under65Content() {
 
   return (
     <div className="flex min-h-[calc(100vh-4rem)]">
-      {/* Sidebar */}
+      {/* Sidebar — search form only */}
       <aside
         className={`w-full lg:w-72 shrink-0 bg-[#1e0f36]/80 backdrop-blur-md border-r border-white/[0.07] p-5 overflow-y-auto ${
           sidebarOpen ? "block" : "hidden"
@@ -135,95 +140,6 @@ function Under65Content() {
             Search Plans
           </button>
         </form>
-
-        {/* Filters */}
-        <div className="mt-5 space-y-4">
-          <div className={divider}>
-            <p className={sectionTitle}>Sort By</p>
-            <select value={filters.sortBy} onChange={(e) => filters.setSortBy(e.target.value)} className={sidebarInput}>
-              {SORT_OPTIONS.map((o) => <option key={o.value} value={o.value} className="bg-[#1e0f36] text-white">{o.label}</option>)}
-            </select>
-          </div>
-
-          <div className={divider}>
-            <p className={sectionTitle}>Metal Tier</p>
-            <div className="flex flex-wrap gap-1.5">
-              {METAL_TIERS.map((tier) => (
-                <CheckPill key={tier} label={tier} checked={filters.metalFilter.includes(tier)} onChange={() => filters.toggleMetal(tier)} />
-              ))}
-            </div>
-          </div>
-
-          <div className={divider}>
-            <p className={sectionTitle}>Plan Type</p>
-            <div className="flex flex-wrap gap-1.5">
-              {PLAN_TYPES.map((type) => (
-                <CheckPill key={type} label={type} checked={filters.typeFilter.includes(type)} onChange={() => filters.toggleType(type)} />
-              ))}
-            </div>
-          </div>
-
-          <div className={divider}>
-            <label className={sidebarLabel}>Max Monthly Premium</label>
-            <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 text-sm">$</span>
-              <input
-                type="number" min={0} value={filters.maxPremium}
-                onChange={(e) => filters.setMaxPremium(e.target.value)}
-                className={sidebarInput + " pl-7"}
-                placeholder="No limit"
-              />
-            </div>
-          </div>
-
-          <div className={divider}>
-            <label className="flex items-center gap-2.5 cursor-pointer group">
-              <input type="checkbox" checked={filters.hsaOnly} onChange={(e) => filters.setHsaOnly(e.target.checked)} className="w-4 h-4 accent-[#22c55e]" />
-              <span className="text-white/60 text-sm group-hover:text-white/80 transition-colors">HSA eligible only</span>
-            </label>
-          </div>
-
-          <div className={divider}>
-            <p className={sectionTitle}>Find My Doctor</p>
-            <CoverageSearch
-              type="provider"
-              zip={search.params.zip}
-              selectedId={coverage.doctorNpi}
-              selectedLabel={coverage.doctorLabel}
-              selectedAddress={coverage.doctorAddress}
-              loading={coverage.doctorLoading}
-              onSelect={(npi, label) => coverage.handleDoctorSelect(npi, label, filters.setDoctorCoveredIds)}
-              onClear={() => coverage.clearDoctor(() => filters.setDoctorCoveredIds(null))}
-            />
-          </div>
-
-          <div className={divider}>
-            <p className={sectionTitle}>Find My Medication</p>
-            <CoverageSearch
-              type="drug"
-              zip={search.params.zip}
-              selectedId={coverage.drugRxcui}
-              selectedLabel={coverage.drugLabel}
-              loading={coverage.drugLoading}
-              onSelect={(rxcui, label) => coverage.handleDrugSelect(rxcui, label, filters.setDrugCoveredIds)}
-              onClear={() => coverage.clearDrug(() => filters.setDrugCoveredIds(null))}
-            />
-          </div>
-
-          {filters.activeFilterCount > 0 && (
-            <button
-              type="button"
-              onClick={() => {
-                filters.clearAll();
-                coverage.clearDoctor(() => {});
-                coverage.clearDrug(() => {});
-              }}
-              className="w-full text-xs text-white/40 hover:text-white/70 border border-white/10 hover:border-white/25 rounded-lg py-2 transition-colors cursor-pointer"
-            >
-              Clear all filters ({filters.activeFilterCount})
-            </button>
-          )}
-        </div>
       </aside>
 
       {/* Results */}
@@ -235,7 +151,7 @@ function Under65Content() {
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 4.5h14.25M3 9h9.75M3 13.5h5.25m5.25-.75L17.25 9m0 0L21 12.75M17.25 9v12" />
           </svg>
-          {sidebarOpen ? "Hide Filters" : `Filters${filters.activeFilterCount ? ` (${filters.activeFilterCount})` : ""}`}
+          {sidebarOpen ? "Hide Search" : "Edit Search"}
         </button>
 
         <div className="flex items-center justify-between mb-6">
@@ -247,6 +163,96 @@ function Under65Content() {
                 {filters.activeFilterCount > 0 && " match your filters"}
               </p>
             )}
+          </div>
+        </div>
+
+        {/* Top filter bar — sort + filters (moved from sidebar) */}
+        <div className="mb-6 bg-white/[0.03] border border-white/10 rounded-xl p-4 space-y-4">
+          <div className="flex flex-wrap items-end gap-4">
+            <div className="min-w-[170px]">
+              <label className={filterBarLabel}>Sort By</label>
+              <select value={filters.sortBy} onChange={(e) => filters.setSortBy(e.target.value)} className={filterBarInput + " w-full"}>
+                {SORT_OPTIONS.map((o) => <option key={o.value} value={o.value} className="bg-[#1e0f36] text-white">{o.label}</option>)}
+              </select>
+            </div>
+
+            <div>
+              <label className={filterBarLabel}>Metal Tier</label>
+              <div className="flex flex-wrap gap-1.5">
+                {METAL_TIERS.map((tier) => (
+                  <CheckPill key={tier} label={tier} checked={filters.metalFilter.includes(tier)} onChange={() => filters.toggleMetal(tier)} />
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label className={filterBarLabel}>Plan Type</label>
+              <div className="flex flex-wrap gap-1.5">
+                {PLAN_TYPES.map((type) => (
+                  <CheckPill key={type} label={type} checked={filters.typeFilter.includes(type)} onChange={() => filters.toggleType(type)} />
+                ))}
+              </div>
+            </div>
+
+            <div className="w-[160px]">
+              <label className={filterBarLabel}>Max Monthly Premium</label>
+              <div className="relative">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 text-sm">$</span>
+                <input
+                  type="number" min={0} value={filters.maxPremium}
+                  onChange={(e) => filters.setMaxPremium(e.target.value)}
+                  className={filterBarInput + " pl-7 w-full"}
+                  placeholder="No limit"
+                />
+              </div>
+            </div>
+
+            <label className="flex items-center gap-2 cursor-pointer group self-center mt-3">
+              <input type="checkbox" checked={filters.hsaOnly} onChange={(e) => filters.setHsaOnly(e.target.checked)} className="w-4 h-4 accent-[#22c55e]" />
+              <span className="text-white/60 text-sm group-hover:text-white/80 transition-colors">HSA eligible</span>
+            </label>
+
+            {filters.activeFilterCount > 0 && (
+              <button
+                type="button"
+                onClick={() => {
+                  filters.clearAll();
+                  coverage.clearDoctor(() => {});
+                  coverage.clearDrug(() => {});
+                }}
+                className="ml-auto text-xs text-white/50 hover:text-white border border-white/15 hover:border-white/30 rounded-lg px-3 py-2 transition-colors cursor-pointer self-center mt-3"
+              >
+                Clear all ({filters.activeFilterCount})
+              </button>
+            )}
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4 pt-3 border-t border-white/[0.07]">
+            <div>
+              <label className={filterBarLabel}>Find My Doctor</label>
+              <CoverageSearch
+                type="provider"
+                zip={search.params.zip}
+                selectedId={coverage.doctorNpi}
+                selectedLabel={coverage.doctorLabel}
+                selectedAddress={coverage.doctorAddress}
+                loading={coverage.doctorLoading}
+                onSelect={(npi, label) => coverage.handleDoctorSelect(npi, label, filters.setDoctorCoveredIds)}
+                onClear={() => coverage.clearDoctor(() => filters.setDoctorCoveredIds(null))}
+              />
+            </div>
+            <div>
+              <label className={filterBarLabel}>Find My Medication</label>
+              <CoverageSearch
+                type="drug"
+                zip={search.params.zip}
+                selectedId={coverage.drugRxcui}
+                selectedLabel={coverage.drugLabel}
+                loading={coverage.drugLoading}
+                onSelect={(rxcui, label) => coverage.handleDrugSelect(rxcui, label, filters.setDrugCoveredIds)}
+                onClear={() => coverage.clearDrug(() => filters.setDrugCoveredIds(null))}
+              />
+            </div>
           </div>
         </div>
 
