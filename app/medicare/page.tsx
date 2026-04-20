@@ -42,7 +42,6 @@ const PRESET_TABS: { key: QuickPreset; label: string }[] = [
   { key: "with-giveback", label: "With Giveback" },
   { key: "high-otc", label: "High OTC" },
   { key: "ppo", label: "PPO" },
-  { key: "hmo", label: "HMO" },
 ];
 
 type PopoverKey = "plan-type" | "premium" | "moop" | "benefits" | "carrier" | null;

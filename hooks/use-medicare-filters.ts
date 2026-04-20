@@ -13,8 +13,7 @@ export type QuickPreset =
   | "low-moop"
   | "with-giveback"
   | "high-otc"
-  | "ppo"
-  | "hmo";
+  | "ppo";
 
 const PAGE_SIZE = 20;
 
@@ -48,7 +47,6 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
       case "with-giveback": result = result.filter((p) => (p.partBGivebackAmount ?? 0) > 0); break;
       case "high-otc": result = result.filter((p) => (p.otcAllowanceAmount ?? 0) >= 45); break;
       case "ppo": result = result.filter((p) => p.networkType === "PPO"); break;
-      case "hmo": result = result.filter((p) => p.networkType === "HMO"); break;
     }
 
     if (planTypeFilter) result = result.filter((p) => p.type === planTypeFilter);
@@ -127,7 +125,6 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
     "with-giveback": allPlans.filter((p) => (p.partBGivebackAmount ?? 0) > 0).length,
     "high-otc": allPlans.filter((p) => (p.otcAllowanceAmount ?? 0) >= 45).length,
     ppo: allPlans.filter((p) => p.networkType === "PPO").length,
-    hmo: allPlans.filter((p) => p.networkType === "HMO").length,
   }), [allPlans]);
 
   return {
