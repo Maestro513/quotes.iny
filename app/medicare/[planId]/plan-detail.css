@@ -246,9 +246,12 @@
   .price-trust{font-size:13px !important}
 
   /* Drug tier rows: keep label + cost on one line, no mid-value wrapping */
-  .tier-row{grid-template-columns:52px 1fr auto !important}
+  .tier-row{grid-template-columns:52px 1fr auto}
   .tier-cost{white-space:nowrap !important}
   .tier-name{white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis}
+  /* Non-tier meta rows (Drug deductible, Part B insulin, etc.) — their label
+     is the first <div> child (no tier-badge); keep it nowrap too */
+  .tier-row > div:first-child:not(.tier-badge){white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
   /* +2 on READABLE TEXT CONTENT ONLY — not buttons, pills, or padded chrome */
   .hero-blurb{font-size:19px !important}
