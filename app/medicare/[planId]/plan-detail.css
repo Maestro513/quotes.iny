@@ -245,6 +245,14 @@
   .price-phone{font-size:15px !important}
   .price-trust{font-size:13px !important}
 
+  /* ZIP search — replaces the "Licensed in all 50 states" footer in price card */
+  .zip-search{display:flex;gap:6px;margin-top:14px;padding-top:14px;border-top:1px solid var(--rule)}
+  .zip-search input{flex:1;min-width:0;padding:10px 12px;border:1px solid var(--rule);border-radius:8px;font-family:inherit;font-size:15px;color:var(--black);background:#fff;transition:all .15s}
+  .zip-search input:focus{outline:none;border-color:var(--bright-purple);box-shadow:0 0 0 3px rgba(80,11,126,.15)}
+  .zip-search input::placeholder{color:var(--grey)}
+  .zip-search button{padding:10px 16px;background:var(--green);color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:14px;white-space:nowrap;transition:all .15s}
+  .zip-search button:hover{background:var(--green-dark);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,189,132,.3)}
+
   /* Drug tier rows: keep label + cost on one line, no mid-value wrapping */
   .tier-row{grid-template-columns:52px 1fr auto}
   .tier-cost{white-space:nowrap !important}

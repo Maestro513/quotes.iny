@@ -315,10 +315,10 @@ export default async function PlanDetailPage({ params }: Params) {
               Talk to a licensed agent
             </a>
             <div className="price-phone">or call <a href="tel:18444676968">(844) 467-6968</a></div>
-            <div className="price-trust">
-              <Icon name="stethoscope" size={14} />
-              Licensed in all 50 states &middot; No cost, no obligation
-            </div>
+            <form className="zip-search" action="https://quotes.insurancenyou.com/medicare" method="GET">
+              <input type="text" name="zip" placeholder="Enter ZIP" pattern="[0-9]{5}" maxLength={5} inputMode="numeric" aria-label="ZIP code" required />
+              <button type="submit">Find plans</button>
+            </form>
           </aside>
         </div>
       </div>
