@@ -274,17 +274,35 @@ function MedicareContent() {
 
         <div className="flex items-start justify-between mb-6 gap-4">
           <div>
-            <h1 className="text-white text-2xl font-bold tracking-tight">Find Your Best Medicare Plan</h1>
-            <p className="text-white/60 text-sm mt-1">
-              {search.loading
-                ? "Loading plans…"
-                : search.allPlans.length > 0
-                ? `${filters.filteredPlans.length} plan${filters.filteredPlans.length !== 1 ? "s" : ""} ${filters.activeFilterCount || filters.quickPreset !== "all" ? `(filtered from ${totalInArea})` : "available in your area"}`
-                : "Enter a ZIP to see plans"}
+            <h1 className="text-white text-[26px] font-semibold tracking-tight leading-tight">Find Your Best Medicare Plan</h1>
+            <p className="text-white/55 text-sm mt-1.5 flex items-center gap-2 flex-wrap">
+              {search.loading ? (
+                "Loading plans…"
+              ) : search.allPlans.length > 0 ? (
+                <>
+                  <span className="font-semibold text-white">
+                    {filters.filteredPlans.length} plan{filters.filteredPlans.length !== 1 ? "s" : ""}
+                  </span>
+                  <span className="w-[3px] h-[3px] rounded-full bg-current opacity-40" />
+                  <span>
+                    {filters.activeFilterCount || filters.quickPreset !== "all"
+                      ? `filtered from ${totalInArea}`
+                      : "available in your area"}
+                  </span>
+                  <span className="w-[3px] h-[3px] rounded-full bg-current opacity-40" />
+                  <span>2026 plan year</span>
+                </>
+              ) : (
+                "Enter a ZIP to see plans"
+              )}
             </p>
           </div>
           {search.zip && (
-            <div className="text-white/70 text-sm bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 whitespace-nowrap">
+            <div className="text-white/75 text-sm bg-white/5 border border-white/10 rounded-lg px-3.5 py-2 whitespace-nowrap flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
               ZIP <strong className="text-white">{search.zip}</strong>
             </div>
           )}
@@ -305,8 +323,8 @@ function MedicareContent() {
                   onClick={() => filters.setQuickPreset(key)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all duration-150 cursor-pointer ${
                     active
-                      ? "bg-[#22c55e] border-[#22c55e] text-white shadow-[0_0_12px_rgba(34,197,94,0.25)]"
-                      : "bg-white border-gray-300 text-gray-700 hover:border-gray-500 hover:text-gray-900"
+                      ? "bg-[#22c55e] border-[#22c55e] text-white shadow-[0_2px_8px_rgba(34,197,94,0.25)]"
+                      : "bg-white border-gray-300 text-gray-700 hover:border-gray-500 hover:text-gray-900 hover:-translate-y-0.5"
                   }`}
                 >
                   {label} <span className="opacity-70 font-normal">({count})</span>
