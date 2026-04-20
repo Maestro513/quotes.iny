@@ -208,6 +208,10 @@ export default async function PlanDetailPage({ params }: Params) {
 
   const fullId = plan.plan_id_full || planId;
   const premiumNum = parseFloat(String(plan.monthly_premium || "0").replace(/[^0-9.]/g, "")) || 0;
+  const isDSNP = /D-?SNP/i.test(plan.plan_type || "");
+  const premiumDisplay = isDSNP
+    ? (plan.monthly_premium || "$0").replace(/\s+to\s+/i, " - ")
+    : (plan.monthly_premium || "$0");
   const county = plan.counties_count === "1" ? "county" : "counties";
 
   const keyBenefits = getSection(plan, "Key Benefits");
@@ -228,25 +232,6 @@ export default async function PlanDetailPage({ params }: Params) {
   return (
     <>
       <PlanJsonLd plan={plan} fullId={fullId} premiumNum={premiumNum} />
-
-      <div className="topbar">
-        <div className="topbar-inner">
-          <a href="https://www.insurancenyou.com"><img src="/iny-assets/66d9ac23d3ad7bfd1bb1f3f9_insurance-color-logo.svg" alt="Insurance 'n You" className="logo-img" /></a>
-          <nav className="nav-links">
-            <a href="https://www.insurancenyou.com/how-it-works">How It Works</a>
-            <a href="https://www.insurancenyou.com/blog">Blog</a>
-            <a href="https://www.insurancenyou.com/about-us">Who We Are</a>
-            <a href="https://www.insurancenyou.com/#features">Features</a>
-          </nav>
-          <div className="nav-cta">
-            <a href="tel:18444676968" className="nav-phone">
-              <Icon name="phone" size={14} />
-              Call now (844) 467-6968
-            </a>
-            <a href="https://app.insurancenyou.com/auth/login" className="btn btn-primary">Login</a>
-          </div>
-        </div>
-      </div>
 
       <div className="crumb">
         <Link href="/">Home</Link><span className="sep">&rsaquo;</span>
@@ -293,14 +278,19 @@ export default async function PlanDetailPage({ params }: Params) {
               </>
             )}
             <p className="hero-blurb">
-              A <strong>{premiumNum === 0 ? "$0-premium" : `${plan.monthly_premium}/month`}</strong> Medicare Advantage {plan.plan_type} plan covering{" "}
+              A <strong>{premiumNum === 0 ? "$0-premium" : `${premiumDisplay}/month`}</strong> Medicare Advantage {plan.plan_type} plan covering{" "}
               <strong>{plan.counties_count} {county}</strong> in {plan.geographic_area}. Offered by {plan.carrier}.
             </p>
           </div>
           <aside className="price-card">
             <div className="price-label">Monthly Premium</div>
-            <div className="price-amount">{plan.monthly_premium || "$0"}</div>
+            <div className="price-amount">{premiumDisplay}</div>
             <div className="price-period">per month, in addition to your Part B premium</div>
+            {isDSNP && (
+              <div className="price-period" style={{ marginTop: 4, fontStyle: "italic", opacity: 0.85 }}>
+                Your actual cost depends on your Medicaid eligibility level &mdash; full dual members typically pay $0.
+              </div>
+            )}
             <div className="price-divider"></div>
             <div className="price-mini"><span className="price-mini-label">Annual deductible (medical)</span><span className="price-mini-val">{plan.annual_deductible_in || "$0"}</span></div>
             <div className="price-mini"><span className="price-mini-label">Drug deductible</span><span className="price-mini-val">{plan.drug_deductible || "—"}</span></div>
