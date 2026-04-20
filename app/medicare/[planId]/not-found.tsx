@@ -13,7 +13,7 @@ export default function PlanNotFound() {
             <Link href="/life">Life</Link>
           </nav>
           <div className="nav-cta">
-            <a href="tel:18005555757" className="nav-phone">(800) 555-5757</a>
+            <a href="tel:18444676968" className="nav-phone">(844) 467-6968</a>
             <Link href="/medicare" className="btn btn-primary">Get a quote</Link>
           </div>
         </div>
@@ -26,7 +26,7 @@ export default function PlanNotFound() {
           </p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center" }}>
             <Link href="/medicare" className="btn btn-primary btn-lg">Browse all plans</Link>
-            <a href="tel:18005555757" className="btn btn-outline btn-lg">Talk to an agent</a>
+            <a href="tel:18444676968" className="btn btn-outline btn-lg">Talk to an agent</a>
           </div>
         </div>
       </div>

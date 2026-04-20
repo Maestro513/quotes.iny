@@ -240,9 +240,9 @@ export default async function PlanDetailPage({ params }: Params) {
             <a href="https://www.insurancenyou.com/contact">Contact</a>
           </nav>
           <div className="nav-cta">
-            <a href="tel:18005555757" className="nav-phone">
+            <a href="tel:18444676968" className="nav-phone">
               <Icon name="phone" size={14} />
-              (800) 555-5757
+              (844) 467-6968
             </a>
             <Link href="/medicare" className="btn btn-primary">Get a quote</Link>
           </div>
@@ -298,7 +298,7 @@ export default async function PlanDetailPage({ params }: Params) {
               <strong>{plan.counties_count} {county}</strong> in {plan.geographic_area}. Offered by {plan.carrier}.
             </p>
             <div className="hero-cta-row">
-              <a href="tel:18005555757" className="btn btn-primary btn-lg">
+              <a href="tel:18444676968" className="btn btn-primary btn-lg">
                 <Icon name="phone" size={16} />
                 Talk to a licensed agent
               </a>
@@ -318,8 +318,8 @@ export default async function PlanDetailPage({ params }: Params) {
             {isKnown(plan.part_b_premium_reduction as string) && <div className="price-mini"><span className="price-mini-label" style={{ color: "var(--green-dark)", fontWeight: 600 }}>Part B giveback</span><span className="price-mini-val" style={{ color: "var(--green-dark)" }}>{plan.part_b_premium_reduction}</span></div>}
             <div className="price-mini"><span className="price-mini-label">Plan type</span><span className="price-mini-val">{plan.plan_type}</span></div>
             <div className="price-mini"><span className="price-mini-label">Contract #</span><span className="price-mini-val">{plan.contract_number}</span></div>
-            <a href="tel:18005555757" className="btn btn-primary">Talk to agent</a>
-            <div className="price-phone">or call <a href="tel:18005555757">(800) 555-5757</a></div>
+            <a href="tel:18444676968" className="btn btn-primary">Talk to agent</a>
+            <div className="price-phone">or call <a href="tel:18444676968">(844) 467-6968</a></div>
             <div className="price-trust">
               <Icon name="stethoscope" size={14} />
               Licensed in all 50 states &middot; No cost, no obligation
@@ -544,9 +544,9 @@ export default async function PlanDetailPage({ params }: Params) {
             <h3 className="end-title">Talk to a licensed Insurance &apos;n You agent</h3>
             <p className="end-sub">No cost, no pressure. Our team will walk you through this plan and any others available in your ZIP code.</p>
             <div className="end-actions">
-              <a href="tel:18005555757" className="btn btn-primary btn-xl">
+              <a href="tel:18444676968" className="btn btn-primary btn-xl">
                 <Icon name="phone" size={18} />
-                Call (800) 555-5757
+                Call (844) 467-6968
               </a>
               <Link href="/medicare" className="btn btn-outline-light btn-xl">Schedule a callback</Link>
             </div>
@@ -581,7 +581,7 @@ export default async function PlanDetailPage({ params }: Params) {
             </div>
             <div className="foot-col">
               <h4>Contact</h4>
-              <a href="tel:18005555757">(800) 555-5757</a>
+              <a href="tel:18444676968">(844) 467-6968</a>
               <a href="https://www.insurancenyou.com/contact">Schedule a call</a>
               <a href="https://www.insurancenyou.com/about">About us</a>
               <a href="https://www.insurancenyou.com/privacy">Privacy</a>
@@ -589,7 +589,7 @@ export default async function PlanDetailPage({ params }: Params) {
           </div>
           <div className="foot-disclaimer">
             <p style={{ marginBottom: 12 }}>
-              <strong>Need help choosing a plan?</strong> A state-licensed agent is available Monday–Friday, 8am–7pm ET at <a href="tel:18442163636">1-844-216-3636</a> (TTY users: 711). We can walk you through Medicare Advantage, Medicare Supplement, and prescription drug plans available where you live — no cost, no pressure.
+              <strong>Need help choosing a plan?</strong> A state-licensed agent is available Monday–Friday, 10am–6:30pm ET at <a href="tel:18444676968">1-844-467-6968</a> (TTY users: 711). We can walk you through Medicare Advantage, Medicare Supplement, and prescription drug plans available where you live — no cost, no pressure.
             </p>
             <p style={{ marginBottom: 10 }}>
               We don&rsquo;t represent every plan sold in your area. For the full universe of options, call 1-800-MEDICARE, visit Medicare.gov, or contact your State Health Insurance Program (SHIP). Benefits, copays, and plan availability vary by carrier and county; limitations and exclusions apply.
