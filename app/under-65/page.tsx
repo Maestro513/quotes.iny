@@ -76,7 +76,7 @@ function Under65Content() {
     <div className="flex min-h-[calc(100vh-4rem)]">
       {/* Sidebar — search form only */}
       <aside
-        className={`w-full lg:w-72 shrink-0 bg-[#1e0f36]/80 backdrop-blur-md border-r border-white/[0.07] p-5 overflow-y-auto ${
+        className={`w-full lg:w-72 shrink-0 bg-[#4a2a6e]/90 backdrop-blur-md border-r border-white/[0.07] p-5 overflow-y-auto ${
           sidebarOpen ? "block" : "hidden"
         } lg:block`}
       >
@@ -167,7 +167,7 @@ function Under65Content() {
         </div>
 
         {/* Top filter bar — sort + filters (moved from sidebar) */}
-        <div className="mb-6 bg-[#1e0f36] border border-white/10 rounded-xl p-4 space-y-4">
+        <div className="mb-6 bg-[#4a2a6e] border border-white/10 rounded-xl p-4 space-y-4">
           <div className="flex flex-wrap items-end gap-4">
             <div className="min-w-[170px]">
               <label className={filterBarLabel}>Sort By</label>
