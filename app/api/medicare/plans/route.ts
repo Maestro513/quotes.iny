@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import type { MedicarePlan, MedicarePlanType } from "@/types/medicare";
+import type { MedicarePlan, MedicarePlanType, MedicareNetworkType } from "@/types/medicare";
 import { getPlansForZip, normalizePlanNumber } from "@/lib/medicare/zip-lookup";
 import { loadCmsPlan } from "@/lib/medicare/cms-lookup";
 
@@ -62,6 +62,23 @@ function mapPlanType(planType: string, planNumber: string): MedicarePlanType {
   if (pt.includes("pdp") || pt.includes("part d")) return "PartD";
   if (planNumber.charAt(0).toUpperCase() === "S") return "PartD";
   return "MA";
+}
+
+/** Extract HMO/PPO/HMO-POS network type from the CMS plan_type string. */
+function mapNetworkType(planType: string): MedicareNetworkType | undefined {
+  const pt = (planType ?? "").toLowerCase();
+  if (pt.includes("hmo-pos") || pt.includes("hmo/pos")) return "HMO-POS";
+  if (pt.includes("ppo")) return "PPO";
+  if (pt.includes("hmo")) return "HMO";
+  if (pt.includes("pffs")) return "PFFS";
+  return undefined;
+}
+
+/** Parse "$12/month" or "Up to $148/mo" → 12 (monthly numeric). Returns 0 if none found. */
+function parseMonthlyDollars(s: string | undefined): number {
+  if (!s) return 0;
+  const m = s.match(/\$\s*([0-9,]+(?:\.[0-9]+)?)/);
+  return m ? parseFloat(m[1].replace(/,/g, "")) : 0;
 }
 
 async function fetchPlanDetail(planNumber: string) {
@@ -189,7 +206,9 @@ function mapToPlan(detail: Record<string, unknown>, planNumber: string): Medicar
   const drugs = (b.drugs ?? []) as { label: string; value: string }[];
   const supplemental = (b.supplemental ?? []) as { label: string; value: string }[];
 
-  const type = mapPlanType((b.plan_type as string) ?? "", planNumber);
+  const planTypeStr = (b.plan_type as string) ?? "";
+  const type = mapPlanType(planTypeStr, planNumber);
+  const networkType = mapNetworkType(planTypeStr);
   const drugTier1 = drugs.find((d) => d.label.toLowerCase().includes("tier 1"))?.value ?? "—";
   const dentalVal = findMedical(medical, "Dental preventive");
   const visionVal = findMedical(medical, "Vision routine exam");
@@ -209,6 +228,7 @@ function mapToPlan(detail: Record<string, unknown>, planNumber: string): Medicar
     id: planNumber,
     name: planName,
     type,
+    networkType,
     carrier,
     premium_monthly: parseMoney(b.monthly_premium as string),
     deductible: parseMoney(b.annual_deductible_in as string),
@@ -225,6 +245,8 @@ function mapToPlan(detail: Record<string, unknown>, planNumber: string): Medicar
       otcAllowance: otcVal,
       partBGiveback: partBVal,
     },
+    partBGivebackAmount: parseMonthlyDollars(partBVal),
+    otcAllowanceAmount: parseMonthlyDollars(otcVal),
     starRatingOverall: detail.starRatingOverall as number | undefined,
     starRatingPartC: detail.starRatingPartC as number | undefined,
     starRatingPartD: detail.starRatingPartD as number | undefined,

@@ -1,4 +1,5 @@
 export type MedicarePlanType = "MA" | "Supplement" | "PartD";
+export type MedicareNetworkType = "HMO" | "PPO" | "HMO-POS" | "PFFS" | "Other";
 
 export interface MedicareBenefits {
   primaryCare: string;
@@ -17,6 +18,7 @@ export interface MedicarePlan {
   id: string;
   name: string;
   type: MedicarePlanType;
+  networkType?: MedicareNetworkType;
   carrier: string;
   premium_monthly: number;
   deductible: number;
@@ -25,6 +27,8 @@ export interface MedicarePlan {
   starRatingPartC?: number;
   starRatingPartD?: number;
   benefits: MedicareBenefits;
+  partBGivebackAmount?: number;
+  otcAllowanceAmount?: number;
   highlights: string[];
   county: string;
   zip_codes: string[];
