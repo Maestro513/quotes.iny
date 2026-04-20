@@ -2,32 +2,42 @@ import { createReadStream } from "fs";
 import { createGunzip } from "zlib";
 import path from "path";
 
-// Cached in-memory map — loaded once per server process
-let cache: Map<string, Set<string>> | null = null;
+// Per-partition cache — only loads the 2-digit prefix bucket the ZIP belongs to.
+// Old impl loaded the full 81 MB zip_backend_plans.json.gz on first call and
+// blew past Vercel's function memory. Partitioned buckets are ~1 MB parsed each
+// so a single request never touches more than one.
+const partitionCache = new Map<string, Map<string, Set<string>>>();
 
-async function loadZipMap(): Promise<Map<string, Set<string>>> {
-  if (cache) return cache;
+async function loadPartition(prefix: string): Promise<Map<string, Set<string>>> {
+  if (partitionCache.has(prefix)) return partitionCache.get(prefix)!;
 
-  const filePath = path.join(process.cwd(), "data", "zip_backend_plans.json.gz");
+  const filePath = path.join(process.cwd(), "data", "zip_partitions", `${prefix}.json.gz`);
   const chunks: Buffer[] = [];
 
-  await new Promise<void>((resolve, reject) => {
-    createReadStream(filePath)
-      .pipe(createGunzip())
-      .on("data", (chunk: Buffer) => chunks.push(chunk))
-      .on("end", resolve)
-      .on("error", reject);
-  });
+  try {
+    await new Promise<void>((resolve, reject) => {
+      createReadStream(filePath)
+        .pipe(createGunzip())
+        .on("data", (chunk: Buffer) => chunks.push(chunk))
+        .on("end", resolve)
+        .on("error", reject);
+    });
+  } catch {
+    // Missing partition = no plans for that ZIP prefix
+    const empty = new Map<string, Set<string>>();
+    partitionCache.set(prefix, empty);
+    return empty;
+  }
 
   const raw: Record<string, string[]> = JSON.parse(
     Buffer.concat(chunks).toString("utf8")
   );
 
-  cache = new Map(
+  const map = new Map(
     Object.entries(raw).map(([zip, plans]) => [zip, new Set(plans)])
   );
-
-  return cache;
+  partitionCache.set(prefix, map);
+  return map;
 }
 
 /**
@@ -37,7 +47,8 @@ async function loadZipMap(): Promise<Map<string, Set<string>>> {
  */
 export async function getPlansForZip(zip: string): Promise<Set<string> | null> {
   if (!zip || zip.length < 5) return null;
-  const map = await loadZipMap();
+  const prefix = zip.slice(0, 2);
+  const map = await loadPartition(prefix);
   return map.get(zip) ?? null;
 }
 
