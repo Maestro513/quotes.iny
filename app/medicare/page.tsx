@@ -1,9 +1,9 @@
 "use client";
 
-import "./medicare.css";
+import "./medicare.css"; // keep — MedicarePlanCard depends on .plan-card / .card-top classes
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState, useEffect, useCallback, useRef, Suspense } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 import { parseParams } from "@/lib/params";
 import type { DrugEstimate, MedicareNetworkType } from "@/types/medicare";
 import MedicarePlanCard from "@/components/medicare-plan-card";
@@ -12,49 +12,60 @@ import EmptyState from "@/components/empty-state";
 import { useMedicareSearch } from "@/hooks/use-medicare-search";
 import { useMedicareFilters, type QuickPreset } from "@/hooks/use-medicare-filters";
 
-const NETWORK_OPTIONS: { label: string; value: MedicareNetworkType | "" }[] = [
-  { label: "Any type", value: "" },
-  { label: "HMO only", value: "HMO" },
-  { label: "PPO only", value: "PPO" },
-  { label: "HMO-POS", value: "HMO-POS" },
-];
-
-const MOOP_BUCKETS = [
-  { label: "Any MOOP", value: null },
-  { label: "Under $3,000", value: 3000 },
-  { label: "Under $5,000", value: 5000 },
-  { label: "Under $7,000", value: 7000 },
-] as const;
-
+const NETWORK_PILLS: MedicareNetworkType[] = ["HMO", "PPO", "HMO-POS", "PFFS"];
 const BENEFIT_OPTIONS: { key: string; label: string }[] = [
-  { key: "giveback", label: "Part B giveback" },
-  { key: "otc", label: "OTC allowance" },
+  { key: "giveback", label: "Giveback" },
+  { key: "otc", label: "OTC" },
   { key: "dental", label: "Dental" },
   { key: "vision", label: "Vision" },
   { key: "hearing", label: "Hearing" },
 ];
-
 const PRESET_TABS: { key: QuickPreset; label: string }[] = [
   { key: "all", label: "All Plans" },
   { key: "zero-premium", label: "$0 Premium" },
-  { key: "highly-rated", label: "Highly Rated (4.5+★)" },
-  { key: "low-moop", label: "Low MOOP <$5k" },
+  { key: "highly-rated", label: "Highly Rated" },
+  { key: "low-moop", label: "Low MOOP" },
   { key: "with-giveback", label: "With Giveback" },
   { key: "high-otc", label: "High OTC" },
   { key: "ppo", label: "PPO" },
 ];
+const SORT_OPTIONS = [
+  { label: "Lowest Premium", value: "premium-asc" },
+  { label: "Highest Premium", value: "premium-desc" },
+  { label: "Lowest MOOP", value: "moop-asc" },
+  { label: "CMS Stars", value: "rating-desc" },
+  { label: "A–Z", value: "alpha" },
+];
 
-type PopoverKey = "plan-type" | "premium" | "moop" | "benefits" | "carrier" | null;
+const sidebarInput =
+  "w-full bg-white/10 border border-white/15 rounded-lg px-3 py-2.5 text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-[#22c55e]/60 focus:bg-white/15 transition-colors";
+const sidebarLabel = "text-white/60 text-[11px] uppercase tracking-wider block mb-1.5 font-medium";
+const sectionTitle = "text-white/80 font-semibold text-xs uppercase tracking-widest mb-3";
+const divider = "border-t border-white/[0.10] pt-4";
+
+function Pill({ label, checked, onClick }: { label: string; checked: boolean; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`px-3 py-1 rounded-full text-xs font-medium border transition-all duration-150 cursor-pointer ${
+        checked
+          ? "bg-[#22c55e]/20 border-[#22c55e]/60 text-[#22c55e]"
+          : "border-white/20 text-white/60 hover:border-white/40 hover:text-white/90"
+      }`}
+    >
+      {label}
+    </button>
+  );
+}
 
 function MedicareContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const parsed = parseParams(searchParams);
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [medsOpen, setMedsOpen] = useState(false);
-  const [openPop, setOpenPop] = useState<PopoverKey>(null);
-  const chipsRef = useRef<HTMLDivElement>(null);
-
   const [selectedDrugs, setSelectedDrugs] = useState<SelectedDrug[]>([]);
   const [drugEstimates, setDrugEstimates] = useState<Record<string, DrugEstimate>>({});
   const [estimatingDrugs, setEstimatingDrugs] = useState(false);
@@ -62,7 +73,6 @@ function MedicareContent() {
   const search = useMedicareSearch(parsed.zip);
   const filters = useMedicareFilters(search.allPlans, drugEstimates);
 
-  // Drug cost estimates (unchanged from prior impl)
   const fetchDrugEstimates = useCallback(async (planIds: string[], drugs: SelectedDrug[]) => {
     if (drugs.length === 0) { setDrugEstimates({}); return; }
     setEstimatingDrugs(true);
@@ -95,54 +105,57 @@ function MedicareContent() {
     search.loadPlans(search.zip);
   }
 
-  // Close popovers on outside click
-  useEffect(() => {
-    function onDocClick(e: MouseEvent) {
-      if (chipsRef.current && !chipsRef.current.contains(e.target as Node)) setOpenPop(null);
-    }
-    if (openPop) document.addEventListener("click", onDocClick);
-    return () => document.removeEventListener("click", onDocClick);
-  }, [openPop]);
-
-  function togglePop(key: PopoverKey) {
-    setOpenPop((cur) => (cur === key ? null : key));
-  }
-
-  const activeNetworkBadge = filters.networkTypeFilter || null;
   const totalInArea = search.allPlans.length;
 
   return (
-    <div className="med-page">
-      {/* ═══ SEARCH HERO ═══ */}
-      <section className="search-hero">
-        <div className="search-hero-inner">
-          <h1>Find Your Best Medicare Plan</h1>
-          <p>Compare Medicare Advantage, Supplement, and Part D plans for your ZIP.</p>
-          <form className="search-row" onSubmit={handleSearch}>
-            <div className="field">
-              <label htmlFor="zip-input">ZIP Code</label>
-              <input
-                id="zip-input"
-                type="text"
-                value={search.zip}
-                onChange={(e) => search.setZip(e.target.value)}
-                placeholder="33334"
-                maxLength={5}
-                inputMode="numeric"
-                pattern="[0-9]{5}"
-                required
-              />
+    <div className="flex min-h-[calc(100vh-4rem)]">
+      {/* Sidebar — search + individual filters */}
+      <aside
+        className={`w-full lg:w-80 shrink-0 bg-[#4a2a6e]/90 backdrop-blur-md border-r border-white/[0.10] p-5 overflow-y-auto ${
+          sidebarOpen ? "block" : "hidden"
+        } lg:block`}
+      >
+        <form onSubmit={handleSearch} className="space-y-4">
+          <div>
+            <p className={sectionTitle}>Your Search</p>
+            <div className="space-y-3">
+              <div>
+                <label htmlFor="zip-input" className={sidebarLabel}>ZIP Code</label>
+                <input
+                  id="zip-input"
+                  type="text"
+                  value={search.zip}
+                  onChange={(e) => search.setZip(e.target.value)}
+                  className={sidebarInput}
+                  placeholder="33334"
+                  maxLength={5}
+                  inputMode="numeric"
+                  pattern="[0-9]{5}"
+                  required
+                />
+              </div>
             </div>
-            <button type="submit" className="search-btn">Search Plans</button>
-            <button type="button" className="meds-toggle" onClick={() => setMedsOpen((o) => !o)}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14" /></svg>
-              {medsOpen ? "Hide medications" : "Add medications"} <strong>(optional)</strong>
-            </button>
-          </form>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-[#22c55e] text-white font-semibold py-2.5 rounded-lg text-sm hover:bg-green-400 transition-colors shadow-[0_0_16px_rgba(34,197,94,0.25)] cursor-pointer"
+          >
+            Search Plans
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setMedsOpen((o) => !o)}
+            className="w-full text-white/70 text-sm border border-white/20 hover:border-white/40 hover:text-white/90 rounded-lg py-2 transition-colors cursor-pointer flex items-center justify-center gap-2"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14" /></svg>
+            {medsOpen ? "Hide medications" : "Add medications"}
+          </button>
 
           {medsOpen && (
-            <div className="meds-panel">
-              <div className="meds-panel-label">My Medications · see personalized drug costs</div>
+            <div className="bg-white/5 border border-white/10 rounded-lg p-3">
+              <div className="text-white/60 text-[11px] uppercase tracking-wider mb-2">Medications</div>
               <MedicationInput
                 selectedDrugs={selectedDrugs}
                 onAdd={(d) => setSelectedDrugs((p) => [...p, d])}
@@ -151,266 +164,204 @@ function MedicareContent() {
               />
             </div>
           )}
-        </div>
-      </section>
+        </form>
 
-      {/* ═══ STAGE ═══ */}
-      <div className="stage">
-        <div className="stage-side-lines stage-side-lines-left" />
-        <div className="stage-side-lines stage-side-lines-right" />
-
-        <div className="stage-container">
-          <div className="panel">
-            <div className="panel-inner">
-
-              {/* Header */}
-              <div className="results-header">
-                <div className="results-title">
-                  <h2>Medicare Advantage Plans</h2>
-                  <div className="results-title-sub">
-                    {search.loading
-                      ? "Loading plans…"
-                      : `${filters.filteredPlans.length} plan${filters.filteredPlans.length !== 1 ? "s" : ""} ${filters.activeFilterCount || filters.quickPreset !== "all" ? `(filtered from ${totalInArea})` : "available in your area"}`}
-                  </div>
-                </div>
-                {search.zip && (
-                  <div className="results-meta">
-                    <span className="results-meta-item"><strong>{search.zip}</strong></span>
-                  </div>
-                )}
-              </div>
-
-              {/* Filter chips with popovers */}
-              <div className="filter-chips" ref={chipsRef}>
-                <div className="fchip-wrap">
-                  <button
-                    type="button"
-                    className={`fchip${openPop === "plan-type" ? " open" : ""}`}
-                    onClick={() => togglePop("plan-type")}
-                  >
-                    Plan Type ▾
-                    {activeNetworkBadge && <span className="fchip-badge">{activeNetworkBadge}</span>}
-                  </button>
-                  {openPop === "plan-type" && (
-                    <div className="fpop">
-                      <div className="fpop-title">Network Type</div>
-                      <div className="fpop-opts">
-                        {NETWORK_OPTIONS.map((opt) => (
-                          <label key={opt.value} className="fpop-opt">
-                            <input
-                              type="radio"
-                              name="network"
-                              checked={filters.networkTypeFilter === opt.value}
-                              onChange={() => filters.setNetworkTypeFilter(opt.value as MedicareNetworkType | "")}
-                            />
-                            {opt.label}
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="fchip-wrap">
-                  <button
-                    type="button"
-                    className={`fchip${openPop === "premium" ? " open" : ""}`}
-                    onClick={() => togglePop("premium")}
-                  >
-                    Monthly Premium ▾
-                    {filters.maxPremium !== null && <span className="fchip-badge">≤${filters.maxPremium}</span>}
-                  </button>
-                  {openPop === "premium" && (
-                    <div className="fpop">
-                      <div className="fpop-title">Max Monthly Premium</div>
-                      <div className="fpop-slider">
-                        <input
-                          type="range"
-                          min={0}
-                          max={300}
-                          step={5}
-                          value={filters.maxPremium ?? 300}
-                          onChange={(e) => filters.setMaxPremium(parseInt(e.target.value) === 300 ? null : parseInt(e.target.value))}
-                        />
-                        <div className="fpop-slider-label">
-                          <span>$0</span>
-                          <strong>{filters.maxPremium !== null ? `$${filters.maxPremium}/mo` : "Any"}</strong>
-                          <span>$300+</span>
-                        </div>
-                      </div>
-                      <div className="fpop-opts">
-                        <label className="fpop-opt">
-                          <input
-                            type="checkbox"
-                            checked={filters.zeroPremiumOnly}
-                            onChange={(e) => filters.setZeroPremiumOnly(e.target.checked)}
-                          />
-                          $0 Premium only
-                        </label>
-                      </div>
-                      <div className="fpop-actions">
-                        <button type="button" className="fpop-clear" onClick={() => { filters.setMaxPremium(null); filters.setZeroPremiumOnly(false); }}>Clear</button>
-                        <button type="button" className="fpop-apply" onClick={() => setOpenPop(null)}>Done</button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="fchip-wrap">
-                  <button
-                    type="button"
-                    className={`fchip${openPop === "moop" ? " open" : ""}`}
-                    onClick={() => togglePop("moop")}
-                  >
-                    Low MOOP ▾
-                    {filters.maxMoop !== null && <span className="fchip-badge">≤${(filters.maxMoop / 1000).toFixed(0)}k</span>}
-                  </button>
-                  {openPop === "moop" && (
-                    <div className="fpop">
-                      <div className="fpop-title">Max Out-of-Pocket (In-Network)</div>
-                      <div className="fpop-opts">
-                        {MOOP_BUCKETS.map((b) => (
-                          <label key={String(b.value)} className="fpop-opt">
-                            <input
-                              type="radio"
-                              name="moop"
-                              checked={filters.maxMoop === b.value}
-                              onChange={() => filters.setMaxMoop(b.value)}
-                            />
-                            {b.label}
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="fchip-wrap">
-                  <button
-                    type="button"
-                    className={`fchip${openPop === "benefits" ? " open" : ""}`}
-                    onClick={() => togglePop("benefits")}
-                  >
-                    Benefits ▾
-                    {filters.requiredBenefits.size > 0 && <span className="fchip-badge">{filters.requiredBenefits.size}</span>}
-                  </button>
-                  {openPop === "benefits" && (
-                    <div className="fpop" style={{ minWidth: 280 }}>
-                      <div className="fpop-title">Must include</div>
-                      <div className="fpop-opts">
-                        {BENEFIT_OPTIONS.map((opt) => (
-                          <label key={opt.key} className="fpop-opt">
-                            <input
-                              type="checkbox"
-                              checked={filters.requiredBenefits.has(opt.key)}
-                              onChange={(e) => {
-                                const next = new Set(filters.requiredBenefits);
-                                if (e.target.checked) next.add(opt.key);
-                                else next.delete(opt.key);
-                                filters.setRequiredBenefits(next);
-                              }}
-                            />
-                            {opt.label}
-                          </label>
-                        ))}
-                      </div>
-                      <div className="fpop-actions">
-                        <button type="button" className="fpop-clear" onClick={() => filters.setRequiredBenefits(new Set())}>Clear</button>
-                        <button type="button" className="fpop-apply" onClick={() => setOpenPop(null)}>Done</button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {filters.carriers.length > 0 && (
-                  <div className="fchip-wrap">
-                    <button
-                      type="button"
-                      className={`fchip${openPop === "carrier" ? " open" : ""}`}
-                      onClick={() => togglePop("carrier")}
-                    >
-                      Carrier ▾
-                      {filters.carrierFilter.length > 0 && <span className="fchip-badge">{filters.carrierFilter.length}</span>}
-                    </button>
-                    {openPop === "carrier" && (
-                      <div className="fpop">
-                        <div className="fpop-title">Insurance Company</div>
-                        <div className="fpop-opts">
-                          {filters.carriers.map((c) => (
-                            <label key={c} className="fpop-opt">
-                              <input
-                                type="checkbox"
-                                checked={filters.carrierFilter.includes(c)}
-                                onChange={(e) => {
-                                  if (e.target.checked) filters.setCarrierFilter([...filters.carrierFilter, c]);
-                                  else filters.setCarrierFilter(filters.carrierFilter.filter((x) => x !== c));
-                                }}
-                              />
-                              {c}
-                            </label>
-                          ))}
-                        </div>
-                        <div className="fpop-actions">
-                          <button type="button" className="fpop-clear" onClick={() => filters.setCarrierFilter([])}>Clear</button>
-                          <button type="button" className="fpop-apply" onClick={() => setOpenPop(null)}>Done</button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {filters.activeFilterCount > 0 && (
-                  <button type="button" className="fchip" style={{ borderColor: "var(--pink)", color: "var(--pink)" }} onClick={filters.clearAll}>
-                    Clear all ({filters.activeFilterCount})
-                  </button>
-                )}
-              </div>
-
-              {/* Quick-preset tabs */}
-              <div className="tab-strip" role="tablist">
-                {PRESET_TABS.map(({ key, label }) => (
-                  <button
-                    key={key}
-                    type="button"
-                    role="tab"
-                    aria-selected={filters.quickPreset === key}
-                    className={`tab${filters.quickPreset === key ? " active" : ""}`}
-                    onClick={() => filters.setQuickPreset(key)}
-                  >
-                    {label} <span className="tab-count">({filters.presetCounts[key]})</span>
-                  </button>
-                ))}
-              </div>
-
-              {/* Results */}
-              {search.loading && (
-                <div className="plan-grid">
-                  {[1, 2, 3].map((i) => <div key={i} className="load-skeleton" />)}
-                </div>
-              )}
-              {search.error && <EmptyState type="error" onRetry={() => search.loadPlans()} />}
-              {!search.loading && !search.error && filters.filteredPlans.length === 0 && <EmptyState type="no-results" />}
-
-              {!search.loading && !search.error && filters.filteredPlans.length > 0 && (
-                <>
-                  <div className="plan-grid">
-                    {filters.visiblePlans.map((plan) => (
-                      <MedicarePlanCard key={plan.id} plan={plan} drugEstimate={drugEstimates[plan.id]} />
-                    ))}
-                  </div>
-                  {filters.visibleCount < filters.filteredPlans.length && (
-                    <div className="load-more-wrap">
-                      <button type="button" className="load-more" onClick={filters.loadMore}>
-                        Load more ({filters.visiblePlans.length} of {filters.filteredPlans.length})
-                      </button>
-                    </div>
-                  )}
-                </>
-              )}
+        {/* Individual filters — carrier / premium / plan type / benefits */}
+        <div className="mt-5 space-y-4">
+          <div className={divider}>
+            <p className={sectionTitle}>Plan Type</p>
+            <div className="flex flex-wrap gap-1.5">
+              <Pill label="Any" checked={filters.networkTypeFilter === ""} onClick={() => filters.setNetworkTypeFilter("")} />
+              {NETWORK_PILLS.map((n) => (
+                <Pill
+                  key={n}
+                  label={n}
+                  checked={filters.networkTypeFilter === n}
+                  onClick={() => filters.setNetworkTypeFilter(filters.networkTypeFilter === n ? "" : n)}
+                />
+              ))}
             </div>
           </div>
+
+          <div className={divider}>
+            <label className={sidebarLabel}>Max Monthly Premium</label>
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/50 text-sm">$</span>
+              <input
+                type="number"
+                min={0}
+                value={filters.maxPremium ?? ""}
+                onChange={(e) => filters.setMaxPremium(e.target.value ? parseInt(e.target.value) : null)}
+                className={sidebarInput + " pl-7"}
+                placeholder="No limit"
+              />
+            </div>
+            <label className="flex items-center gap-2 cursor-pointer group mt-2.5">
+              <input
+                type="checkbox"
+                checked={filters.zeroPremiumOnly}
+                onChange={(e) => filters.setZeroPremiumOnly(e.target.checked)}
+                className="w-4 h-4 accent-[#22c55e]"
+              />
+              <span className="text-white/70 text-sm group-hover:text-white transition-colors">$0 Premium only</span>
+            </label>
+          </div>
+
+          <div className={divider}>
+            <p className={sectionTitle}>Benefits Must Include</p>
+            <div className="flex flex-wrap gap-1.5">
+              {BENEFIT_OPTIONS.map((b) => (
+                <Pill
+                  key={b.key}
+                  label={b.label}
+                  checked={filters.requiredBenefits.has(b.key)}
+                  onClick={() => {
+                    const next = new Set(filters.requiredBenefits);
+                    if (next.has(b.key)) next.delete(b.key);
+                    else next.add(b.key);
+                    filters.setRequiredBenefits(next);
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+
+          {filters.carriers.length > 0 && (
+            <div className={divider}>
+              <p className={sectionTitle}>Carrier</p>
+              <div className="space-y-1.5 max-h-56 overflow-y-auto pr-1">
+                {filters.carriers.map((c) => (
+                  <label key={c} className="flex items-center gap-2 cursor-pointer group">
+                    <input
+                      type="checkbox"
+                      checked={filters.carrierFilter.includes(c)}
+                      onChange={(e) => {
+                        if (e.target.checked) filters.setCarrierFilter([...filters.carrierFilter, c]);
+                        else filters.setCarrierFilter(filters.carrierFilter.filter((x) => x !== c));
+                      }}
+                      className="w-4 h-4 accent-[#22c55e] shrink-0"
+                    />
+                    <span className="text-white/75 text-sm group-hover:text-white transition-colors truncate">{c}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {filters.activeFilterCount > 0 && (
+            <button
+              type="button"
+              onClick={filters.clearAll}
+              className="w-full text-xs text-white/60 hover:text-white border border-white/15 hover:border-white/30 rounded-lg py-2 transition-colors cursor-pointer"
+            >
+              Clear all filters ({filters.activeFilterCount})
+            </button>
+          )}
         </div>
-      </div>
+      </aside>
+
+      {/* Results */}
+      <main className="flex-1 p-6">
+        <button
+          className="lg:hidden mb-5 flex items-center gap-2 text-white/70 text-sm border border-white/20 rounded-lg px-3 py-2 hover:border-white/40 hover:text-white/90 transition-colors cursor-pointer"
+          onClick={() => setSidebarOpen((o) => !o)}
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 4.5h14.25M3 9h9.75M3 13.5h5.25m5.25-.75L17.25 9m0 0L21 12.75M17.25 9v12" />
+          </svg>
+          {sidebarOpen ? "Hide Search" : `Edit Search${filters.activeFilterCount ? ` (${filters.activeFilterCount})` : ""}`}
+        </button>
+
+        <div className="flex items-start justify-between mb-6 gap-4">
+          <div>
+            <h1 className="text-white text-2xl font-bold tracking-tight">Find Your Best Medicare Plan</h1>
+            <p className="text-white/60 text-sm mt-1">
+              {search.loading
+                ? "Loading plans…"
+                : search.allPlans.length > 0
+                ? `${filters.filteredPlans.length} plan${filters.filteredPlans.length !== 1 ? "s" : ""} ${filters.activeFilterCount || filters.quickPreset !== "all" ? `(filtered from ${totalInArea})` : "available in your area"}`
+                : "Enter a ZIP to see plans"}
+            </p>
+          </div>
+          {search.zip && (
+            <div className="text-white/70 text-sm bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 whitespace-nowrap">
+              ZIP <strong className="text-white">{search.zip}</strong>
+            </div>
+          )}
+        </div>
+
+        {/* Top bar — quick-preset tabs + sort */}
+        <div className="mb-6 bg-[#4a2a6e] border border-white/10 rounded-xl p-4 space-y-3">
+          <div className="flex flex-wrap gap-1.5" role="tablist">
+            {PRESET_TABS.map(({ key, label }) => {
+              const count = filters.presetCounts[key];
+              const active = filters.quickPreset === key;
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  onClick={() => filters.setQuickPreset(key)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all duration-150 cursor-pointer ${
+                    active
+                      ? "bg-[#22c55e] border-[#22c55e] text-white shadow-[0_0_12px_rgba(34,197,94,0.25)]"
+                      : "border-white/20 text-white/70 hover:border-white/40 hover:text-white"
+                  }`}
+                >
+                  {label} <span className="opacity-70 font-normal">({count})</span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="flex items-center gap-3 pt-3 border-t border-white/[0.10]">
+            <label className="text-white/60 text-[11px] uppercase tracking-wider font-medium">Sort by</label>
+            <select
+              value={filters.sortBy}
+              onChange={(e) => filters.setSortBy(e.target.value as typeof filters.sortBy)}
+              className="bg-white/10 border border-white/15 rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:border-[#22c55e]/60"
+            >
+              {SORT_OPTIONS.map((o) => (
+                <option key={o.value} value={o.value} className="bg-[#1e0f36] text-white">{o.label}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {search.loading && (
+          <div className="space-y-4">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-40 bg-white/[0.03] border border-white/10 rounded-xl animate-pulse" />
+            ))}
+          </div>
+        )}
+        {search.error && <EmptyState type="error" onRetry={() => search.loadPlans()} />}
+        {!search.loading && !search.error && filters.filteredPlans.length === 0 && search.zip && (
+          <EmptyState type="no-results" />
+        )}
+
+        {!search.loading && !search.error && filters.filteredPlans.length > 0 && (
+          <>
+            <div className="space-y-4">
+              {filters.visiblePlans.map((plan) => (
+                <MedicarePlanCard key={plan.id} plan={plan} drugEstimate={drugEstimates[plan.id]} />
+              ))}
+            </div>
+            {filters.visibleCount < filters.filteredPlans.length && (
+              <div className="flex justify-center mt-6">
+                <button
+                  type="button"
+                  onClick={filters.loadMore}
+                  className="px-5 py-2.5 rounded-lg text-sm font-semibold border border-white/20 text-white/80 hover:border-white/40 hover:text-white transition-colors cursor-pointer"
+                >
+                  Load more ({filters.visiblePlans.length} of {filters.filteredPlans.length})
+                </button>
+              </div>
+            )}
+          </>
+        )}
+      </main>
     </div>
   );
 }
