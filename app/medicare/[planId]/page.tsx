@@ -231,20 +231,19 @@ export default async function PlanDetailPage({ params }: Params) {
 
       <div className="topbar">
         <div className="topbar-inner">
-          <Link href="/"><img src="/iny-assets/66d9ac23d3ad7bfd1bb1f3f9_insurance-color-logo.svg" alt="Insurance 'n You" className="logo-img" /></Link>
+          <a href="https://www.insurancenyou.com"><img src="/iny-assets/66d9ac23d3ad7bfd1bb1f3f9_insurance-color-logo.svg" alt="Insurance 'n You" className="logo-img" /></a>
           <nav className="nav-links">
-            <Link href="/medicare">Medicare</Link>
-            <Link href="/under-65">Under 65</Link>
-            <Link href="/life">Life</Link>
-            <a href="https://www.insurancenyou.com/about">About</a>
-            <a href="https://www.insurancenyou.com/contact">Contact</a>
+            <a href="https://www.insurancenyou.com/how-it-works">How It Works</a>
+            <a href="https://www.insurancenyou.com/blog">Blog</a>
+            <a href="https://www.insurancenyou.com/about-us">Who We Are</a>
+            <a href="https://www.insurancenyou.com/#features">Features</a>
           </nav>
           <div className="nav-cta">
             <a href="tel:18444676968" className="nav-phone">
               <Icon name="phone" size={14} />
-              (844) 467-6968
+              Call now (844) 467-6968
             </a>
-            <Link href="/medicare" className="btn btn-primary">Get a quote</Link>
+            <a href="https://app.insurancenyou.com/auth/login" className="btn btn-primary">Login</a>
           </div>
         </div>
       </div>
@@ -297,13 +296,6 @@ export default async function PlanDetailPage({ params }: Params) {
               A <strong>{premiumNum === 0 ? "$0-premium" : `${plan.monthly_premium}/month`}</strong> Medicare Advantage {plan.plan_type} plan covering{" "}
               <strong>{plan.counties_count} {county}</strong> in {plan.geographic_area}. Offered by {plan.carrier}.
             </p>
-            <div className="hero-cta-row">
-              <a href="tel:18444676968" className="btn btn-primary btn-lg">
-                <Icon name="phone" size={16} />
-                Talk to a licensed agent
-              </a>
-              <a href="#drugs" className="btn btn-outline btn-lg">View plan documents</a>
-            </div>
           </div>
           <aside className="price-card">
             <div className="price-label">Monthly Premium</div>
@@ -318,7 +310,10 @@ export default async function PlanDetailPage({ params }: Params) {
             {isKnown(plan.part_b_premium_reduction as string) && <div className="price-mini"><span className="price-mini-label" style={{ color: "var(--green-dark)", fontWeight: 600 }}>Part B giveback</span><span className="price-mini-val" style={{ color: "var(--green-dark)" }}>{plan.part_b_premium_reduction}</span></div>}
             <div className="price-mini"><span className="price-mini-label">Plan type</span><span className="price-mini-val">{plan.plan_type}</span></div>
             <div className="price-mini"><span className="price-mini-label">Contract #</span><span className="price-mini-val">{plan.contract_number}</span></div>
-            <a href="tel:18444676968" className="btn btn-primary">Talk to agent</a>
+            <a href="tel:18444676968" className="btn btn-primary">
+              <Icon name="phone" size={14} />
+              Talk to a licensed agent
+            </a>
             <div className="price-phone">or call <a href="tel:18444676968">(844) 467-6968</a></div>
             <div className="price-trust">
               <Icon name="stethoscope" size={14} />
