@@ -167,6 +167,18 @@ function cmsToBenefits(cms: Record<string, unknown>) {
     supplemental.push({ label: `Hearing - ${r.label}`, value: r.value });
   }
 
+  // Prefer the top-level part_b_premium_reduction as the giveback source of truth.
+  // The section row often reads "Covered — see Summary of Benefits" which has no
+  // dollar amount, so parseMonthlyDollars returns 0 and the With-Giveback preset
+  // and minGiveback filter miss these plans. Top-level is always "$N" when set.
+  const topGiveback = typeof cms.part_b_premium_reduction === "string" ? cms.part_b_premium_reduction : "";
+  if (topGiveback && /\$\s*\d/.test(topGiveback)) {
+    const idx = supplemental.findIndex((s) => /part b|giveback/i.test(s.label));
+    const row = { label: "Part B Giveback", value: topGiveback };
+    if (idx >= 0) supplemental[idx] = row;
+    else supplemental.push(row);
+  }
+
   return {
     plan_name: cms.plan_name ?? "",
     plan_type: cms.plan_type ?? "",
