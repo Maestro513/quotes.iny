@@ -20,11 +20,14 @@
 import rawManifest from "@/data/sob-manifest.json";
 
 interface SobEntry {
-  url: string;
+  url?: string;
+  /** Spanish-language SOB when the carrier ships one (CMS SBSP artifact). */
+  spanishUrl?: string;
   uploadedAt?: string;
   sizeKb?: number;
   sourceFile?: string;
   localMtime?: number;
+  spanishLocalMtime?: number;
   /** true when this key is a 2-seg alias pointing at a real 3-seg PDF. */
   isAlias?: boolean;
 }
@@ -43,6 +46,15 @@ export function getSobUrl(planId: string | undefined | null): string | null {
   const base = stripSegment(planId.toUpperCase());
   const fallback = manifest[base];
   return fallback?.url ?? null;
+}
+
+export function getSpanishSobUrl(planId: string | undefined | null): string | null {
+  if (!planId) return null;
+  const exact = manifest[planId.toUpperCase()];
+  if (exact?.spanishUrl) return exact.spanishUrl;
+  const base = stripSegment(planId.toUpperCase());
+  const fallback = manifest[base];
+  return fallback?.spanishUrl ?? null;
 }
 
 export function getSobMeta(planId: string | undefined | null): SobEntry | null {

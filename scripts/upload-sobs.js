@@ -69,17 +69,37 @@ const MANIFEST_PATH = path.join(__dirname, "..", "data", "sob-manifest.json");
 const RE_DASHED = /([HRS])(\d{4})-(\d{3})(?:-(\d{3}))?/i;
 
 // Pattern (b): 11-char compact CMS form. "H0028007000SB26.PDF" → "H0028-007-000".
+// Also tolerates Spanish "SBSP24" suffix (Spanish Summary of Benefits) and a
+// trailing " (1)" / " (2)" copy marker from Windows duplicate downloads.
 // Anchored because it's a filename shape, not a substring.
-const RE_COMPACT = /^([HRS])(\d{4})(\d{3})(\d{3})SB\d{2}$/i;
+const RE_COMPACT = /^([HRS])(\d{4})(\d{3})(\d{3})SB(?:SP)?\d{2}$/i;
+
+// Pattern (c): Aetna underscore form.
+// "Y0001_S5601_038_SB_2026_M.pdf" -> S5601-038 (2-seg)
+// "Y0001_S5601_038_001_SB_2026_M.pdf" -> S5601-038-001 (if the segment is present)
+// The Y-token is the CMS marketing org id — we ignore it and pull the contract+plan
+// from the 2nd/3rd underscore tokens. Contract + plan tokens sit before _SB_.
+const RE_AETNA_UNDERSCORE = /(?:^|_)([HRS])(\d{4})_(\d{3})(?:_(\d{3}))?_SB_/i;
 
 /**
- * Return { canonical, segmented, base2 } for a file, or null if no plan id.
+ * Strip a trailing " (N)" copy marker so Windows-style duplicate filenames
+ * ("H7617113000SB26 (1).PDF") match the same patterns as their canonical
+ * sibling. The preferredFile() dedup further collapses them on the chosen map.
+ */
+function stripCopyMarker(nameNoExt) {
+  return nameNoExt.replace(/\s*\(\d+\)\s*$/, "");
+}
+
+/**
+ * Return { canonical, segmented, base2, language } for a file, or null.
  *   canonical  — the id we key by in manifest + blob path (prefer 3-seg)
  *   segmented  — true if the filename carried a 3-seg id
  *   base2      — 2-seg form for alias writes (always HXXXX-XXX)
+ *   language   — "en" by default; "es" when the filename carries the CMS
+ *                SBSP24 Spanish-SOB suffix
  */
 function extractPlanId(filename) {
-  const nameNoExt = path.basename(filename, path.extname(filename));
+  const nameNoExt = stripCopyMarker(path.basename(filename, path.extname(filename)));
 
   // Try compact CMS first — it's anchored so false positives are unlikely
   const cm = nameNoExt.match(RE_COMPACT);
@@ -87,7 +107,19 @@ function extractPlanId(filename) {
     const [, letter, contract, plan, segment] = cm;
     const base2 = `${letter.toUpperCase()}${contract}-${plan}`;
     const canonical = `${base2}-${segment}`;
-    return { canonical, segmented: true, base2 };
+    const language = /SBSP\d{2}$/i.test(nameNoExt) ? "es" : "en";
+    return { canonical, segmented: true, base2, language };
+  }
+
+  // Aetna/Y-token underscore form
+  const um = nameNoExt.match(RE_AETNA_UNDERSCORE);
+  if (um) {
+    const [, letter, contract, plan, segment] = um;
+    const base2 = `${letter.toUpperCase()}${contract}-${plan}`;
+    if (segment) {
+      return { canonical: `${base2}-${segment}`, segmented: true, base2, language: "en" };
+    }
+    return { canonical: base2, segmented: false, base2, language: "en" };
   }
 
   // Dashed CMS id embedded anywhere
@@ -96,9 +128,9 @@ function extractPlanId(filename) {
     const [, letter, contract, plan, segment] = dm;
     const base2 = `${letter.toUpperCase()}${contract}-${plan}`;
     if (segment) {
-      return { canonical: `${base2}-${segment}`, segmented: true, base2 };
+      return { canonical: `${base2}-${segment}`, segmented: true, base2, language: "en" };
     }
-    return { canonical: base2, segmented: false, base2 };
+    return { canonical: base2, segmented: false, base2, language: "en" };
   }
 
   return null;
@@ -150,8 +182,9 @@ async function main() {
   const files = walkPdfs(SRC_DIR);
   console.log(`Found ${files.length.toLocaleString()} PDF files across all subfolders.`);
 
-  // Group by canonical plan id, applying dedup
-  const chosen = new Map(); // canonical -> { filePath, segmented, base2 }
+  // Group by (canonical, language) so English vs Spanish SBs don't collide.
+  // chosen key: `${canonical}::${language}`
+  const chosen = new Map();
   const unmatched = [];
 
   for (const file of files) {
@@ -160,19 +193,21 @@ async function main() {
       unmatched.push(file);
       continue;
     }
-    const prior = chosen.get(id.canonical);
+    const key = `${id.canonical}::${id.language}`;
+    const prior = chosen.get(key);
     if (!prior) {
-      chosen.set(id.canonical, { filePath: file, segmented: id.segmented, base2: id.base2 });
+      chosen.set(key, { filePath: file, segmented: id.segmented, base2: id.base2, canonical: id.canonical, language: id.language });
     } else {
       const winner = preferredFile(prior.filePath, file);
       if (winner !== prior.filePath) {
-        chosen.set(id.canonical, { filePath: file, segmented: id.segmented, base2: id.base2 });
+        chosen.set(key, { filePath: file, segmented: id.segmented, base2: id.base2, canonical: id.canonical, language: id.language });
       }
     }
-    if (VERBOSE) console.log(`  ${id.canonical}  <=  ${path.relative(SRC_DIR, file)}`);
+    if (VERBOSE) console.log(`  ${id.canonical}${id.language === "es" ? " [ES]" : ""}  <=  ${path.relative(SRC_DIR, file)}`);
   }
 
-  console.log(`Matched: ${chosen.size.toLocaleString()} unique plan ids.`);
+  const uniqueCanonical = new Set([...chosen.values()].map((v) => v.canonical)).size;
+  console.log(`Matched: ${chosen.size.toLocaleString()} files -> ${uniqueCanonical.toLocaleString()} unique plan ids.`);
   console.log(`Unmatched (no plan id in name): ${unmatched.length}`);
 
   const manifest = loadManifest();
@@ -181,25 +216,31 @@ async function main() {
   const failed = [];
 
   let index = 0;
-  for (const [planId, info] of chosen) {
+  for (const [key, info] of chosen) {
     index++;
+    const planId = info.canonical;
+    const isSpanish = info.language === "es";
+    const blobKey = isSpanish ? `medicare-sobs/${planId}-es.pdf` : `medicare-sobs/${planId}.pdf`;
+    const mtimeField = isSpanish ? "spanishLocalMtime" : "localMtime";
+
     const stat = fs.statSync(info.filePath);
     const existing = manifest[planId];
     const localMtime = stat.mtimeMs;
+    const priorMtime = existing?.[mtimeField];
 
-    if (!FORCE && existing && existing.localMtime && existing.localMtime >= localMtime && !existing.isAlias) {
-      skipped.push(planId);
+    if (!FORCE && existing && priorMtime && priorMtime >= localMtime && !existing.isAlias) {
+      skipped.push(key);
       continue;
     }
 
     if (DRY_RUN) {
-      console.log(`  [${index}/${chosen.size}] would upload ${planId} (${(stat.size / 1024).toFixed(0)} KB, ${path.relative(SRC_DIR, info.filePath)})`);
+      console.log(`  [${index}/${chosen.size}] would upload ${planId}${isSpanish ? " [es]" : ""} (${(stat.size / 1024).toFixed(0)} KB, ${path.relative(SRC_DIR, info.filePath)})`);
       continue;
     }
 
     try {
       const buffer = fs.readFileSync(info.filePath);
-      const blob = await put(`medicare-sobs/${planId}.pdf`, buffer, {
+      const blob = await put(blobKey, buffer, {
         access: "public",
         addRandomSuffix: false,
         allowOverwrite: true,
@@ -207,19 +248,25 @@ async function main() {
         token: process.env.BLOB_READ_WRITE_TOKEN,
       });
 
+      // Merge English + Spanish variants into one manifest entry per plan id.
+      const base = manifest[planId] ?? {};
+      const urlField = isSpanish ? "spanishUrl" : "url";
       manifest[planId] = {
-        url: blob.url,
+        ...base,
+        [urlField]: blob.url,
         uploadedAt: new Date().toISOString(),
         sizeKb: Math.round(stat.size / 1024),
         sourceFile: path.relative(SRC_DIR, info.filePath),
-        localMtime,
+        [mtimeField]: localMtime,
       };
+      // Clear the alias flag — we now have a real upload at this key
+      delete manifest[planId].isAlias;
 
-      // 2-seg alias: Zoho + the CMS bundle key plans in 2-seg form
-      // (HXXXX-XXX). If this is the first 3-seg we see for that base,
-      // also write the alias so a lookup by 2-seg resolves without
-      // transformation. Don't overwrite a real 3-seg entry.
-      if (info.segmented && info.base2 !== planId && !manifest[info.base2]) {
+      // 2-seg alias (only for English; Spanish rides along on the same base):
+      // Zoho + the CMS bundle key plans in 2-seg form (HXXXX-XXX). If this is
+      // the first 3-seg we see for that base, also write the alias so a lookup
+      // by 2-seg resolves without transformation.
+      if (!isSpanish && info.segmented && info.base2 !== planId && !manifest[info.base2]) {
         manifest[info.base2] = {
           url: blob.url,
           uploadedAt: new Date().toISOString(),
@@ -229,7 +276,7 @@ async function main() {
         };
       }
 
-      uploaded.push(planId);
+      uploaded.push(key);
       if (uploaded.length % 25 === 0) saveManifest(manifest);
       process.stdout.write(`\r  uploaded ${uploaded.length}/${chosen.size - skipped.length}...`);
     } catch (err) {
