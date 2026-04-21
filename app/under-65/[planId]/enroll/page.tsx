@@ -315,79 +315,124 @@ function EnrollmentWizard() {
 
   const header = STEPS[currentIdx]?.group ?? "";
 
+  const totalSteps = STEPS.length;
+  const progressPct = Math.round(((currentIdx + 1) / totalSteps) * 100);
+
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-[#f5f7fb]">
-      <div className="max-w-6xl mx-auto px-5 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-8">
+    <div
+      className="min-h-[calc(100vh-4rem)] relative"
+      style={{
+        background:
+          "radial-gradient(1000px 500px at -10% -10%, rgba(164,52,153,0.22), transparent 60%)," +
+          "radial-gradient(900px 500px at 110% 0%, rgba(34,197,94,0.10), transparent 55%)," +
+          "#3d1f5e",
+      }}
+    >
+      <div className="max-w-6xl mx-auto px-4 lg:px-6 py-8">
 
-        {/* Sidebar */}
-        <aside className="lg:sticky lg:top-6 h-fit">
-          <nav className="space-y-6">
-            {groups.map(([group, stepsInGroup]) => {
-              const allBefore = stepsInGroup.every((s) => s.idx < currentIdx);
-              const hasActive = stepsInGroup.some((s) => s.idx === currentIdx);
-              const anyStarted = stepsInGroup.some((s) => s.idx <= currentIdx);
-              return (
-                <div key={group}>
-                  <div className="flex items-center justify-between">
-                    <p className={`text-sm ${hasActive ? "text-[#1d4ed8] font-semibold" : allBefore ? "text-gray-600 font-medium" : anyStarted ? "text-gray-900 font-semibold" : "text-gray-500 font-medium"}`}>{group}</p>
-                    {allBefore && (
-                      <span className="w-5 h-5 rounded-full bg-[#22c55e] text-white flex items-center justify-center shrink-0">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                      </span>
-                    )}
-                  </div>
-                  {anyStarted && (
-                    <ul className="mt-2 border-l-2 border-gray-200 pl-3 space-y-1.5">
-                      {stepsInGroup.map((s) => {
-                        const done = s.idx < currentIdx;
-                        const active = s.idx === currentIdx;
-                        return (
-                          <li key={s.id}>
-                            <button
-                              onClick={() => goToStep(s.id)}
-                              className={`flex items-center gap-1.5 text-xs text-left w-full transition ${active ? "text-[#1d4ed8] font-semibold" : done ? "text-[#22c55e] hover:text-[#15803d]" : "text-gray-500"}`}
-                            >
-                              {done && <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>}
-                              <span>{s.label}</span>
-                            </button>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  )}
-                </div>
-              );
-            })}
-          </nav>
-
-          <div className="mt-8 bg-white border border-black/10 rounded-xl p-4 text-xs text-gray-600">
-            <p className="text-[#1d4ed8] font-semibold text-sm mb-1">Application details</p>
-            <p>Plan year: {app.planYear}</p>
-            <p className="text-gray-400 mt-1">Saved locally · progress is private to this browser</p>
+        {/* Top bar — progress + exit, sits on the purple */}
+        <div className="flex items-center justify-between mb-5 text-white/85">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-white/15 backdrop-blur flex items-center justify-center text-sm font-bold">
+              {currentIdx + 1}
+            </div>
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.15em] text-white/55 font-semibold">
+                Step {currentIdx + 1} of {totalSteps}
+              </p>
+              <p className="text-sm font-semibold">{header}</p>
+            </div>
           </div>
-        </aside>
+          <Link
+            href={`/under-65/${encodeURIComponent(planId)}?${searchParams.toString()}`}
+            className="text-white/70 hover:text-white text-sm inline-flex items-center gap-1.5 transition-colors"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18M6 6l12 12" /></svg>
+            Save &amp; exit
+          </Link>
+        </div>
 
-        {/* Main content */}
-        <main>
-          <div className="flex items-center justify-between mb-5">
-            <h1 className="text-[#1d4ed8] text-2xl font-semibold">{header}</h1>
-            <Link href={`/under-65/${encodeURIComponent(planId)}?${searchParams.toString()}`} className="text-gray-500 hover:text-gray-800 text-sm">
-              ← Exit to plan details
-            </Link>
-          </div>
-
-          {/* Step content */}
-          <StepRouter
-            stepId={urlStep}
-            app={app}
-            dispatch={dispatch}
-            onBack={currentIdx > 0 ? back : undefined}
-            onNext={next}
-            onSubmit={submitApplication}
-            submitting={submitting}
-            submitError={submitError}
+        {/* Slim progress rail across the whole width */}
+        <div className="h-1 rounded-full bg-white/10 overflow-hidden mb-6">
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-[#22c55e] via-[#a78bfa] to-[#22c55e] transition-[width] duration-300"
+            style={{ width: `${progressPct}%` }}
           />
-        </main>
+        </div>
+
+        {/* Cream work area — sidebar + main live inside this panel, purple shows on the edges */}
+        <div className="rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(15,2,32,.35)] border border-white/10 bg-[#faf7f2]">
+          <div className="grid grid-cols-1 lg:grid-cols-[270px_1fr]">
+
+            {/* Sidebar — lives on a lavender-tinted surface inside the cream panel */}
+            <aside className="lg:sticky lg:top-0 h-fit bg-gradient-to-b from-[#f3ecfb] to-[#faf7f2] border-b lg:border-b-0 lg:border-r border-black/[0.06] p-6 lg:p-7">
+              <nav className="space-y-5">
+                {groups.map(([group, stepsInGroup]) => {
+                  const allBefore = stepsInGroup.every((s) => s.idx < currentIdx);
+                  const hasActive = stepsInGroup.some((s) => s.idx === currentIdx);
+                  const anyStarted = stepsInGroup.some((s) => s.idx <= currentIdx);
+                  return (
+                    <div key={group}>
+                      <div className="flex items-center justify-between gap-2">
+                        <p className={`text-[11px] uppercase tracking-[0.1em] font-bold ${hasActive ? "text-violet-700" : allBefore ? "text-[#15803d]" : anyStarted ? "text-gray-800" : "text-gray-400"}`}>
+                          {group}
+                        </p>
+                        {allBefore && (
+                          <span className="w-4 h-4 rounded-full bg-[#22c55e] text-white flex items-center justify-center shrink-0">
+                            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                          </span>
+                        )}
+                      </div>
+                      {anyStarted && (
+                        <ul className="mt-2.5 space-y-0.5">
+                          {stepsInGroup.map((s) => {
+                            const done = s.idx < currentIdx;
+                            const active = s.idx === currentIdx;
+                            return (
+                              <li key={s.id}>
+                                <button
+                                  onClick={() => goToStep(s.id)}
+                                  className={`flex items-center gap-2 text-left w-full transition rounded-md px-2 py-1.5 -mx-2 ${active ? "bg-violet-100/70 text-violet-800 font-semibold" : done ? "text-[#15803d] hover:bg-[#22c55e]/10" : "text-gray-500 hover:bg-black/5"}`}
+                                >
+                                  <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${active ? "bg-violet-600" : done ? "bg-[#22c55e]" : "bg-gray-300"}`} />
+                                  <span className="text-[13px]">{s.label}</span>
+                                </button>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </div>
+                  );
+                })}
+              </nav>
+
+              <div className="mt-7 pt-5 border-t border-black/[0.08]">
+                <p className="text-violet-700 font-bold text-[11px] uppercase tracking-[0.1em] mb-1.5">Application details</p>
+                <p className="text-gray-700 text-sm">Plan year <span className="font-semibold">{app.planYear}</span></p>
+                <p className="text-gray-400 text-[11px] mt-1.5 leading-relaxed">Saved to this browser only. Nothing leaves your device until you submit.</p>
+              </div>
+            </aside>
+
+            {/* Main content — cream so white FormCards read as elevated surfaces */}
+            <main className="p-6 lg:p-10 bg-[#faf7f2]">
+              <StepRouter
+                stepId={urlStep}
+                app={app}
+                dispatch={dispatch}
+                onBack={currentIdx > 0 ? back : undefined}
+                onNext={next}
+                onSubmit={submitApplication}
+                submitting={submitting}
+                submitError={submitError}
+              />
+            </main>
+          </div>
+        </div>
+
+        <p className="text-white/40 text-[11px] text-center mt-5">
+          Secured &amp; private · Insurance &apos;n You is a licensed Marketplace agent · NPN 20116201
+        </p>
       </div>
     </div>
   );
@@ -671,8 +716,8 @@ function HouseholdApplying({ app, dispatch, onBack, onNext }: StepProps) {
 
       <div className="mt-7">
         <div className="flex items-center justify-between mb-3">
-          <p className="text-[#1d4ed8] font-semibold text-sm">Additional applicants</p>
-          <button type="button" onClick={addApplicant} className="text-[#1d4ed8] hover:text-[#1e40af] text-sm font-semibold">+ Add another applicant</button>
+          <p className="text-violet-700 font-semibold text-sm">Additional applicants</p>
+          <button type="button" onClick={addApplicant} className="text-violet-700 hover:text-violet-900 text-sm font-semibold">+ Add another applicant</button>
         </div>
 
         {hh.applicants.length === 0 && <p className="text-gray-500 text-sm">Only you are applying. Use the button above to add a spouse, child, or other household member.</p>}
@@ -681,7 +726,7 @@ function HouseholdApplying({ app, dispatch, onBack, onNext }: StepProps) {
           {hh.applicants.map((a) => (
             <div key={a.id} className="border border-gray-200 rounded-lg p-5 bg-gray-50/50">
               <div className="flex items-center justify-between mb-3">
-                <p className="text-[#1d4ed8] font-semibold text-sm">{a.firstName || "New applicant"}</p>
+                <p className="text-violet-700 font-semibold text-sm">{a.firstName || "New applicant"}</p>
                 <button type="button" onClick={() => removeApplicant(a.id)} className="text-xs text-red-600 hover:text-red-800 border border-red-300 rounded px-2 py-1">Remove</button>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -747,7 +792,7 @@ function HouseholdMedicare({ app, dispatch, onBack, onNext }: StepProps) {
       </div>
 
       <div className="mt-6 p-4 border-2 border-dashed border-gray-200 rounded-lg bg-gray-50 text-sm text-gray-700 flex gap-3">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="text-[#1d4ed8] shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="text-violet-700 shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
         <div>
           <p className="font-semibold">Sign up for Medicare on time to avoid penalties</p>
           <p className="mt-1 text-gray-600">It&apos;s important to sign up for Medicare coverage during your Initial Enrollment Period, if you&apos;re eligible. If you don&apos;t, you may have to pay a late enrollment penalty.</p>
@@ -1000,7 +1045,7 @@ function IncomeApplicant({ app, dispatch, onBack, onNext }: StepProps) {
           {current.entries.map((entry) => (
             <div key={entry.id} className="p-4 border border-gray-200 rounded-lg bg-gray-50/50">
               <div className="flex items-center justify-between mb-3">
-                <p className="text-[#1d4ed8] font-semibold text-sm">{entry.type || "Income"}</p>
+                <p className="text-violet-700 font-semibold text-sm">{entry.type || "Income"}</p>
                 <button type="button" onClick={() => removeEntry(entry.id)} className="text-xs text-red-600 hover:text-red-800">Remove</button>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -1028,7 +1073,7 @@ function IncomeApplicant({ app, dispatch, onBack, onNext }: StepProps) {
               </Field>
             </div>
           ))}
-          <button type="button" onClick={addEntry} className="text-[#1d4ed8] hover:text-[#1e40af] text-sm font-semibold">+ Add another income source</button>
+          <button type="button" onClick={addEntry} className="text-violet-700 hover:text-violet-900 text-sm font-semibold">+ Add another income source</button>
         </div>
       )}
 
@@ -1132,7 +1177,7 @@ function AdditionalCoverage({ app, dispatch, onBack, onNext }: StepProps) {
           const entry = getEntry(m.id);
           return (
             <div key={m.id} className="p-5 border border-gray-200 rounded-lg bg-gray-50/50">
-              <p className="text-[#1d4ed8] font-semibold text-sm mb-3">{m.name}</p>
+              <p className="text-violet-700 font-semibold text-sm mb-3">{m.name}</p>
               <div className="space-y-4">
                 <Field label={`Is ${m.name} currently enrolled in health coverage?`}>
                   <YesNoRadio name={`enrolled-${m.id}`} value={entry.enrolled} onChange={(v) => updateEntry(m.id, { enrolled: v })} />
@@ -1315,7 +1360,7 @@ function FinalizeReview({ app, onBack, onNext }: StepProps) {
 function ReviewSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="mt-4 pt-4 border-t border-gray-100 first:border-t-0 first:pt-0 first:mt-0">
-      <h3 className="text-[#1d4ed8] font-bold text-base mb-3">{title}</h3>
+      <h3 className="text-violet-700 font-bold text-base mb-3">{title}</h3>
       {children}
     </div>
   );
@@ -1335,7 +1380,7 @@ function FinalizeAgreements({ app, dispatch, onBack, onNext }: StepProps) {
 
   return (
     <FormCard title="Agreements" description="Please read the attestations and select a response for each statement.">
-      <p className="text-[#1d4ed8] font-semibold text-sm mb-2">Renewal of eligibility</p>
+      <p className="text-violet-700 font-semibold text-sm mb-2">Renewal of eligibility</p>
       <p className="text-gray-700 text-sm mb-4">To make it easier to determine your eligibility for help paying for coverage in future years, I agree to allow the Marketplace to use my income data, including information from tax returns, for the next 5 years. The Marketplace will send notices and let me opt out at any time.</p>
       <div className="grid grid-cols-2 gap-2 max-w-md">
         {([["yes","I agree"],["no","I disagree"]] as const).map(([v, lbl]) => {
@@ -1430,7 +1475,7 @@ function FinalizeSignSubmit({ app, dispatch, onBack, onSubmit, submitting, submi
       </div>
 
       <div className="mt-8 pt-6 border-t border-gray-100">
-        <p className="text-[#1d4ed8] font-semibold text-sm mb-2">Sign</p>
+        <p className="text-violet-700 font-semibold text-sm mb-2">Sign</p>
         <p className="text-gray-700 text-sm mb-3">I&apos;m signing this application under penalty of perjury. I understand I may be subject to penalties under federal law if I intentionally provide false information.</p>
         <Field label="Do you agree?">
           <YesNoRadio name="truth" value={s.agreeToTruthfulness} onChange={(v) => set({ agreeToTruthfulness: v })} />
