@@ -270,7 +270,7 @@ function Under65Content() {
         )}
 
         {!search.loading && !search.error && (
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+          <div className="space-y-4">
             {filters.pagePlans.map((plan, i) => (
               <PlanCard
                 key={plan.id}

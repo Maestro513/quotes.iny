@@ -361,7 +361,7 @@ function MedicareContent() {
 
         {!search.loading && !search.error && filters.filteredPlans.length > 0 && (
           <>
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+            <div className="space-y-4">
               {filters.visiblePlans.map((plan) => (
                 <MedicarePlanCard key={plan.id} plan={plan} drugEstimate={drugEstimates[plan.id]} />
               ))}
