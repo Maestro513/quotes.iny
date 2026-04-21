@@ -1,7 +1,18 @@
+import Link from "next/link";
 import type { PlanBenefits } from "@/types/under65";
 import { carrierLogo } from "@/lib/medicare/carrier-logos";
 
+interface SearchContext {
+  zip: string;
+  dob: string;
+  gender: string;
+  income: string;
+  tobacco?: boolean;
+  householdSize?: number;
+}
+
 interface Props {
+  planId: string;
   planName: string;
   carrier: string;
   metalTier: string;
@@ -13,6 +24,7 @@ interface Props {
   outOfPocketMax: number;
   benefits?: PlanBenefits;
   isFeatured?: boolean;
+  searchContext: SearchContext;
 }
 
 const TIER_BADGE: Record<string, string> = {
@@ -24,10 +36,19 @@ const TIER_BADGE: Record<string, string> = {
 };
 
 export default function PlanCard({
-  planName, carrier, metalTier, planType, hsaEligible,
+  planId, planName, carrier, metalTier, planType, hsaEligible,
   monthlyPremium, estimatedSubsidy, deductible, outOfPocketMax,
-  benefits, isFeatured,
+  benefits, isFeatured, searchContext,
 }: Props) {
+  const detailQuery = new URLSearchParams({
+    zip: searchContext.zip,
+    dob: searchContext.dob,
+    gender: searchContext.gender,
+    income: searchContext.income,
+    tobacco: String(searchContext.tobacco ?? false),
+    hs: String(searchContext.householdSize ?? 1),
+  }).toString();
+  const detailHref = `/under-65/${encodeURIComponent(planId)}?${detailQuery}`;
   const chips = [
     { label: "Specialist",    value: benefits?.specialist    ?? "—" },
     { label: "Emergency",     value: benefits?.emergencyRoom ?? "—" },
@@ -123,12 +144,18 @@ export default function PlanCard({
             <button className="text-[#22c55e] text-sm font-medium hover:underline cursor-pointer">Drugs</button>
           </div>
           <div className="flex items-center gap-2">
-            <button className="px-4 py-2 rounded-lg text-sm font-semibold border border-gray-300 text-gray-600 hover:border-gray-400 hover:text-gray-800 transition-all duration-150 cursor-pointer">
+            <Link
+              href={detailHref}
+              className="px-4 py-2 rounded-lg text-sm font-semibold border border-gray-300 text-gray-600 hover:border-gray-400 hover:text-gray-800 transition-all duration-150 cursor-pointer"
+            >
               Plan Details
-            </button>
-            <button className="px-5 py-2 rounded-lg text-sm font-bold bg-[#22c55e] text-white hover:bg-green-400 transition-all duration-150 cursor-pointer shadow-[0_0_12px_rgba(34,197,94,0.25)]">
+            </Link>
+            <a
+              href="tel:18444676968"
+              className="px-5 py-2 rounded-lg text-sm font-bold bg-[#22c55e] text-white hover:bg-green-400 transition-all duration-150 cursor-pointer shadow-[0_0_12px_rgba(34,197,94,0.25)]"
+            >
               Enroll Now
-            </button>
+            </a>
           </div>
         </div>
       </div>

@@ -274,6 +274,7 @@ function Under65Content() {
             {filters.pagePlans.map((plan, i) => (
               <PlanCard
                 key={plan.id}
+                planId={plan.id}
                 isFeatured={filters.page === 1 && i === 0}
                 planName={plan.name}
                 carrier={plan.carrier}
@@ -285,6 +286,14 @@ function Under65Content() {
                 deductible={plan.deductible}
                 outOfPocketMax={plan.outOfPocketMax}
                 benefits={plan.benefits}
+                searchContext={{
+                  zip: search.params.zip,
+                  dob: search.params.dob,
+                  gender: search.params.gender,
+                  income: search.params.income,
+                  tobacco: search.params.tobacco,
+                  householdSize: search.params.householdSize,
+                }}
               />
             ))}
           </div>
