@@ -391,6 +391,32 @@ function Under65DetailContent() {
           </div>
         )}
 
+        {/* ANNUAL COST SNAPSHOT — helps shoppers compare yearly out-of-pocket, not just monthly premium */}
+        <div className="bg-white rounded-2xl p-6 lg:p-8 mt-5 shadow-lg">
+          <h2 className="text-gray-900 text-lg font-bold mb-1">Annual cost snapshot</h2>
+          <p className="text-gray-500 text-sm mb-5">
+            Rough yearly numbers so you can compare plans beyond the monthly premium.
+            Actual costs depend on what care you use.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="rounded-xl bg-violet-50/60 border border-violet-100 p-4">
+              <div className="text-[10.5px] font-bold uppercase tracking-widest text-violet-500">Your premium · 12 mo</div>
+              <div className="text-2xl font-black text-gray-900 tabular-nums mt-1">${(Math.round(netPremium) * 12).toLocaleString()}</div>
+              <div className="text-gray-500 text-xs mt-1">After subsidy · paid monthly</div>
+            </div>
+            <div className="rounded-xl bg-violet-50/60 border border-violet-100 p-4">
+              <div className="text-[10.5px] font-bold uppercase tracking-widest text-violet-500">Deductible first</div>
+              <div className="text-2xl font-black text-gray-900 tabular-nums mt-1">${(inNetworkDeductible?.amount ?? 0).toLocaleString()}</div>
+              <div className="text-gray-500 text-xs mt-1">What you pay before cost-sharing</div>
+            </div>
+            <div className="rounded-xl bg-[#22c55e]/10 border border-[#22c55e]/30 p-4">
+              <div className="text-[10.5px] font-bold uppercase tracking-widest text-[#15803d]">Worst-case year</div>
+              <div className="text-2xl font-black text-gray-900 tabular-nums mt-1">${(Math.round(netPremium) * 12 + (inNetworkMoop?.amount ?? 0)).toLocaleString()}</div>
+              <div className="text-gray-500 text-xs mt-1">Premium + in-network OOP max</div>
+            </div>
+          </div>
+        </div>
+
         {/* BENEFITS — grouped */}
         {renderedGroups.length > 0 && (
           <div className="bg-white rounded-2xl p-6 lg:p-8 mt-5 shadow-lg">
@@ -558,11 +584,22 @@ function Under65DetailContent() {
                     <span className="truncate">Carrier website</span>
                   </a>
                 )}
-                {plan.languages && plan.languages.length > 0 && (
-                  <div className="text-gray-500 text-xs pt-3 border-t border-gray-100">
-                    <strong className="text-gray-600">Languages:</strong> {plan.languages.join(", ")}
+                {(plan.languages && plan.languages.length > 0) || plan.issuer.hios_id || plan.issuer.state ? (
+                  <div className="text-gray-500 text-xs pt-3 border-t border-gray-100 space-y-1">
+                    {plan.languages && plan.languages.length > 0 && (
+                      <div><strong className="text-gray-600">Languages:</strong> {plan.languages.join(", ")}</div>
+                    )}
+                    {plan.issuer.state && (
+                      <div><strong className="text-gray-600">Licensed state:</strong> {plan.issuer.state}</div>
+                    )}
+                    {plan.issuer.hios_id && (
+                      <div><strong className="text-gray-600">HIOS ID:</strong> <span className="font-mono">{plan.issuer.hios_id}</span></div>
+                    )}
+                    {plan.id && (
+                      <div><strong className="text-gray-600">Plan ID:</strong> <span className="font-mono">{plan.id}</span></div>
+                    )}
                   </div>
-                )}
+                ) : null}
               </div>
             </div>
           )}
@@ -583,7 +620,13 @@ function Under65DetailContent() {
             {context && ` Quoted for ZIP ${context.zip}, age ${context.age}, ${context.householdSize === 1 ? "1 person" : `${context.householdSize} people`}.`}
           </p>
           <div className="flex gap-3 justify-center flex-wrap">
-            <a href="tel:18444676968" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#22c55e] text-white font-bold text-sm hover:bg-green-400 transition-colors shadow-[0_0_16px_rgba(34,197,94,0.25)]">
+            <Link
+              href={`/under-65/${encodeURIComponent(planId)}/enroll?${searchParams.toString()}`}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#22c55e] text-white font-bold text-sm hover:bg-green-500 transition-colors shadow-[0_0_16px_rgba(34,197,94,0.25)]"
+            >
+              Start application
+            </Link>
+            <a href="tel:18444676968" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/5 border border-white/20 text-white font-semibold text-sm hover:bg-white/10 hover:border-white/40 transition-colors">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
               Call (844) 467-6968
             </a>

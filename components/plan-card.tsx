@@ -150,12 +150,12 @@ export default function PlanCard({
             >
               Plan Details
             </Link>
-            <a
-              href="tel:18444676968"
+            <Link
+              href={`/under-65/${encodeURIComponent(planId)}/enroll?${detailQuery}`}
               className="px-5 py-2 rounded-lg text-sm font-bold bg-[#22c55e] text-white hover:bg-green-400 transition-all duration-150 cursor-pointer shadow-[0_0_12px_rgba(34,197,94,0.25)]"
             >
               Enroll Now
-            </a>
+            </Link>
           </div>
         </div>
       </div>
