@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { loadPlan, allPlanIdParams } from "@/lib/medicare/plan-loader";
 import { carrierLogo } from "@/lib/medicare/carrier-logos";
+import { getSobUrl } from "@/lib/medicare/sob-lookup";
 import type { PlanDetail, PlanRow, PlanSection } from "@/types/plan-detail";
 import PlanJsonLd from "./json-ld";
 import "./plan-detail.css";
@@ -207,6 +208,7 @@ export default async function PlanDetailPage({ params }: Params) {
   if (!plan) notFound();
 
   const fullId = plan.plan_id_full || planId;
+  const sobUrl = getSobUrl(fullId) ?? getSobUrl(planId);
   const premiumNum = parseFloat(String(plan.monthly_premium || "0").replace(/[^0-9.]/g, "")) || 0;
   const isDSNP = /D-?SNP/i.test(plan.plan_type || "");
   const premiumDisplay = isDSNP
@@ -300,6 +302,18 @@ export default async function PlanDetailPage({ params }: Params) {
             {isKnown(plan.part_b_premium_reduction as string) && <div className="price-mini"><span className="price-mini-label" style={{ color: "var(--green-dark)", fontWeight: 600 }}>Part B giveback</span><span className="price-mini-val" style={{ color: "var(--green-dark)" }}>{plan.part_b_premium_reduction}</span></div>}
             <div className="price-mini"><span className="price-mini-label">Plan type</span><span className="price-mini-val">{plan.plan_type}</span></div>
             <div className="price-mini"><span className="price-mini-label">Contract #</span><span className="price-mini-val">{plan.contract_number}</span></div>
+            {sobUrl && (
+              <a
+                href={sobUrl}
+                target="_blank"
+                rel="noopener"
+                className="btn btn-outline"
+                style={{ marginTop: 12 }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                Summary of Benefits (PDF)
+              </a>
+            )}
             <a href="tel:18444676968" className="btn btn-primary">
               <Icon name="phone" size={14} />
               Talk to a licensed agent
@@ -483,6 +497,18 @@ export default async function PlanDetailPage({ params }: Params) {
                     <h2 className="sec-title">Member contacts &amp; documents</h2>
                   </div>
                   <div className="res-grid">
+                    {sobUrl && (
+                      <a href={sobUrl} target="_blank" rel="noopener" className="res-card" style={{ textDecoration: "none", color: "inherit" }}>
+                        <div className="res-card-left">
+                          <div className="res-icon"><Icon name="doc" size={20} /></div>
+                          <div>
+                            <div className="res-label">Summary of Benefits</div>
+                            <div className="res-val" style={{ color: "var(--bright-purple)", fontWeight: 600 }}>Download PDF</div>
+                            <div style={{ fontSize: 11, color: "var(--grey)", marginTop: 3 }}>Full plan benefits document from CMS</div>
+                          </div>
+                        </div>
+                      </a>
+                    )}
                     {resourceGroups.map((g, i) => (
                       <div key={i} className="res-card">
                         <div className="res-card-left">
