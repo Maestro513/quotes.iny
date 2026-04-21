@@ -1403,7 +1403,12 @@ function FinalizeSignSubmit({ app, dispatch, onBack, onSubmit, submitting, submi
   const set = (patch: Partial<typeof s>) =>
     dispatch((prev) => ({ ...prev, finalize: { ...prev.finalize, signAndSubmit: { ...prev.finalize.signAndSubmit, ...patch } } }));
 
-  const canSubmit = s.agreeToReportChanges === "yes" && s.endOverlappingCoverage && s.agreeToTruthfulness === "yes" && s.signatureName.trim().toLowerCase() === expectedName.toLowerCase() && expectedName.length > 0;
+  const canSubmit =
+    s.agreeToReportChanges === "yes" &&
+    s.endOverlappingCoverage !== "" &&
+    s.agreeToTruthfulness === "yes" &&
+    s.signatureName.trim().toLowerCase() === expectedName.toLowerCase() &&
+    expectedName.length > 0;
 
   return (
     <FormCard title="Sign and submit" description="Please read the attestations and select a response for each statement.">
