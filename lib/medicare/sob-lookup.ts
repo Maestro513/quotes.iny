@@ -25,6 +25,8 @@ interface SobEntry {
   sizeKb?: number;
   sourceFile?: string;
   localMtime?: number;
+  /** true when this key is a 2-seg alias pointing at a real 3-seg PDF. */
+  isAlias?: boolean;
 }
 
 const manifest = rawManifest as Record<string, SobEntry>;
