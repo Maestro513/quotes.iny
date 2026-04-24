@@ -3,29 +3,44 @@ import { createGunzip } from "zlib";
 import path from "path";
 import { normalizePlanNumber } from "./zip-lookup";
 
-// Cached in-memory map — loaded once per server process
+// Cached in-memory map — loaded once per server process.
+// `loadingPromise` guards against a cache stampede: when N concurrent
+// requests hit a cold serverless instance, only one parses the 5MB
+// gzipped bundle; the rest await the same promise.
 let cache: Map<string, Record<string, unknown>> | null = null;
+let loadingPromise: Promise<Map<string, Record<string, unknown>>> | null = null;
 
 async function loadCmsBundle(): Promise<Map<string, Record<string, unknown>>> {
   if (cache) return cache;
+  if (loadingPromise) return loadingPromise;
 
-  const filePath = path.join(process.cwd(), "data", "extracted_cms.json.gz");
-  const chunks: Buffer[] = [];
+  loadingPromise = (async () => {
+    const filePath = path.join(process.cwd(), "data", "extracted_cms.json.gz");
+    const chunks: Buffer[] = [];
 
-  await new Promise<void>((resolve, reject) => {
-    createReadStream(filePath)
-      .pipe(createGunzip())
-      .on("data", (chunk: Buffer) => chunks.push(chunk))
-      .on("end", resolve)
-      .on("error", reject);
-  });
+    await new Promise<void>((resolve, reject) => {
+      createReadStream(filePath)
+        .pipe(createGunzip())
+        .on("data", (chunk: Buffer) => chunks.push(chunk))
+        .on("end", resolve)
+        .on("error", reject);
+    });
 
-  const raw: Record<string, Record<string, unknown>> = JSON.parse(
-    Buffer.concat(chunks).toString("utf8")
-  );
+    const raw: Record<string, Record<string, unknown>> = JSON.parse(
+      Buffer.concat(chunks).toString("utf8")
+    );
 
-  cache = new Map(Object.entries(raw));
-  return cache;
+    cache = new Map(Object.entries(raw));
+    return cache;
+  })();
+
+  try {
+    return await loadingPromise;
+  } finally {
+    // Clear on failure so the next call can retry; leave in place on
+    // success because `cache` is set (fast path handles it next time).
+    if (!cache) loadingPromise = null;
+  }
 }
 
 /**
