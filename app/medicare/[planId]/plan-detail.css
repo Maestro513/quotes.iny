@@ -11,11 +11,13 @@
     --shadow-lg:0 24px 60px rgba(43,7,82,.18);
     --shadow-panel:0 32px 80px rgba(43,7,82,.28);
   }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-  body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--black);background:var(--white);font-size:16px;line-height:1.55;font-feature-settings:"cv02","cv03","cv04","cv11"}
-  a{color:var(--bright-purple);text-decoration:none}
-  a:hover{text-decoration:underline}
+  /* Scoped to the plan detail page so these rules don't leak to other
+     routes via the CSSOM after client-side navigation. Wrap page content
+     in <div className="plan-detail-page">…</div> to activate. */
+  .plan-detail-page{background:var(--white);color:var(--black);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.55;font-feature-settings:"cv02","cv03","cv04","cv11";min-height:100vh}
+  .plan-detail-page *{box-sizing:border-box}
+  .plan-detail-page a{color:var(--bright-purple);text-decoration:none}
+  .plan-detail-page a:hover{text-decoration:underline}
   .container{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
   .icon{width:1em;height:1em;display:inline-block;vertical-align:-0.125em}
 
