@@ -27,7 +27,7 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
   const [minGiveback, setMinGiveback] = useState<number>(0);
   const [minOtc, setMinOtc] = useState<number>(0);
   const [requiredBenefits, setRequiredBenefits] = useState<Set<string>>(new Set());
-  const [sortBy, setSortBy] = useState<SortOption>("premium-asc");
+  const [sortBy, setSortBy] = useState<SortOption>("rating-desc");
   const [quickPreset, setQuickPreset] = useState<QuickPreset>("all");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
@@ -80,7 +80,15 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
         case "alpha": return a.name.localeCompare(b.name);
         case "moop-asc": return a.outOfPocketMax - b.outOfPocketMax;
         case "moop-desc": return b.outOfPocketMax - a.outOfPocketMax;
-        case "rating-desc": return (b.starRatingOverall ?? 0) - (a.starRatingOverall ?? 0);
+        case "rating-desc": {
+          // Stars are low-cardinality (0.5 increments) so tie often.
+          // Tiebreak: cheaper premium, then lower MOOP.
+          const byStars = (b.starRatingOverall ?? 0) - (a.starRatingOverall ?? 0);
+          if (byStars !== 0) return byStars;
+          const byPremium = a.premium_monthly - b.premium_monthly;
+          if (byPremium !== 0) return byPremium;
+          return a.outOfPocketMax - b.outOfPocketMax;
+        }
         case "drugcost-asc": return (drugEstimates[a.id]?.annualCost ?? Infinity) - (drugEstimates[b.id]?.annualCost ?? Infinity);
         default: return 0;
       }
@@ -107,7 +115,7 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
     setMinGiveback(0);
     setMinOtc(0);
     setRequiredBenefits(new Set());
-    setSortBy("premium-asc");
+    setSortBy("rating-desc");
     setQuickPreset("all");
     setVisibleCount(PAGE_SIZE);
   }
