@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans, Radley } from "next/font/google";
+import { IBM_Plex_Sans, Lancelot } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/nav";
@@ -10,14 +10,12 @@ const ibmPlexSans = IBM_Plex_Sans({
   variable: "--font-ibm-plex",
 });
 
-// Radley — editorial serif for Medicare plan card plan name + premium
-// numeral. Google Fonts only ships one weight (400) plus italic; that's
-// intentional for the display voice.
-const radley = Radley({
+// Lancelot — calligraphic serif for Medicare plan card plan name +
+// premium numeral. Single weight (400), distinctive voice.
+const lancelot = Lancelot({
   subsets: ["latin"],
   weight: ["400"],
-  style: ["normal", "italic"],
-  variable: "--font-radley",
+  variable: "--font-lancelot",
   display: "swap",
 });
 
@@ -47,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${ibmPlexSans.variable} ${radley.variable} ${satoshi.variable} antialiased`}>
+      <body className={`${ibmPlexSans.variable} ${lancelot.variable} ${satoshi.variable} antialiased`}>
         <Nav />
         {children}
       </body>
