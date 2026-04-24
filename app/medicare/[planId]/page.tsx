@@ -233,7 +233,7 @@ export default async function PlanDetailPage({ params }: Params) {
   const resourceGroups = resources ? dedupeResourceRows(resources.rows) : [];
 
   return (
-    <>
+    <div className="plan-detail-page">
       <PlanJsonLd plan={plan} fullId={fullId} premiumNum={premiumNum} />
 
       <div className="crumb">
@@ -645,6 +645,6 @@ export default async function PlanDetailPage({ params }: Params) {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
