@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans, Fraunces, Figtree } from "next/font/google";
+import { IBM_Plex_Sans, Lancelot } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/nav";
 
@@ -9,20 +10,26 @@ const ibmPlexSans = IBM_Plex_Sans({
   variable: "--font-ibm-plex",
 });
 
-// Used by the Medicare plan cards — Fraunces for the plan name + premium
-// numeral (editorial serif with opsz + SOFT axes), Figtree for body text
-// (clean geometric sans that still feels distinctive against Inter/IBM Plex).
-const fraunces = Fraunces({
+// Lancelot — calligraphic serif for Medicare plan card plan name +
+// premium numeral. Single weight (400), distinctive voice.
+const lancelot = Lancelot({
   subsets: ["latin"],
-  axes: ["SOFT", "opsz"],
-  variable: "--font-fraunces",
+  weight: ["400"],
+  variable: "--font-lancelot",
   display: "swap",
 });
 
-const figtree = Figtree({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-figtree",
+// Satoshi — Indian Type Foundry sans, shipped alongside Recia in our
+// MedConcierge stack. Loaded locally because Satoshi isn't on Google
+// Fonts; WOFF2 files live in /app/fonts.
+const satoshi = localFont({
+  src: [
+    { path: "./fonts/Satoshi-Light.woff2", weight: "300", style: "normal" },
+    { path: "./fonts/Satoshi-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/Satoshi-Medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/Satoshi-Bold.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-satoshi",
   display: "swap",
 });
 
@@ -38,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${ibmPlexSans.variable} ${fraunces.variable} ${figtree.variable} antialiased`}>
+      <body className={`${ibmPlexSans.variable} ${lancelot.variable} ${satoshi.variable} antialiased`}>
         <Nav />
         {children}
       </body>
