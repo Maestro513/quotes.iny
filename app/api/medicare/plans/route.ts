@@ -6,6 +6,26 @@ import { loadCmsPlan } from "@/lib/medicare/cms-lookup";
 const CONCIERGE = "https://iny-concierge.onrender.com";
 const PAGE_SIZE = 20;
 
+/** Map over an array with a bounded pool of concurrent workers. */
+async function mapWithConcurrency<T, R>(
+  items: T[],
+  limit: number,
+  fn: (item: T, index: number) => Promise<R>
+): Promise<R[]> {
+  const results = new Array<R>(items.length);
+  let cursor = 0;
+  async function worker() {
+    while (true) {
+      const i = cursor++;
+      if (i >= items.length) return;
+      results[i] = await fn(items[i], i);
+    }
+  }
+  const workers = Array.from({ length: Math.min(limit, items.length) }, worker);
+  await Promise.all(workers);
+  return results;
+}
+
 /* ── Concierge auth (JWT cached in-memory with safety buffer) ── */
 let cachedToken: string | null = null;
 let tokenExpiry = 0;
@@ -278,9 +298,12 @@ export async function GET(req: NextRequest) {
     const zipPlans = await getPlansForZip(zip);
     const planNumbers: string[] = zipPlans ? [...zipPlans] : [];
 
-    // Fetch ALL plan details in parallel for global sorting
-    // (zip_backend_plans.json.gz gives ~47 plans per county — manageable)
-    const details = await Promise.all(planNumbers.map(fetchPlanDetail));
+    // Fetch plan details with bounded concurrency. FL counties can
+    // return 150+ plans; firing all of them at Concierge at once
+    // either rate-limits us on Render or blows past the Vercel
+    // function max duration. 16 in flight keeps local-CMS hits fast
+    // while throttling the Concierge fallback path.
+    const details = await mapWithConcurrency(planNumbers, 16, fetchPlanDetail);
 
     const allPlans: MedicarePlan[] = details
       .flatMap((detail, i) => {
