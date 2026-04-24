@@ -94,45 +94,176 @@
 @media (max-width:1100px){.plan-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:720px){.plan-grid{grid-template-columns:1fr}}
 
-/* Plan card */
-.plan-card{background:#fff;border:1px solid var(--rule);border-radius:16px;display:flex;flex-direction:column;transition:all .2s;position:relative;overflow:hidden}
-.plan-card:hover{border-color:var(--bright-purple);box-shadow:0 10px 28px rgba(80,11,126,.12);transform:translateY(-2px)}
-.card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:18px 20px 0 20px}
-.carrier-lockup{display:flex;align-items:center;gap:10px;min-width:0}
-.carrier-logo{height:28px;width:auto;max-width:110px;object-fit:contain;flex-shrink:0}
-.card-carrier{font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--bright-purple);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.save-heart{background:transparent;border:none;cursor:pointer;color:var(--grey);padding:4px;display:flex;transition:all .15s;width:28px;height:28px;align-items:center;justify-content:center;border-radius:50%}
-.save-heart:hover{background:rgba(164,52,153,.08);color:var(--pink)}
-.save-heart.saved{color:var(--pink)}
-.save-heart svg{width:18px;height:18px}
-.save-heart.saved svg{fill:currentColor}
-.card-body{padding:12px 20px 20px 20px;display:flex;flex-direction:column;gap:14px;flex:1}
-.plan-name{font-size:16px;font-weight:700;color:var(--black);line-height:1.35;margin:0;letter-spacing:-.01em}
-.rating-block{display:flex;align-items:center;gap:10px}
-.rating-num{font-size:22px;font-weight:800;color:var(--bright-purple);letter-spacing:-.02em;line-height:1}
-.rating-num::after{content:"★";color:#facc15;font-weight:400;margin-left:2px}
-.rating-meta{font-size:11.5px;color:var(--grey);line-height:1.3;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
-.premium-hero{background:var(--offwhite);border-radius:12px;padding:14px 16px;text-align:center;border:1px solid rgba(80,11,126,.08)}
-.premium-amount{font-size:34px;font-weight:800;color:var(--black);letter-spacing:-.03em;line-height:1;display:block}
-.premium-label{font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em;margin-top:4px;font-weight:600}
-.premium-note{font-size:11.5px;color:var(--grey);margin-top:6px;font-style:italic}
-.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:2px 0}
-.stat-cell{display:flex;flex-direction:column;gap:2px}
-.stat-cell .k{font-size:10.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
-.stat-cell .v{font-size:14.5px;font-weight:700;color:var(--black)}
-.benefit-pills{display:flex;flex-wrap:wrap;gap:5px}
-.bpill{display:inline-flex;align-items:center;gap:4px;padding:4px 9px;background:rgba(0,189,132,.1);color:var(--green-dark);border:1px solid rgba(0,189,132,.25);border-radius:999px;font-size:11.5px;font-weight:600;letter-spacing:.01em}
-.bpill.absent{background:transparent;color:var(--grey);border-color:#e4e4e7;text-decoration:line-through}
-.bpill svg{width:10px;height:10px}
-.highlight{display:flex;gap:8px;padding:10px 12px;background:rgba(164,52,153,.06);border-left:3px solid var(--pink);border-radius:0 8px 8px 0;font-size:12.5px;color:var(--black);line-height:1.4}
-.highlight strong{color:var(--pink);font-weight:700}
-.enroll-btn{width:100%;padding:13px 16px;background:var(--green);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit;letter-spacing:.01em;transition:all .15s;box-shadow:0 3px 10px rgba(0,189,132,.25);display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none}
-.enroll-btn:hover{background:var(--green-dark);transform:translateY(-1px)}
-.enroll-btn svg{width:14px;height:14px}
-.card-actions{display:flex;gap:8px}
-.card-secondary{flex:1;padding:10px;background:transparent;border:1px solid var(--rule);border-radius:10px;color:var(--bright-purple);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px;transition:all .15s;text-decoration:none;text-align:center}
-.card-secondary:hover{border-color:var(--bright-purple);background:rgba(80,11,126,.04)}
-.card-secondary svg{width:13px;height:13px}
+/* ═══ PLAN CARD — V1 Editorial Advisor ═══
+ * Uses Fraunces (--font-fraunces) for plan name + premium numeral and
+ * Figtree (--font-figtree) for body. Both loaded in app/layout.tsx via
+ * next/font so no FOUT.
+ */
+.pc{
+  position:relative;
+  background:#fff;
+  border:1px solid rgba(80,11,126,.08);
+  border-radius:20px;
+  padding:22px 22px 20px;
+  display:flex;flex-direction:column;
+  font-family:var(--font-figtree),system-ui,sans-serif;
+  box-shadow:0 1px 2px rgba(43,7,82,.04), 0 1px 3px rgba(43,7,82,.06);
+  transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .2s;
+  overflow:hidden;
+}
+.pc::before{
+  /* subtle gradient top-rule — purple → pink */
+  content:"";position:absolute;top:0;left:22px;right:22px;height:2px;
+  background:linear-gradient(90deg,var(--bright-purple) 0%,var(--pink) 100%);
+  border-radius:0 0 3px 3px;opacity:.9;
+}
+.pc:hover{
+  transform:translateY(-3px);
+  box-shadow:0 1px 2px rgba(43,7,82,.04), 0 18px 36px -12px rgba(43,7,82,.25), 0 8px 20px -8px rgba(43,7,82,.18);
+  border-color:rgba(80,11,126,.18);
+}
+
+/* head: carrier + save */
+.pc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-top:4px}
+.pc-carrier{display:inline-flex;align-items:center;gap:10px;min-width:0}
+.pc-carrier-logo{height:28px;width:auto;max-width:110px;object-fit:contain;flex-shrink:0}
+.pc-carrier-name{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--grey);font-weight:700;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.pc-heart{
+  width:32px;height:32px;border-radius:999px;
+  display:grid;place-items:center;
+  background:transparent;border:1px solid var(--rule);
+  color:#a097aa;cursor:pointer;transition:all .18s;flex:0 0 auto;
+}
+.pc-heart:hover{color:var(--pink);border-color:rgba(164,52,153,.35);background:rgba(164,52,153,.06)}
+.pc-heart.saved{color:var(--pink);border-color:rgba(164,52,153,.35);background:rgba(164,52,153,.06)}
+.pc-heart.saved svg{fill:currentColor}
+.pc-heart svg{width:14px;height:14px}
+
+/* plan name — Fraunces display, 2-line clamp for uniform card height */
+.pc-title{
+  font-family:var(--font-fraunces),ui-serif,Georgia,serif;
+  font-variation-settings:"opsz" 24, "SOFT" 30;
+  font-weight:500;font-size:20px;line-height:1.18;letter-spacing:-.012em;
+  color:var(--dark-violet);margin:0 0 6px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  min-height:2.36em;
+}
+
+/* meta strip: plan id + rating */
+.pc-meta{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-size:12px;color:var(--grey);flex-wrap:wrap}
+.pc-id{
+  font-family:"SFMono-Regular",ui-monospace,Menlo,monospace;
+  letter-spacing:-.01em;color:#3a2c47;font-weight:600;font-size:11px;
+}
+.pc-sep{width:3px;height:3px;border-radius:999px;background:#d3cddc;display:inline-block}
+.pc-rating{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:#3a2c47}
+.pc-stars{display:inline-flex;gap:1px;color:#e9b308}
+.pc-stars svg{width:12px;height:12px;fill:currentColor}
+.pc-stars .off{color:#e4e0ea}
+.pc-rating-val{
+  font-family:var(--font-fraunces),ui-serif,Georgia,serif;
+  font-variation-settings:"opsz" 24;
+  font-size:13px;font-weight:600;color:var(--black);
+}
+
+/* premium hero */
+.pc-premium{
+  padding:14px 16px;border-radius:14px;
+  background:linear-gradient(180deg,#faf7fd 0%,#f4edfa 100%);
+  border:1px solid rgba(80,11,126,.06);
+  margin-bottom:14px;
+  display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+}
+.pc.is-zero .pc-premium{
+  background:linear-gradient(180deg,#edfbf4 0%,#dff5ea 100%);
+  border-color:rgba(0,189,132,.18);
+}
+.pc-premium-left{display:flex;flex-direction:column}
+.pc-premium-label{
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--grey);font-weight:700;margin-bottom:4px;
+}
+.pc-premium-amt{
+  font-family:var(--font-fraunces),ui-serif,Georgia,serif;
+  font-variation-settings:"opsz" 144, "SOFT" 20;
+  font-weight:500;font-size:40px;line-height:.95;letter-spacing:-.03em;
+  color:var(--dark-violet);font-variant-numeric:tabular-nums;
+}
+.pc.is-zero .pc-premium-amt{color:var(--green-dark)}
+.pc-premium-note{font-size:11px;color:var(--grey);margin-top:3px;letter-spacing:-.005em}
+.pc-premium-tag{
+  align-self:flex-start;margin-top:2px;
+  padding:4px 9px;border-radius:999px;
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+  background:rgba(80,11,126,.08);color:var(--bright-purple);
+  border:1px solid rgba(80,11,126,.2);white-space:nowrap;
+}
+.pc.is-zero .pc-premium-tag{
+  background:rgba(0,189,132,.14);color:var(--green-dark);
+  border-color:rgba(0,189,132,.22);
+}
+
+/* cost grid */
+.pc-costs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.pc-cost{padding:10px 11px;background:#fff;border:1px solid var(--rule);border-radius:11px}
+.pc-cost-k{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);font-weight:700;margin-bottom:3px}
+.pc-cost-v{font-size:14px;font-weight:700;color:var(--black);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+
+/* perk row (giveback or OTC or drug-cost estimate) */
+.pc-perk{
+  display:flex;align-items:center;gap:8px;
+  padding:9px 12px;border-radius:8px;
+  background:linear-gradient(90deg,rgba(0,189,132,.08),rgba(0,189,132,0));
+  border-left:3px solid var(--green);
+  font-size:12.5px;color:#2e2736;margin-bottom:12px;
+}
+.pc-perk strong{color:var(--green-dark);font-weight:700}
+.pc-perk svg{width:14px;height:14px;color:var(--green-dark);flex:0 0 auto}
+.pc-perk.purple{
+  background:linear-gradient(90deg,rgba(80,11,126,.06),rgba(80,11,126,0));
+  border-left-color:var(--bright-purple);
+}
+.pc-perk.purple strong{color:var(--bright-purple)}
+.pc-perk.purple svg{color:var(--bright-purple)}
+
+/* benefit chips */
+.pc-chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.pc-chip{
+  display:inline-flex;align-items:center;
+  padding:4px 9px;border-radius:999px;
+  font-size:11px;font-weight:600;letter-spacing:-.005em;
+  background:rgba(80,11,126,.06);color:var(--bright-purple);
+  border:1px solid rgba(80,11,126,.1);
+}
+.pc-chip.off{
+  color:#a097aa;background:transparent;
+  border:1px dashed #dad3e2;
+  text-decoration:line-through;text-decoration-color:rgba(115,100,128,.45);
+}
+
+/* CTA — green gradient (V1 layout + V2 button color) */
+.pc-cta{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 18px;border-radius:12px;
+  background:linear-gradient(180deg,var(--green) 0%,var(--green-dark) 100%);
+  color:#fff;font-size:14px;font-weight:700;letter-spacing:-.005em;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:filter .18s, transform .18s, box-shadow .18s;
+  box-shadow:0 2px 0 rgba(3,76,47,.18), 0 10px 20px -6px rgba(0,189,132,.4);
+}
+.pc-cta:hover{filter:brightness(1.05);transform:translateY(-1px);box-shadow:0 2px 0 rgba(3,76,47,.24), 0 16px 28px -6px rgba(0,189,132,.5)}
+.pc-cta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.4}
+
+.pc-link{
+  display:block;text-align:center;margin-top:10px;
+  font-size:12.5px;color:var(--grey);text-decoration:none;
+  transition:color .18s;
+}
+.pc-link:hover{color:var(--bright-purple);text-decoration:underline}
 
 /* Load more */
 .load-more-wrap{display:flex;justify-content:center;padding-top:18px}
