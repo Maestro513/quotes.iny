@@ -288,7 +288,14 @@ export async function GET(req: NextRequest) {
         const plan = mapToPlan(detail, planNumbers[i]);
         return plan ? [plan] : [];
       })
-      .sort((a, b) => a.premium_monthly - b.premium_monthly);
+      .sort((a, b) => {
+        // Default: CMS stars DESC, tiebreak on premium ASC then MOOP ASC.
+        const byStars = (b.starRatingOverall ?? 0) - (a.starRatingOverall ?? 0);
+        if (byStars !== 0) return byStars;
+        const byPremium = a.premium_monthly - b.premium_monthly;
+        if (byPremium !== 0) return byPremium;
+        return a.outOfPocketMax - b.outOfPocketMax;
+      });
 
     console.log(`Medicare ZIP ${zip}: ${allPlans.length} resolved out of ${planNumbers.length} plan numbers`);
 

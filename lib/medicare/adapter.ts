@@ -26,7 +26,13 @@ export async function fetchMedicarePlans(
   const data = await res.json();
 
   const plans: MedicarePlan[] = (data.plans ?? data).sort(
-    (a: MedicarePlan, b: MedicarePlan) => a.premium_monthly - b.premium_monthly
+    (a: MedicarePlan, b: MedicarePlan) => {
+      const byStars = (b.starRatingOverall ?? 0) - (a.starRatingOverall ?? 0);
+      if (byStars !== 0) return byStars;
+      const byPremium = a.premium_monthly - b.premium_monthly;
+      if (byPremium !== 0) return byPremium;
+      return a.outOfPocketMax - b.outOfPocketMax;
+    }
   );
 
   return { plans, total: data.total ?? plans.length, page: data.page ?? 1 };
