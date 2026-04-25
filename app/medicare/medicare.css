@@ -2,7 +2,12 @@
  * purple gutters + off-white floating panel. Vanilla CSS so it ports 1:1 from the mockup
  * without wrestling Tailwind JIT for one-off variables and radial gradients. */
 
-.med-page{
+/* Brand color vars at :root so they resolve on every selector — the
+ * page.tsx never wraps in .med-page, so vars scoped only to .med-page
+ * silently fail in plan cards (.pc-*, .pc-e-*) which sit outside any
+ * such wrapper. The .med-page block below overrides redundantly for
+ * any future use that adds the wrapper class. */
+:root{
   --purple:#3e1360;
   --dark-violet:#1d0430;
   --bright-purple:#500b7e;
@@ -13,6 +18,9 @@
   --grey:#5a5f70;
   --rule:#e7e3ee;
   --offwhite:#f5f1ec;
+}
+
+.med-page{
   font-family:var(--font-ibm-plex),system-ui,sans-serif;
   color:var(--black);
   background:var(--purple);
