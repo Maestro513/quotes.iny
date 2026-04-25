@@ -2,6 +2,9 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+See [`docs/git-setup.md`](docs/git-setup.md) for how to clone, initialize, or
+add a remote for this repo.
+
 First, run the development server:
 
 ```bash
