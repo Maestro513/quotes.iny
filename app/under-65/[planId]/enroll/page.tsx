@@ -322,10 +322,18 @@ function EnrollmentWizard() {
     <div
       className="min-h-[calc(100vh-4rem)] relative"
       style={{
-        background:
-          "radial-gradient(1000px 500px at -10% -10%, rgba(164,52,153,0.22), transparent 60%)," +
-          "radial-gradient(900px 500px at 110% 0%, rgba(34,197,94,0.10), transparent 55%)," +
+        background: [
+          // top-left violet wash (above hero lines)
+          "radial-gradient(1000px 500px at -10% -10%, rgba(164,52,153,0.28), transparent 60%)",
+          // top-right green glow (above hero lines)
+          "radial-gradient(900px 500px at 110% 0%, rgba(34,197,94,0.12), transparent 55%)",
+          // dark muting wash so hero-lines SVG reads as texture, not a competing layer
+          "linear-gradient(rgba(15,2,32,0.22), rgba(15,2,32,0.22))",
+          // hero-lines flowy SVG — same source as the results pages background
+          "url('/hero-lines.svg') center top / cover no-repeat fixed",
+          // base purple fill
           "#3d1f5e",
+        ].join(", "),
       }}
     >
       <div className="max-w-6xl mx-auto px-4 lg:px-6 py-8">

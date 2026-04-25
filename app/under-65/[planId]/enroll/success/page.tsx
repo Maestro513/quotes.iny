@@ -10,7 +10,18 @@ function SuccessContent() {
   const receipt = searchParams.get("receipt") || "";
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-[#f5f7fb] flex items-center justify-center p-6">
+    <div
+      className="min-h-[calc(100vh-4rem)] flex items-center justify-center p-6"
+      style={{
+        background: [
+          "radial-gradient(1000px 500px at -10% -10%, rgba(164,52,153,0.28), transparent 60%)",
+          "radial-gradient(900px 500px at 110% 0%, rgba(34,197,94,0.12), transparent 55%)",
+          "linear-gradient(rgba(15,2,32,0.22), rgba(15,2,32,0.22))",
+          "url('/hero-lines.svg') center top / cover no-repeat fixed",
+          "#3d1f5e",
+        ].join(", "),
+      }}
+    >
       <div className="max-w-xl w-full bg-white rounded-2xl shadow-sm border border-black/5 p-8 lg:p-10 text-center">
         <div className="w-16 h-16 rounded-full bg-[#22c55e]/15 flex items-center justify-center mx-auto mb-5">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
