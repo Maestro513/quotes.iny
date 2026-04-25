@@ -6,7 +6,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useState, useEffect, useCallback, Suspense } from "react";
 import { parseParams } from "@/lib/params";
 import type { DrugEstimate, MedicareNetworkType } from "@/types/medicare";
-import MedicarePlanCard from "@/components/medicare-plan-card";
+import MedicarePlanCard from "@/components/medicare-plan-card-e";
 import MedicationInput, { type SelectedDrug } from "@/components/medication-input";
 import EmptyState from "@/components/empty-state";
 import { useMedicareSearch } from "@/hooks/use-medicare-search";
