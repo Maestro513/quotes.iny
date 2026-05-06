@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { MedicarePlan, MedicarePlanType } from "@/types/medicare";
 import { getPlansForZip, normalizePlanNumber } from "@/lib/medicare/zip-lookup";
+import { mockMedicarePlans } from "@/lib/medicare/mock";
 
 const CONCIERGE = "https://iny-concierge.onrender.com";
 const PAGE_SIZE = 20;
@@ -127,6 +128,16 @@ export async function GET(req: NextRequest) {
   const planTypeFilter = req.nextUrl.searchParams.get("planType") ?? "";
 
   try {
+    // Dev fallback: when Concierge creds are missing, serve mock plans
+    if (!process.env.CONCIERGE_EMAIL || !process.env.CONCIERGE_PASSWORD) {
+      const filtered = planTypeFilter
+        ? mockMedicarePlans.filter((p) => p.type === planTypeFilter)
+        : mockMedicarePlans;
+      const total = filtered.length;
+      const start = (page - 1) * PAGE_SIZE;
+      return NextResponse.json({ plans: filtered.slice(start, start + PAGE_SIZE), total, page });
+    }
+
     // Get plan numbers for this ZIP (already filtered to extracted/CMS-verified plans)
     const zipPlans = await getPlansForZip(zip);
     const planNumbers: string[] = zipPlans ? [...zipPlans] : [];
