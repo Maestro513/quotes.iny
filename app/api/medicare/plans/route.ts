@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import type { MedicarePlan, MedicarePlanType, MedicareNetworkType } from "@/types/medicare";
 import { getPlansForZip, normalizePlanNumber } from "@/lib/medicare/zip-lookup";
 import { loadCmsPlan } from "@/lib/medicare/cms-lookup";
+import { carrierForContract, contractFromPlanNumber } from "@/lib/medicare/contract-carrier";
 
 const CONCIERGE = "https://iny-concierge.onrender.com";
 const PAGE_SIZE = 20;
@@ -252,9 +253,13 @@ function mapToPlan(detail: Record<string, unknown>, planNumber: string): Medicar
     .slice(0, 4)
     .map((s) => s.value);
 
-  // Extract carrier from plan name (first word) or use plan_number prefix
+  // Carrier comes from the CMS contract directory keyed by contract number
+  // ("H5216" → "Aetna Medicare", "H1290" → "Devoted Health", etc). The old
+  // approach of splitting plan_name on whitespace returned ALL-CAPS abbrevs
+  // like "DEVOTED" / "UHC" that didn't match carrier-logos.ts canonical keys.
   const planName = (b.plan_name as string) ?? planNumber;
-  const carrier = planName.split(" ")[0] ?? "";
+  const contractNum = contractFromPlanNumber(planNumber);
+  const carrier = carrierForContract(contractNum) || (planName.split(" ")[0] ?? "");
 
   return {
     id: planNumber,

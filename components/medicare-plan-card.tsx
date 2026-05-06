@@ -132,11 +132,13 @@ export default function MedicarePlanCard({ plan, drugEstimate }: Props) {
     <article className={`pc${isZero ? " is-zero" : ""}`}>
       <header className="pc-head">
         <span className="pc-carrier">
-          <img
-            src={carrierLogo(carrier)}
-            alt={carrier}
-            className="pc-carrier-logo"
-          />
+          {carrierLogo(carrier) ? (
+            <img
+              src={carrierLogo(carrier)}
+              alt={carrier}
+              className="pc-carrier-logo"
+            />
+          ) : null}
           <span className="pc-carrier-name">{carrier}</span>
         </span>
         <button
