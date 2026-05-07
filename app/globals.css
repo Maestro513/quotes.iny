@@ -1,29 +1,17 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
-
-  /* Medicare plan-card design tokens (per handoff) */
-  --color-purple-deep: #2a0d4a;
-  --color-purple-deep-2: #1a0530;
-  --color-purple-brand: #6a2fa0;
-  --color-purple-mid: #5a2a82;
-  --color-purple-card-btn: #2e1450;
-  --color-purple-soft: #f4eef9;
-  --color-green: #1fa84a;
-  --color-green-strong: #178f3d;
-  --color-green-soft: #e6f6ec;
-  --color-amber: #f5b400;
-  --color-pink-accent: #b14c8a;
-  --color-text: #1f1330;
-  --color-muted: #5a5468;
-  --color-muted-2: #8a8398;
-  --color-line: #ece8f1;
-  --color-line-2: #f3f0f7;
+  --color-brand-bg: #3d1f5e;
+  --color-brand-sidebar: #2d1b4e;
+  --color-brand-accent: #22c55e;
+  --font-sans: var(--font-ibm-plex), system-ui, sans-serif;
 }
 
 body {
-  background: #fff;
-  color: var(--color-text);
-  font-feature-settings: 'tnum' 1, 'cv11' 1;
+  background-color: var(--color-brand-bg);
+  background-image: url("/hero-lines.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
 }
