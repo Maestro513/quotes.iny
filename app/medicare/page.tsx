@@ -35,6 +35,8 @@ const SORT_OPTIONS = [
   { label: "Lowest Premium", value: "premium-asc" },
   { label: "Highest Premium", value: "premium-desc" },
   { label: "Lowest MOOP", value: "moop-asc" },
+  { label: "Lowest Deductible", value: "deductible-asc" },
+  { label: "Highest OTC", value: "otc-desc" },
   { label: "A–Z", value: "alpha" },
 ];
 

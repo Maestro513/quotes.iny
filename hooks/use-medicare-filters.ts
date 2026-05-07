@@ -14,7 +14,16 @@ export interface SnpEligibility {
   chronic: boolean;
 }
 
-export type SortOption = "premium-asc" | "premium-desc" | "alpha" | "moop-asc" | "moop-desc" | "rating-desc" | "drugcost-asc";
+export type SortOption =
+  | "premium-asc"
+  | "premium-desc"
+  | "alpha"
+  | "moop-asc"
+  | "moop-desc"
+  | "rating-desc"
+  | "drugcost-asc"
+  | "deductible-asc"
+  | "otc-desc";
 
 /** Quick-filter preset tabs: one-click bundles that override individual filters. */
 export type QuickPreset =
@@ -118,6 +127,19 @@ export function useMedicareFilters(
           return a.outOfPocketMax - b.outOfPocketMax;
         }
         case "drugcost-asc": return (drugEstimates[a.id]?.annualCost ?? Infinity) - (drugEstimates[b.id]?.annualCost ?? Infinity);
+        case "deductible-asc": {
+          // Plans with $0 deductible should win — but a literal 0 < any positive,
+          // so a plain ascending sort already handles that correctly.
+          // Tiebreak by premium so two $0-deductible plans rank by cheapest.
+          const byDed = a.deductible - b.deductible;
+          if (byDed !== 0) return byDed;
+          return a.premium_monthly - b.premium_monthly;
+        }
+        case "otc-desc": {
+          // Higher OTC allowance wins. Plans without an OTC benefit (`undefined`)
+          // sort to the bottom — coerce to 0 so they rank below any positive amount.
+          return (b.otcAllowanceAmount ?? 0) - (a.otcAllowanceAmount ?? 0);
+        }
         default: return 0;
       }
     });
