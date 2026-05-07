@@ -1,60 +1,93 @@
 "use client";
 
-import "./medicare.css"; // keep — MedicarePlanCard depends on .plan-card / .card-top classes
-
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState, useEffect, useCallback, Suspense } from "react";
+import { useState, useEffect, useMemo, Suspense } from "react";
 import { parseParams } from "@/lib/params";
-import type { DrugEstimate, MedicareNetworkType } from "@/types/medicare";
+import { fetchMedicarePlans } from "@/lib/medicare/adapter";
+import type { MedicarePlan, MedicarePlanType } from "@/types/medicare";
 import MedicarePlanCard from "@/components/medicare-plan-card";
-import MedicationInput, { type SelectedDrug } from "@/components/medication-input";
+import SkeletonCard from "@/components/skeleton-card";
 import EmptyState from "@/components/empty-state";
-import { useMedicareSearch } from "@/hooks/use-medicare-search";
-import { useMedicareFilters, type QuickPreset } from "@/hooks/use-medicare-filters";
+import { computeTierBadges } from "@/lib/medicare/tier-badges";
 
-const NETWORK_PILLS: MedicareNetworkType[] = ["HMO", "PPO", "HMO-POS", "PFFS"];
-const BENEFIT_OPTIONS: { key: string; label: string }[] = [
-  { key: "giveback", label: "Giveback" },
-  { key: "otc", label: "OTC" },
-  { key: "dental", label: "Dental" },
-  { key: "vision", label: "Vision" },
-  { key: "hearing", label: "Hearing" },
+const PLAN_TYPES: { label: string; value: MedicarePlanType | "" }[] = [
+  { label: "All Plans", value: "" },
+  { label: "Medicare Advantage", value: "MA" },
+  { label: "Supplement", value: "Supplement" },
+  { label: "Part D", value: "PartD" },
 ];
-const PRESET_TABS: { key: QuickPreset; label: string }[] = [
-  { key: "all", label: "All Plans" },
-  { key: "zero-premium", label: "$0 Premium" },
-  { key: "highly-rated", label: "Highly Rated" },
-  { key: "low-moop", label: "Low MOOP" },
-  { key: "with-giveback", label: "With Giveback" },
-  { key: "high-otc", label: "High OTC" },
-  { key: "ppo", label: "PPO" },
-];
-const SORT_OPTIONS = [
+
+type SortOption = "rating-desc" | "premium-asc" | "premium-desc" | "moop-asc";
+
+const SORT_OPTIONS: { label: string; value: SortOption }[] = [
   { label: "CMS Stars", value: "rating-desc" },
   { label: "Lowest Premium", value: "premium-asc" },
   { label: "Highest Premium", value: "premium-desc" },
   { label: "Lowest MOOP", value: "moop-asc" },
-  { label: "A–Z", value: "alpha" },
 ];
 
-const sidebarInput =
-  "w-full bg-white/10 border border-white/15 rounded-lg px-3 py-2.5 text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-[#22c55e]/60 focus:bg-white/15 transition-colors";
-const sidebarLabel = "text-white/60 text-[11px] uppercase tracking-wider block mb-1.5 font-medium";
-const sectionTitle = "text-white/80 font-semibold text-xs uppercase tracking-widest mb-3";
-const divider = "border-t border-white/[0.10] pt-4";
+const PAGE_SIZE = 18;
+const COMPARE_LIMIT = 3;
 
-function Pill({ label, checked, onClick }: { label: string; checked: boolean; onClick: () => void }) {
+function HeroWaves() {
+  return (
+    <svg
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      viewBox="0 0 1440 200"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <g fill="none" stroke="rgba(120, 60, 180, 0.35)" strokeWidth="1">
+        <path d="M-20,30 C200,90 380,10 600,60 S1000,140 1200,60 1500,90 1500,90" />
+        <path d="M-20,55 C220,120 400,30 620,80 S1020,160 1220,80 1500,110 1500,110" />
+        <path d="M-20,80 C240,150 420,55 640,105 S1040,180 1240,105 1500,135 1500,135" />
+        <path d="M-20,110 C260,180 440,80 660,135 S1060,200 1260,135 1500,160 1500,160" />
+        <path d="M-20,140 C280,210 460,110 680,160 S1080,220 1280,160 1500,180 1500,180" />
+        <path d="M-20,170 C300,235 480,140 700,190 S1100,245 1300,190 1500,205 1500,205" />
+      </g>
+    </svg>
+  );
+}
+
+function PlansSectionWaves() {
+  return (
+    <svg
+      className="absolute inset-0 w-full h-full pointer-events-none opacity-55"
+      viewBox="0 0 1440 540"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <g fill="none" stroke="rgba(180, 130, 220, 0.18)" strokeWidth="1">
+        <path d="M-20,40 C200,180 400,-20 720,80 S1100,260 1500,100" />
+        <path d="M-20,90 C200,230 400,30 720,130 S1100,310 1500,150" />
+        <path d="M-20,140 C200,280 400,80 720,180 S1100,360 1500,200" />
+        <path d="M-20,200 C200,350 400,150 720,250 S1100,420 1500,260" />
+        <path d="M-20,280 C200,420 400,220 720,330 S1100,500 1500,340" />
+        <path d="M-20,360 C200,500 400,300 720,410 S1100,580 1500,420" />
+        <path d="M-20,440 C200,580 400,380 720,490 S1100,650 1500,500" />
+      </g>
+    </svg>
+  );
+}
+
+function CarrierToggle({ label, on, onClick }: { label: string; on: boolean; onClick: () => void }) {
   return (
     <button
       type="button"
+      className="inline-flex items-center gap-2 cursor-pointer select-none text-[#1f1330] text-sm bg-transparent border-0 p-0"
       onClick={onClick}
-      className={`px-3 py-1 rounded-full text-xs font-medium border transition-all duration-150 cursor-pointer ${
-        checked
-          ? "bg-[#22c55e]/20 border-[#22c55e]/60 text-[#22c55e]"
-          : "border-white/20 text-white/60 hover:border-white/40 hover:text-white/90"
-      }`}
     >
-      {label}
+      <span
+        className={`relative w-8 h-[18px] rounded-full transition-colors duration-[120ms] flex-shrink-0 ${
+          on ? "bg-[#6a2fa0]" : "bg-[#d4cfdc]"
+        }`}
+      >
+        <span
+          className="absolute top-[2px] left-[2px] w-[14px] h-[14px] rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.12)] transition-transform duration-[140ms]"
+          style={{ transform: on ? "translateX(14px)" : "translateX(0)" }}
+        />
+      </span>
+      <span className="whitespace-nowrap">{label}</span>
     </button>
   );
 }
@@ -64,374 +97,404 @@ function MedicareContent() {
   const router = useRouter();
   const parsed = parseParams(searchParams);
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [medsOpen, setMedsOpen] = useState(false);
-  const [selectedDrugs, setSelectedDrugs] = useState<SelectedDrug[]>([]);
-  const [drugEstimates, setDrugEstimates] = useState<Record<string, DrugEstimate>>({});
-  const [estimatingDrugs, setEstimatingDrugs] = useState(false);
+  const [zip, setZip] = useState(parsed.zip);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
-  // SNP eligibility — readable from URL (?medicaid=yes&chronic=yes) so the
-  // marketing site can deep-link with the user's qualifying status pre-set.
-  const initialSnp = {
-    medicaid: searchParams.get("medicaid") === "yes",
-    chronic: searchParams.get("chronic") === "yes",
-  };
+  const [allPlans, setAllPlans] = useState<MedicarePlan[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-  const search = useMedicareSearch(parsed.zip);
-  const filters = useMedicareFilters(search.allPlans, drugEstimates, initialSnp);
+  // SNP eligibility — readable from URL (?medicaid=yes&chronic=yes)
+  const [medicaidEligible, setMedicaidEligible] = useState(searchParams.get("medicaid") === "yes");
+  const [chronicCondition, setChronicCondition] = useState(searchParams.get("chronic") === "yes");
 
-  // Sync SNP toggles to the URL so refresh / share preserves the state.
+  const [planTypeFilter, setPlanTypeFilter] = useState<MedicarePlanType | "">("");
+  const [activeCarriers, setActiveCarriers] = useState<Set<string>>(new Set());
+  const [zeroPremiumOnly, setZeroPremiumOnly] = useState(false);
+  const [sortBy, setSortBy] = useState<SortOption>("rating-desc");
+
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [comparing, setComparing] = useState<MedicarePlan[]>([]);
+  const [popKey, setPopKey] = useState(0);
+
+  // Sync SNP toggles back to URL so refresh preserves state.
   useEffect(() => {
     const params = new URLSearchParams(searchParams.toString());
-    if (filters.medicaidEligible) params.set("medicaid", "yes"); else params.delete("medicaid");
-    if (filters.chronicCondition) params.set("chronic", "yes"); else params.delete("chronic");
+    if (medicaidEligible) params.set("medicaid", "yes"); else params.delete("medicaid");
+    if (chronicCondition) params.set("chronic", "yes"); else params.delete("chronic");
     const next = params.toString();
-    const current = searchParams.toString();
-    if (next !== current) {
+    if (next !== searchParams.toString()) {
       router.replace(`/medicare${next ? "?" + next : ""}`, { scroll: false });
     }
-  }, [filters.medicaidEligible, filters.chronicCondition, searchParams, router]);
+  }, [medicaidEligible, chronicCondition, searchParams, router]);
 
-  const fetchDrugEstimates = useCallback(async (planIds: string[], drugs: SelectedDrug[]) => {
-    if (drugs.length === 0) { setDrugEstimates({}); return; }
-    setEstimatingDrugs(true);
+  const carriers = useMemo(() => {
+    const set = new Set(allPlans.map((p) => p.carrier));
+    return [...set].sort();
+  }, [allPlans]);
+
+  const filteredPlans = useMemo(() => {
+    let result = allPlans;
+
+    // SNP visibility — hide D-/C-/I-SNP unless user opts in via the toggles.
+    result = result.filter((p) => {
+      if (!p.snp) return true;
+      if (p.snp === "D-SNP" && medicaidEligible) return true;
+      if (p.snp === "C-SNP" && chronicCondition) return true;
+      return false;
+    });
+
+    if (planTypeFilter) result = result.filter((p) => p.type === planTypeFilter);
+    if (activeCarriers.size > 0) result = result.filter((p) => activeCarriers.has(p.carrier));
+    if (zeroPremiumOnly) result = result.filter((p) => p.premium_monthly === 0);
+
+    return [...result].sort((a, b) => {
+      switch (sortBy) {
+        case "premium-asc": return a.premium_monthly - b.premium_monthly;
+        case "premium-desc": return b.premium_monthly - a.premium_monthly;
+        case "moop-asc": return a.outOfPocketMax - b.outOfPocketMax;
+        case "rating-desc": {
+          const byStars = (b.starRatingOverall ?? 0) - (a.starRatingOverall ?? 0);
+          if (byStars !== 0) return byStars;
+          const byPremium = a.premium_monthly - b.premium_monthly;
+          if (byPremium !== 0) return byPremium;
+          return a.outOfPocketMax - b.outOfPocketMax;
+        }
+        default: return 0;
+      }
+    });
+  }, [allPlans, planTypeFilter, activeCarriers, zeroPremiumOnly, sortBy, medicaidEligible, chronicCondition]);
+
+  const visiblePlans = filteredPlans.slice(0, visibleCount);
+  const tierBadgesByPlan = useMemo(() => computeTierBadges(filteredPlans), [filteredPlans]);
+  const activeFilterCount = [planTypeFilter, activeCarriers.size > 0, zeroPremiumOnly].filter(Boolean).length;
+
+  async function loadPlans(currentZip = zip) {
+    setLoading(true);
+    setError(false);
+    setVisibleCount(PAGE_SIZE);
     try {
-      const res = await fetch("/api/medicare/drugs/estimate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ planIds, drugs: drugs.map((d) => ({ name: d.name, rxcui: d.rxcui })) }),
-      });
-      const data = await res.json();
-      setDrugEstimates(data.estimates ?? {});
+      const first = await fetchMedicarePlans({ zip: currentZip, page: 1 });
+      let plans = first.plans;
+      const totalPlans = first.total;
+      if (plans.length < totalPlans) {
+        const pages = Math.ceil(totalPlans / PAGE_SIZE);
+        const rest = await Promise.all(
+          Array.from({ length: pages - 1 }, (_, i) =>
+            fetchMedicarePlans({ zip: currentZip, page: i + 2 })
+          )
+        );
+        for (const r of rest) plans = [...plans, ...r.plans];
+      }
+      setAllPlans(plans);
     } catch {
-      setDrugEstimates({});
+      setError(true);
     } finally {
-      setEstimatingDrugs(false);
+      setLoading(false);
     }
-  }, []);
+  }
 
   useEffect(() => {
-    if (search.allPlans.length > 0 && selectedDrugs.length > 0) {
-      fetchDrugEstimates(search.allPlans.map((p) => p.id), selectedDrugs);
-    } else {
-      setDrugEstimates({});
-    }
-  }, [search.allPlans, selectedDrugs, fetchDrugEstimates]);
+    loadPlans();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
-    router.replace(`/medicare?${new URLSearchParams({ zip: search.zip }).toString()}`);
-    search.loadPlans(search.zip);
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("zip", zip);
+    router.replace(`/medicare?${params.toString()}`);
+    loadPlans(zip);
   }
 
-  const totalInArea = search.allPlans.length;
+  function toggleCarrier(carrier: string) {
+    setActiveCarriers((curr) => {
+      const next = new Set(curr);
+      if (next.has(carrier)) next.delete(carrier);
+      else next.add(carrier);
+      return next;
+    });
+  }
+
+  function clearFilters() {
+    setPlanTypeFilter("");
+    setActiveCarriers(new Set());
+    setZeroPremiumOnly(false);
+    setSortBy("rating-desc");
+    // Note: SNP toggles intentionally NOT cleared — those describe who the
+    // user is (qualifying status), not a filter to wipe.
+  }
+
+  function toggleCompare(plan: MedicarePlan) {
+    setComparing((curr) => {
+      const exists = curr.find((p) => p.id === plan.id);
+      if (exists) return curr.filter((p) => p.id !== plan.id);
+      if (curr.length >= COMPARE_LIMIT) return curr;
+      return [...curr, plan];
+    });
+    setPopKey((k) => k + 1);
+  }
+
+  const currentSortLabel = SORT_OPTIONS.find((s) => s.value === sortBy)?.label ?? "CMS Stars";
 
   return (
-    <div className="flex min-h-[calc(100vh-4rem)]">
-      {/* Sidebar — search + individual filters */}
-      <aside
-        className={`w-full lg:w-80 shrink-0 bg-[#1e0f36]/80 backdrop-blur-md border-r border-white/[0.10] p-5 overflow-y-auto ${
-          sidebarOpen ? "block" : "hidden"
-        } lg:block`}
-      >
-        <form onSubmit={handleSearch} className="space-y-4">
-          <div>
-            <p className={sectionTitle}>Your Search</p>
-            <div className="space-y-3">
-              <div>
-                <label htmlFor="zip-input" className={sidebarLabel}>ZIP Code</label>
-                <input
-                  id="zip-input"
-                  type="text"
-                  value={search.zip}
-                  onChange={(e) => search.setZip(e.target.value)}
-                  className={sidebarInput}
-                  placeholder="33334"
-                  maxLength={5}
-                  inputMode="numeric"
-                  pattern="[0-9]{5}"
-                  required
-                />
-              </div>
-            </div>
-          </div>
+    <div className="min-h-screen bg-white text-[#1f1330] text-sm">
+      {/* HERO — light teal-grey gradient with wave SVG */}
+      <section className="relative bg-gradient-to-b from-[#f2f7f7] to-[#e8f1f4] pt-[34px] pb-[30px] border-b border-[#e1e9ec] overflow-hidden">
+        <HeroWaves />
+        <div className="relative z-[1] text-center px-6">
+          <h1 className="text-[38px] leading-tight font-semibold tracking-[-0.01em] text-[#1f1330]">
+            {!loading && !error
+              ? `${filteredPlans.length} plan${filteredPlans.length !== 1 ? "s" : ""} available in ${parsed.zip || "your area"}`
+              : "Find your Medicare plan"}
+          </h1>
+          <p className="mt-2 text-sm text-[#4a4458]">
+            For <b className="text-[#5a2a82] font-semibold">2026 enrollment</b> · Last updated today
+          </p>
+        </div>
+      </section>
 
-          <button
-            type="submit"
-            className="w-full bg-[#22c55e] text-white font-semibold py-2.5 rounded-lg text-sm hover:bg-green-400 transition-colors shadow-[0_0_16px_rgba(34,197,94,0.25)] cursor-pointer"
-          >
-            Search Plans
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setMedsOpen((o) => !o)}
-            className="w-full text-white/70 text-sm border border-white/20 hover:border-white/40 hover:text-white/90 rounded-lg py-2 transition-colors cursor-pointer flex items-center justify-center gap-2"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14" /></svg>
-            {medsOpen ? "Hide medications" : "Add medications"}
-          </button>
-
-          {medsOpen && (
-            <div className="bg-white/5 border border-white/10 rounded-lg p-3">
-              <div className="text-white/60 text-[11px] uppercase tracking-wider mb-2">Medications</div>
-              <MedicationInput
-                selectedDrugs={selectedDrugs}
-                onAdd={(d) => setSelectedDrugs((p) => [...p, d])}
-                onRemove={(rxcui) => setSelectedDrugs((p) => p.filter((x) => x.rxcui !== rxcui))}
-                loading={estimatingDrugs}
-              />
-            </div>
-          )}
+      {/* FILTERS — sticky horizontal bar with sort + carriers + plan type + SNP toggles */}
+      <div className="bg-[#f3f2f5] border-b border-[#e6e3ec] px-8 py-3.5 flex flex-wrap items-center gap-x-7 gap-y-3 text-sm">
+        <form onSubmit={handleSearch} className="flex items-center gap-2">
+          <span className="text-[#5a5468]">ZIP</span>
+          <input
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
+            placeholder="33065"
+            inputMode="numeric"
+            maxLength={5}
+            className="bg-white border border-[#d4cfdc] rounded-md px-3 py-1.5 text-[#1f1330] font-medium tabular-nums w-24 focus:outline-none focus:border-[#6a2fa0]"
+          />
         </form>
 
-        {/* Individual filters — carrier / premium / plan type / benefits */}
-        <div className="mt-5 space-y-4">
-          <div className={divider}>
-            <p className={sectionTitle}>Plan Type</p>
-            <div className="flex flex-wrap gap-1.5">
-              <Pill label="Any" checked={filters.networkTypeFilter === ""} onClick={() => filters.setNetworkTypeFilter("")} />
-              {NETWORK_PILLS.map((n) => (
-                <Pill
-                  key={n}
-                  label={n}
-                  checked={filters.networkTypeFilter === n}
-                  onClick={() => filters.setNetworkTypeFilter(filters.networkTypeFilter === n ? "" : n)}
-                />
-              ))}
-            </div>
-          </div>
+        <span className="w-px h-[22px] bg-[#d4cfdc]" />
 
-          <div className={divider}>
-            <label className={sidebarLabel}>Max Monthly Premium</label>
-            <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/50 text-sm">$</span>
-              <input
-                type="number"
-                min={0}
-                value={filters.maxPremium ?? ""}
-                onChange={(e) => filters.setMaxPremium(e.target.value ? parseInt(e.target.value) : null)}
-                className={sidebarInput + " pl-7"}
-                placeholder="No limit"
-              />
-            </div>
-            <label className="flex items-center gap-2 cursor-pointer group mt-2.5">
-              <input
-                type="checkbox"
-                checked={filters.zeroPremiumOnly}
-                onChange={(e) => filters.setZeroPremiumOnly(e.target.checked)}
-                className="w-4 h-4 accent-[#22c55e]"
-              />
-              <span className="text-white/70 text-sm group-hover:text-white transition-colors">$0 Premium only</span>
-            </label>
-          </div>
+        <div className="flex items-center gap-3">
+          <span className="text-[#5a5468]">Sort by:</span>
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as SortOption)}
+            className="appearance-none bg-white border border-[#d4cfdc] rounded-md py-[7px] pl-3 pr-7 text-[#1f1330] font-medium cursor-pointer focus:outline-none focus:border-[#6a2fa0]"
+            style={{
+              backgroundImage:
+                "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23333' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>\")",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "right 10px center",
+            }}
+          >
+            {SORT_OPTIONS.map(({ label, value }) => (
+              <option key={value} value={value}>{label}</option>
+            ))}
+          </select>
+        </div>
 
-          <div className={divider}>
-            <p className={sectionTitle}>Benefits Must Include</p>
-            <div className="flex flex-wrap gap-1.5">
-              {BENEFIT_OPTIONS.map((b) => (
-                <Pill
-                  key={b.key}
-                  label={b.label}
-                  checked={filters.requiredBenefits.has(b.key)}
-                  onClick={() => {
-                    const next = new Set(filters.requiredBenefits);
-                    if (next.has(b.key)) next.delete(b.key);
-                    else next.add(b.key);
-                    filters.setRequiredBenefits(next);
-                  }}
-                />
-              ))}
-            </div>
-          </div>
+        <span className="w-px h-[22px] bg-[#d4cfdc]" />
 
-          <div className={divider}>
-            <p className={sectionTitle}>Eligibility</p>
-            <p className="text-white/45 text-[11px] leading-relaxed mb-3">
-              These plans are restricted by qualifying status. Toggle on if either applies to you.
-            </p>
-            <div className="space-y-2.5">
-              <label className="flex items-start gap-2.5 cursor-pointer group">
-                <input
-                  type="checkbox"
-                  checked={filters.medicaidEligible}
-                  onChange={(e) => filters.setMedicaidEligible(e.target.checked)}
-                  className="w-4 h-4 accent-[#a43499] shrink-0 mt-0.5"
-                />
-                <span className="text-white/75 text-sm group-hover:text-white transition-colors leading-tight">
-                  On Medicaid <span className="text-white/45">(or Extra Help)</span>
-                  <span className="block text-white/40 text-[11px] mt-0.5">Surfaces D-SNP plans built for dual-eligibles.</span>
-                </span>
-              </label>
-              <label className="flex items-start gap-2.5 cursor-pointer group">
-                <input
-                  type="checkbox"
-                  checked={filters.chronicCondition}
-                  onChange={(e) => filters.setChronicCondition(e.target.checked)}
-                  className="w-4 h-4 accent-[#a43499] shrink-0 mt-0.5"
-                />
-                <span className="text-white/75 text-sm group-hover:text-white transition-colors leading-tight">
-                  Chronic condition
-                  <span className="block text-white/40 text-[11px] mt-0.5">Diabetes, heart, lung, kidney, etc. Surfaces C-SNP plans.</span>
-                </span>
-              </label>
-            </div>
-          </div>
+        {/* Plan-type chips */}
+        <div className="flex items-center gap-1.5">
+          {PLAN_TYPES.map(({ label, value }) => (
+            <button
+              key={value}
+              type="button"
+              onClick={() => setPlanTypeFilter(value)}
+              className={`px-3 py-1.5 rounded-full text-[12px] font-semibold transition-colors ${
+                planTypeFilter === value
+                  ? "bg-[#6a2fa0] text-white"
+                  : "bg-transparent text-[#1f1330] hover:bg-[#e8e4ee]"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
 
-          {filters.carriers.length > 0 && (
-            <div className={divider}>
-              <p className={sectionTitle}>Carrier</p>
-              <div className="space-y-1.5 max-h-56 overflow-y-auto pr-1">
-                {filters.carriers.map((c) => (
-                  <label key={c} className="flex items-center gap-2 cursor-pointer group">
-                    <input
-                      type="checkbox"
-                      checked={filters.carrierFilter.includes(c)}
-                      onChange={(e) => {
-                        if (e.target.checked) filters.setCarrierFilter([...filters.carrierFilter, c]);
-                        else filters.setCarrierFilter(filters.carrierFilter.filter((x) => x !== c));
-                      }}
-                      className="w-4 h-4 accent-[#22c55e] shrink-0"
-                    />
-                    <span className="text-white/75 text-sm group-hover:text-white transition-colors truncate">{c}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
+        <span className="w-px h-[22px] bg-[#d4cfdc]" />
+
+        {/* $0 premium chip toggle */}
+        <button
+          type="button"
+          onClick={() => setZeroPremiumOnly((v) => !v)}
+          className={`px-3 py-1.5 rounded-full text-[12px] font-semibold transition-colors border ${
+            zeroPremiumOnly
+              ? "bg-[#1fa84a]/10 border-[#1fa84a] text-[#178f3d]"
+              : "bg-transparent border-[#d4cfdc] text-[#5a5468] hover:border-[#1fa84a]/40"
+          }`}
+        >
+          $0 Premium
+        </button>
+
+        <span className="w-px h-[22px] bg-[#d4cfdc]" />
+
+        {/* SNP eligibility toggles — pink reserved for SNP per brand DNA */}
+        <button
+          type="button"
+          onClick={() => setMedicaidEligible((v) => !v)}
+          className={`px-3 py-1.5 rounded-full text-[12px] font-semibold transition-colors border ${
+            medicaidEligible
+              ? "bg-[#a43499]/10 border-[#a43499] text-[#a43499]"
+              : "bg-transparent border-[#d4cfdc] text-[#5a5468] hover:border-[#a43499]/40"
+          }`}
+          title="Surfaces D-SNP plans built for Medicare + Medicaid recipients"
+        >
+          On Medicaid
+        </button>
+        <button
+          type="button"
+          onClick={() => setChronicCondition((v) => !v)}
+          className={`px-3 py-1.5 rounded-full text-[12px] font-semibold transition-colors border ${
+            chronicCondition
+              ? "bg-[#a43499]/10 border-[#a43499] text-[#a43499]"
+              : "bg-transparent border-[#d4cfdc] text-[#5a5468] hover:border-[#a43499]/40"
+          }`}
+          title="Surfaces C-SNP plans for diabetes, cardiovascular, ESRD, etc."
+        >
+          Chronic condition
+        </button>
+
+        {/* More carriers in an expandable strip below */}
+        <div className="ml-auto flex items-center gap-3">
+          {!loading && !error && (
+            <span className="text-[12px] text-[#5a5468] tabular-nums">
+              {visiblePlans.length} of {filteredPlans.length}
+            </span>
           )}
-
-          {filters.activeFilterCount > 0 && (
+          {(activeFilterCount > 0 || activeCarriers.size > 0) && (
             <button
               type="button"
-              onClick={filters.clearAll}
-              className="w-full text-xs text-white/60 hover:text-white border border-white/15 hover:border-white/30 rounded-lg py-2 transition-colors cursor-pointer"
+              onClick={clearFilters}
+              className="text-[12px] font-semibold text-[#6a2fa0] hover:text-[#5a2a82]"
             >
-              Clear all filters ({filters.activeFilterCount})
+              Clear ({activeFilterCount + (activeCarriers.size > 0 ? 1 : 0)})
+            </button>
+          )}
+          {carriers.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setFiltersOpen((o) => !o)}
+              className="text-[12px] font-semibold text-[#6a2fa0] border border-[#6a2fa0]/30 rounded-full px-3 py-1.5 hover:bg-[#6a2fa0]/[0.06]"
+            >
+              {filtersOpen ? "Hide carriers" : `Carriers (${activeCarriers.size || "all"})`}
             </button>
           )}
         </div>
-      </aside>
 
-      {/* Results */}
-      <main className="flex-1 p-6">
-        <button
-          className="lg:hidden mb-5 flex items-center gap-2 text-white/70 text-sm border border-white/20 rounded-lg px-3 py-2 hover:border-white/40 hover:text-white/90 transition-colors cursor-pointer"
-          onClick={() => setSidebarOpen((o) => !o)}
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 4.5h14.25M3 9h9.75M3 13.5h5.25m5.25-.75L17.25 9m0 0L21 12.75M17.25 9v12" />
-          </svg>
-          {sidebarOpen ? "Hide Search" : `Edit Search${filters.activeFilterCount ? ` (${filters.activeFilterCount})` : ""}`}
-        </button>
-
-        <div className="flex items-start justify-between mb-6 gap-4">
-          <div>
-            <h1 className="text-white text-[26px] font-semibold tracking-tight leading-tight">Find Your Best Medicare Plan</h1>
-            <p className="text-white/55 text-sm mt-1.5 flex items-center gap-2 flex-wrap">
-              {search.loading ? (
-                "Loading plans…"
-              ) : search.allPlans.length > 0 ? (
-                <>
-                  <span className="font-semibold text-white">
-                    {filters.filteredPlans.length} plan{filters.filteredPlans.length !== 1 ? "s" : ""}
-                  </span>
-                  <span className="w-[3px] h-[3px] rounded-full bg-current opacity-40" />
-                  <span>
-                    {filters.activeFilterCount || filters.quickPreset !== "all"
-                      ? `filtered from ${totalInArea}`
-                      : "available in your area"}
-                  </span>
-                  <span className="w-[3px] h-[3px] rounded-full bg-current opacity-40" />
-                  <span>2026 plan year</span>
-                </>
-              ) : (
-                "Enter a ZIP to see plans"
-              )}
-            </p>
-          </div>
-          {search.zip && (
-            <div className="text-white/75 text-sm bg-white/5 border border-white/10 rounded-lg px-3.5 py-2 whitespace-nowrap flex items-center gap-2">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              ZIP <strong className="text-white">{search.zip}</strong>
-            </div>
-          )}
-        </div>
-
-        {/* Top bar — off-white surface with quick-preset tabs + sort */}
-        <div className="mb-6 bg-[#f5f1ec] border border-black/5 rounded-xl p-4 space-y-3 shadow-sm">
-          <div className="flex flex-wrap gap-1.5" role="tablist">
-            {PRESET_TABS.map(({ key, label }) => {
-              const count = filters.presetCounts[key];
-              const active = filters.quickPreset === key;
-              return (
-                <button
-                  key={key}
-                  type="button"
-                  role="tab"
-                  aria-selected={active}
-                  onClick={() => filters.setQuickPreset(key)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all duration-150 cursor-pointer ${
-                    active
-                      ? "bg-[#22c55e] border-[#22c55e] text-white shadow-[0_2px_8px_rgba(34,197,94,0.25)]"
-                      : "bg-white border-gray-300 text-gray-700 hover:border-gray-500 hover:text-gray-900 hover:-translate-y-0.5"
-                  }`}
-                >
-                  {label} <span className="opacity-70 font-normal">({count})</span>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="flex items-center gap-3 pt-3 border-t border-black/[0.08]">
-            <label className="text-gray-500 text-[11px] uppercase tracking-wider font-medium">Sort by</label>
-            <select
-              value={filters.sortBy}
-              onChange={(e) => filters.setSortBy(e.target.value as typeof filters.sortBy)}
-              className="bg-white border border-gray-300 rounded-lg px-3 py-1.5 text-gray-800 text-sm focus:outline-none focus:border-[#22c55e]/60"
-            >
-              {SORT_OPTIONS.map((o) => (
-                <option key={o.value} value={o.value} className="bg-white text-gray-800">{o.label}</option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {search.loading && (
-          <div className="space-y-4">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="h-40 bg-white/[0.03] border border-white/10 rounded-xl animate-pulse" />
+        {/* Carrier toggle row (shown when expanded) */}
+        {filtersOpen && carriers.length > 0 && (
+          <div className="basis-full pt-3 border-t border-[#e6e3ec] flex flex-wrap gap-x-6 gap-y-2.5">
+            {carriers.map((c) => (
+              <CarrierToggle key={c} label={c} on={activeCarriers.has(c)} onClick={() => toggleCarrier(c)} />
             ))}
           </div>
         )}
-        {search.error && <EmptyState type="error" onRetry={() => search.loadPlans()} />}
-        {!search.loading && !search.error && filters.filteredPlans.length === 0 && search.zip && (
-          <EmptyState type="no-results" />
+      </div>
+
+      {/* PLANS — dark purple stage, cards float directly on it */}
+      <section className="relative bg-[#2a0d4a] px-8 pt-8 pb-10 overflow-hidden">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(ellipse 800px 200px at 20% 0%, rgba(120, 60, 180, 0.35), transparent 70%), radial-gradient(ellipse 600px 180px at 80% 100%, rgba(80, 30, 130, 0.4), transparent 70%)",
+          }}
+          aria-hidden="true"
+        />
+        <PlansSectionWaves />
+
+        {/* Section meta strip */}
+        {!loading && !error && filteredPlans.length > 0 && (
+          <div className="relative max-w-[1180px] mx-auto mb-[18px] flex items-center justify-between text-[#d8cfe8] text-[13px] flex-wrap gap-3">
+            <div className="flex items-center gap-[18px] flex-wrap">
+              <span className="inline-flex items-center gap-1.5 bg-white/[0.08] border border-white/[0.12] text-[#f3edfa] px-[11px] py-[5px] rounded-full text-[12px] font-medium">
+                <span
+                  className="w-1.5 h-1.5 rounded-full bg-[#4ade80]"
+                  style={{ boxShadow: "0 0 0 3px rgba(74, 222, 128, 0.18)" }}
+                />
+                Showing top {Math.min(visiblePlans.length, filteredPlans.length)} of {filteredPlans.length}
+              </span>
+              <span className="bg-white/[0.08] border border-white/[0.12] text-[#f3edfa] px-[11px] py-[5px] rounded-full text-[12px] font-medium">
+                Ranked by {currentSortLabel}
+              </span>
+            </div>
+            {visibleCount < filteredPlans.length && (
+              <button
+                type="button"
+                onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+                className="text-[#ffd5ec] text-[13px] font-medium hover:underline"
+              >
+                Browse all {filteredPlans.length} plans →
+              </button>
+            )}
+          </div>
         )}
 
-        {!search.loading && !search.error && filters.filteredPlans.length > 0 && (
-          <>
-            <div className="plan-grid">
-              {filters.visiblePlans.map((plan) => (
-                <MedicarePlanCard key={plan.id} plan={plan} drugEstimate={drugEstimates[plan.id]} />
+        <div className="relative max-w-[1180px] mx-auto">
+          {loading && (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[22px] items-stretch">
+              {[0, 1, 2].map((i) => <SkeletonCard key={i} />)}
+            </div>
+          )}
+
+          {error && (
+            <div className="bg-white rounded-2xl">
+              <EmptyState type="error" onRetry={() => loadPlans()} />
+            </div>
+          )}
+
+          {!loading && !error && filteredPlans.length === 0 && (
+            <div className="bg-white rounded-2xl">
+              <EmptyState type="no-results" />
+            </div>
+          )}
+
+          {!loading && !error && filteredPlans.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[22px] items-stretch">
+              {visiblePlans.map((plan) => (
+                <MedicarePlanCard
+                  key={plan.id}
+                  plan={plan}
+                  tierBadges={tierBadgesByPlan.get(plan.id)}
+                  isComparing={!!comparing.find((p) => p.id === plan.id)}
+                  compareDisabled={comparing.length >= COMPARE_LIMIT && !comparing.find((p) => p.id === plan.id)}
+                  onToggleCompare={toggleCompare}
+                />
               ))}
             </div>
-            {filters.visibleCount < filters.filteredPlans.length && (
-              <div className="flex justify-center mt-6">
-                <button
-                  type="button"
-                  onClick={filters.loadMore}
-                  className="px-5 py-2.5 rounded-lg text-sm font-semibold border border-white/20 text-white/80 hover:border-white/40 hover:text-white transition-colors cursor-pointer"
-                >
-                  Load more ({filters.visiblePlans.length} of {filters.filteredPlans.length})
-                </button>
-              </div>
-            )}
-          </>
-        )}
-      </main>
+          )}
+        </div>
+      </section>
+
+      {/* STICKY COMPARE TRAY */}
+      <div className="sticky bottom-0 z-40 bg-[#f3f2f5] border-t border-[#e0dce6] px-8 py-3.5 flex items-center justify-between text-[13px] font-semibold tracking-[0.06em] text-[#2c2640]">
+        <div className="flex items-center gap-3">
+          <span>STICKY COMPARE TRAY</span>
+          <span
+            key={popKey}
+            className="bg-[#6a2fa0] text-white rounded-full min-w-[22px] h-[22px] px-[7px] inline-flex items-center justify-center text-[12px] font-bold tracking-normal animate-[pop_200ms_ease]"
+          >
+            {comparing.length}
+          </span>
+          <span className="font-medium tracking-[0.02em] text-[#6a6378] normal-case text-[12px]">
+            plans selected (max {COMPARE_LIMIT})
+          </span>
+        </div>
+        <div className="flex items-center gap-[18px]">
+          <button
+            type="button"
+            disabled={comparing.length < 2}
+            className="bg-[#6a2fa0] text-white border-0 px-4 py-2 rounded-lg text-[12px] font-bold tracking-[0.05em] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-opacity duration-[140ms]"
+          >
+            COMPARE PLANS →
+          </button>
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes pop {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.25); }
+          100% { transform: scale(1); }
+        }
+      `}</style>
     </div>
   );
 }
