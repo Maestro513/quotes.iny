@@ -51,20 +51,30 @@ const CARRIER_LOGOS: Record<string, string> = {
   "Healthfirst": "/iny-assets/carriers/health-first-ny.png",
 };
 
-const FALLBACK = "/iny-assets/carriers/bcbs-association.png";
-
 /**
  * Resolve a carrier name to a logo path. Picks the longest matching key so
  * "Aetna Medicare" wins over "Aetna".
+ *
+ * The match is BIDIRECTIONAL: the passed-in carrier may be either longer or
+ * shorter than the dictionary key. "Devoted Health" matches "Devoted",
+ * "DEVOTED" matches "Devoted Health", etc. Without bidirectional matching
+ * the API's all-caps abbreviated carrier strings ("DEVOTED", "UHC") never
+ * resolved.
+ *
+ * Returns `undefined` when no match is found — the caller should skip the
+ * <img> entirely and rely on the carrier-name text. Avoids showing the wrong
+ * carrier's logo as a fallback (which is more misleading than no logo).
  */
-export function carrierLogo(carrier: string | undefined | null): string {
-  if (!carrier) return FALLBACK;
+export function carrierLogo(carrier: string | undefined | null): string | undefined {
+  if (!carrier) return undefined;
   if (CARRIER_LOGOS[carrier]) return CARRIER_LOGOS[carrier];
-  // Fuzzy fallback: find the longest key that's a case-insensitive substring
-  const lc = carrier.toLowerCase();
+  const lc = carrier.toLowerCase().trim();
   let best = "";
   for (const key of Object.keys(CARRIER_LOGOS)) {
-    if (lc.includes(key.toLowerCase()) && key.length > best.length) best = key;
+    const klc = key.toLowerCase();
+    if ((lc.includes(klc) || klc.includes(lc)) && key.length > best.length) {
+      best = key;
+    }
   }
-  return best ? CARRIER_LOGOS[best] : FALLBACK;
+  return best ? CARRIER_LOGOS[best] : undefined;
 }

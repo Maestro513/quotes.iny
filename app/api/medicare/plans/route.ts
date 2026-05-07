@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import type { MedicarePlan, MedicarePlanType, MedicareNetworkType } from "@/types/medicare";
+import type { MedicarePlan, MedicarePlanType, MedicareNetworkType, MedicareSnpType } from "@/types/medicare";
 import { getPlansForZip, normalizePlanNumber } from "@/lib/medicare/zip-lookup";
 import { loadCmsPlan } from "@/lib/medicare/cms-lookup";
+import { carrierForContract, contractFromPlanNumber } from "@/lib/medicare/contract-carrier";
 
 const CONCIERGE = "https://iny-concierge.onrender.com";
 const PAGE_SIZE = 20;
@@ -91,6 +92,22 @@ function mapNetworkType(planType: string): MedicareNetworkType | undefined {
   if (pt.includes("ppo")) return "PPO";
   if (pt.includes("hmo")) return "HMO";
   if (pt.includes("pffs")) return "PFFS";
+  return undefined;
+}
+
+/**
+ * Detect SNP designation from CMS plan_type or marketing brand.
+ * CMS plan_type strings include "HMO D-SNP", "Local HMO C-SNP", "HMO I-SNP",
+ * "FIDE-SNP" and "HIDE-SNP" (both D-SNP variants). Marketing brand strings
+ * like "Aetna Medicare FIDE" / "Aetna Medicare HIDE" are also D-SNP.
+ */
+function mapSnpType(planType: string, brand: string): MedicareSnpType | undefined {
+  const haystack = `${planType ?? ""} ${brand ?? ""}`.toLowerCase();
+  if (haystack.includes("c-snp") || haystack.includes("c snp") || haystack.includes("chronic")) return "C-SNP";
+  if (haystack.includes("i-snp") || haystack.includes("i snp") || haystack.includes("institutional")) return "I-SNP";
+  if (haystack.includes("d-snp") || haystack.includes("d snp") ||
+      haystack.includes("fide") || haystack.includes("hide") ||
+      haystack.includes("dual eligible") || haystack.includes("dual-eligible")) return "D-SNP";
   return undefined;
 }
 
@@ -252,9 +269,18 @@ function mapToPlan(detail: Record<string, unknown>, planNumber: string): Medicar
     .slice(0, 4)
     .map((s) => s.value);
 
-  // Extract carrier from plan name (first word) or use plan_number prefix
+  // Carrier comes from the CMS contract directory keyed by contract number
+  // ("H5216" → "Aetna Medicare", "H1290" → "Devoted Health", etc). The old
+  // approach of splitting plan_name on whitespace returned ALL-CAPS abbrevs
+  // like "DEVOTED" / "UHC" that didn't match carrier-logos.ts canonical keys.
   const planName = (b.plan_name as string) ?? planNumber;
-  const carrier = planName.split(" ")[0] ?? "";
+  const contractNum = contractFromPlanNumber(planNumber);
+  const carrier = carrierForContract(contractNum) || (planName.split(" ")[0] ?? "");
+
+  // SNP detection: read CMS plan_type for "D-SNP" / "C-SNP" / "I-SNP" markers
+  // and the brand name for FIDE/HIDE variants (both D-SNP). undefined for
+  // ordinary MA plans, which is the common case.
+  const snp = mapSnpType(planTypeStr, carrier);
 
   return {
     id: planNumber,
@@ -279,6 +305,7 @@ function mapToPlan(detail: Record<string, unknown>, planNumber: string): Medicar
     },
     partBGivebackAmount: parseMonthlyDollars(partBVal),
     otcAllowanceAmount: parseMonthlyDollars(otcVal),
+    snp,
     starRatingOverall: detail.starRatingOverall as number | undefined,
     starRatingPartC: detail.starRatingPartC as number | undefined,
     starRatingPartD: detail.starRatingPartD as number | undefined,

@@ -104,6 +104,7 @@ export default function MedicarePlanCard({ plan, drugEstimate }: Props) {
     starRatingOverall,
     partBGivebackAmount,
     otcAllowanceAmount,
+    snp,
   } = plan;
 
   const isZero = premium_monthly === 0;
@@ -132,11 +133,13 @@ export default function MedicarePlanCard({ plan, drugEstimate }: Props) {
     <article className={`pc${isZero ? " is-zero" : ""}`}>
       <header className="pc-head">
         <span className="pc-carrier">
-          <img
-            src={carrierLogo(carrier)}
-            alt={carrier}
-            className="pc-carrier-logo"
-          />
+          {carrierLogo(carrier) ? (
+            <img
+              src={carrierLogo(carrier)}
+              alt={carrier}
+              className="pc-carrier-logo"
+            />
+          ) : null}
           <span className="pc-carrier-name">{carrier}</span>
         </span>
         <button
@@ -154,6 +157,18 @@ export default function MedicarePlanCard({ plan, drugEstimate }: Props) {
 
       <div className="pc-meta">
         <span className="pc-id">{shortPlanId(id)}</span>
+        {snp && (
+          <>
+            <span className="pc-sep" aria-hidden="true" />
+            <span className="pc-snp" title={
+              snp === "D-SNP" ? "Dual Special Needs Plan — for Medicare + Medicaid recipients" :
+              snp === "C-SNP" ? "Chronic Special Needs Plan — for specific chronic conditions" :
+              "Institutional Special Needs Plan — for long-term care residents"
+            }>
+              {snp}
+            </span>
+          </>
+        )}
         <span className="pc-sep" aria-hidden="true" />
         {starRatingOverall != null && (
           <span className="pc-rating">

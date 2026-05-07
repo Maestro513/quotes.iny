@@ -70,8 +70,27 @@ function MedicareContent() {
   const [drugEstimates, setDrugEstimates] = useState<Record<string, DrugEstimate>>({});
   const [estimatingDrugs, setEstimatingDrugs] = useState(false);
 
+  // SNP eligibility — readable from URL (?medicaid=yes&chronic=yes) so the
+  // marketing site can deep-link with the user's qualifying status pre-set.
+  const initialSnp = {
+    medicaid: searchParams.get("medicaid") === "yes",
+    chronic: searchParams.get("chronic") === "yes",
+  };
+
   const search = useMedicareSearch(parsed.zip);
-  const filters = useMedicareFilters(search.allPlans, drugEstimates);
+  const filters = useMedicareFilters(search.allPlans, drugEstimates, initialSnp);
+
+  // Sync SNP toggles to the URL so refresh / share preserves the state.
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (filters.medicaidEligible) params.set("medicaid", "yes"); else params.delete("medicaid");
+    if (filters.chronicCondition) params.set("chronic", "yes"); else params.delete("chronic");
+    const next = params.toString();
+    const current = searchParams.toString();
+    if (next !== current) {
+      router.replace(`/medicare${next ? "?" + next : ""}`, { scroll: false });
+    }
+  }, [filters.medicaidEligible, filters.chronicCondition, searchParams, router]);
 
   const fetchDrugEstimates = useCallback(async (planIds: string[], drugs: SelectedDrug[]) => {
     if (drugs.length === 0) { setDrugEstimates({}); return; }
@@ -223,6 +242,39 @@ function MedicareContent() {
                   }}
                 />
               ))}
+            </div>
+          </div>
+
+          <div className={divider}>
+            <p className={sectionTitle}>Eligibility</p>
+            <p className="text-white/45 text-[11px] leading-relaxed mb-3">
+              These plans are restricted by qualifying status. Toggle on if either applies to you.
+            </p>
+            <div className="space-y-2.5">
+              <label className="flex items-start gap-2.5 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  checked={filters.medicaidEligible}
+                  onChange={(e) => filters.setMedicaidEligible(e.target.checked)}
+                  className="w-4 h-4 accent-[#a43499] shrink-0 mt-0.5"
+                />
+                <span className="text-white/75 text-sm group-hover:text-white transition-colors leading-tight">
+                  On Medicaid <span className="text-white/45">(or Extra Help)</span>
+                  <span className="block text-white/40 text-[11px] mt-0.5">Surfaces D-SNP plans built for dual-eligibles.</span>
+                </span>
+              </label>
+              <label className="flex items-start gap-2.5 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  checked={filters.chronicCondition}
+                  onChange={(e) => filters.setChronicCondition(e.target.checked)}
+                  className="w-4 h-4 accent-[#a43499] shrink-0 mt-0.5"
+                />
+                <span className="text-white/75 text-sm group-hover:text-white transition-colors leading-tight">
+                  Chronic condition
+                  <span className="block text-white/40 text-[11px] mt-0.5">Diabetes, heart, lung, kidney, etc. Surfaces C-SNP plans.</span>
+                </span>
+              </label>
             </div>
           </div>
 

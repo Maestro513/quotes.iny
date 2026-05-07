@@ -3,6 +3,17 @@
 import { useState, useMemo } from "react";
 import type { MedicarePlan, MedicarePlanType, MedicareNetworkType, DrugEstimate } from "@/types/medicare";
 
+/**
+ * SNP eligibility intake. Drives whether D-SNP / C-SNP plans appear in results.
+ * Default = both false → SNP plans hidden (most users don't qualify; including
+ * them would clutter results with plans they can't enroll in). When Medicaid
+ * is on, D-SNP plans are surfaced. When chronic is on, C-SNP plans are surfaced.
+ */
+export interface SnpEligibility {
+  medicaid: boolean;
+  chronic: boolean;
+}
+
 export type SortOption = "premium-asc" | "premium-desc" | "alpha" | "moop-asc" | "moop-desc" | "rating-desc" | "drugcost-asc";
 
 /** Quick-filter preset tabs: one-click bundles that override individual filters. */
@@ -17,7 +28,11 @@ export type QuickPreset =
 
 const PAGE_SIZE = 20;
 
-export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Record<string, DrugEstimate> = {}) {
+export function useMedicareFilters(
+  allPlans: MedicarePlan[],
+  drugEstimates: Record<string, DrugEstimate> = {},
+  initialSnp: Partial<SnpEligibility> = {}
+) {
   const [planTypeFilter, setPlanTypeFilter] = useState<MedicarePlanType | "">("");
   const [networkTypeFilter, setNetworkTypeFilter] = useState<MedicareNetworkType | "">("");
   const [carrierFilter, setCarrierFilter] = useState<string[]>([]);
@@ -30,6 +45,8 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
   const [sortBy, setSortBy] = useState<SortOption>("rating-desc");
   const [quickPreset, setQuickPreset] = useState<QuickPreset>("all");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [medicaidEligible, setMedicaidEligible] = useState<boolean>(!!initialSnp.medicaid);
+  const [chronicCondition, setChronicCondition] = useState<boolean>(!!initialSnp.chronic);
 
   const carriers = useMemo(() => {
     const set = new Set(allPlans.map((p) => p.carrier));
@@ -38,6 +55,17 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
 
   const filteredPlans = useMemo(() => {
     let result = allPlans;
+
+    // SNP visibility: hide D-SNP / C-SNP / I-SNP unless user has opted in via
+    // the eligibility toggles. Most visitors don't qualify, so surfacing SNP
+    // plans by default would clutter results with plans they can't enroll in.
+    result = result.filter((p) => {
+      if (!p.snp) return true; // ordinary MA plans always show
+      if (p.snp === "D-SNP" && medicaidEligible) return true;
+      if (p.snp === "C-SNP" && chronicCondition) return true;
+      // I-SNP (institutional) never auto-surfaces — niche population
+      return false;
+    });
 
     // Quick presets override individual controls
     switch (quickPreset) {
@@ -95,7 +123,7 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
     });
 
     return result;
-  }, [allPlans, planTypeFilter, networkTypeFilter, carrierFilter, zeroPremiumOnly, maxPremium, maxMoop, minGiveback, minOtc, requiredBenefits, sortBy, drugEstimates, quickPreset]);
+  }, [allPlans, planTypeFilter, networkTypeFilter, carrierFilter, zeroPremiumOnly, maxPremium, maxMoop, minGiveback, minOtc, requiredBenefits, sortBy, drugEstimates, quickPreset, medicaidEligible, chronicCondition]);
 
   const visiblePlans = filteredPlans.slice(0, visibleCount);
 
@@ -118,6 +146,9 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
     setSortBy("rating-desc");
     setQuickPreset("all");
     setVisibleCount(PAGE_SIZE);
+    // Note: medicaidEligible / chronicCondition are NOT reset by clearAll.
+    // They reflect a person's qualifying status, not a filter — wiping them
+    // would silently hide D-SNP plans the user is qualified for.
   }
 
   function loadMore() {
@@ -139,10 +170,12 @@ export function useMedicareFilters(allPlans: MedicarePlan[], drugEstimates: Reco
     planTypeFilter, networkTypeFilter, carrierFilter, zeroPremiumOnly,
     maxPremium, maxMoop, minGiveback, minOtc, requiredBenefits,
     sortBy, quickPreset,
+    medicaidEligible, chronicCondition,
     carriers, filteredPlans, visiblePlans, activeFilterCount, presetCounts, visibleCount,
     setPlanTypeFilter, setNetworkTypeFilter, setCarrierFilter, setZeroPremiumOnly,
     setMaxPremium, setMaxMoop, setMinGiveback, setMinOtc, setRequiredBenefits,
     setSortBy, setQuickPreset,
+    setMedicaidEligible, setChronicCondition,
     clearAll, loadMore,
   };
 }
