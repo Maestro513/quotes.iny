@@ -4,6 +4,51 @@ import { useState, useMemo } from "react";
 import type { MedicarePlan, MedicarePlanType, MedicareNetworkType, DrugEstimate } from "@/types/medicare";
 
 /**
+ * Annualize a benefit allowance string (e.g. "$300/qtr", "$50/mo", "$1500").
+ * Returns 0 (not null) when missing, so caller can sum without null-checks.
+ */
+function annualizeAllowance(raw: string | undefined): number {
+  if (!raw) return 0;
+  const m = raw.match(/\$?([0-9][0-9,]*\.?\d*)/);
+  if (!m) return 0;
+  const num = parseFloat(m[1].replace(/,/g, ""));
+  if (!isFinite(num) || num <= 0) return 0;
+  const lower = raw.toLowerCase();
+  if (lower.includes("/qtr") || lower.includes("quarterly") || lower.includes("/quarter")) return num * 4;
+  if (lower.includes("/mo") || lower.includes("monthly") || lower.includes("/month")) return num * 12;
+  return num;
+}
+
+/**
+ * Composite "expected annual net cost" score — the lower, the better.
+ *
+ * Premium and deductible are full-weight (everyone pays premium; most enrollees
+ * who use any care hit at least part of the deductible). MOOP gets 0.15 weight
+ * because <10% of enrollees hit MOOP in a typical year, but a $11k cap is still
+ * materially worse than a $3k cap and shouldn't be ignored. Allowances are
+ * subtracted at 0.7 utilization (most enrollees don't claim 100% of dental/OTC/
+ * hearing/vision/giveback benefits).
+ *
+ * The weights are deliberately conservative round numbers — refining them with
+ * real claims data would be better, but these are defensible for a default sort.
+ */
+function netAnnualCostScore(plan: MedicarePlan): number {
+  const annualPremium = plan.premium_monthly * 12;
+  const deductible = plan.deductible;
+  const moopRiskWeighted = plan.outOfPocketMax * 0.15;
+
+  const b = plan.benefits;
+  const allowancesAnnual =
+    annualizeAllowance(b.dental) +
+    annualizeAllowance(b.hearing) +
+    annualizeAllowance(b.vision) +
+    (plan.otcAllowanceAmount ? plan.otcAllowanceAmount * 12 : annualizeAllowance(b.otcAllowance)) +
+    (plan.partBGivebackAmount ? plan.partBGivebackAmount * 12 : annualizeAllowance(b.partBGiveback));
+
+  return annualPremium + deductible + moopRiskWeighted - allowancesAnnual * 0.7;
+}
+
+/**
  * SNP eligibility intake. Drives whether D-SNP / C-SNP plans appear in results.
  * Default = both false → SNP plans hidden (most users don't qualify; including
  * them would clutter results with plans they can't enroll in). When Medicaid
@@ -14,7 +59,17 @@ export interface SnpEligibility {
   chronic: boolean;
 }
 
-export type SortOption = "premium-asc" | "premium-desc" | "alpha" | "moop-asc" | "moop-desc" | "rating-desc" | "drugcost-asc";
+export type SortOption =
+  | "value-asc"
+  | "premium-asc"
+  | "premium-desc"
+  | "alpha"
+  | "moop-asc"
+  | "moop-desc"
+  | "rating-desc"
+  | "drugcost-asc"
+  | "deductible-asc"
+  | "otc-desc";
 
 /** Quick-filter preset tabs: one-click bundles that override individual filters. */
 export type QuickPreset =
@@ -42,7 +97,7 @@ export function useMedicareFilters(
   const [minGiveback, setMinGiveback] = useState<number>(0);
   const [minOtc, setMinOtc] = useState<number>(0);
   const [requiredBenefits, setRequiredBenefits] = useState<Set<string>>(new Set());
-  const [sortBy, setSortBy] = useState<SortOption>("rating-desc");
+  const [sortBy, setSortBy] = useState<SortOption>("value-asc");
   const [quickPreset, setQuickPreset] = useState<QuickPreset>("all");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [medicaidEligible, setMedicaidEligible] = useState<boolean>(!!initialSnp.medicaid);
@@ -103,6 +158,14 @@ export function useMedicareFilters(
 
     result = [...result].sort((a, b) => {
       switch (sortBy) {
+        case "value-asc": {
+          // Composite "expected annual net cost" — lower wins.
+          // Tiebreak by CMS stars (descending) so equally-priced plans surface
+          // higher-rated ones first.
+          const byCost = netAnnualCostScore(a) - netAnnualCostScore(b);
+          if (byCost !== 0) return byCost;
+          return (b.starRatingOverall ?? 0) - (a.starRatingOverall ?? 0);
+        }
         case "premium-asc": return a.premium_monthly - b.premium_monthly;
         case "premium-desc": return b.premium_monthly - a.premium_monthly;
         case "alpha": return a.name.localeCompare(b.name);
@@ -118,6 +181,19 @@ export function useMedicareFilters(
           return a.outOfPocketMax - b.outOfPocketMax;
         }
         case "drugcost-asc": return (drugEstimates[a.id]?.annualCost ?? Infinity) - (drugEstimates[b.id]?.annualCost ?? Infinity);
+        case "deductible-asc": {
+          // Plans with $0 deductible should win — but a literal 0 < any positive,
+          // so a plain ascending sort already handles that correctly.
+          // Tiebreak by premium so two $0-deductible plans rank by cheapest.
+          const byDed = a.deductible - b.deductible;
+          if (byDed !== 0) return byDed;
+          return a.premium_monthly - b.premium_monthly;
+        }
+        case "otc-desc": {
+          // Higher OTC allowance wins. Plans without an OTC benefit (`undefined`)
+          // sort to the bottom — coerce to 0 so they rank below any positive amount.
+          return (b.otcAllowanceAmount ?? 0) - (a.otcAllowanceAmount ?? 0);
+        }
         default: return 0;
       }
     });
@@ -143,7 +219,7 @@ export function useMedicareFilters(
     setMinGiveback(0);
     setMinOtc(0);
     setRequiredBenefits(new Set());
-    setSortBy("rating-desc");
+    setSortBy("value-asc");
     setQuickPreset("all");
     setVisibleCount(PAGE_SIZE);
     // Note: medicaidEligible / chronicCondition are NOT reset by clearAll.
