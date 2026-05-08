@@ -31,6 +31,7 @@ const PRESET_TABS: { key: QuickPreset; label: string }[] = [
   { key: "ppo", label: "PPO" },
 ];
 const SORT_OPTIONS = [
+  { label: "Net Annual Cost", value: "value-asc" },
   { label: "CMS Stars", value: "rating-desc" },
   { label: "Lowest Premium", value: "premium-asc" },
   { label: "Highest Premium", value: "premium-desc" },
