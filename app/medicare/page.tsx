@@ -323,8 +323,21 @@ function MedicareContent() {
         }}
       />
 
+      {/* Flowy-lines SVG overlay (same asset the plan-detail stage uses).
+          mix-blend-mode: screen so the lines glow softly against the purple
+          without dimming the underlying gradient. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background: "url('/iny-assets/66db14dfa45c2e1549d46634_dark-banner-bg-lines.svg') center top / cover no-repeat",
+          opacity: 0.22,
+          mixBlendMode: "screen",
+        }}
+      />
+
       {/* ───── Filter bar — centered, semi-transparent, rounded card on purple ───── */}
-      <div className="relative z-[1] mx-auto max-w-6xl px-6 pt-6">
+      <div className="relative z-[1] mx-auto max-w-7xl px-6 pt-6">
         <div className="bg-white/85 backdrop-blur-md border border-white/40 rounded-2xl shadow-[0_8px_32px_-12px_rgba(15,5,30,0.30)] overflow-visible">
         {/* Row 1: ZIP / segmented / dropdowns / sort / add meds (filter controls first) */}
         <div className="px-5 py-4 flex items-center gap-2.5 flex-wrap border-b border-[#e8e3ec]/70">
@@ -562,7 +575,7 @@ function MedicareContent() {
       </div>
 
       {/* ───── Page header on purple ───── */}
-      <div className="relative z-[1] mx-auto max-w-6xl px-6 pt-[22px] pb-4 flex items-end justify-between gap-6">
+      <div className="relative z-[1] mx-auto max-w-7xl px-6 pt-[22px] pb-4 flex items-end justify-between gap-6">
         <div>
           <h1
             className="text-white text-[24px] tracking-[-0.02em] m-0"
@@ -610,7 +623,7 @@ function MedicareContent() {
 
       {/* ───── Active filter chip row ───── */}
       {(activeFilterChips.length > 0 || filters.quickPreset !== "all") && (
-        <div className="relative z-[1] mx-auto max-w-6xl px-6 pb-3.5 flex items-center gap-1.5 flex-wrap">
+        <div className="relative z-[1] mx-auto max-w-7xl px-6 pb-3.5 flex items-center gap-1.5 flex-wrap">
           <span className="text-[10px] uppercase tracking-[0.14em] text-white/60 font-semibold">
             {activeFilterChips.length || (filters.quickPreset !== "all" ? 1 : 0)} active
           </span>
@@ -657,7 +670,7 @@ function MedicareContent() {
       )}
 
       {/* ───── Results grid (4-up on purple) ───── */}
-      <div className="relative z-[1] mx-auto max-w-5xl px-6 pb-[26px]">
+      <div className="relative z-[1] mx-auto max-w-7xl px-6 pb-[26px]">
         {search.loading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {[1, 2, 3, 4].map((i) => (
