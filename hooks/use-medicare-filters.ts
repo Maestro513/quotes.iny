@@ -74,6 +74,7 @@ export type SortOption =
 /** Quick-filter preset tabs: one-click bundles that override individual filters. */
 export type QuickPreset =
   | "all"
+  | "recently-viewed"
   | "zero-premium"
   | "highly-rated"
   | "low-moop"
@@ -86,7 +87,8 @@ const PAGE_SIZE = 20;
 export function useMedicareFilters(
   allPlans: MedicarePlan[],
   drugEstimates: Record<string, DrugEstimate> = {},
-  initialSnp: Partial<SnpEligibility> = {}
+  initialSnp: Partial<SnpEligibility> = {},
+  recentlyViewedIds: string[] = []
 ) {
   const [planTypeFilter, setPlanTypeFilter] = useState<MedicarePlanType | "">("");
   const [networkTypeFilter, setNetworkTypeFilter] = useState<MedicareNetworkType | "">("");
@@ -124,6 +126,15 @@ export function useMedicareFilters(
 
     // Quick presets override individual controls
     switch (quickPreset) {
+      case "recently-viewed": {
+        // Preserve the user's visit order (most recent first) rather than CMS rank.
+        // Use a Set for O(1) lookup and a Map to sort by the viewed-order index.
+        const orderIndex = new Map(recentlyViewedIds.map((id, i) => [id, i]));
+        result = result
+          .filter((p) => orderIndex.has(p.id))
+          .sort((a, b) => (orderIndex.get(a.id) ?? 0) - (orderIndex.get(b.id) ?? 0));
+        break;
+      }
       case "zero-premium": result = result.filter((p) => p.premium_monthly === 0); break;
       case "highly-rated": result = result.filter((p) => (p.starRatingOverall ?? 0) >= 4.5); break;
       case "low-moop": result = result.filter((p) => p.outOfPocketMax > 0 && p.outOfPocketMax <= 5000); break;
@@ -155,6 +166,10 @@ export function useMedicareFilters(
         return true;
       });
     }
+
+    // "Recently viewed" intentionally preserves the user's visit order — the
+    // secondary sort would clobber that. Skip sorting in this preset.
+    if (quickPreset === "recently-viewed") return result;
 
     result = [...result].sort((a, b) => {
       switch (sortBy) {
@@ -199,7 +214,7 @@ export function useMedicareFilters(
     });
 
     return result;
-  }, [allPlans, planTypeFilter, networkTypeFilter, carrierFilter, zeroPremiumOnly, maxPremium, maxMoop, minGiveback, minOtc, requiredBenefits, sortBy, drugEstimates, quickPreset, medicaidEligible, chronicCondition]);
+  }, [allPlans, planTypeFilter, networkTypeFilter, carrierFilter, zeroPremiumOnly, maxPremium, maxMoop, minGiveback, minOtc, requiredBenefits, sortBy, drugEstimates, quickPreset, medicaidEligible, chronicCondition, recentlyViewedIds]);
 
   const visiblePlans = filteredPlans.slice(0, visibleCount);
 
@@ -232,15 +247,19 @@ export function useMedicareFilters(
   }
 
   // Preset counts — computed against base allPlans so tab labels reflect the full universe, not current filter
-  const presetCounts = useMemo(() => ({
-    all: allPlans.length,
-    "zero-premium": allPlans.filter((p) => p.premium_monthly === 0).length,
-    "highly-rated": allPlans.filter((p) => (p.starRatingOverall ?? 0) >= 4.5).length,
-    "low-moop": allPlans.filter((p) => p.outOfPocketMax > 0 && p.outOfPocketMax <= 5000).length,
-    "with-giveback": allPlans.filter((p) => (p.partBGivebackAmount ?? 0) > 0).length,
-    "high-otc": allPlans.filter((p) => (p.otcAllowanceAmount ?? 0) >= 45).length,
-    ppo: allPlans.filter((p) => p.networkType === "PPO").length,
-  }), [allPlans]);
+  const presetCounts = useMemo(() => {
+    const recentSet = new Set(recentlyViewedIds);
+    return {
+      all: allPlans.length,
+      "recently-viewed": allPlans.filter((p) => recentSet.has(p.id)).length,
+      "zero-premium": allPlans.filter((p) => p.premium_monthly === 0).length,
+      "highly-rated": allPlans.filter((p) => (p.starRatingOverall ?? 0) >= 4.5).length,
+      "low-moop": allPlans.filter((p) => p.outOfPocketMax > 0 && p.outOfPocketMax <= 5000).length,
+      "with-giveback": allPlans.filter((p) => (p.partBGivebackAmount ?? 0) > 0).length,
+      "high-otc": allPlans.filter((p) => (p.otcAllowanceAmount ?? 0) >= 45).length,
+      ppo: allPlans.filter((p) => p.networkType === "PPO").length,
+    };
+  }, [allPlans, recentlyViewedIds]);
 
   return {
     planTypeFilter, networkTypeFilter, carrierFilter, zeroPremiumOnly,
