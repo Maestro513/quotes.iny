@@ -5,6 +5,7 @@ import { useState } from "react";
 import type { MedicarePlan, DrugEstimate } from "@/types/medicare";
 import type { TierBadge } from "@/lib/medicare/tier-badges";
 import { carrierLogo } from "@/lib/medicare/carrier-logos";
+import { recordRecentlyViewed } from "@/hooks/use-recently-viewed";
 
 interface MedicarePlanCardProps {
   plan: MedicarePlan;
@@ -332,6 +333,7 @@ export default function MedicarePlanCard({
       <div className="flex items-center gap-3 mt-auto">
         <Link
           href={`/medicare/${id}`}
+          onClick={() => recordRecentlyViewed(id)}
           className="flex-1 inline-flex items-center justify-center gap-2 bg-[#1fa84a] hover:bg-[#178f3d] text-white text-[14px] font-semibold rounded-lg px-4 py-3 transition-colors duration-[120ms] active:scale-[0.98]"
         >
           View Plan

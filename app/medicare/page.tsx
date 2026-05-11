@@ -11,12 +11,14 @@ import MedicationInput, { type SelectedDrug } from "@/components/medication-inpu
 import EmptyState from "@/components/empty-state";
 import { useMedicareSearch } from "@/hooks/use-medicare-search";
 import { useMedicareFilters, type QuickPreset, type SortOption } from "@/hooks/use-medicare-filters";
+import { useRecentlyViewed } from "@/hooks/use-recently-viewed";
 import { computeTierBadges } from "@/lib/medicare/tier-badges";
 
 // ───────── constants
 
 const PRESET_TABS: { key: QuickPreset; label: string }[] = [
   { key: "all", label: "All Plans" },
+  { key: "recently-viewed", label: "Recently viewed" },
   { key: "zero-premium", label: "$0 Premium" },
   { key: "highly-rated", label: "Highly Rated" },
   { key: "low-moop", label: "Low MOOP" },
@@ -170,7 +172,8 @@ function MedicareContent() {
   };
 
   const search = useMedicareSearch(parsed.zip);
-  const filters = useMedicareFilters(search.allPlans, drugEstimates, initialSnp);
+  const recentlyViewedIds = useRecentlyViewed();
+  const filters = useMedicareFilters(search.allPlans, drugEstimates, initialSnp, recentlyViewedIds);
 
   // SNP toggle → URL sync (preserve shareability)
   useEffect(() => {
@@ -326,6 +329,9 @@ function MedicareContent() {
         <div className="px-[26px] pt-3 flex items-center gap-2 flex-wrap">
           <div className="flex gap-1.5 flex-wrap" role="tablist" aria-label="Quick filters">
             {PRESET_TABS.map(({ key, label }) => {
+              // Hide "Recently viewed" pill until the user has viewed at least
+              // one plan — first-time visitors don't see an empty "(0)" pill.
+              if (key === "recently-viewed" && filters.presetCounts["recently-viewed"] === 0) return null;
               const active = filters.quickPreset === key;
               const count = filters.presetCounts[key];
               return (
@@ -651,7 +657,7 @@ function MedicareContent() {
       {/* ───── Results grid (4-up on purple) ───── */}
       <div className="relative z-[1] px-[26px] pb-[26px]">
         {search.loading && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className="h-[460px] bg-white/[0.06] border border-white/[0.10] rounded-2xl animate-pulse" />
             ))}
@@ -662,7 +668,7 @@ function MedicareContent() {
 
         {!search.loading && !search.error && filters.filteredPlans.length > 0 && (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {searchedPlans.map((plan) => (
                 <MedicarePlanCard
                   key={plan.id}
