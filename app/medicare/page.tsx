@@ -98,7 +98,7 @@ function Dropdown({
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className={`inline-flex items-center gap-2 px-3 py-[7px] rounded-lg border text-[12.5px] whitespace-nowrap cursor-pointer transition-colors ${
+        className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border text-[15.5px] whitespace-nowrap cursor-pointer transition-colors ${
           hasSelection
             ? "bg-[#3a1257] text-white border-[#3a1257] hover:bg-[#4a1c6e]"
             : "bg-white text-[#1c1024] border-[#e8e3ec] hover:border-[#9a8fa3]"
@@ -106,9 +106,9 @@ function Dropdown({
         aria-haspopup="dialog"
         aria-expanded={open}
       >
-        <span className={`uppercase tracking-[0.06em] text-[10.5px] ${hasSelection ? "text-white/70" : "text-[#6f6478]"}`}>{label}</span>
+        <span className={`uppercase tracking-[0.06em] text-[13px] ${hasSelection ? "text-white/70" : "text-[#6f6478]"}`}>{label}</span>
         <span className={`font-medium ${hasSelection ? "text-white" : "text-[#1c1024]"}`}>{value}</span>
-        <span className={`text-[9px] ${hasSelection ? "text-white/70" : "text-[#6f6478]"}`}>▾</span>
+        <span className={`text-[11px] ${hasSelection ? "text-white/70" : "text-[#6f6478]"}`}>▾</span>
       </button>
       {open && (
         <div
@@ -323,59 +323,14 @@ function MedicareContent() {
         }}
       />
 
-      {/* ───── White filter bar ───── */}
-      <div className="relative z-[1] bg-white border-b border-[#e8e3ec]">
-        {/* Row 1: quick chips + search */}
-        <div className="px-[26px] pt-3 flex items-center gap-2 flex-wrap">
-          <div className="flex gap-1.5 flex-wrap" role="tablist" aria-label="Quick filters">
-            {PRESET_TABS.map(({ key, label }) => {
-              // Hide "Recently viewed" pill until the user has viewed at least
-              // one plan — first-time visitors don't see an empty "(0)" pill.
-              if (key === "recently-viewed" && filters.presetCounts["recently-viewed"] === 0) return null;
-              const active = filters.quickPreset === key;
-              const count = filters.presetCounts[key];
-              return (
-                <button
-                  key={key}
-                  type="button"
-                  role="tab"
-                  aria-selected={active}
-                  onClick={() => filters.setQuickPreset(key)}
-                  className={`inline-flex items-center gap-1.5 px-[11px] py-1.5 rounded-full text-[12px] border whitespace-nowrap cursor-pointer transition-colors ${
-                    active
-                      ? "bg-[#34a853] text-white border-[#34a853]"
-                      : "bg-white text-[#2a1b35] border-[#e8e3ec] hover:border-[#9a8fa3]"
-                  }`}
-                >
-                  {label}
-                  <span className={`text-[10.5px] ${active ? "text-white/75" : "text-[#6f6478]"}`}>{count}</span>
-                </button>
-              );
-            })}
-          </div>
-          <div className="flex-1" />
-          <div className="inline-flex items-center gap-2 border border-[#e8e3ec] rounded-full px-3 py-1.5 bg-white w-[260px]">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6f6478" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="7" />
-              <path d="M21 21l-4.3-4.3" />
-            </svg>
-            <input
-              type="search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search plans, carriers…"
-              className="flex-1 border-0 outline-none bg-transparent text-[12.5px] text-[#1c1024] placeholder:text-[#9a8fa3] min-w-0"
-              aria-label="Search plans"
-            />
-            <kbd className="text-[10px] text-[#6f6478] border border-[#e8e3ec] rounded px-1.5 py-0.5">⌘K</kbd>
-          </div>
-        </div>
-
-        {/* Row 2: ZIP / segmented / dropdowns / sort / add meds */}
-        <div className="px-[26px] py-3 flex items-center gap-2 flex-wrap">
+      {/* ───── Filter bar — centered, semi-transparent, rounded card on purple ───── */}
+      <div className="relative z-[1] mx-auto max-w-6xl px-6 pt-6">
+        <div className="bg-white/85 backdrop-blur-md border border-white/40 rounded-2xl shadow-[0_8px_32px_-12px_rgba(15,5,30,0.30)] overflow-visible">
+        {/* Row 1: ZIP / segmented / dropdowns / sort / add meds (filter controls first) */}
+        <div className="px-5 py-4 flex items-center gap-2.5 flex-wrap border-b border-[#e8e3ec]/70">
           {/* ZIP */}
-          <form onSubmit={handleZipSubmit} className="inline-flex items-center gap-2 border border-[#e8e3ec] rounded-lg px-3 py-1.5 bg-white">
-            <span className="uppercase tracking-[0.08em] text-[10px] text-[#6f6478] font-semibold">ZIP</span>
+          <form onSubmit={handleZipSubmit} className="inline-flex items-center gap-2 border border-[#e8e3ec] rounded-lg px-3.5 py-2 bg-white">
+            <span className="uppercase tracking-[0.08em] text-[13px] text-[#6f6478] font-semibold">ZIP</span>
             <input
               type="text"
               value={search.zip}
@@ -384,12 +339,12 @@ function MedicareContent() {
               maxLength={5}
               inputMode="numeric"
               pattern="[0-9]{5}"
-              className="border-0 outline-none bg-transparent text-[13px] text-[#1c1024] w-[60px] font-semibold"
+              className="border-0 outline-none bg-transparent text-[16px] text-[#1c1024] w-[68px] font-semibold"
               aria-label="ZIP code"
             />
           </form>
 
-          <div className="w-px h-[22px] bg-[#e8e3ec]" />
+          <div className="w-px h-[26px] bg-[#e8e3ec]" />
 
           {/* Plan-Type (network) segmented */}
           <div className="inline-flex border border-[#e8e3ec] rounded-lg bg-white p-[3px]">
@@ -400,7 +355,7 @@ function MedicareContent() {
                   key={label}
                   type="button"
                   onClick={() => filters.setNetworkTypeFilter(key)}
-                  className={`px-[11px] py-[5px] rounded-md text-[12px] transition-colors cursor-pointer ${
+                  className={`px-3 py-[7px] rounded-md text-[15px] transition-colors cursor-pointer ${
                     active ? "bg-[#3a1257] text-white" : "text-[#9a8fa3] hover:text-[#1c1024]"
                   }`}
                   aria-pressed={active}
@@ -549,18 +504,65 @@ function MedicareContent() {
           <button
             type="button"
             onClick={() => setMedsOpen(true)}
-            className="inline-flex items-center gap-2 px-[13px] py-[7px] rounded-lg bg-[#34a853] hover:bg-[#2c9446] text-white text-[12.5px] font-medium cursor-pointer transition-colors whitespace-nowrap"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#34a853] hover:bg-[#2c9446] text-white text-[15.5px] font-medium cursor-pointer transition-colors whitespace-nowrap"
           >
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden="true">
               <path d="M12 5v14M5 12h14" />
             </svg>
             {selectedDrugs.length > 0 ? `${selectedDrugs.length} med${selectedDrugs.length !== 1 ? "s" : ""}` : "Add medications"}
           </button>
         </div>
+
+        {/* Row 2: pill quick-presets + search (now BELOW the filter controls) */}
+        <div className="px-5 py-3.5 flex items-center gap-2.5 flex-wrap">
+          <div className="flex gap-2 flex-wrap" role="tablist" aria-label="Quick filters">
+            {PRESET_TABS.map(({ key, label }) => {
+              // Hide "Recently viewed" pill until the user has viewed at least
+              // one plan — first-time visitors don't see an empty "(0)" pill.
+              if (key === "recently-viewed" && filters.presetCounts["recently-viewed"] === 0) return null;
+              const active = filters.quickPreset === key;
+              const count = filters.presetCounts[key];
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  onClick={() => filters.setQuickPreset(key)}
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[15px] border whitespace-nowrap cursor-pointer transition-colors ${
+                    active
+                      ? "bg-[#34a853] text-white border-[#34a853]"
+                      : "bg-white text-[#2a1b35] border-[#e8e3ec] hover:border-[#9a8fa3]"
+                  }`}
+                >
+                  {label}
+                  <span className={`text-[13px] ${active ? "text-white/80" : "text-[#6f6478]"}`}>{count}</span>
+                </button>
+              );
+            })}
+          </div>
+          <div className="flex-1" />
+          <div className="inline-flex items-center gap-2 border border-[#e8e3ec] rounded-full px-3.5 py-2 bg-white w-[300px]">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6f6478" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.3-4.3" />
+            </svg>
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search plans, carriers…"
+              className="flex-1 border-0 outline-none bg-transparent text-[15.5px] text-[#1c1024] placeholder:text-[#9a8fa3] min-w-0"
+              aria-label="Search plans"
+            />
+            <kbd className="text-[12px] text-[#6f6478] border border-[#e8e3ec] rounded px-1.5 py-0.5">⌘K</kbd>
+          </div>
+        </div>
+        </div>
       </div>
 
       {/* ───── Page header on purple ───── */}
-      <div className="relative z-[1] px-[26px] pt-[22px] pb-4 flex items-end justify-between gap-6">
+      <div className="relative z-[1] mx-auto max-w-6xl px-6 pt-[22px] pb-4 flex items-end justify-between gap-6">
         <div>
           <h1
             className="text-white text-[24px] tracking-[-0.02em] m-0"
@@ -608,7 +610,7 @@ function MedicareContent() {
 
       {/* ───── Active filter chip row ───── */}
       {(activeFilterChips.length > 0 || filters.quickPreset !== "all") && (
-        <div className="relative z-[1] px-[26px] pb-3.5 flex items-center gap-1.5 flex-wrap">
+        <div className="relative z-[1] mx-auto max-w-6xl px-6 pb-3.5 flex items-center gap-1.5 flex-wrap">
           <span className="text-[10px] uppercase tracking-[0.14em] text-white/60 font-semibold">
             {activeFilterChips.length || (filters.quickPreset !== "all" ? 1 : 0)} active
           </span>
@@ -655,7 +657,7 @@ function MedicareContent() {
       )}
 
       {/* ───── Results grid (4-up on purple) ───── */}
-      <div className="relative z-[1] px-[26px] pb-[26px]">
+      <div className="relative z-[1] mx-auto max-w-5xl px-6 pb-[26px]">
         {search.loading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {[1, 2, 3, 4].map((i) => (
