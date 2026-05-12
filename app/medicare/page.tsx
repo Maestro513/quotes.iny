@@ -98,7 +98,7 @@ function Dropdown({
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border text-[15.5px] whitespace-nowrap cursor-pointer transition-colors ${
+        className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border text-[17.5px] whitespace-nowrap cursor-pointer transition-colors ${
           hasSelection
             ? "bg-[#3a1257] text-white border-[#3a1257] hover:bg-[#4a1c6e]"
             : "bg-white text-[#1c1024] border-[#e8e3ec] hover:border-[#9a8fa3]"
@@ -106,9 +106,9 @@ function Dropdown({
         aria-haspopup="dialog"
         aria-expanded={open}
       >
-        <span className={`uppercase tracking-[0.06em] text-[13px] ${hasSelection ? "text-white/70" : "text-[#6f6478]"}`}>{label}</span>
+        <span className={`uppercase tracking-[0.06em] text-[15px] ${hasSelection ? "text-white/70" : "text-[#6f6478]"}`}>{label}</span>
         <span className={`font-medium ${hasSelection ? "text-white" : "text-[#1c1024]"}`}>{value}</span>
-        <span className={`text-[11px] ${hasSelection ? "text-white/70" : "text-[#6f6478]"}`}>▾</span>
+        <span className={`text-[13px] ${hasSelection ? "text-white/70" : "text-[#6f6478]"}`}>▾</span>
       </button>
       {open && (
         <div
@@ -134,9 +134,9 @@ function CheckRow({
   count?: number | string;
 }) {
   return (
-    <label className="flex items-center gap-2.5 cursor-pointer text-[12.5px] text-[#1c1024] hover:text-[#2a1b35] py-[3px]">
+    <label className="flex items-center gap-2.5 cursor-pointer text-[14.5px] text-[#1c1024] hover:text-[#2a1b35] py-[3px]">
       <span
-        className={`w-[15px] h-[15px] rounded grid place-items-center text-[9px] text-white border-[1.5px] shrink-0 ${
+        className={`w-[17px] h-[17px] rounded grid place-items-center text-[11px] text-white border-[1.5px] shrink-0 ${
           checked ? "bg-[#3a1257] border-[#3a1257]" : "bg-white border-[#e8e3ec]"
         }`}
         onClick={(e) => {
@@ -148,7 +148,7 @@ function CheckRow({
       </span>
       <input type="checkbox" checked={checked} onChange={onToggle} className="sr-only" />
       <span className="flex-1">{label}</span>
-      {count !== undefined && <span className="text-[11px] text-[#6f6478]">{count}</span>}
+      {count !== undefined && <span className="text-[13px] text-[#6f6478]">{count}</span>}
     </label>
   );
 }
@@ -323,15 +323,18 @@ function MedicareContent() {
         }}
       />
 
-      {/* Flowy-lines SVG overlay (same asset the plan-detail stage uses).
-          mix-blend-mode: screen so the lines glow softly against the purple
-          without dimming the underlying gradient. */}
+      {/* Flowy waves overlay — same SVG that lives on the insurancenyou.com
+          Webflow pages. The SVG draws dark purple curves on transparent;
+          mix-blend-mode: screen flips them to light streaks against our dark
+          purple stage. Anchored top-left so the sweep matches the marketing
+          site (curves emanate from upper-left and flow right). */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-0"
+        className="pointer-events-none absolute inset-x-0 top-0 z-0"
         style={{
-          background: "url('/iny-assets/66db14dfa45c2e1549d46634_dark-banner-bg-lines.svg') center top / cover no-repeat",
-          opacity: 0.22,
+          height: "min(560px, 60vh)",
+          background: "url('/iny-assets/66dec224a2d080a175f71408_wwa-hero-lines.svg') left top / 100% auto no-repeat",
+          opacity: 0.55,
           mixBlendMode: "screen",
         }}
       />
@@ -383,8 +386,8 @@ function MedicareContent() {
           <Dropdown label="Premium" value={premiumValue} hasSelection={premiumHas} panelWidth="min-w-[260px]">
             {() => (
               <>
-                <h4 className="m-0 mb-2.5 text-[10px] uppercase tracking-[0.12em] text-[#6f6478] font-semibold">Premium</h4>
-                <label className="flex items-center gap-2 cursor-pointer text-[12.5px] text-[#1c1024] mb-3">
+                <h4 className="m-0 mb-2.5 text-[12px] uppercase tracking-[0.12em] text-[#6f6478] font-semibold">Premium</h4>
+                <label className="flex items-center gap-2 cursor-pointer text-[14.5px] text-[#1c1024] mb-3">
                   <input
                     type="checkbox"
                     checked={filters.zeroPremiumOnly}
@@ -394,16 +397,16 @@ function MedicareContent() {
                   $0 Premium only
                 </label>
                 <div>
-                  <label className="text-[10px] uppercase tracking-[0.08em] text-[#6f6478] block mb-1">Max monthly</label>
+                  <label className="text-[12px] uppercase tracking-[0.08em] text-[#6f6478] block mb-1">Max monthly</label>
                   <div className="relative">
-                    <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#6f6478] text-[12px]">$</span>
+                    <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#6f6478] text-[14px]">$</span>
                     <input
                       type="number"
                       min={0}
                       value={filters.maxPremium ?? ""}
                       onChange={(e) => filters.setMaxPremium(e.target.value ? parseInt(e.target.value) : null)}
                       placeholder="No limit"
-                      className="w-full border border-[#e8e3ec] rounded-md pl-6 pr-2 py-1.5 text-[13px] text-[#1c1024] focus:outline-none focus:border-[#9a8fa3]"
+                      className="w-full border border-[#e8e3ec] rounded-md pl-6 pr-2 py-2 text-[15px] text-[#1c1024] focus:outline-none focus:border-[#9a8fa3]"
                     />
                   </div>
                 </div>
@@ -415,7 +418,7 @@ function MedicareContent() {
           <Dropdown label="Benefits" value={benefitsValue} hasSelection={benefitsHas} panelWidth="min-w-[220px]">
             {() => (
               <>
-                <h4 className="m-0 mb-2.5 text-[10px] uppercase tracking-[0.12em] text-[#6f6478] font-semibold">Benefits must include</h4>
+                <h4 className="m-0 mb-2.5 text-[12px] uppercase tracking-[0.12em] text-[#6f6478] font-semibold">Benefits must include</h4>
                 <div className="flex flex-col gap-1.5">
                   {BENEFIT_OPTIONS.map(({ key, label }) => (
                     <CheckRow
@@ -440,7 +443,7 @@ function MedicareContent() {
             <Dropdown label="Carrier" value={carrierValue} hasSelection={carrierHas} panelWidth="min-w-[260px]">
               {() => (
                 <>
-                  <h4 className="m-0 mb-2.5 text-[10px] uppercase tracking-[0.12em] text-[#6f6478] font-semibold">Carriers</h4>
+                  <h4 className="m-0 mb-2.5 text-[12px] uppercase tracking-[0.12em] text-[#6f6478] font-semibold">Carriers</h4>
                   <div className="flex flex-col gap-1 max-h-[280px] overflow-y-auto pr-1">
                     {filters.carriers.map((c) => (
                       <CheckRow
@@ -466,8 +469,8 @@ function MedicareContent() {
           <Dropdown label="Eligibility" value={eligibilityValue} hasSelection={eligibilityHas} panelWidth="min-w-[280px]">
             {() => (
               <>
-                <h4 className="m-0 mb-1 text-[10px] uppercase tracking-[0.12em] text-[#6f6478] font-semibold">Qualifying status</h4>
-                <p className="text-[11px] text-[#6f6478] mb-3 leading-snug">Toggle on if you have either of these — surfaces SNP plans you can enroll in.</p>
+                <h4 className="m-0 mb-1 text-[12px] uppercase tracking-[0.12em] text-[#6f6478] font-semibold">Qualifying status</h4>
+                <p className="text-[13px] text-[#6f6478] mb-3 leading-snug">Toggle on if you have either of these — surfaces SNP plans you can enroll in.</p>
                 <CheckRow
                   checked={filters.medicaidEligible}
                   onToggle={() => filters.setMedicaidEligible(!filters.medicaidEligible)}
@@ -488,7 +491,7 @@ function MedicareContent() {
           <Dropdown label="Sort by" value={sortValue} hasSelection={false} panelWidth="min-w-[220px]">
             {(close) => (
               <>
-                <h4 className="m-0 mb-2.5 text-[10px] uppercase tracking-[0.12em] text-[#6f6478] font-semibold">Sort by</h4>
+                <h4 className="m-0 mb-2.5 text-[12px] uppercase tracking-[0.12em] text-[#6f6478] font-semibold">Sort by</h4>
                 <div className="flex flex-col gap-0.5">
                   {SORT_OPTIONS.map((opt) => {
                     const active = filters.sortBy === opt.value;
@@ -500,7 +503,7 @@ function MedicareContent() {
                           filters.setSortBy(opt.value);
                           close();
                         }}
-                        className={`text-left px-2 py-1.5 rounded-md text-[12.5px] transition-colors cursor-pointer ${
+                        className={`text-left px-2.5 py-2 rounded-md text-[14.5px] transition-colors cursor-pointer ${
                           active ? "bg-[#f4f0f7] text-[#3a1257] font-semibold" : "text-[#1c1024] hover:bg-[#f4f0f7]"
                         }`}
                       >
