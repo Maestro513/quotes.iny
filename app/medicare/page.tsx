@@ -524,38 +524,9 @@ function MedicareContent() {
             </svg>
             {selectedDrugs.length > 0 ? `${selectedDrugs.length} med${selectedDrugs.length !== 1 ? "s" : ""}` : "Add medications"}
           </button>
-        </div>
 
-        {/* Row 2: pill quick-presets + search (now BELOW the filter controls) */}
-        <div className="px-5 py-3.5 flex items-center gap-2.5 flex-wrap">
-          <div className="flex gap-2 flex-wrap" role="tablist" aria-label="Quick filters">
-            {PRESET_TABS.map(({ key, label }) => {
-              // Hide "Recently viewed" pill until the user has viewed at least
-              // one plan — first-time visitors don't see an empty "(0)" pill.
-              if (key === "recently-viewed" && filters.presetCounts["recently-viewed"] === 0) return null;
-              const active = filters.quickPreset === key;
-              const count = filters.presetCounts[key];
-              return (
-                <button
-                  key={key}
-                  type="button"
-                  role="tab"
-                  aria-selected={active}
-                  onClick={() => filters.setQuickPreset(key)}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[15px] border whitespace-nowrap cursor-pointer transition-colors ${
-                    active
-                      ? "bg-[#34a853] text-white border-[#34a853]"
-                      : "bg-white text-[#2a1b35] border-[#e8e3ec] hover:border-[#9a8fa3]"
-                  }`}
-                >
-                  {label}
-                  <span className={`text-[13px] ${active ? "text-white/80" : "text-[#6f6478]"}`}>{count}</span>
-                </button>
-              );
-            })}
-          </div>
-          <div className="flex-1" />
-          <div className="inline-flex items-center gap-2 border border-[#e8e3ec] rounded-full px-3.5 py-2 bg-white w-[300px]">
+          {/* Search input — right-aligned on the same row as Sort + Add medications */}
+          <div className="inline-flex items-center gap-2 border border-[#e8e3ec] rounded-full px-3.5 py-2 bg-white w-[280px]">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6f6478" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
               <circle cx="11" cy="11" r="7" />
               <path d="M21 21l-4.3-4.3" />
@@ -669,7 +640,37 @@ function MedicareContent() {
         </div>
       )}
 
-      {/* ───── Results grid (4-up on purple) ───── */}
+      {/* ───── Quick-preset pills (out of filter card, on purple stage,
+              directly above results) ───── */}
+      <div className="relative z-[1] mx-auto max-w-7xl px-6 pb-4">
+        <div className="flex gap-2 flex-wrap" role="tablist" aria-label="Quick filters">
+          {PRESET_TABS.map(({ key, label }) => {
+            // Hide "Recently viewed" until the user has viewed at least one plan
+            if (key === "recently-viewed" && filters.presetCounts["recently-viewed"] === 0) return null;
+            const active = filters.quickPreset === key;
+            const count = filters.presetCounts[key];
+            return (
+              <button
+                key={key}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => filters.setQuickPreset(key)}
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[15px] border whitespace-nowrap cursor-pointer transition-colors ${
+                  active
+                    ? "bg-white text-[#3a1257] border-white font-semibold"
+                    : "bg-white/10 text-white border-white/25 hover:bg-white/15 hover:border-white/40"
+                }`}
+              >
+                {label}
+                <span className={`text-[13px] ${active ? "text-[#6f6478]" : "text-white/70"}`}>{count}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ───── Results grid (3-up on purple) ───── */}
       <div className="relative z-[1] mx-auto max-w-7xl px-6 pb-[26px]">
         {search.loading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
