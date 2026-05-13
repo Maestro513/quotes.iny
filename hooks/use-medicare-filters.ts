@@ -71,6 +71,15 @@ export type SortOption =
   | "deductible-asc"
   | "otc-desc";
 
+/**
+ * "What matters most" — the 4 intent tiles. Each maps to a (preset, sort)
+ * combination, so picking an intent re-ranks AND applies an implicit filter.
+ * Distinct from `sortBy` (the raw column ordering): intent is the user-facing
+ * abstraction; sort is the underlying mechanism. Changing sort manually
+ * clears the active intent.
+ */
+export type Intent = "best-match" | "lowest-cost" | "highest-rated" | "most-benefits";
+
 /** Quick-filter preset tabs: one-click bundles that override individual filters. */
 export type QuickPreset =
   | "all"
@@ -99,8 +108,35 @@ export function useMedicareFilters(
   const [minGiveback, setMinGiveback] = useState<number>(0);
   const [minOtc, setMinOtc] = useState<number>(0);
   const [requiredBenefits, setRequiredBenefits] = useState<Set<string>>(new Set());
-  const [sortBy, setSortBy] = useState<SortOption>("value-asc");
-  const [quickPreset, setQuickPreset] = useState<QuickPreset>("all");
+  const [sortBy, setSortByRaw] = useState<SortOption>("value-asc");
+  const [quickPreset, setQuickPresetRaw] = useState<QuickPreset>("all");
+  const [intent, setIntent] = useState<Intent | null>("best-match");
+
+  // Wrappers: a MANUAL sort change clears the active intent (sort overrides
+  // the intent's implicit ranking). A manual preset change also clears intent
+  // unless the change came from setIntentTile() below.
+  const setSortBy = (next: SortOption) => {
+    setSortByRaw(next);
+    setIntent(null);
+  };
+  const setQuickPreset = (next: QuickPreset) => {
+    setQuickPresetRaw(next);
+    setIntent(null);
+  };
+
+  /**
+   * Click an intent tile → apply its (preset, sort) combo + mark the tile
+   * active. Uses the raw setters so the intent clear doesn't fire.
+   */
+  function setIntentTile(next: Intent) {
+    setIntent(next);
+    switch (next) {
+      case "best-match": setQuickPresetRaw("all"); setSortByRaw("value-asc"); break;
+      case "lowest-cost": setQuickPresetRaw("all"); setSortByRaw("premium-asc"); break;
+      case "highest-rated": setQuickPresetRaw("highly-rated"); setSortByRaw("rating-desc"); break;
+      case "most-benefits": setQuickPresetRaw("high-otc"); setSortByRaw("otc-desc"); break;
+    }
+  }
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [medicaidEligible, setMedicaidEligible] = useState<boolean>(!!initialSnp.medicaid);
   const [chronicCondition, setChronicCondition] = useState<boolean>(!!initialSnp.chronic);
@@ -234,12 +270,12 @@ export function useMedicareFilters(
     setMinGiveback(0);
     setMinOtc(0);
     setRequiredBenefits(new Set());
-    setSortBy("value-asc");
-    setQuickPreset("all");
     setVisibleCount(PAGE_SIZE);
-    // Note: medicaidEligible / chronicCondition are NOT reset by clearAll.
-    // They reflect a person's qualifying status, not a filter — wiping them
-    // would silently hide D-SNP plans the user is qualified for.
+    // Per the filter-hybrid spec, "Clear all" resets only filters — it does
+    // NOT touch the intent tile, the preset, or the sort. Those are
+    // user-chosen orderings that survive a filter reset.
+    // Eligibility (medicaidEligible / chronicCondition) is also preserved —
+    // it reflects qualifying status, not a filter.
   }
 
   function loadMore() {
@@ -264,12 +300,12 @@ export function useMedicareFilters(
   return {
     planTypeFilter, networkTypeFilter, carrierFilter, zeroPremiumOnly,
     maxPremium, maxMoop, minGiveback, minOtc, requiredBenefits,
-    sortBy, quickPreset,
+    sortBy, quickPreset, intent,
     medicaidEligible, chronicCondition,
     carriers, filteredPlans, visiblePlans, activeFilterCount, presetCounts, visibleCount,
     setPlanTypeFilter, setNetworkTypeFilter, setCarrierFilter, setZeroPremiumOnly,
     setMaxPremium, setMaxMoop, setMinGiveback, setMinOtc, setRequiredBenefits,
-    setSortBy, setQuickPreset,
+    setSortBy, setQuickPreset, setIntent, setIntentTile,
     setMedicaidEligible, setChronicCondition,
     clearAll, loadMore,
   };
