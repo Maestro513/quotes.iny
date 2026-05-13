@@ -10,22 +10,11 @@ import MedicarePlanCard from "@/components/medicare-plan-card";
 import MedicationInput, { type SelectedDrug } from "@/components/medication-input";
 import EmptyState from "@/components/empty-state";
 import { useMedicareSearch } from "@/hooks/use-medicare-search";
-import { useMedicareFilters, type QuickPreset, type SortOption } from "@/hooks/use-medicare-filters";
+import { useMedicareFilters, type QuickPreset, type SortOption, type Intent } from "@/hooks/use-medicare-filters";
 import { useRecentlyViewed } from "@/hooks/use-recently-viewed";
 import { computeTierBadges } from "@/lib/medicare/tier-badges";
 
 // ───────── constants
-
-const PRESET_TABS: { key: QuickPreset; label: string }[] = [
-  { key: "all", label: "All Plans" },
-  { key: "recently-viewed", label: "Recently viewed" },
-  { key: "zero-premium", label: "$0 Premium" },
-  { key: "highly-rated", label: "Highly Rated" },
-  { key: "low-moop", label: "Low MOOP" },
-  { key: "with-giveback", label: "With Giveback" },
-  { key: "high-otc", label: "High OTC" },
-  { key: "ppo", label: "PPO" },
-];
 
 const NETWORK_SEGS: { key: MedicareNetworkType | ""; label: string }[] = [
   { key: "", label: "Any" },
@@ -44,6 +33,26 @@ const SORT_OPTIONS: { label: string; value: SortOption }[] = [
   { label: "Lowest Deductible", value: "deductible-asc" },
   { label: "Highest OTC", value: "otc-desc" },
   { label: "A–Z", value: "alpha" },
+];
+
+/**
+ * "What matters most" tiles — each maps to a (preset, sort) combo. The H2
+ * "ranked by …" copy comes from `h2Suffix`. `countSource` tells the page
+ * which presetCounts key to read for the tile's badge ("all" = use total
+ * filteredPlans count).
+ */
+const INTENT_TILES: {
+  key: Intent;
+  icon: string;
+  label: string;
+  sub: string;
+  countSource: "filtered" | QuickPreset;
+  h2Suffix: string;
+}[] = [
+  { key: "best-match", icon: "🎯", label: "Best match", sub: "Our pick based on your profile and meds.", countSource: "filtered", h2Suffix: "Best Match" },
+  { key: "lowest-cost", icon: "💰", label: "Lowest total cost", sub: "Premium + copays + drug costs over the year.", countSource: "filtered", h2Suffix: "Lowest Cost" },
+  { key: "highest-rated", icon: "★", label: "Highest rated", sub: "CMS 4.5★ and up — strongest member experience.", countSource: "highly-rated", h2Suffix: "Highest Rated" },
+  { key: "most-benefits", icon: "🦷", label: "Most benefits", sub: "Dental, vision, hearing, OTC bundled together.", countSource: "high-otc", h2Suffix: "Most Benefits" },
 ];
 
 const BENEFIT_OPTIONS: { key: string; label: string }[] = [
@@ -339,11 +348,47 @@ function MedicareContent() {
         }}
       />
 
-      {/* ───── Filter bar — centered, semi-transparent, rounded card on purple ───── */}
-      <div className="relative z-[1] mx-auto max-w-7xl px-6 pt-6">
+      {/* ───── Page header (TOP — eyebrow + H1 + sub-meta + ZIP pill) ───── */}
+      <div className="relative z-[1] mx-auto max-w-7xl px-6 pt-9 pb-4">
+        <div className="flex items-center justify-between gap-6 mb-2">
+          <span className="text-[12px] uppercase tracking-[0.14em] text-white/70 font-semibold">
+            2026 Open Enrollment
+          </span>
+          {search.zip && (
+            <span className="inline-flex items-center gap-2 bg-white/12 text-white text-[12px] font-semibold rounded-full px-3 py-1">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              ZIP {search.zip}
+            </span>
+          )}
+        </div>
+        <h1
+          className="text-white text-[32px] leading-tight tracking-[-0.02em] font-bold m-0"
+          style={{ fontFamily: "'Times New Roman', Times, serif", fontWeight: 500 }}
+        >
+          {search.loading ? (
+            "Finding Medicare plans…"
+          ) : search.allPlans.length > 0 ? (
+            <>
+              {totalFiltered} Medicare plan{totalFiltered !== 1 ? "s" : ""} in your area —{" "}
+              <em className="not-italic" style={{ color: "#a8e6c0" }}>what matters most?</em>
+            </>
+          ) : (
+            "Enter a ZIP to see plans"
+          )}
+        </h1>
+        <p className="text-white/75 text-[14px] mt-2 m-0">
+          Pick a goal to rank plans for it, then refine below.
+        </p>
+      </div>
+
+      {/* ───── Filter toolbar — centered, semi-transparent, rounded card on purple ───── */}
+      <div className="relative z-[1] mx-auto max-w-7xl px-6">
         <div className="bg-white/85 backdrop-blur-md border border-white/40 rounded-2xl shadow-[0_8px_32px_-12px_rgba(15,5,30,0.30)] overflow-visible">
-        {/* Row 1: ZIP / segmented / dropdowns / sort / add meds (filter controls first) */}
-        <div className="px-5 py-4 flex items-center gap-2.5 flex-wrap border-b border-[#e8e3ec]/70">
+        {/* Single row: ZIP / segmented / dropdowns / +Add meds / search (Sort moved to results header) */}
+        <div className="px-5 py-4 flex items-center gap-2.5 flex-wrap">
           {/* ZIP */}
           <form onSubmit={handleZipSubmit} className="inline-flex items-center gap-2 border border-[#e8e3ec] rounded-lg px-3.5 py-2 bg-white">
             <span className="uppercase tracking-[0.08em] text-[13px] text-[#6f6478] font-semibold">ZIP</span>
@@ -487,35 +532,6 @@ function MedicareContent() {
 
           <div className="flex-1" />
 
-          {/* Sort */}
-          <Dropdown label="Sort by" value={sortValue} hasSelection={false} panelWidth="min-w-[220px]">
-            {(close) => (
-              <>
-                <h4 className="m-0 mb-2.5 text-[12px] uppercase tracking-[0.12em] text-[#6f6478] font-semibold">Sort by</h4>
-                <div className="flex flex-col gap-0.5">
-                  {SORT_OPTIONS.map((opt) => {
-                    const active = filters.sortBy === opt.value;
-                    return (
-                      <button
-                        key={opt.value}
-                        type="button"
-                        onClick={() => {
-                          filters.setSortBy(opt.value);
-                          close();
-                        }}
-                        className={`text-left px-2.5 py-2 rounded-md text-[14.5px] transition-colors cursor-pointer ${
-                          active ? "bg-[#f4f0f7] text-[#3a1257] font-semibold" : "text-[#1c1024] hover:bg-[#f4f0f7]"
-                        }`}
-                      >
-                        {opt.label}
-                      </button>
-                    );
-                  })}
-                </div>
-              </>
-            )}
-          </Dropdown>
-
           {/* Add medications (green) */}
           <button
             type="button"
@@ -548,82 +564,60 @@ function MedicareContent() {
         </div>
       </div>
 
-      {/* ───── Page header on purple ───── */}
-      <div className="relative z-[1] mx-auto max-w-7xl px-6 pt-[22px] pb-4 flex items-end justify-between gap-6">
-        <div>
-          <h1
-            className="text-white text-[24px] tracking-[-0.02em] m-0"
-            style={{ fontFamily: "'Times New Roman', Times, serif", fontWeight: 500 }}
-          >
-            Find Your Best Medicare Plan
-          </h1>
-          <div className="text-white/75 text-[12px] mt-1 flex items-center gap-2.5 flex-wrap">
-            {search.loading ? (
-              <span>Loading plans…</span>
-            ) : search.allPlans.length > 0 ? (
-              <>
-                <span>
-                  <b className="text-white font-semibold">
-                    {totalFiltered} plan{totalFiltered !== 1 ? "s" : ""}
-                  </b>{" "}
-                  {filters.activeFilterCount || filters.quickPreset !== "all" || searchQuery
-                    ? `filtered from ${totalInArea}`
-                    : "available in your area"}
+      {/* ───── Intent tiles — 4 side-by-side "what matters most" cards ───── */}
+      <div className="relative z-[1] mx-auto max-w-7xl px-6 pt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5" role="tablist" aria-label="Ranking intent">
+          {INTENT_TILES.map((tile) => {
+            const active = filters.intent === tile.key;
+            const count = tile.countSource === "filtered" ? totalFiltered : filters.presetCounts[tile.countSource] ?? 0;
+            return (
+              <button
+                key={tile.key}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                aria-current={active}
+                onClick={() => filters.setIntentTile(tile.key)}
+                className={`text-left flex flex-col gap-1.5 px-5 py-4 rounded-2xl border cursor-pointer transition-all ${
+                  active
+                    ? "bg-white border-white"
+                    : "bg-white/8 border-white/20 hover:bg-white/12"
+                }`}
+              >
+                <span className="text-[22px] leading-none" aria-hidden="true">{tile.icon}</span>
+                <span className={`text-[15px] font-bold ${active ? "text-[#1a1424]" : "text-white"}`}>
+                  {tile.label}
                 </span>
-                <span className="text-white/40">·</span>
-                <span>2026 plan year</span>
-                {searchQuery && (
-                  <>
-                    <span className="text-white/40">·</span>
-                    <span>search: &ldquo;{searchQuery}&rdquo;</span>
-                  </>
-                )}
-              </>
-            ) : (
-              <span>Enter a ZIP to see plans</span>
-            )}
-          </div>
+                <span className={`text-[12px] leading-snug ${active ? "text-[#7a6d8e]" : "text-white/75"}`}>
+                  {tile.sub}
+                </span>
+                <span
+                  className={`self-start text-[11px] font-semibold rounded-full px-2 py-0.5 mt-0.5 ${
+                    active ? "bg-[#f3eef9] text-[#3a1257]" : "bg-white/16 text-white"
+                  }`}
+                >
+                  {count} plan{count !== 1 ? "s" : ""}
+                </span>
+              </button>
+            );
+          })}
         </div>
-        {search.zip && (
-          <div className="inline-flex items-center gap-2 border border-white/25 bg-white/10 text-white text-[12px] rounded-full px-3.5 py-1.5 whitespace-nowrap">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            ZIP <b className="font-semibold">{search.zip}</b>
-          </div>
-        )}
       </div>
 
-      {/* ───── Active filter chip row ───── */}
-      {(activeFilterChips.length > 0 || filters.quickPreset !== "all") && (
-        <div className="relative z-[1] mx-auto max-w-7xl px-6 pb-3.5 flex items-center gap-1.5 flex-wrap">
-          <span className="text-[10px] uppercase tracking-[0.14em] text-white/60 font-semibold">
-            {activeFilterChips.length || (filters.quickPreset !== "all" ? 1 : 0)} active
-          </span>
-          {filters.quickPreset !== "all" && (
-            <span className="inline-flex items-center gap-1.5 bg-white/[0.10] border border-white/[0.22] text-white text-[12px] rounded-full px-3 py-1">
-              {PRESET_TABS.find((t) => t.key === filters.quickPreset)?.label ?? filters.quickPreset}
-              <button
-                type="button"
-                onClick={() => filters.setQuickPreset("all")}
-                className="text-white/70 hover:text-white text-[11px] cursor-pointer"
-                aria-label="Remove filter"
-              >
-                ✕
-              </button>
-            </span>
-          )}
+      {/* ───── Applied filters strip — chips for every non-default constraint ───── */}
+      {activeFilterChips.length > 0 && (
+        <div className="relative z-[1] mx-auto max-w-7xl px-6 pt-3.5 flex items-center gap-2 flex-wrap">
+          <span className="text-[11px] uppercase tracking-[0.1em] text-white/70 font-semibold">Applied:</span>
           {activeFilterChips.map((chip) => (
             <span
               key={chip.id}
-              className="inline-flex items-center gap-1.5 bg-white/[0.10] border border-white/[0.22] text-white text-[12px] rounded-full px-3 py-1"
+              className="inline-flex items-center gap-1.5 bg-white text-[#3a1257] text-[12px] font-semibold rounded-full pl-3 pr-1.5 py-1.5"
             >
               {chip.label}
               <button
                 type="button"
                 onClick={chip.clear}
-                className="text-white/70 hover:text-white text-[11px] cursor-pointer"
+                className="w-[18px] h-[18px] rounded-full bg-[#f3eef9] grid place-items-center text-[10px] cursor-pointer hover:bg-[#e0d8eb]"
                 aria-label={`Remove ${chip.label}`}
               >
                 ✕
@@ -636,41 +630,53 @@ function MedicareContent() {
               filters.clearAll();
               setSearchQuery("");
             }}
-            className="text-[11.5px] text-white/70 hover:text-white underline ml-1 cursor-pointer"
+            className="text-[12px] text-white/85 hover:text-white underline ml-auto cursor-pointer"
+            style={{ textUnderlineOffset: 3 }}
           >
             Clear all
           </button>
         </div>
       )}
 
-      {/* ───── Quick-preset pills (out of filter card, on purple stage,
-              directly above results) ───── */}
-      <div className="relative z-[1] mx-auto max-w-7xl px-6 pb-4">
-        <div className="flex gap-2 flex-wrap" role="tablist" aria-label="Quick filters">
-          {PRESET_TABS.map(({ key, label }) => {
-            // Hide "Recently viewed" until the user has viewed at least one plan
-            if (key === "recently-viewed" && filters.presetCounts["recently-viewed"] === 0) return null;
-            const active = filters.quickPreset === key;
-            const count = filters.presetCounts[key];
-            return (
-              <button
-                key={key}
-                type="button"
-                role="tab"
-                aria-selected={active}
-                onClick={() => filters.setQuickPreset(key)}
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[15px] border whitespace-nowrap cursor-pointer transition-colors ${
-                  active
-                    ? "bg-white text-[#3a1257] border-white font-semibold"
-                    : "bg-white/10 text-white border-white/25 hover:bg-white/15 hover:border-white/40"
-                }`}
-              >
-                {label}
-                <span className={`text-[13px] ${active ? "text-[#6f6478]" : "text-white/70"}`}>{count}</span>
-              </button>
-            );
-          })}
+      {/* ───── Results header — H2 ("Top picks ranked by …") + Sort control ───── */}
+      <div className="relative z-[1] mx-auto max-w-7xl px-6 pt-6 pb-4 flex items-end justify-between gap-6 flex-wrap">
+        <div>
+          <h2 className="text-white text-[22px] font-bold tracking-[-0.015em] m-0">
+            Top picks ranked by {filters.intent ? INTENT_TILES.find((t) => t.key === filters.intent)?.h2Suffix : sortValue}
+          </h2>
+          <p className="text-white/70 text-[13px] mt-1 m-0">
+            <b className="text-white font-semibold">{totalFiltered} plan{totalFiltered !== 1 ? "s" : ""}</b>{" "}
+            {filters.activeFilterCount || searchQuery ? "match your filters" : "in your area"} ·{" "}
+            showing {Math.min(filters.visiblePlans.length, totalFiltered)} of {totalFiltered}
+          </p>
         </div>
+        <Dropdown label="Sort by" value={sortValue} hasSelection={false} panelWidth="min-w-[240px]">
+          {(close) => (
+            <>
+              <h4 className="m-0 mb-2.5 text-[12px] uppercase tracking-[0.12em] text-[#6f6478] font-semibold">Sort by</h4>
+              <div className="flex flex-col gap-0.5">
+                {SORT_OPTIONS.map((opt) => {
+                  const active = filters.sortBy === opt.value;
+                  return (
+                    <button
+                      key={opt.value}
+                      type="button"
+                      onClick={() => {
+                        filters.setSortBy(opt.value);
+                        close();
+                      }}
+                      className={`text-left px-2.5 py-2 rounded-md text-[14.5px] transition-colors cursor-pointer ${
+                        active ? "bg-[#f4f0f7] text-[#3a1257] font-semibold" : "text-[#1c1024] hover:bg-[#f4f0f7]"
+                      }`}
+                    >
+                      {opt.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </>
+          )}
+        </Dropdown>
       </div>
 
       {/* ───── Results grid (3-up on purple) ───── */}
