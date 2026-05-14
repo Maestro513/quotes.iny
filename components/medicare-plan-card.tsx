@@ -190,40 +190,23 @@ export default function MedicarePlanCard({
       className="relative bg-white rounded-[14px] px-[22px] pt-5 pb-[18px] flex flex-col transition-[transform,box-shadow] duration-[180ms] ease-[ease] hover:-translate-y-[3px]"
       style={{ boxShadow: "0 8px 24px rgba(0,0,0,0.22), 0 2px 4px rgba(0,0,0,0.08)" }}
     >
-      {/* Tier badges row (relative-tier only — Strong/Solid, no editorial labels) */}
-      {tierBadges && tierBadges.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mb-2 min-h-[22px]">
-          {tierBadges.map((badge) => {
-            const isStrong = badge.tier === "strong";
-            return (
-              <span
-                key={`${badge.category}-${badge.tier}`}
-                className={`text-[11px] font-semibold tracking-[0.01em] rounded-md px-2 py-0.5 border ${
-                  isStrong
-                    ? "bg-[#e6f6ec] text-[#178f3d] border-[#c7ebd2]"
-                    : "bg-[#f4eef9] text-[#6a2fa0] border-[#e2d3f0]"
-                }`}
-              >
-                {badge.label}
-              </span>
-            );
-          })}
-        </div>
-      )}
-
-      {/* Header row: carrier logo (left, 2x size) + heart save (right).
-          Carrier-name text is shown only as a fallback when no logo exists
-          for this carrier — keeps the row identifying the plan provider. */}
-      <header className="flex items-center justify-between mb-3 min-h-[56px]">
-        <div className="flex items-center min-w-0">
+      {/* Header row.
+          - Left: carrier logo (or fallback name) — shrunk 20% from prior size
+          - Right column: heart save at top, tier badges stacked beneath it
+            (right-aligned). Stacking the badges vertically here, instead of
+            in their own row above, keeps them out of the way of the logo
+            and gives each badge a clean visual line on its own. */}
+      <header className="flex items-start justify-between mb-3 gap-3 min-h-[45px]">
+        <div className="flex items-center shrink min-w-0 self-center">
           {logoSrc ? (
-            <img src={logoSrc} alt={carrier} className="h-[56px] w-auto max-w-[220px] object-contain shrink-0" />
+            <img src={logoSrc} alt={carrier} className="h-[45px] w-auto max-w-[176px] object-contain shrink-0" />
           ) : (
             <span className="text-[13px] tracking-[0.12em] uppercase text-[#7e8196] font-bold truncate">
               {carrier}
             </span>
           )}
         </div>
+        <div className="flex flex-col items-end gap-1.5 shrink-0">
         <button
           type="button"
           className={`w-8 h-8 rounded-full grid place-items-center border transition-all ${
@@ -237,6 +220,26 @@ export default function MedicarePlanCard({
             <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
           </svg>
         </button>
+        {tierBadges && tierBadges.length > 0 && (
+          <div className="flex flex-col items-end gap-1">
+            {tierBadges.map((badge) => {
+              const isStrong = badge.tier === "strong";
+              return (
+                <span
+                  key={`${badge.category}-${badge.tier}`}
+                  className={`text-[10.5px] font-semibold tracking-[0.01em] rounded-md px-2 py-0.5 border whitespace-nowrap ${
+                    isStrong
+                      ? "bg-[#e6f6ec] text-[#178f3d] border-[#c7ebd2]"
+                      : "bg-[#f4eef9] text-[#6a2fa0] border-[#e2d3f0]"
+                  }`}
+                >
+                  {badge.label}
+                </span>
+              );
+            })}
+          </div>
+        )}
+        </div>
       </header>
 
       {/* Plan name */}
