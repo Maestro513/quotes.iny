@@ -77,6 +77,33 @@ function findMedical(
   return raw.replace(/\s*\(see EOC[^)]*\)/i, "").trim() || raw;
 }
 
+/**
+ * Find the most informative value for a benefit category (dental/vision/hearing).
+ * Different carriers use wildly different row labels — Devoted writes
+ * "Dental allowance", Humana writes "Dental preventive", others write
+ * "Comprehensive Dental Care" or just "Routine Dental". Exact-label matching
+ * misses ~3,500 dental plans and ~1,700 vision plans in CMS PBP 2026 data.
+ *
+ * Preference order:
+ *   1. A row with a parseable dollar amount in the value (most specific)
+ *   2. Any other row in the category (e.g. "Covered — see Summary of Benefits")
+ *
+ * Returns "—" only when no row in the category exists at all.
+ */
+function findCategory(
+  medical: { label: string; in_network: string }[],
+  category: "dental" | "vision" | "hearing"
+): string {
+  if (!medical) return "—";
+  const rows = medical.filter((m) => m.label?.toLowerCase().includes(category));
+  if (rows.length === 0) return "—";
+  // Prefer rows whose value contains a dollar amount
+  const withDollar = rows.find((r) => /\$\s*\d/.test(r.in_network ?? ""));
+  const chosen = withDollar ?? rows[0];
+  const raw = chosen.in_network ?? "—";
+  return raw.replace(/\s*\(see EOC[^)]*\)/i, "").trim() || raw;
+}
+
 function mapPlanType(planType: string, planNumber: string): MedicarePlanType {
   const pt = planType?.toLowerCase() ?? "";
   if (pt.includes("supplement") || pt.includes("medigap")) return "Supplement";
@@ -259,9 +286,15 @@ function mapToPlan(detail: Record<string, unknown>, planNumber: string): Medicar
   const type = mapPlanType(planTypeStr, planNumber);
   const networkType = mapNetworkType(planTypeStr);
   const drugTier1 = drugs.find((d) => d.label.toLowerCase().includes("tier 1"))?.value ?? "—";
-  const dentalVal = findMedical(medical, "Dental preventive");
-  const visionVal = findMedical(medical, "Vision routine exam");
-  const hearingVal = supplemental.find((s) => s.label.toLowerCase().includes("hearing"))?.value;
+  // Category-wide match catches Devoted's "Dental allowance", Humana's
+  // "Dental preventive", and every other carrier-specific naming.
+  // Hearing also falls back to the supplemental array in case it's stored
+  // there instead of medical (some carriers do this).
+  const dentalVal = findCategory(medical, "dental");
+  const visionVal = findCategory(medical, "vision");
+  const hearingMedical = findCategory(medical, "hearing");
+  const hearingSupp = supplemental.find((s) => s.label.toLowerCase().includes("hearing"))?.value;
+  const hearingVal = hearingMedical !== "—" ? hearingMedical : hearingSupp;
   const otcVal = supplemental.find((s) => s.label.toLowerCase().includes("otc") || s.label.toLowerCase().includes("over-the-counter"))?.value;
   const partBVal = supplemental.find((s) => s.label.toLowerCase().includes("part b") || s.label.toLowerCase().includes("giveback"))?.value;
   const highlights = supplemental
