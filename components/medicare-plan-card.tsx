@@ -211,15 +211,18 @@ export default function MedicarePlanCard({
         </div>
       )}
 
-      {/* Header row: carrier logo (left) + heart save (right) */}
-      <header className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-2 min-w-0">
+      {/* Header row: carrier logo (left, 2x size) + heart save (right).
+          Carrier-name text is shown only as a fallback when no logo exists
+          for this carrier — keeps the row identifying the plan provider. */}
+      <header className="flex items-center justify-between mb-3 min-h-[56px]">
+        <div className="flex items-center min-w-0">
           {logoSrc ? (
-            <img src={logoSrc} alt={carrier} className="h-[28px] w-auto max-w-[110px] object-contain shrink-0" />
-          ) : null}
-          <span className="text-[11px] tracking-[0.14em] uppercase text-[#7e8196] font-bold truncate">
-            {carrier}
-          </span>
+            <img src={logoSrc} alt={carrier} className="h-[56px] w-auto max-w-[220px] object-contain shrink-0" />
+          ) : (
+            <span className="text-[13px] tracking-[0.12em] uppercase text-[#7e8196] font-bold truncate">
+              {carrier}
+            </span>
+          )}
         </div>
         <button
           type="button"
