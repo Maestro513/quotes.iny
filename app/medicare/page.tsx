@@ -3,7 +3,7 @@
 import "./medicare.css"; // keep — MedicarePlanCard still depends on .plan-grid
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState, useEffect, useCallback, useMemo, useRef, Suspense } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef, Suspense, type SVGProps, type ComponentType } from "react";
 import { parseParams } from "@/lib/params";
 import type { DrugEstimate, MedicareNetworkType } from "@/types/medicare";
 import MedicarePlanCard from "@/components/medicare-plan-card";
@@ -13,6 +13,53 @@ import { useMedicareSearch } from "@/hooks/use-medicare-search";
 import { useMedicareFilters, type QuickPreset, type SortOption, type Intent } from "@/hooks/use-medicare-filters";
 import { useRecentlyViewed } from "@/hooks/use-recently-viewed";
 import { computeTierBadges } from "@/lib/medicare/tier-badges";
+
+// ───────── inline SVG icons (goal cards + chrome)
+// Sized via `width`/`height` so they ignore the surrounding font-size; stroke
+// stays crisp at small sizes by using 1.8 weight per the Split Hero handoff.
+
+type IconProps = SVGProps<SVGSVGElement> & { size?: number };
+
+const Target = ({ size = 16, ...props }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
+    <circle cx="12" cy="12" r="9" />
+    <circle cx="12" cy="12" r="5" />
+    <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+  </svg>
+);
+const Coin = ({ size = 16, ...props }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7v10M9 9.5h4a2 2 0 0 1 0 4h-2a2 2 0 0 0 0 4h4" />
+  </svg>
+);
+const StarOutline = ({ size = 16, ...props }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
+    <polygon points="12 2 15 9 22 9.3 16.5 14 18 21 12 17.5 6 21 7.5 14 2 9.3 9 9 12 2" />
+  </svg>
+);
+const Tooth = ({ size = 16, ...props }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
+    <path d="M8 3c-2.5 0-4 1.5-4 4 0 2.5 1 5 1 8s.5 6 2.5 6 2-3 2.5-5 1-3 2-3 1.5 1 2 3 .5 5 2.5 5 2.5-5 2.5-8 1-5.5 1-8c0-2.5-1.5-4-4-4-1.5 0-2.5.5-4 1.5C10.5 3.5 9.5 3 8 3z" />
+  </svg>
+);
+const Pin = ({ size = 12, ...props }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+    <circle cx="12" cy="10" r="3" />
+  </svg>
+);
+const Plus = ({ size = 14, ...props }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden {...props}>
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+);
+const SearchGlyph = ({ size = 13, ...props }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
+    <circle cx="11" cy="11" r="7" />
+    <path d="m21 21-4.3-4.3" />
+  </svg>
+);
 
 // ───────── constants
 
@@ -39,20 +86,21 @@ const SORT_OPTIONS: { label: string; value: SortOption }[] = [
  * "What matters most" tiles — each maps to a (preset, sort) combo. The H2
  * "ranked by …" copy comes from `h2Suffix`. `countSource` tells the page
  * which presetCounts key to read for the tile's badge ("all" = use total
- * filteredPlans count).
+ * filteredPlans count). `sub` is intentionally short — it sits inline under
+ * the title in the goal card, not in a sidebar.
  */
 const INTENT_TILES: {
   key: Intent;
-  icon: string;
+  Icon: ComponentType<IconProps>;
   label: string;
   sub: string;
   countSource: "filtered" | QuickPreset;
   h2Suffix: string;
 }[] = [
-  { key: "best-match", icon: "🎯", label: "Best match", sub: "Our pick based on your profile and meds.", countSource: "filtered", h2Suffix: "Best Match" },
-  { key: "lowest-cost", icon: "💰", label: "Lowest total cost", sub: "Premium + copays + drug costs over the year.", countSource: "filtered", h2Suffix: "Lowest Cost" },
-  { key: "highest-rated", icon: "★", label: "Highest rated", sub: "CMS 4.5★ and up — strongest member experience.", countSource: "highly-rated", h2Suffix: "Highest Rated" },
-  { key: "most-benefits", icon: "🦷", label: "Most benefits", sub: "Dental, vision, hearing, OTC bundled together.", countSource: "high-otc", h2Suffix: "Most Benefits" },
+  { key: "best-match",    Icon: Target,      label: "Best match",        sub: "Profile + meds",   countSource: "filtered",      h2Suffix: "Best Match" },
+  { key: "lowest-cost",   Icon: Coin,        label: "Lowest total cost", sub: "Premium + drugs",  countSource: "filtered",      h2Suffix: "Lowest Cost" },
+  { key: "highest-rated", Icon: StarOutline, label: "Highest rated",     sub: "CMS 4.5★+",        countSource: "highly-rated",  h2Suffix: "Highest Rated" },
+  { key: "most-benefits", Icon: Tooth,       label: "Most benefits",     sub: "Dental + vision",  countSource: "high-otc",      h2Suffix: "Most Benefits" },
 ];
 
 const BENEFIT_OPTIONS: { key: string; label: string }[] = [
@@ -107,17 +155,19 @@ function Dropdown({
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border text-[17.5px] whitespace-nowrap cursor-pointer transition-colors ${
+        className={`inline-flex items-center gap-2 px-3.5 py-[9px] rounded-lg border text-[13px] whitespace-nowrap cursor-pointer transition-colors ${
           hasSelection
-            ? "bg-[#3a1257] text-white border-[#3a1257] hover:bg-[#4a1c6e]"
-            : "bg-white text-[#1c1024] border-[#e8e3ec] hover:border-[#9a8fa3]"
+            ? "bg-[#2a0f5c] text-white border-[#2a0f5c] hover:bg-[#3a1670]"
+            : "bg-white text-[#1a1a1a] border-[#e5e7eb] hover:border-[#9a8fa3]"
         }`}
         aria-haspopup="dialog"
         aria-expanded={open}
       >
-        <span className={`uppercase tracking-[0.06em] text-[15px] ${hasSelection ? "text-white/70" : "text-[#6f6478]"}`}>{label}</span>
-        <span className={`font-medium ${hasSelection ? "text-white" : "text-[#1c1024]"}`}>{value}</span>
-        <span className={`text-[13px] ${hasSelection ? "text-white/70" : "text-[#6f6478]"}`}>▾</span>
+        <span className={`uppercase tracking-[0.08em] text-[10px] font-semibold ${hasSelection ? "text-white/70" : "text-[#9ca3af]"}`}>{label}</span>
+        <span className={`font-semibold ${hasSelection ? "text-white" : "text-[#1a1a1a]"}`}>{value}</span>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={hasSelection ? "text-white/70" : "text-[#9ca3af]"} aria-hidden>
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
       </button>
       {open && (
         <div
@@ -348,50 +398,110 @@ function MedicareContent() {
         }}
       />
 
-      {/* ───── Page header (TOP — eyebrow + H1 + sub-meta + ZIP pill) ───── */}
-      <div className="relative z-[1] mx-auto max-w-7xl px-6 pt-9 pb-4">
-        <div className="flex items-center justify-between gap-6 mb-2">
-          <span className="text-[12px] uppercase tracking-[0.14em] text-white/70 font-semibold">
+      {/* ───── Hero band — split grid (headline left, 2×2 goal cards right) ───── */}
+      <section className="relative z-[1] mx-auto max-w-7xl px-6 pt-9 pb-6">
+        {/* Meta row: eyebrow + ZIP pill */}
+        <div className="flex items-center justify-between gap-6 mb-5">
+          <span className="text-[11px] uppercase tracking-[0.14em] text-white/65 font-semibold">
             2026 Open Enrollment
           </span>
           {search.zip && (
-            <span className="inline-flex items-center gap-2 bg-white/12 text-white text-[12px] font-semibold rounded-full px-3 py-1">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
+            <span className="inline-flex items-center gap-1.5 text-white text-[12px] font-medium rounded-full px-3 py-1.5 border border-white/20">
+              <Pin size={12} />
               ZIP {search.zip}
             </span>
           )}
         </div>
-        <h1
-          className="text-white text-[32px] leading-tight tracking-[-0.02em] font-bold m-0"
-          style={{ fontFamily: "'Times New Roman', Times, serif", fontWeight: 500 }}
-        >
-          {search.loading ? (
-            "Finding Medicare plans…"
-          ) : search.allPlans.length > 0 ? (
-            <>
-              {totalFiltered} Medicare plan{totalFiltered !== 1 ? "s" : ""} in your area —{" "}
-              <em className="not-italic" style={{ color: "#a8e6c0" }}>what matters most?</em>
-            </>
-          ) : (
-            "Enter a ZIP to see plans"
-          )}
-        </h1>
-        <p className="text-white/75 text-[14px] mt-2 m-0">
-          Pick a goal to rank plans for it, then refine below.
-        </p>
-      </div>
 
-      {/* ───── Filter toolbar — centered, semi-transparent, rounded card on purple ───── */}
-      <div className="relative z-[1] mx-auto max-w-7xl px-6">
-        <div className="bg-white/85 backdrop-blur-md border border-white/40 rounded-2xl shadow-[0_8px_32px_-12px_rgba(15,5,30,0.30)] overflow-visible">
-        {/* Single row: ZIP / segmented / dropdowns / +Add meds / search (Sort moved to results header) */}
-        <div className="px-5 py-4 flex items-center gap-2.5 flex-wrap">
-          {/* ZIP */}
-          <form onSubmit={handleZipSubmit} className="inline-flex items-center gap-2 border border-[#e8e3ec] rounded-lg px-3.5 py-2 bg-white">
-            <span className="uppercase tracking-[0.08em] text-[13px] text-[#6f6478] font-semibold">ZIP</span>
+        {/* Split: headline (0.85fr) + goal cards 2×2 (1.15fr). Stacks on small screens. */}
+        <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-8 items-center">
+          {/* LEFT — headline + italic accent + body copy */}
+          <div>
+            <h1 className="text-white text-[40px] font-semibold leading-[1.08] tracking-[-0.025em] m-0">
+              {search.loading ? (
+                "Finding Medicare plans…"
+              ) : search.allPlans.length > 0 ? (
+                <>
+                  <span style={{ fontVariantNumeric: "tabular-nums" }}>{totalFiltered}</span>{" "}
+                  Medicare plan{totalFiltered !== 1 ? "s" : ""} in your area
+                </>
+              ) : (
+                "Enter a ZIP to see plans"
+              )}
+            </h1>
+            <p className="text-[15px] italic text-[#a7f3d0] mt-3.5 m-0 font-normal leading-none">
+              What matters most?
+            </p>
+            <p className="text-[13px] text-white/60 mt-4 max-w-[380px] leading-[1.5] m-0">
+              Pick a goal — we&rsquo;ll rank your plans for it. Refine the rest below.
+            </p>
+          </div>
+
+          {/* RIGHT — 2×2 goal cards (single column on small/medium) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5" role="tablist" aria-label="Ranking intent">
+            {INTENT_TILES.map((tile) => {
+              const active = filters.intent === tile.key;
+              const count = tile.countSource === "filtered" ? totalFiltered : filters.presetCounts[tile.countSource] ?? 0;
+              return (
+                <button
+                  key={tile.key}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  aria-pressed={active}
+                  onClick={() => filters.setIntentTile(tile.key)}
+                  className={`text-left flex items-center gap-3 px-4 py-3.5 rounded-xl border cursor-pointer transition-all duration-150 ${
+                    active
+                      ? "bg-white border-transparent shadow-[0_6px_22px_-8px_rgba(0,0,0,0.35)]"
+                      : "bg-white/[0.07] border-white/[0.13] hover:bg-white/[0.10] hover:border-white/20"
+                  }`}
+                >
+                  {/* Icon tile */}
+                  <span
+                    className={`w-9 h-9 rounded-[10px] inline-flex items-center justify-center shrink-0 ${
+                      active ? "bg-[#f3eeff] text-[#5b21b6]" : "bg-white/10 text-white"
+                    }`}
+                  >
+                    <tile.Icon size={16} />
+                  </span>
+
+                  {/* Body */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-baseline justify-between gap-2">
+                      <span className={`text-[14px] font-semibold tracking-[-0.005em] ${active ? "text-[#1a1033]" : "text-white"}`}>
+                        {tile.label}
+                      </span>
+                      <span className={`text-[12px] font-semibold tabular-nums ${active ? "text-[#5b21b6]" : "text-white/70"}`}>
+                        {count} <span className="font-medium opacity-70">plan{count !== 1 ? "s" : ""}</span>
+                      </span>
+                    </div>
+                    <div className={`text-[11.5px] mt-0.5 leading-snug ${active ? "text-[#6b7280]" : "text-white/55"}`}>
+                      {tile.sub}
+                    </div>
+                  </div>
+
+                  {/* Active green dot with glow ring */}
+                  {active && (
+                    <span
+                      aria-hidden
+                      className="w-[7px] h-[7px] rounded-full bg-[#15803d] shrink-0"
+                      style={{ boxShadow: "0 0 0 3px rgba(21,128,61,0.2)" }}
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ───── Toolbar — full-width white floating card below the split ───── */}
+        <div className="mt-[22px] bg-white rounded-[14px] p-3.5 flex flex-wrap items-center gap-2.5 shadow-[0_1px_0_rgba(0,0,0,0.04),0_6px_20px_-8px_rgba(0,0,0,0.18)]">
+          {/* ZIP — form input that submits to refetch plans */}
+          <form
+            onSubmit={handleZipSubmit}
+            className="inline-flex items-center gap-2 border border-[#e5e7eb] rounded-lg px-3.5 py-[9px] bg-white text-[13px]"
+          >
+            <span className="uppercase tracking-[0.08em] text-[10px] text-[#9ca3af] font-semibold">ZIP</span>
             <input
               type="text"
               value={search.zip}
@@ -400,25 +510,24 @@ function MedicareContent() {
               maxLength={5}
               inputMode="numeric"
               pattern="[0-9]{5}"
-              className="border-0 outline-none bg-transparent text-[16px] text-[#1c1024] w-[68px] font-semibold"
+              className="border-0 outline-none bg-transparent text-[13px] text-[#1a1a1a] w-[52px] font-semibold tabular-nums"
               aria-label="ZIP code"
             />
           </form>
 
-          <div className="w-px h-[26px] bg-[#e8e3ec]" />
-
-          {/* Plan-Type (network) segmented */}
-          <div className="inline-flex border border-[#e8e3ec] rounded-lg bg-white p-[3px]">
-            {NETWORK_SEGS.map(({ key, label }) => {
+          {/* Plan-Type segmented control — single-active chip group */}
+          <div className="inline-flex rounded-lg overflow-hidden border border-[#e5e7eb]">
+            {NETWORK_SEGS.map(({ key, label }, idx) => {
               const active = filters.networkTypeFilter === key;
+              const isLast = idx === NETWORK_SEGS.length - 1;
               return (
                 <button
                   key={label}
                   type="button"
                   onClick={() => filters.setNetworkTypeFilter(key)}
-                  className={`px-3 py-[7px] rounded-md text-[15px] transition-colors cursor-pointer ${
-                    active ? "bg-[#3a1257] text-white" : "text-[#9a8fa3] hover:text-[#1c1024]"
-                  }`}
+                  className={`px-3.5 py-[9px] text-[13px] font-semibold transition-colors cursor-pointer ${
+                    active ? "bg-[#2a0f5c] text-white" : "bg-white text-[#6b7280] hover:text-[#1a1a1a]"
+                  } ${isLast ? "" : "border-r border-[#f0f0f3]"}`}
                   aria-pressed={active}
                 >
                   {label}
@@ -426,6 +535,9 @@ function MedicareContent() {
               );
             })}
           </div>
+
+          {/* Visual divider between segmented + dropdown fields */}
+          <span aria-hidden className="w-px h-[22px] bg-[#e5e7eb]" />
 
           {/* Premium */}
           <Dropdown label="Premium" value={premiumValue} hasSelection={premiumHas} panelWidth="min-w-[260px]">
@@ -532,77 +644,31 @@ function MedicareContent() {
 
           <div className="flex-1" />
 
-          {/* Add medications (green) */}
+          {/* Add medications — green CTA opens the meds modal */}
           <button
             type="button"
             onClick={() => setMedsOpen(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#34a853] hover:bg-[#2c9446] text-white text-[15.5px] font-medium cursor-pointer transition-colors whitespace-nowrap"
+            className="inline-flex items-center gap-1.5 px-3.5 py-[9px] rounded-lg bg-[#15803d] hover:bg-[#166534] active:bg-[#14532d] text-white text-[13px] font-semibold cursor-pointer transition-colors whitespace-nowrap"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden="true">
-              <path d="M12 5v14M5 12h14" />
-            </svg>
+            <Plus size={14} />
             {selectedDrugs.length > 0 ? `${selectedDrugs.length} med${selectedDrugs.length !== 1 ? "s" : ""}` : "Add medications"}
           </button>
 
-          {/* Search input — right-aligned on the same row as Sort + Add medications */}
-          <div className="inline-flex items-center gap-2 border border-[#e8e3ec] rounded-full px-3.5 py-2 bg-white w-[280px]">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6f6478" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="7" />
-              <path d="M21 21l-4.3-4.3" />
-            </svg>
+          {/* Search — pill-shaped input with ⌘K kbd hint */}
+          <div className="inline-flex items-center gap-2 border border-[#e5e7eb] rounded-lg px-3.5 py-[9px] bg-[#fafafa] min-w-[200px]">
+            <SearchGlyph size={13} className="text-[#888]" />
             <input
               type="search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search plans, carriers…"
-              className="flex-1 border-0 outline-none bg-transparent text-[15.5px] text-[#1c1024] placeholder:text-[#9a8fa3] min-w-0"
+              className="flex-1 border-0 outline-none bg-transparent text-[13px] text-[#1a1a1a] placeholder:text-[#9ca3af] min-w-0"
               aria-label="Search plans"
             />
-            <kbd className="text-[12px] text-[#6f6478] border border-[#e8e3ec] rounded px-1.5 py-0.5">⌘K</kbd>
+            <kbd className="text-[10px] text-[#9ca3af] border border-[#e5e7eb] rounded px-1.5 py-0.5 ml-auto">⌘K</kbd>
           </div>
         </div>
-        </div>
-      </div>
-
-      {/* ───── Intent tiles — 4 side-by-side "what matters most" cards ───── */}
-      <div className="relative z-[1] mx-auto max-w-7xl px-6 pt-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5" role="tablist" aria-label="Ranking intent">
-          {INTENT_TILES.map((tile) => {
-            const active = filters.intent === tile.key;
-            const count = tile.countSource === "filtered" ? totalFiltered : filters.presetCounts[tile.countSource] ?? 0;
-            return (
-              <button
-                key={tile.key}
-                type="button"
-                role="tab"
-                aria-selected={active}
-                aria-current={active}
-                onClick={() => filters.setIntentTile(tile.key)}
-                className={`text-left flex flex-col gap-1.5 px-5 py-4 rounded-2xl border cursor-pointer transition-all ${
-                  active
-                    ? "bg-white border-white"
-                    : "bg-white/8 border-white/20 hover:bg-white/12"
-                }`}
-              >
-                <span className="text-[22px] leading-none" aria-hidden="true">{tile.icon}</span>
-                <span className={`text-[15px] font-bold ${active ? "text-[#1a1424]" : "text-white"}`}>
-                  {tile.label}
-                </span>
-                <span className={`text-[12px] leading-snug ${active ? "text-[#7a6d8e]" : "text-white/75"}`}>
-                  {tile.sub}
-                </span>
-                <span
-                  className={`self-start text-[11px] font-semibold rounded-full px-2 py-0.5 mt-0.5 ${
-                    active ? "bg-[#f3eef9] text-[#3a1257]" : "bg-white/16 text-white"
-                  }`}
-                >
-                  {count} plan{count !== 1 ? "s" : ""}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
+      </section>
 
       {/* ───── Applied filters strip — chips for every non-default constraint ───── */}
       {activeFilterChips.length > 0 && (
